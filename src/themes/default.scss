@@ -1,0 +1,11 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/colors' as *;
+@use '../abstracts/mixins/theme' as *;
+
+/* Default theme colors */
+:root {
+   @include apply-root-colors($theme-colors-light);
+}
+
+@include apply-color-mode(dark, $theme-colors-dark);
+

@@ -1,0 +1,33 @@
+@mixin color-mode($mode) {
+  html[data-theme="#{$mode}"] {
+    @content;
+  }
+}
+
+@mixin prefers-color-mode($mode) {
+  @media (prefers-color-scheme:#{$mode}) {
+    html[data-theme="auto"] {
+      @content;
+    }
+  }
+}
+
+@mixin apply-root-colors($colors) {
+  @each $name, $value in $colors {
+    --#{$name}: #{$value};
+  }
+}
+
+@mixin apply-color-mode($mode, $colors) {
+  @include color-mode($mode) {
+    @each $name, $value in $colors {
+      --#{$name}: #{$value};
+    }
+  }
+
+  @include prefers-color-mode($mode) {
+    @each $name, $value in $colors {
+      --#{$name}: #{$value};
+    }
+  }
+}

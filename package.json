@@ -1,0 +1,41 @@
+{
+  "name": "flexa",
+  "version": "1.0.0",
+  "description": "Compact CSS package for Developing Web UI. Responsive ready and easy to use.",
+  "license": "MIT",
+  "type": "module",
+  "style": "dist/flexa.css",
+  "unpkg": "dist/flexa.min.css",
+  "jsdelivr": "dist/flexa.min.css",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean:build": "node -e \"require('fs').rmSync('build', { recursive: true, force: true })\"",
+    "clean:dist": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\"",
+    "build": "npm run clean:dist && npm run build:css && npm run build:themes && npm run build:cdn && npm run build:themes:cdn",
+    "build:css": "sass --no-error-css --style=expanded --source-map --embed-sources src/flexa.scss dist/flexa.css",
+    "build:themes": "sass --no-error-css --style=expanded --source-map --embed-sources src/themes/default.scss dist/themes/default.css",
+    "build:cdn": "postcss dist/flexa.css --map --output dist/flexa.min.css",
+    "build:themes:cdn": "postcss dist/themes/default.css --map --output dist/themes/default.min.css",
+    "watch": "npm run clean:build && npm-run-all --parallel watch:*",
+    "watch:sass": "sass --watch --style=expanded --source-map --embed-sources src/flexa.scss:build/flexa.css",
+    "watch:themes": "sass --watch --style=expanded --source-map --embed-sources src/themes/default.scss:build/themes/default.css"
+  },
+  "browserslist": [
+    ">0.5%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "cssnano": "^7.0.6",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.45",
+    "postcss-cli": "^11.0.0",
+    "sass": "^1.80.4"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

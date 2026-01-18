@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flexa Theme Demo - Light / Dark / Auto</title>
+    <!-- Main Flexa CSS -->
+    <link rel="stylesheet" href="../css/demo.css" />
+    <link rel="stylesheet" href="../../dist/flexa.css" />
+    <link rel="stylesheet" href="../../dist/themes/default.css" />
+  </head>
+  <body>
+    <h1 class="demo-title">Theme</h1>
+    <a href="../index.html" class="demo-back">Back</a>
+    <div class="container">
+
+      
+    </div>
+
+
+    <div class="demo-controls">
+        <button data-theme="light" onclick="setTheme('light')" class="active">
+          Light Theme
+        </button>
+        <button data-theme="dark" onclick="setTheme('dark')">
+          Dark Theme
+        </button>
+        <button data-theme="auto" onclick="setTheme('auto')">
+          Auto (System)
+        </button>
+    </div>
+    
+    <div class="demo-section">
+      <h2 class="demo-section-title">Theme Colors</h2>
+      <p class="demo-section-description">Main theme colors that automatically change when the theme is switched:</p>
+      <div class="color-palette">
+        <div class="color-swatch primary">Primary</div>
+        <div class="color-swatch secondary">Secondary</div>
+        <div class="color-swatch success">Success</div>
+        <div class="color-swatch info">Info</div>
+        <div class="color-swatch warning">Warning</div>
+        <div class="color-swatch danger">Danger</div>
+      </div>
+    </div>
+    
+    <div class="demo-section">
+      <h2 class="demo-section-title">Text Colors</h2>
+      <p class="demo-section-description">Text colors that are automatically adjusted when the theme changes:</p>
+      <div class="text-demo">
+        <p class="text-primary">Primary Text Color - for main text</p>
+        <p class="text-secondary">Secondary Text Color - for secondary text</p>
+        <p class="text-muted">Muted Text Color - for muted text</p>
+        <p class="text-disabled">Disabled Text Color - for disabled text</p>
+      </div>
+    </div>
+    
+    <div class="demo-section">
+      <h2 class="demo-section-title">Links</h2>
+      <p class="demo-section-description">
+        <a href="#">Default Link</a> | 
+        <a href="#">Link with hover effect</a>
+      </p>
+    </div>
+
+    
+    <script>
+      function setTheme(theme) {
+        const html = document.documentElement;
+              html.setAttribute('data-theme', theme);
+      }
+    </script>
+  </body>
+</html>
