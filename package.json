@@ -1,12 +1,12 @@
 {
-  "name": "flexa",
+  "name": "Flexa",
   "version": "1.0.0",
   "description": "Compact CSS package for Developing Web UI. Responsive ready and easy to use.",
   "license": "MIT",
   "type": "module",
-  "style": "dist/flexa.css",
-  "unpkg": "dist/flexa.min.css",
-  "jsdelivr": "dist/flexa.min.css",
+  "style": "dist/core.css",
+  "unpkg": "dist/core.min.css",
+  "jsdelivr": "dist/core.min.css",
   "files": [
     "dist"
   ],
@@ -14,13 +14,13 @@
     "clean:build": "node -e \"require('fs').rmSync('build', { recursive: true, force: true })\"",
     "clean:dist": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\"",
     "build": "npm run clean:dist && npm run build:css && npm run build:themes && npm run build:cdn && npm run build:themes:cdn",
-    "build:css": "sass --no-error-css --style=expanded --source-map --embed-sources src/flexa.scss dist/flexa.css",
-    "build:themes": "sass --no-error-css --style=expanded --source-map --embed-sources src/themes/default.scss dist/themes/default.css",
-    "build:cdn": "postcss dist/flexa.css --map --output dist/flexa.min.css",
-    "build:themes:cdn": "postcss dist/themes/default.css --map --output dist/themes/default.min.css",
+    "build:css": "sass --no-error-css --style=expanded --source-map --embed-sources src/core.scss dist/core.css",
+    "build:themes": "sass --no-error-css --style=expanded --source-map --embed-sources src/themes/theme-default.scss dist/themes/theme-default.css",
+    "build:cdn": "postcss dist/core.css --map --output dist/core.min.css",
+    "build:themes:cdn": "postcss dist/themes/theme-default.css --map --output dist/themes/theme-default.min.css",
     "watch": "npm run clean:build && npm-run-all --parallel watch:*",
-    "watch:sass": "sass --watch --style=expanded --source-map --embed-sources src/flexa.scss:build/flexa.css",
-    "watch:themes": "sass --watch --style=expanded --source-map --embed-sources src/themes/default.scss:build/themes/default.css"
+    "watch:sass": "sass --watch --style=expanded --source-map --embed-sources src/core.scss:build/core.css",
+    "watch:themes": "sass --watch --style=expanded --source-map --embed-sources src/themes/theme-default.scss:build/themes/theme-default.css"
   },
   "browserslist": [
     ">0.5%",

@@ -1,0 +1,29 @@
+@mixin html-color-group($mode) {
+  html[data-theme="#{$mode}"] {
+    @content;
+  }
+}
+
+@mixin prefers-color-group($prefix, $mode) {
+  @media (prefers-color-scheme:#{$mode}) {
+    html[data-theme="auto"] {
+      @content;
+    }
+  }
+}
+
+@mixin add-colors($prefix, $colors) {
+  @each $name, $value in $colors {
+    --#{$prefix}#{$name}: #{$value};
+  }
+}
+
+@mixin add-colors-in-html-group($prefix, $mode, $colors) {
+  @include html-color-group($mode) {
+    @include add-colors($prefix, $colors);
+  }
+
+  @include prefers-color-group($prefix, $mode) {
+    @include add-colors($prefix, $colors);
+  }
+}

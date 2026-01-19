@@ -1,0 +1,13 @@
+@use 'abstracts/variables/index' as *;
+@use 'abstracts/mixins/index' as *;
+@use 'base/index' as *;
+
+@include Banner($name, $version, $license, $author);
+
+:root
+{
+    @include add-colors($prefix, $colors);
+}
+@include add-colors-in-html-group($prefix, "light", $theme-colors-light);
+@include add-colors-in-html-group($prefix, "dark", $theme-colors-dark);
+@include base-styles($prefix);

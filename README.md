@@ -24,29 +24,6 @@ Outputs in `dist/`:
 - `themes/default.css` (with sourcemap)
 - `themes/default.min.css` (for CDN)
 
-## Publish to npm + jsDelivr
-
-1) Build the CSS:
-
-```bash
-npm run build
-```
-
-2) Publish to npm:
-
-```bash
-npm publish
-```
-
-3) Use via jsDelivr:
-
-```html
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/flexa@0.1.0/dist/flexa.min.css"
-/>
-```
-
 ## Watch mode
 
 Start watching for changes:
@@ -68,7 +45,7 @@ src/
   flexa.scss
   themes/
     default.scss
-dist/          # Production build
+dist/          # Production build (gitignored)
   flexa.css
   flexa.min.css
   themes/

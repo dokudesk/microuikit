@@ -1,0 +1,10 @@
+@use '../abstracts/variables/index' as *;
+@use '../abstracts/mixins/index' as *;
+
+
+:root
+{
+    @include add-colors($prefix, $colors);
+}
+@include add-colors-in-html-group($prefix, "light", $theme-colors-light);
+@include add-colors-in-html-group($prefix, "dark", $theme-colors-dark);

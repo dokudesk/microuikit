@@ -1,0 +1,24 @@
+@mixin base-styles($prefix) {
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  //Smooth scrolling
+  @media (prefers-reduced-motion: no-preference) {
+    :root {
+      scroll-behavior: smooth;
+    }
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    color: var(--#{$prefix}text-color);
+    background-color: var(--#{$prefix}background-color);
+
+  }
+}

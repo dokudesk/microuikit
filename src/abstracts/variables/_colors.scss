@@ -1,0 +1,73 @@
+//--------------------------------
+$blue: #0d6efd !default;
+$indigo: #6610f2 !default;
+$purple: #6f42c1 !default;
+$pink: #d63384 !default;
+$red: #dc3545 !default;
+$orange: #fd7e14 !default;
+$yellow: #ffc107 !default;
+$green: #198754 !default;
+$teal: #20c997 !default;
+$cyan: #0dcaf0 !default;
+$black: #000 !default;  
+$white: #fff !default; 
+$gray-lightest: #f8f9fa !default; 
+$gray-light: #dee2e6 !default;
+$gray: #adb5bd !default;
+$gray-dark: #495057 !default;
+$gray-darkest: #212529 !default;
+//--------------------------------
+//Text Colors
+$text-color: #030613 !default;
+$text-color-dark: #e9ecef !default;
+$text-muted-color: #6c757d !default;
+$text-muted-color-dark: #adb5bd !default;
+//--------------------------------
+$border-color: #e9ecef !default;
+$border-color-dark: #212529 !default;
+//--------------------------------
+//Background Colors
+$background-color: #f8f9fa !default;
+$background-color-dark: #212529 !default;
+//--------------------------------
+
+
+
+
+
+
+
+//Colors
+$colors: (
+    "blue": $blue,
+    "indigo": $indigo,
+    "purple": $purple,
+    "pink": $pink,
+    "red": $red,
+    "orange": $orange,
+    "yellow": $yellow,
+    "green": $green,
+    "teal": $teal,
+    "cyan": $cyan,
+    "black": $black,
+    "white": $white,
+    "gray-lightest": $gray-lightest,
+    "gray-light": $gray-light,  
+    "gray": $gray,
+    "gray-dark": $gray-dark,
+    "gray-darkest": $gray-darkest
+) !default;
+
+$theme-colors-light:(
+        "text-color": $text-color,
+        "text-muted-color": $text-muted-color,
+        "background-color": $background-color,
+        "border-color": $border-color,
+) !default;
+
+$theme-colors-dark:(
+        "text-color":  $text-color-dark,
+        "text-muted-color": $text-muted-color-dark,
+        "background-color": $background-color-dark,
+        "border-color": $border-color-dark,
+) !default; 

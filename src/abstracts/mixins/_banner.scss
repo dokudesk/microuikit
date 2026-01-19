@@ -1,58 +1,7 @@
-@mixin flexaBanner($name, $version, $license, $author) {
+@mixin Banner($name, $version, $license, $author) {
   /*!
-   * ========================================================================
-   * #{$name} CSS Framework
-   * ========================================================================
-   * File: #{$name}
-   * Version: #{$version}
-   * License: #{$license}
-   * Author: #{$author}
-   * ========================================================================
-   *
-   * A modern, lightweight CSS framework built with:
-   * - CSS Cascade Layers for predictable cascade control
-   * - Utility-first architecture
-   * - Component-based design system
-   * - Full RTL / LTR support
-   * - WCAG 2.1 accessibility compliance
-   *
-   * ========================================================================
-   * Features
-   * ========================================================================
-   * ✓ CSS Layers for predictable cascade control
-   * ✓ Utilities & Components separation
-   * ✓ RTL and LTR layouts out of the box
-   * ✓ Accessible color contrast and focus states (WCAG 2.1)
-   * ✓ Responsive UI components
-   * ✓ Minimal and framework-agnostic
-   * ✓ Modern CSS features (logical properties, CSS variables)
-   *
-   * ========================================================================
-   * Direction Support
-   * ========================================================================
-   * - Uses logical properties (margin-inline, padding-inline, etc.)
-   * - Supports [dir="rtl"] and [dir="ltr"] attributes
-   * - Automatic layout mirroring
-   * - No need for separate RTL/LTR stylesheets
-   *
-   * ========================================================================
-   * Accessibility (WCAG 2.1)
-   * ========================================================================
-   * - Minimum contrast ratio 4.5:1 (AA standard)
-   * - Visible focus indicators on all interactive elements
-   * - Keyboard navigable components
-   * - Reduced motion support (@media (prefers-reduced-motion))
-   * - ARIA-friendly component structure
-   * - Semantic HTML support
-   *
-   * ========================================================================
-   * Browser Support
-   * ========================================================================
-   * - Modern browsers (>0.5% usage)
-   * - Last 2 versions of major browsers
-   * - Autoprefixer for vendor prefixes
-   *
-   * ========================================================================
+    #{$name} #{$version} 
+    Copyright 2025-2026 The #{$author} Authors
+    Licensed under #{$license}
    */
 }
-  
