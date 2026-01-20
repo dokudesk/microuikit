@@ -1,0 +1,16 @@
+@use 'sass:map';
+@use 'shadows' as *;
+
+$utilities: () !default;
+
+$utilities: map.merge(
+    $utilities,
+    ( 
+        "box-shadow": (
+            property: box-shadow,
+            class: box-shadow,
+            important: true,
+            values: $box-shadow
+        )
+    )
+);

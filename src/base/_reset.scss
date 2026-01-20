@@ -1,0 +1,20 @@
+@mixin reset-text-direction($prefix) {
+
+    // RTL Styles
+    html[dir="rtl"],
+    html[data-dir="rtl"] {
+      direction: rtl;
+      --#{$prefix}text-start: right;
+      --#{$prefix}text-end: left;
+    }
+  
+    // LTR Styles
+    html[dir="ltr"],
+    html[data-dir="ltr"] {
+      direction: ltr;
+      --#{$prefix}text-start: left;
+      --#{$prefix}text-end: right;
+    }
+  
+  }
+  

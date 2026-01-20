@@ -6,8 +6,20 @@
 
 :root
 {
-    @include add-colors($prefix, $colors);
+    @include colors($prefix, $colors);
+    @include colors($prefix, $theme-colors);
+    @include theme-colors-text($prefix, $theme-colors-text);
+    @include theme-colors-background($prefix, $theme-colors-background);
+    @include theme-colors-border($prefix, $theme-colors-border);
+    
+    //Default theme colors (text, background, border)
+    @include colors($prefix, $theme-colors-light);
+
+    @include text-position-variables($prefix, $text-align-map);
 }
-@include add-colors-in-html-group($prefix, "light", $theme-colors-light);
-@include add-colors-in-html-group($prefix, "dark", $theme-colors-dark);
+
+@include colors-in-html-group($prefix, "dark", $theme-colors-dark);
+@include reset-text-direction($prefix);
 @include base-styles($prefix);
+
+@include generate-utilities($prefix, $utilities);

@@ -1,0 +1,5 @@
+@mixin text-position-variables($prefix, $map) {
+    @each $key, $value in $map {
+      --#{$prefix}text-#{$key}: #{$value};
+    }
+  }

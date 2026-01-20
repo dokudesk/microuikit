@@ -1,0 +1,36 @@
+@use 'sass:map';
+
+@mixin generate-utilities($prefix, $utilities) {
+
+    @each $utility-name, $utility in $utilities {
+
+        // Get the class name, css property and values from the utility
+        $class-name: map.get($utility, class);
+        $css-property: map.get($utility, property);
+        $values: map.get($utility, values);
+        $enable-important: map.get($utility, important);
+
+
+        @if $class-name and $css-property and $values {
+
+            @each $key, $value in $values {
+
+                $suffix: "";
+                @if $key != null {
+                    $suffix: "-#{$key}";
+                }
+
+                $important: "";
+                @if $enable-important {
+                    $important: "!important";
+                }
+
+                .#{$prefix}#{$class-name}#{$suffix} {
+                    #{$css-property}: $value #{$important};
+                }
+
+            }
+
+        }
+    }
+}
