@@ -1,0 +1,32 @@
+// Global reset + base element styles.
+@mixin root-foundation($prefix) {
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  // Smooth scrolling when allowed by user settings.
+  @media (prefers-reduced-motion: no-preference) {
+    :root {
+      scroll-behavior: smooth;
+    }
+  }
+
+  html {
+    direction: var(--#{$prefix}direction);
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    color: var(--#{$prefix}text-color);
+    background-color: var(--#{$prefix}background-color);
+    font-family: var(--#{$prefix}font-family-base);
+    font-size: var(--#{$prefix}font-size-base);
+    font-weight: var(--#{$prefix}font-weight-base);
+    line-height: var(--#{$prefix}line-height-base);
+  }
+}

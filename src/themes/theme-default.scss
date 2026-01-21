@@ -1,16 +1,12 @@
-@use '../abstracts/variables/index' as *;
-@use '../abstracts/mixins/index' as *;
+@use '../abstracts/variables/index' as vars;
+@use '../abstracts/mixins/index' as mixins;
+@use '../foundation/index' as foundation;
 
+@include mixins.Banner(vars.$name, vars.$version, vars.$license, vars.$author);
 
 :root
 {
-    @include colors($prefix, $colors);
-    @include theme-colors-text($prefix, $theme-colors-text);
-    @include theme-colors-background($prefix, $theme-colors-background);
-    @include theme-colors-border($prefix, $theme-colors-border);
-        
-    //Default theme colors (text, background, border)
-    @include colors($prefix, $theme-colors-light);
+   @include mixins.generate-utilities(vars.$prefix, vars.$utility-common-properties);
 }
-@include colors-in-html-group($prefix, "light", $theme-colors-light);
-@include colors-in-html-group($prefix, "dark", $theme-colors-dark);
+
+@include mixins.colors-in-html-group(vars.$prefix, "dark", vars.$theme-colors-dark);

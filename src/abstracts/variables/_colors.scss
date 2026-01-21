@@ -1,6 +1,6 @@
 @use 'sass:color';
 
-$white:    #fff !default;
+$white: #fff !default;
 $gray-100: #f8f9fa !default;
 $gray-200: #e9ecef !default;
 $gray-300: #dee2e6 !default;
@@ -10,7 +10,7 @@ $gray-600: #6c757d !default;
 $gray-700: #495057 !default;
 $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
-$black:    #000 !default;
+$black: #000 !default;
 
 //--------------------------------
 $blue: #0d6efd !default;
@@ -26,19 +26,23 @@ $cyan: #0dcaf0 !default;
 
 //--------------------------------
 
-$primary:       $blue !default;
-$secondary:     $gray-600 !default;
-$success:       $green !default;
-$info:          $cyan !default;
-$warning:       $yellow !default;
-$danger:        $red !default;
-$light:         $gray-100 !default;
-$dark:          $gray-900 !default;
+$primary: $blue !default;
+$secondary: $gray-600 !default;
+$success: $green !default;
+$info: $cyan !default;
+$warning: $yellow !default;
+$danger: $red !default;
+$light: $gray-100 !default;
+$dark: $gray-900 !default;
 
 
 //Text Colors
 $text-color: #030613 !default;
 $text-color-dark: #e9ecef !default;
+
+//Heading Colors
+$heading-color: #030613 !default;
+$heading-color-dark: #e9ecef !default;
 
 //Text Muted Colors
 $text-muted-color: #{$gray-600} !default;
@@ -59,81 +63,83 @@ $box-shadow-color-dark: rgba(255, 255, 255, 0.5) !default;
 
 //Colors
 $colors: (
-    "blue": $blue,
-    "indigo": $indigo,
-    "purple": $purple,
-    "pink": $pink,
-    "red": $red,
-    "orange": $orange,
-    "yellow": $yellow,
-    "green": $green,
-    "teal": $teal,
-    "cyan": $cyan,
-    "black": $black,
-    "white": $white,
-    "gray-lightest": $gray-100,
-    "gray-light": $gray-300,  
-    "gray": $gray-500,
-    "gray-dark": $gray-700,
-    "gray-darkest": $gray-900
-) !default;
+  "blue": $blue,
+  "indigo": $indigo,
+  "purple": $purple,
+  "pink": $pink,
+  "red": $red,
+  "orange": $orange,
+  "yellow": $yellow,
+  "green": $green,
+  "teal": $teal,
+  "cyan": $cyan,
+  "black": $black,
+  "white": $white,
+  "gray-lightest": $gray-100,
+  "gray-light": $gray-300,
+  "gray": $gray-500,
+  "gray-dark": $gray-700,
+  "gray-darkest": $gray-900,
+  "transparent": transparent
+  ) !default;
 
 $theme-colors: (
-  "primary":    $primary,
-  "secondary":  $secondary,
-  "success":    $success,
-  "info":       $info,
-  "warning":    $warning,
-  "danger":     $danger,
-  "light":      $light,
-  "dark":       $dark
-) !default;
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "danger": $danger,
+  "light": $light,
+  "dark": $dark) !default;
 
 $theme-colors-text: (
-  "primary":    color.mix($black, $primary, 60%) ,
-  "secondary":  color.mix($black, $secondary, 60%) ,
-  "success":    color.mix($black, $success, 60%) ,
-  "info":       color.mix($black, $info, 60%) ,
-  "warning":    color.mix($black, $warning, 60%) ,
-  "danger":     color.mix($black, $danger, 60%) ,
-  "light":      $gray-700 ,
-  "dark":       $gray-700 ,
-) !default;
+  "primary-text-color": color.mix($black, $primary, 60%),
+  "secondary-text-color": color.mix($black, $secondary, 60%),
+  "success-text-color": color.mix($black, $success, 60%),
+  "info-text-color": color.mix($black, $info, 60%),
+  "warning-text-color": color.mix($black, $warning, 60%),
+  "danger-text-color": color.mix($black, $danger, 60%),
+  "light-text-color": $gray-700 ,
+  "dark-text-color": $gray-700 ,
+  ) !default;
 
 $theme-colors-background: (
-  "primary":    color.mix($white, $primary, 80%) ,
-  "secondary":  color.mix($white, $secondary, 80%) ,
-  "success":    color.mix($white, $success, 80%) ,
-  "info":       color.mix($white, $info, 80%) ,
-  "warning":    color.mix($white, $warning, 80%) ,
-  "danger":     color.mix($white, $danger, 80%) ,
-  "light":      $gray-100 ,
-  "dark":       $gray-400 ,
-) !default;
+  "primary-bg-color": color.mix($white, $primary, 80%),
+  "secondary-bg-color": color.mix($white, $secondary, 80%),
+  "success-bg-color": color.mix($white, $success, 80%),
+  "info-bg-color": color.mix($white, $info, 80%),
+  "warning-bg-color": color.mix($white, $warning, 80%),
+  "danger-bg-color": color.mix($white, $danger, 80%),
+  "light-bg-color": $gray-100 ,
+  "dark-bg-color": $gray-400 ,
+  ) !default;
 
 $theme-colors-border: (
-  "primary":    color.mix($white, $primary, 60%) ,
-  "secondary":  color.mix($white, $secondary, 60%) ,
-  "success":    color.mix($white, $success, 60%) ,
-  "info":       color.mix($white, $info, 60%) ,
-  "warning":    color.mix($white, $warning, 60%) ,
-  "danger":     color.mix($white, $danger, 60%) ,
-  "light":      $gray-200 ,
-  "dark":       $gray-500 ,
-) !default;
+  "primary-border-color": color.mix($white, $primary, 60%),
+  "secondary-border-color": color.mix($white, $secondary, 60%),
+  "success-border-color": color.mix($white, $success, 60%),
+  "info-border-color": color.mix($white, $info, 60%),
+  "warning-border-color": color.mix($white, $warning, 60%),
+  "danger-border-color": color.mix($white, $danger, 60%),
+  "light-border-color": $gray-200 ,
+  "dark-border-color": $gray-500 ,
+  ) !default;
 
-$theme-colors-light:(
-        "text-color": $text-color,
-        "text-muted-color": $text-muted-color,
-        "background-color": $background-color,
-        "border-color": $border-color,
-        "box-shadow-color": $box-shadow-color,
-) !default;
+$theme-colors-light: (
+  "text-color": $text-color,
+  "text-muted-color": $text-muted-color,
+  "heading-color": $heading-color,
+  "background-color": $background-color,
+  "border-color": $border-color,
+  "box-shadow-color": $box-shadow-color,
+  ) !default;
 
-$theme-colors-dark:(
-        "text-color":  $text-color-dark,
-        "text-muted-color": $text-muted-color-dark,
-        "background-color": $background-color-dark,
-        "border-color": $border-color-dark,
-        "box-shadow-color": $box-shadow-color-dark,
-) !default; 
+$theme-colors-dark: (
+  "text-color": $text-color-dark,
+  "text-muted-color": $text-muted-color-dark,
+  "heading-color": $heading-color-dark,
+  "background-color": $background-color-dark,
+  "border-color": $border-color-dark,
+  "box-shadow-color": $box-shadow-color-dark,
+  ) !default;

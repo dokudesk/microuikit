@@ -1,16 +1,91 @@
 @use 'sass:map';
-@use 'shadows' as *;
+@use 'shadows' as shadows;
+@use 'borders' as borders;
+@use 'align' as align;
+@use 'typography' as typography;
+@use 'colors' as colors;
 
-$utilities: () !default;
+// Utility maps consumed by generate-utilities().
+$utility-classes: () !default;
+$utility-common-properties: () !default;
+$utility-root-properties: () !default;
 
-$utilities: map.merge(
-    $utilities,
+// Utility Classes (generated as class selectors).
+$utility-classes: map.merge(
+    $utility-classes,
     ( 
         "box-shadow": (
             property: box-shadow,
             class: box-shadow,
             important: true,
-            values: $box-shadow
+            values: shadows.$box-shadows
+        ) ,
+       "border-width": (
+            property: border-width,
+            class: border,
+            important: true,
+            values: borders.$border-widths 
+        ),
+    )
+);
+
+
+// Common properties that are safe outside :root.
+$utility-common-properties: map.merge(
+    $utility-common-properties,
+    ( 
+        "color": (
+            property: color,
+            important: false,
+            values: colors.$colors
+        ),
+        "theme-color": (
+            property: "",
+            important: false,
+            values: colors.$theme-colors
+        ),
+        "theme-color-text": (
+            property: "",
+            important: false,
+            values: colors.$theme-colors-text
+        ),
+        "theme-color-background": (
+            property: "",
+            important: false,
+            values: colors.$theme-colors-background
+        ),
+        "theme-color-border": (
+            property: "",
+            important: false,
+            values: colors.$theme-colors-border
+        ),
+        "theme-color-light": (
+            property: "",
+            important: false,
+            values: colors.$theme-colors-light
+        ),
+        "font-base": (
+            property: "",
+            important: false,
+            values: typography.$font-base-variables
+        ),
+        "border-width": (
+            property: border-width,
+            important: false,
+            values: borders.$default-border-width
         )
+    )
+);
+
+
+// Properties meant for :root only (CSS custom properties).
+$utility-root-properties: map.merge(
+    $utility-root-properties,
+    ( 
+        "text-align": (
+            property: text-align,
+            important: false,
+            values: align.$text-aligns
+        ),
     )
 );

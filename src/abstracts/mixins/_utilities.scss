@@ -11,7 +11,7 @@
         $enable-important: map.get($utility, important);
 
 
-        @if $class-name and $css-property and $values {
+        @if $css-property and $values {
 
             @each $key, $value in $values {
 
@@ -25,12 +25,14 @@
                     $important: "!important";
                 }
 
-                .#{$prefix}#{$class-name}#{$suffix} {
-                    #{$css-property}: $value #{$important};
+                @if $class-name {
+                    .#{$class-name}#{$suffix} {
+                        #{$css-property}: $value #{$important};
+                    }
+                } @else {
+                    --#{$prefix}#{$key}: #{$value} #{$important};
                 }
-
             }
-
         }
     }
 }

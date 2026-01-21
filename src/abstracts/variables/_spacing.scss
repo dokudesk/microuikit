@@ -1,6 +1,7 @@
 //Spacer Sizes
 $spacer: 1rem !default;
 $spacers: (
+  null: $spacer,
   0: 0,
   1: $spacer * .25,
   2: $spacer * .5,
