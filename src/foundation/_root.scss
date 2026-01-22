@@ -16,6 +16,7 @@
 
   html {
     direction: var(--#{$prefix}direction);
+    min-height: 100dvh;
   }
 
   html,

@@ -23,7 +23,6 @@ $yellow: #ffc107 !default;
 $green: #198754 !default;
 $teal: #20c997 !default;
 $cyan: #0dcaf0 !default;
-
 //--------------------------------
 
 $primary: $blue !default;
@@ -49,8 +48,8 @@ $text-muted-color: #{$gray-600} !default;
 $text-muted-color-dark: #{$gray-400} !default;
 
 //Border Colors
-$border-color: $gray-300 !default;
-$border-color-dark: $gray-700 !default;
+$border-color: $gray-400 !default;
+$border-color-dark: $gray-600 !default;
 
 //Background Colors
 $background-color: $gray-100 !default;
@@ -59,6 +58,19 @@ $background-color-dark: $gray-900 !default;
 //Box Shadow Colors
 $box-shadow-color: rgba(0, 0, 0, 0.5) !default;
 $box-shadow-color-dark: rgba(255, 255, 255, 0.5) !default;
+
+
+//highlight Colors
+$highlight-color: $warning !default;
+$highlight-background-color: color.mix(white, $highlight-color, 25%) !default;
+$highlight-background-color-dark: color.mix(black, $highlight-color, 25%) !default;
+
+//Link Colors
+$link-color: $primary !default;
+$link-hover-color: color.mix(black, $link-color, 25%) !default; 
+
+$link-color-dark: color.mix(white, $primary, 25%) !default;
+$link-hover-color-dark: color.mix(black, $link-color-dark, 25%) !default; 
 
 
 //Colors
@@ -81,6 +93,10 @@ $colors: (
   "gray-dark": $gray-700,
   "gray-darkest": $gray-900,
   "transparent": transparent
+  ) !default;
+
+  $extended-colors: (
+
   ) !default;
 
 $theme-colors: (
@@ -133,6 +149,9 @@ $theme-colors-light: (
   "background-color": $background-color,
   "border-color": $border-color,
   "box-shadow-color": $box-shadow-color,
+  "link-color": $link-color,
+  "link-hover-color": $link-hover-color,
+  "highlight-background-color": $highlight-background-color,
   ) !default;
 
 $theme-colors-dark: (
@@ -142,4 +161,7 @@ $theme-colors-dark: (
   "background-color": $background-color-dark,
   "border-color": $border-color-dark,
   "box-shadow-color": $box-shadow-color-dark,
+  "link-color": $link-color-dark,
+  "link-hover-color": $link-hover-color-dark,
+  "highlight-background-color": $highlight-background-color-dark,
   ) !default;

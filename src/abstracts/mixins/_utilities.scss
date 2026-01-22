@@ -9,9 +9,10 @@
         $css-property: map.get($utility, property);
         $values: map.get($utility, values);
         $enable-important: map.get($utility, important);
+        $group: map.get($utility, group);
 
 
-        @if $css-property and $values {
+        @if $values {
 
             @each $key, $value in $values {
 
@@ -25,9 +26,15 @@
                     $important: "!important";
                 }
 
-                @if $class-name {
+                @if $css-property and $class-name {
                     .#{$class-name}#{$suffix} {
-                        #{$css-property}: $value #{$important};
+                        
+                        $class-value :  $value;
+                        @if $value == "" or $value == null {
+                            $class-value :  $key;
+                        }
+
+                        #{$css-property}: $class-value #{$important};
                     }
                 } @else {
                     --#{$prefix}#{$key}: #{$value} #{$important};

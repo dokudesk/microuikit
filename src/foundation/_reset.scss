@@ -1,0 +1,70 @@
+@use '../abstracts/variables/index' as vars;
+
+
+
+@mixin reset-foundation($prefix) {
+
+    p {
+        margin-top: 0;
+        margin-bottom: vars.$paragraph-margin-bottom;
+    }
+
+    mark,
+    .mark {
+        background-color: var(--#{$prefix}highlight-background-color);
+    }
+
+    b,
+    strong,
+    .strong {
+        font-weight: vars.$font-weight-bolder;
+    }
+
+    small,
+    .small {
+        font-size: vars.$font-weight-lighter;
+    }
+
+    img,
+    svg,
+    .img,
+    .svg {
+        vertical-align: middle;
+    }
+
+    a {
+        user-select: none;
+        color: var(--#{vars.$prefix}link-color);
+        text-decoration: vars.$link-decoration;
+
+        &:hover {
+            color: var(--#{vars.$prefix}link-hover-color);
+        }
+    }
+
+    a:not([href]):not([class]),
+    a:not([href]):not([class]):hover {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .flip-x {
+        transform: scaleX(-1);
+    }
+    .flip-y {
+        transform: scaleY(-1);
+    }
+    .flip-xy {
+        transform: scale(-1, -1);
+    }
+
+    [hidden] , .hidden {
+        display: none !important;
+    }
+
+    .invisible {
+        visibility: hidden !important;
+      }
+      
+
+}

@@ -2,8 +2,9 @@
 @use "sass:meta";
 
 @function to-rem($v) {
-    @if meta.type-of($v) == "number" and math.unit($v) == "px" {
-      @return math.div($v, 16px) * 1rem;
-    }
-    @return $v;
+  @if meta.type-of($v)=="number" and math.unit($v)=="px" {
+    @return math.div($v, 16px) * 1rem;
   }
+
+  @return $v;
+}

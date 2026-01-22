@@ -16,6 +16,7 @@
 @include foundation.direction-foundation(vars.$prefix);
 @include foundation.root-foundation(vars.$prefix);
 @include foundation.heading-foundation(vars.$prefix);
+@include foundation.reset-foundation(vars.$prefix);
 
 // Utility Classes
 @include mixins.generate-utilities(vars.$prefix, vars.$utility-classes);

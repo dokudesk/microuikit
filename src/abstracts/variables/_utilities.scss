@@ -4,6 +4,7 @@
 @use 'align' as align;
 @use 'typography' as typography;
 @use 'colors' as colors;
+@use 'opacity' as opacity;
 
 // Utility maps consumed by generate-utilities().
 $utility-classes: () !default;
@@ -14,6 +15,31 @@ $utility-root-properties: () !default;
 $utility-classes: map.merge(
     $utility-classes,
     ( 
+
+    "opacity": (
+        property: opacity,
+        class: opacity,
+        important: true,
+        values: opacity.$opacity-values
+      ),
+        "overflow": (
+            property: overflow,
+            class: overflow,
+            important: true,
+            values: auto hidden visible scroll,
+        ),
+        "overflow-x": (
+            property: overflow-x,
+            class: overflow-x,
+            important: true,
+            values: auto hidden visible scroll,
+        ),
+        "overflow-y": (
+            property: overflow-y,
+            class: overflow-y,
+            important: true,
+            values: auto hidden visible scroll,
+         ),  
         "box-shadow": (
             property: box-shadow,
             class: box-shadow,
@@ -26,6 +52,12 @@ $utility-classes: map.merge(
             important: true,
             values: borders.$border-widths 
         ),
+        "border-radius": (
+            property: border-radius,
+            class: border-radius,
+            important: true,
+            values: borders.$border-radius-classes
+        ),
     )
 );
 
@@ -35,44 +67,34 @@ $utility-common-properties: map.merge(
     $utility-common-properties,
     ( 
         "color": (
-            property: color,
-            important: false,
             values: colors.$colors
         ),
+        "extended-color": (
+            values: colors.$extended-colors
+        ),
         "theme-color": (
-            property: "",
-            important: false,
             values: colors.$theme-colors
         ),
         "theme-color-text": (
-            property: "",
-            important: false,
             values: colors.$theme-colors-text
         ),
         "theme-color-background": (
-            property: "",
-            important: false,
             values: colors.$theme-colors-background
         ),
         "theme-color-border": (
-            property: "",
-            important: false,
             values: colors.$theme-colors-border
         ),
         "theme-color-light": (
-            property: "",
-            important: false,
             values: colors.$theme-colors-light
         ),
         "font-base": (
-            property: "",
-            important: false,
             values: typography.$font-base-variables
         ),
-        "border-width": (
-            property: border-width,
-            important: false,
-            values: borders.$default-border-width
+        "border-properties": (
+            values: borders.$default-border-properties
+        ) ,
+        "border-radius": (
+            values: borders.$border-radius-variables
         )
     )
 );
@@ -83,9 +105,7 @@ $utility-root-properties: map.merge(
     $utility-root-properties,
     ( 
         "text-align": (
-            property: text-align,
-            important: false,
             values: align.$text-aligns
-        ),
+        )
     )
 );

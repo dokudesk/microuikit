@@ -1,15 +1,38 @@
+@use 'global' as global;
+
 $border-width: 1px !default;
 
-$default-border-width: (
-  "border-width": $border-width
-) !default;
+$default-border-properties: (
+  "border-width": $border-width ,
+  "border-style": solid,
+  ) !default;
 
 $border-widths: (
   null: $border-width,
   1: 1px,
-  2: 2px, 
+  2: 2px,
   3: 3px,
   4: 4px,
   5: 5px,
-  none: 0
-) !default;
+  none: 0) !default;
+
+
+$border-radius-variables: (
+  "border-radius":       .375rem,
+  "border-radius-sm":    .25rem,
+  "border-radius-lg":    .5rem,
+  "border-radius-xl":     1rem,
+  "border-radius-xxl":    2rem,
+  "border-radius-pill":   50rem,
+  "border-radius-none":   0
+  ) !default;
+
+$border-radius-classes: (
+  null:                  var(--#{global.$prefix}border-radius),
+  "border-radius-sm":    var(--#{global.$prefix}border-radius-sm),
+  "border-radius-lg":    var(--#{global.$prefix}border-radius-lg),
+  "border-radius-xl":    var(--#{global.$prefix}border-radius-xl),
+  "border-radius-xxl":   var(--#{global.$prefix}border-radius-xxl),
+  "border-radius-pill":  var(--#{global.$prefix}border-radius-pill),
+  "border-radius-none":  var(--#{global.$prefix}border-radius-none)
+  ) !default;
