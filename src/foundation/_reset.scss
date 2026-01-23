@@ -17,12 +17,12 @@
     b,
     strong,
     .strong {
-        font-weight: vars.$font-weight-bolder;
+        font-weight: bolder;
     }
 
     small,
     .small {
-        font-size: vars.$font-weight-lighter;
+        font-size: lighter;
     }
 
     img,
@@ -46,16 +46,6 @@
     a:not([href]):not([class]):hover {
         color: inherit;
         text-decoration: none;
-    }
-
-    .flip-x {
-        transform: scaleX(-1);
-    }
-    .flip-y {
-        transform: scaleY(-1);
-    }
-    .flip-xy {
-        transform: scale(-1, -1);
     }
 
     [hidden] , .hidden {

@@ -1,4 +1,4 @@
-$opacity-values: (
+$opacitys: (
     0: 0,
     25: .25,
     50: .5,
@@ -7,7 +7,7 @@ $opacity-values: (
 ) !default;
 
 
-$border-opacity-values: (
+$border-opacitys: (
     0: color-mix(in srgb, currentColor 0%, transparent),
     25: color-mix(in srgb, currentColor 25%, transparent),
     50: color-mix(in srgb, currentColor 50%, transparent),

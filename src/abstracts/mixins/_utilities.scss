@@ -1,4 +1,5 @@
 @use 'sass:map';
+@use 'sass:meta';
 
 @mixin generate-utilities($prefix, $utilities) {
 
@@ -34,7 +35,13 @@
                             $class-value :  $key;
                         }
 
-                        #{$css-property}: $class-value #{$important};
+                        @if meta.type-of($css-property) == "list" {
+                            @each $prop in $css-property {
+                                #{$prop}: $class-value #{$important};
+                            }
+                        } @else {
+                            #{$css-property}: $class-value #{$important};
+                        }
                     }
                 } @else {
                     --#{$prefix}#{$key}: #{$value} #{$important};

@@ -4,55 +4,53 @@ $font-family-ltr: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue"
 $font-family-rtl: sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 $font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 
+$font-size-base:          1rem !default;
+$font-weight-base:        400 !default;
+$line-height-base:        1.5 !default;
 
-$font-size-base-ltr: 1rem !default;
-$font-size-xs-ltr:                $font-size-base-ltr * .75 !default;
-$font-size-sm-ltr:                $font-size-base-ltr * .875 !default;
-$font-size-lg-ltr:                $font-size-base-ltr * 1.25 !default;
-$font-size-xl-ltr:                $font-size-base-ltr * 1.5 !default;
-
-
-$font-size-base-rtl: 1rem !default;
-$font-size-xs-rtl:                $font-size-base-rtl * .75 !default;
-$font-size-sm-rtl:                $font-size-base-rtl * .875 !default;
-$font-size-lg-rtl:                $font-size-base-rtl * 1.25 !default;
-$font-size-xl-rtl:                $font-size-base-rtl * 1.5 !default;
-
-
-$font-weight-lighter:         lighter !default;
-$font-weight-light:           300 !default;
-$font-weight-normal:          400 !default;
-$font-weight-medium:          500 !default;
-$font-weight-semibold:        600 !default;
-$font-weight-bold:            700 !default;
-$font-weight-bolder:          bolder !default;
-
-$font-weight-base-ltr:        $font-weight-normal !default;
-$font-weight-base-rtl:        $font-weight-normal !default;
-
-$line-height-base:            1.5 !default;
-$line-height-sm:              1.25 !default;
-$line-height-lg:              2 !default;
-
-$h1-font-size:                $font-size-base-ltr * 2.5 !default;
-$h2-font-size:                $font-size-base-ltr * 2 !default;
-$h3-font-size:                $font-size-base-ltr * 1.75 !default;
-$h4-font-size:                $font-size-base-ltr * 1.5 !default;
-$h5-font-size:                $font-size-base-ltr * 1.25 !default;
-$h6-font-size:                $font-size-base-ltr * 1 !default;
-
-
+$h1-font-size:                $font-size-base * 2.5 !default;
+$h2-font-size:                $font-size-base * 2 !default;
+$h3-font-size:                $font-size-base * 1.75 !default;
+$h4-font-size:                $font-size-base * 1.5 !default;
+$h5-font-size:                $font-size-base * 1.25 !default;
+$h6-font-size:                $font-size-base * 1 !default;
 
 $font-base-variables: (
     "font-family-ltr": $font-family-ltr,
     "font-family-rtl": $font-family-rtl,
     "font-family-monospace": $font-family-monospace,
-    "font-size-base-ltr": $font-size-base-ltr,
-    "font-size-base-rtl": $font-size-base-rtl,
-    "font-weight-base-ltr": $font-weight-base-ltr,
-    "font-weight-base-rtl": $font-weight-base-rtl,
+    "font-size-base-ltr": $font-size-base,
+    "font-size-base-rtl": $font-size-base,
+    "font-weight-base-ltr": $font-weight-base,
+    "font-weight-base-rtl": $font-weight-base,
     "font-family-base": var(--#{global.$prefix}font-family-ltr),
     "font-size-base": var(--#{global.$prefix}font-size-base-ltr),
     "font-weight-base": var(--#{global.$prefix}font-weight-base-ltr),
     "line-height-base": $line-height-base,
 ) !default;
+
+$font-styles: (
+"normal": normal,
+"italic": italic,
+"oblique": oblique,
+) !default;
+
+$font-sizes:(
+    "xs": calc(var(--#{global.$prefix}font-size-base) * .75),
+    "sm": calc(var(--#{global.$prefix}font-size-base) * .875),
+    "base": calc(var(--#{global.$prefix}font-size-base) * 1),
+    "lg": calc(var(--#{global.$prefix}font-size-base) * 1.25),
+    "xl": calc(var(--#{global.$prefix}font-size-base) * 1.5),
+) !default;
+
+
+$font-weights: (
+    "lighter": lighter,
+    "light": 300,
+    "normal": 400,
+    "medium": 500,
+    "semibold": 600,
+    "bold": 700,
+    "bolder": bolder,
+) !default;
+

@@ -17,24 +17,14 @@ $border-widths: (
   none: 0) !default;
 
 
-$border-radius-variables: (
-  "border-radius": .375rem,
-  "border-radius-sm": .25rem,
-  "border-radius-lg": .5rem,
-  "border-radius-xl": 1rem,
-  "border-radius-xxl": 2rem,
-  "border-radius-pill": 50rem,
-  "border-radius-none": 0
-  ) !default;
-
 $border-radius-classes: (
-  null: var(--#{global.$prefix}border-radius),
-  "sm": var(--#{global.$prefix}border-radius-sm),
-  "lg": var(--#{global.$prefix}border-radius-lg),
-  "xl": var(--#{global.$prefix}border-radius-xl),
-  "xxl": var(--#{global.$prefix}border-radius-xxl),
-  "pill": var(--#{global.$prefix}border-radius-pill),
-  "none": var(--#{global.$prefix}border-radius-none)
+  null: .375rem,
+  "sm": .25rem,
+  "lg": .5rem,
+  "xl": 1rem,
+  "xxl": 2rem,
+  "pill": 50rem,
+  "none": 0
   ) !default;
 
 $border-style: (
