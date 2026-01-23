@@ -5,107 +5,121 @@
 @use 'typography' as typography;
 @use 'colors' as colors;
 @use 'opacity' as opacity;
+@use 'global' as global;
 
 // Utility maps consumed by generate-utilities().
-$utility-classes: () !default;
-$utility-common-properties: () !default;
-$utility-root-properties: () !default;
+$utility-classes: (
+    ) !default;
+$utility-common-properties: (
+    ) !default;
+$utility-root-properties: (
+    ) !default;
 
 // Utility Classes (generated as class selectors).
-$utility-classes: map.merge(
-    $utility-classes,
-    ( 
+$utility-classes: map.merge($utility-classes,
+        ("opacity": (property: opacity,
+                class: opacity,
+                important: true,
+                values: opacity.$opacity-values ),
+            "overflow": (property: overflow,
+                class: overflow,
+                important: true,
+                values: auto hidden visible scroll,
+            ),
+            "overflow-x": (property: overflow-x,
+                class: overflow-x,
+                important: true,
+                values: auto hidden visible scroll,
+            ),
+            "overflow-y": (property: overflow-y,
+                class: overflow-y,
+                important: true,
+                values: auto hidden visible scroll,
+            ),
+            "box-shadow": (property: box-shadow,
+                class: box-shadow,
+                important: true,
+                values: shadows.$box-shadows ),
+            "border": (property: border,
+                class: border,
+                important: true,
+                values: borders.$border-visibility ),
+            "border-top": (property: border-top,
+                class: border-top,
+                important: true,
+                values: borders.$border-visibility ),
+            "border-bottom": (property: border-bottom,
+                class: border-bottom,
+                important: true,
+                values: borders.$border-visibility ),
+            "border-end": (property: border-right,
+                class: border-end,
+                important: true,
+                values: borders.$border-visibility ),
+            "border-style": (property: border-style,
+                class: border-style,
+                important: true,
+                values: borders.$border-style ),
 
-    "opacity": (
-        property: opacity,
-        class: opacity,
-        important: true,
-        values: opacity.$opacity-values
-      ),
-        "overflow": (
-            property: overflow,
-            class: overflow,
-            important: true,
-            values: auto hidden visible scroll,
+
+
+            /*
+        "border-top": (
+            property: border-top,
+            values: (
+              null: var(--#{global.$prefix}border-width) var(--#{global.$prefix}border-style) var(--#{global.$prefix}border-color),
+              0: 0,
+            )
         ),
-        "overflow-x": (
-            property: overflow-x,
-            class: overflow-x,
-            important: true,
-            values: auto hidden visible scroll,
+        "border-end": (
+            property: border-right,
+            class: border-end,
+            values: (
+              null: var(--#{global.$prefix}border-width) var(--#{global.$prefix}border-style) var(--#{global.$prefix}border-color),
+              0: 0,
+            )
         ),
-        "overflow-y": (
-            property: overflow-y,
-            class: overflow-y,
-            important: true,
-            values: auto hidden visible scroll,
-         ),  
-        "box-shadow": (
-            property: box-shadow,
-            class: box-shadow,
-            important: true,
-            values: shadows.$box-shadows
-        ) ,
-       "border-width": (
-            property: border-width,
-            class: border,
-            important: true,
-            values: borders.$border-widths 
+        "border-bottom": (
+            property: border-bottom,
+            values: (
+              null: var(--#{global.$prefix}border-width) var(--#{global.$prefix}border-style) var(--#{global.$prefix}border-color),
+              0: 0,
+            )
         ),
-        "border-radius": (
-            property: border-radius,
-            class: border-radius,
-            important: true,
-            values: borders.$border-radius-classes
-        ),
-    )
+        "border-start": (
+            property: border-left,
+            class: border-start,
+            values: (
+              null: var(--#{global.$prefix}border-width) var(--#{global.$prefix}border-style) var(--#{global.$prefix}border-color),
+              0: 0,
+            )
+        ),*/
+            "border-width": (property: border-width,
+                class: border,
+                important: true,
+                values: borders.$border-widths ),
+            "border-radius": (property: border-radius,
+                class: border-radius,
+                important: true,
+                values: borders.$border-radius-classes ),
+        )
 );
 
 
 // Common properties that are safe outside :root.
-$utility-common-properties: map.merge(
-    $utility-common-properties,
-    ( 
-        "color": (
-            values: colors.$colors
-        ),
-        "extended-color": (
-            values: colors.$extended-colors
-        ),
-        "theme-color": (
-            values: colors.$theme-colors
-        ),
-        "theme-color-text": (
-            values: colors.$theme-colors-text
-        ),
-        "theme-color-background": (
-            values: colors.$theme-colors-background
-        ),
-        "theme-color-border": (
-            values: colors.$theme-colors-border
-        ),
-        "theme-color-light": (
-            values: colors.$theme-colors-light
-        ),
-        "font-base": (
-            values: typography.$font-base-variables
-        ),
-        "border-properties": (
-            values: borders.$default-border-properties
-        ) ,
-        "border-radius": (
-            values: borders.$border-radius-variables
-        )
-    )
-);
+$utility-common-properties: map.merge($utility-common-properties,
+        ("color": (values: colors.$colors ),
+            "extended-color": (values: colors.$extended-colors ),
+            "theme-color": (values: colors.$theme-colors ),
+            "theme-color-text": (values: colors.$theme-colors-text ),
+            "theme-color-background": (values: colors.$theme-colors-background ),
+            "theme-color-border": (values: colors.$theme-colors-border ),
+            "theme-color-light": (values: colors.$theme-colors-light ),
+            "font-base": (values: typography.$font-base-variables ),
+            "border-properties": (values: borders.$default-border-properties ),
+            "border-radius": (values: borders.$border-radius-variables )));
 
 
 // Properties meant for :root only (CSS custom properties).
-$utility-root-properties: map.merge(
-    $utility-root-properties,
-    ( 
-        "text-align": (
-            values: align.$text-aligns
-        )
-    )
-);
+$utility-root-properties: map.merge($utility-root-properties,
+        ("text-align": (values: align.$text-aligns )));

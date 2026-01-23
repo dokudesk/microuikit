@@ -8,7 +8,7 @@ $default-border-properties: (
   ) !default;
 
 $border-widths: (
-  null: $border-width,
+  0: 0,
   1: 1px,
   2: 2px,
   3: 3px,
@@ -18,21 +18,34 @@ $border-widths: (
 
 
 $border-radius-variables: (
-  "border-radius":       .375rem,
-  "border-radius-sm":    .25rem,
-  "border-radius-lg":    .5rem,
-  "border-radius-xl":     1rem,
-  "border-radius-xxl":    2rem,
-  "border-radius-pill":   50rem,
-  "border-radius-none":   0
+  "border-radius": .375rem,
+  "border-radius-sm": .25rem,
+  "border-radius-lg": .5rem,
+  "border-radius-xl": 1rem,
+  "border-radius-xxl": 2rem,
+  "border-radius-pill": 50rem,
+  "border-radius-none": 0
   ) !default;
 
 $border-radius-classes: (
-  null:                  var(--#{global.$prefix}border-radius),
-  "border-radius-sm":    var(--#{global.$prefix}border-radius-sm),
-  "border-radius-lg":    var(--#{global.$prefix}border-radius-lg),
-  "border-radius-xl":    var(--#{global.$prefix}border-radius-xl),
-  "border-radius-xxl":   var(--#{global.$prefix}border-radius-xxl),
-  "border-radius-pill":  var(--#{global.$prefix}border-radius-pill),
-  "border-radius-none":  var(--#{global.$prefix}border-radius-none)
+  null: var(--#{global.$prefix}border-radius),
+  "sm": var(--#{global.$prefix}border-radius-sm),
+  "lg": var(--#{global.$prefix}border-radius-lg),
+  "xl": var(--#{global.$prefix}border-radius-xl),
+  "xxl": var(--#{global.$prefix}border-radius-xxl),
+  "pill": var(--#{global.$prefix}border-radius-pill),
+  "none": var(--#{global.$prefix}border-radius-none)
+  ) !default;
+
+$border-style: (
+  "solid": solid,
+  "dashed": dashed,
+  "dotted": dotted,
+  "double": double,
+  "groove": groove,
+  "ridge": ridge,
+  ) !default;
+
+$border-visibility: (
+  null: var(--#{global.$prefix}border-width) var(--#{global.$prefix}border-style) var(--#{global.$prefix}border-color),
   ) !default;
