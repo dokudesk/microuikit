@@ -5,3 +5,13 @@ $opacity-values: (
     75: .75,
     100: 1,
 ) !default;
+
+
+$border-opacity-values: (
+    0: color-mix(in srgb, currentColor 0%, transparent),
+    25: color-mix(in srgb, currentColor 25%, transparent),
+    50: color-mix(in srgb, currentColor 50%, transparent),
+    75: color-mix(in srgb, currentColor 75%, transparent),
+    100: color-mix(in srgb, currentColor 100%, transparent),
+) !default;
+  

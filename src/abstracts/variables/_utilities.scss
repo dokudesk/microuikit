@@ -6,6 +6,7 @@
 @use 'colors' as colors;
 @use 'opacity' as opacity;
 @use 'global' as global;
+@use 'sizes' as sizes;
 
 // Utility maps consumed by generate-utilities().
 $utility-classes: (
@@ -44,6 +45,13 @@ $utility-classes: map.merge($utility-classes,
                 class: border,
                 important: true,
                 values: borders.$border-visibility ),
+
+            "border-opacity": (property: border-color,
+                class: border-opacity,
+                important: true,
+                values: opacity.$border-opacity-values ),
+
+
             "border-top": (property: border-top,
                 class: border-top,
                 important: true,
@@ -60,40 +68,6 @@ $utility-classes: map.merge($utility-classes,
                 class: border-style,
                 important: true,
                 values: borders.$border-style ),
-
-
-
-            /*
-        "border-top": (
-            property: border-top,
-            values: (
-              null: var(--#{global.$prefix}border-width) var(--#{global.$prefix}border-style) var(--#{global.$prefix}border-color),
-              0: 0,
-            )
-        ),
-        "border-end": (
-            property: border-right,
-            class: border-end,
-            values: (
-              null: var(--#{global.$prefix}border-width) var(--#{global.$prefix}border-style) var(--#{global.$prefix}border-color),
-              0: 0,
-            )
-        ),
-        "border-bottom": (
-            property: border-bottom,
-            values: (
-              null: var(--#{global.$prefix}border-width) var(--#{global.$prefix}border-style) var(--#{global.$prefix}border-color),
-              0: 0,
-            )
-        ),
-        "border-start": (
-            property: border-left,
-            class: border-start,
-            values: (
-              null: var(--#{global.$prefix}border-width) var(--#{global.$prefix}border-style) var(--#{global.$prefix}border-color),
-              0: 0,
-            )
-        ),*/
             "border-width": (property: border-width,
                 class: border,
                 important: true,
@@ -102,9 +76,55 @@ $utility-classes: map.merge($utility-classes,
                 class: border-radius,
                 important: true,
                 values: borders.$border-radius-classes ),
+            "width": (property: width,
+                class: w,
+                important: true,
+                values: sizes.$sizes ),
+            "max-width": (property: max-width,
+                class: max-w,
+                important: true,
+                values: (100: 100%)),
+            "min-viewport-width": (property: min-width,
+                class: min-vw,
+                values: (100: 100vw)),
+            "viewport-width": (property: width,
+                class: vp-w,
+                important: true,
+                values: (100: 100vw)),
+            "height": (property: height,
+                class: h,
+                important: true,
+                values: sizes.$sizes ),
+            "max-height": (property: max-height,
+                class: max-h,
+                important: true,
+                values: (100: 100%)),
+            "min-viewport-height": (property: min-height,
+                class: min-vh,
+                important: true,
+                values: (100: 100vh)),
+            "viewport-height": (property: height,
+                class: vp-h,
+                important: true,
+                values: (100: 100vh)),
+            "dynamic-viewport-height": (property: max-height,
+                class: dvh,
+                important: true,
+                values: (100: 100dvh)),
+            "min-viewport-dynamic-height": (property: min-height,
+                class: min-dvh,
+                important: true,
+                values: (100: 100dvh)),
+            "display": (property: display,
+                class: d,
+                important: true,
+                values: inline inline-block block grid inline-grid table table-row table-cell flex inline-flex none),
+            "position": (property: position,
+                class: position,
+                important: true,
+                values: static relative absolute fixed sticky),
         )
 );
-
 
 // Common properties that are safe outside :root.
 $utility-common-properties: map.merge($utility-common-properties,
