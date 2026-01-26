@@ -1,7 +1,18 @@
-$name: 'Flexa' !default;
-$version: '1.0.0' !default;
-$license: '...' !default;
-$author: 'DokuDesk' !default;
+// ===============================
+// Library Name, Version, License, Author & Author URL
+// ===============================
+$library-name: 'Flexa' !default;
+$library-version: '1.0.0' !default;
+$library-license: '...' !default;
+$library-author: 'DokuDesk' !default;
+$library-author-url: 'https://dokudesk.com' !default;
 
-
+// ===============================
+// Prefix
+// ===============================
 $prefix: fx- !default;
+
+// ===============================
+// CSS Variables Root
+// ===============================
+$css-variables-root: ":root" !default;

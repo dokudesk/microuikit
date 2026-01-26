@@ -1,0 +1,44 @@
+@use 'sass:map';
+@use 'sass:list';
+@use '../abstracts/variables/global' as global;
+@use '../abstracts/variables/spacing' as spacing;
+@use '../abstracts/variables/typography' as typography;
+
+// ===============================
+// Mixin: headings-foundation
+// ===============================
+/// Shared heading styles to avoid repetition.
+@mixin headings-foundation($prefix) {
+
+  $headings: (
+    h1: typography.$h1-font-size,
+    h2: typography.$h2-font-size,
+    h3: typography.$h3-font-size,
+    h4: typography.$h4-font-size,
+    h5: typography.$h5-font-size,
+    h6: typography.$h6-font-size
+  );
+
+  $heading-elements: map.keys($headings);
+  $heading-classes: ();
+
+  @each $h in $heading-elements {
+    $heading-classes: list.append($heading-classes, ".#{$prefix}#{$h}", $separator: comma);
+  }
+
+  #{$heading-elements},
+  #{$heading-classes} {
+
+    margin-top: 0;
+    margin-bottom: spacing.$spacer * 0.5;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--#{$prefix}heading-color);
+  }
+
+  @each $h, $size in $headings {
+    #{$h}, .#{$prefix}#{$h} {
+      font-size: $size;
+    }
+  }
+}

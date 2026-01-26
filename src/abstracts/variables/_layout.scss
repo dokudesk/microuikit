@@ -1,4 +1,12 @@
-//Container Max Widths
+// ===============================
+// Overflows & Object Positions
+// ===============================
+$overflows: visible hidden clip scroll auto !default;
+$object-positions: top bottom left right center !default;
+
+// ===============================
+// Container Max Widths
+// ===============================
 $container-max-widths: (
   sm: 540px,
   md: 720px,
@@ -6,3 +14,4 @@ $container-max-widths: (
   xl: 1140px,
   xxl: 1320px
 ) !default;
+

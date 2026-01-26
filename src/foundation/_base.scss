@@ -1,0 +1,133 @@
+@use 'sass:map';
+@use '../abstracts/variables/index' as vars;
+// ===============================
+// Mixin: document-base
+// ===============================
+/// Base document styles powered by CSS variables
+/// Applies box-sizing, typography, direction, and layout defaults
+@mixin document-base($prefix) {
+
+  // Global box-sizing reset
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  // Enable smooth scrolling if user allows motion
+  @media (prefers-reduced-motion: no-preference) {
+    :root {
+      scroll-behavior: smooth;
+    }
+  }
+
+  // Document root settings
+  html {
+    direction: var(--#{$prefix}direction);
+    min-height: 100dvh;
+    text-rendering: optimizeLegibility;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  // Base typography & colors
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    color: var(--#{$prefix}text-color);
+    background-color: var(--#{$prefix}background-color);
+    font-family: var(--#{$prefix}font-family-base);
+    font-size: var(--#{$prefix}font-size-base);
+    font-weight: var(--#{$prefix}font-weight-base);
+    line-height: var(--#{$prefix}line-height-base);
+  }
+}
+
+// ===============================
+// Mixin: base-elements
+// ===============================
+/// Base element styles powered by CSS variables
+/// Applies common element styles
+@mixin base-elements($prefix) {
+
+  
+  // Paragraph spacing
+  p {
+    margin-top: 0;
+    margin-bottom: vars.$paragraph-margin-bottom;
+  }
+
+  // Horizontal rule
+  hr {
+    margin: 1rem 0;
+    color: inherit; 
+    border: 0;
+    border-top: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
+    opacity: .5;
+  }
+
+  // Highlighted text
+  mark,
+  .#{$prefix}mark {
+    background-color: var(--#{$prefix}highlight-background-color);
+  }
+
+  // Emphasis
+  b,
+  .#{$prefix}strong {
+    font-weight: bolder;
+  }
+
+  // Small text
+  small,
+  .#{$prefix}small {
+    font-size: map.get(vars.$font-sizes, "sm");
+  }
+
+  // Media alignment
+  img,
+  svg,
+  .#{$prefix}img,
+  .#{$prefix}svg {
+    vertical-align: middle;
+  }
+
+  // Link styles
+  a {
+    user-select: none;
+    color: var(--#{$prefix}link-color);
+    text-decoration: vars.$link-decoration;
+
+    &:hover {
+      color: var(--#{$prefix}link-hover-color);
+    }
+  }
+
+  a:not([href]):not([class]),
+  a:not([href]):not([class]):hover {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  // Visibility helpers
+  [hidden],
+  .#{$prefix}hidden {
+    display: none !important;
+  }
+
+  // Invisible helper
+  .#{$prefix}invisible {
+    visibility: hidden !important;
+  }
+
+  // Reset Firefox focus styles
+  ::-moz-focus-inner {
+    padding: 0;
+    border-style: none;
+  }
+  
+  // Reset textarea resize
+  textarea {
+    resize: vertical;
+  }
+}

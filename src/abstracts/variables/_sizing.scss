@@ -1,0 +1,41 @@
+@use 'sass:map';
+
+// ===============================
+// Common size values
+// ===============================
+$common-size-values: (
+  0: 0,
+  25: 25%,
+  50: 50%,
+  75: 75%,
+  100: 100%,
+  full: 100%,
+  auto: auto,
+  fit: fit-content,
+  ) !default;
+
+// ===============================
+// Width values
+// ===============================
+$width-values: map.merge($common-size-values,
+    (vw-100: 100vw,
+     dvw-100: 100dvw)) !default;
+
+$max-width-values: map.merge($width-values,
+    (c-width: max-content)) !default;
+
+$min-width-values: map.merge($width-values,
+    (c-width: min-content)) !default;
+
+// ===============================
+// Height values
+// ===============================
+$height-values: map.merge($common-size-values,
+    (vh-100: 100vh,
+     dvh-100: 100dvh)) !default;
+
+$max-height-values: map.merge($height-values,
+    (c-height: max-content)) !default;
+
+$min-height-values: map.merge($height-values,
+    (c-height: min-content)) !default;

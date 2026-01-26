@@ -1,10 +1,25 @@
 @use "sass:math";
 @use "sass:meta";
 
+// ===============================
+// Function: to-rem
+// ===============================
+/// Converts px to rem
 @function to-rem($v) {
   @if meta.type-of($v)=="number" and math.unit($v)=="px" {
     @return math.div($v, 16px) * 1rem;
   }
 
+  @return $v;
+}
+
+// ===============================
+// Function: to-px
+// ===============================
+/// Converts rem to px
+@function to-px($v) {
+  @if meta.type-of($v)=="number" and math.unit($v)=="rem" {
+    @return math.div($v, 1rem) * 16px;
+  }
   @return $v;
 }

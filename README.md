@@ -1,7 +1,6 @@
 # Flexa
 
 Starter project for building a custom CSS package with:
-- Watch mode
 - Sourcemap
 - Sass support
 - CDN-ready build
@@ -19,42 +18,22 @@ npm run build
 ```
 
 Outputs in `dist/`:
-- `flexa.css` (with sourcemap)
-- `flexa.min.css` (for CDN)
-- `themes/default.css` (with sourcemap)
-- `themes/default.min.css` (for CDN)
-
-## Watch mode
-
-Start watching for changes:
-
-```bash
-npm run watch
-```
-
-Stop watching:
-
-Press `Ctrl + C` in the terminal to stop the watch process.
-
-Watch outputs are generated in `build/` directory (separate from production `dist/`).
+- `core.css` (with sourcemap)
+- `core.min.css` (for CDN)
+- `themes/theme-default.css` (with sourcemap)
+- `themes/theme-default.min.css` (for CDN)
 
 ## Project structure
 
 ```
 src/
-  flexa.scss
+  core.scss
   themes/
-    default.scss
-dist/          # Production build (gitignored)
-  flexa.css
-  flexa.min.css
+    theme-default.scss
+dist/          # Production build
+  core.css
+  core.min.css
   themes/
-    default.css
-    default.min.css
-build/         # Watch mode output (gitignored)
-  flexa.css
-  flexa.css.map
-  themes/
-    default.css
-    default.css.map
+    theme-default.css
+    theme-default.min.css
 ```

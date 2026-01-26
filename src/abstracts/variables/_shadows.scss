@@ -1,5 +1,8 @@
 @use 'global' as global;
 
+// ===============================
+// Box Shadows
+// ===============================
 $box-shadows: (
     null: 0 0.0625rem 0.125rem var(--#{global.$prefix}box-shadow-color),
     "xs": 0 0.0625rem 0.125rem var(--#{global.$prefix}box-shadow-color),

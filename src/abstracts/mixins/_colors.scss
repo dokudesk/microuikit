@@ -1,34 +1,44 @@
-//HTML Color Group
-@mixin html-color-group($mode) {
-  html[theme="#{$mode}"],
-  html[data-theme="#{$mode}"] {
+// ===============================
+// Mixin: theme-selector
+// ===============================
+/// Wraps content for a specific theme selector
+@mixin theme-selector($mode, $selector: null) {
+  $sel: $selector;
+  @if $selector == null {
+    $sel: "html[theme='#{$mode}'], html[data-theme='#{$mode}']";
+  }
+  #{$sel} {
     @content;
   }
 }
-//Prefers Color Group
-@mixin prefers-color-group($prefix, $mode) {
-  @media (prefers-color-scheme:#{$mode}) {
-    html[theme="auto"],
-    html[data-theme="auto"] {
+
+
+
+// ===============================
+// Mixin: prefers-color-scheme auto
+// ===============================
+/// Wraps content for a specific prefers-color-scheme selector
+@mixin prefers-color-scheme($mode, $selector: null) {
+  @media (prefers-color-scheme: #{$mode}) {
+    $sel: $selector;
+    @if $selector == null {
+      $sel: "html[theme='auto'], html[data-theme='auto']";
+    }
+    #{$sel} {
       @content;
     }
   }
 }
 
-//Colors
-@mixin colors($prefix, $colors) {
-  @each $name, $value in $colors {
-    --#{$prefix}#{$name}: #{$value};
-  }
-}
 
-@mixin colors-in-html-group($prefix, $mode, $colors) {
-  @include html-color-group($mode) {
-    @include colors($prefix, $colors);
-  }
 
-  @include prefers-color-group($prefix, $mode) {
-    @include colors($prefix, $colors);
-  }
-}
+
+
+
+
+
+
+
+
+
 

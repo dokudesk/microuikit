@@ -1,7 +1,11 @@
-@mixin Banner($name, $version, $license, $author) {
-  /*!
-    #{$name} #{$version} 
-    Copyright 2025-2026 The #{$author} Authors
-    Licensed under #{$license}
-   */
+// ===============================
+// Mixin: banner
+// ===============================
+/// Displays a banner with the library name, version, author, and license
+@mixin banner($library-name, $library-version, $library-license, $library-author, $library-author-url) {
+    /*!
+     * #{$library-name} v#{$library-version}
+     * © 2025–2026 #{$library-author} — #{$library-author-url}
+     * Released under the #{$library-license} License
+     */
 }

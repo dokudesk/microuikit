@@ -1,51 +1,103 @@
 @use 'sass:map';
 @use 'sass:meta';
 
-@mixin generate-utilities($prefix, $utilities) {
-
+// ===============================
+// Mixin: generate-classes
+// ===============================
+/// Generates utility classes based on utility configuration
+@mixin generate-classes($prefix, $utilities) {
     @each $utility-name, $utility in $utilities {
 
-        // Get the class name, css property and values from the utility
+        // Read utility configuration
         $class-name: map.get($utility, class);
+        $placeholder: map.get($utility, placeholder);
         $css-property: map.get($utility, property);
         $values: map.get($utility, values);
         $enable-important: map.get($utility, important);
-        $group: map.get($utility, group);
 
-
-        @if $values {
+        // Only generate if required data exists
+        @if $class-name and $css-property and $values {
 
             @each $key, $value in $values {
 
+                // Build class suffix
                 $suffix: "";
-                @if $key != null {
+
+                @if $key !=null and $key !="" and $class-name != "" and $class-name != null {
                     $suffix: "-#{$key}";
                 }
 
-                $important: "";
-                @if $enable-important {
-                    $important: "!important";
+                @if $key !=null and $key !="" and ($class-name == "" or $class-name == null) {
+                    $suffix: "#{$key}";
                 }
 
-                @if $css-property and $class-name {
-                    .#{$class-name}#{$suffix} {
-                        
-                        $class-value :  $value;
-                        @if $value == "" or $value == null {
-                            $class-value :  $key;
-                        }
 
-                        @if meta.type-of($css-property) == "list" {
-                            @each $prop in $css-property {
-                                #{$prop}: $class-value #{$important};
-                            }
-                        } @else {
-                            #{$css-property}: $class-value #{$important};
+                // Handle !important flag
+                $important: "";
+
+                @if $enable-important and $enable-important == true {
+                    $important: " !important";
+                }
+
+                // Determine final class value
+                $class-value: $value;
+
+                @if $value ==null or $value =="" {
+                    $class-value: $key;
+                }
+
+                // Generate class
+                .#{$prefix}#{$class-name}#{$suffix} {
+
+                    @if $placeholder {
+                        @extend %#{$placeholder};
+                    }
+
+                    // Multiple properties support
+                    @if meta.type-of($css-property)==list {
+                        @each $prop in $css-property {
+                            #{$prop}: #{$class-value}#{$important};
                         }
                     }
-                } @else {
-                    --#{$prefix}#{$key}: #{$value} #{$important};
+
+                    // Single property
+                    @else {
+                        #{$css-property}: #{$class-value}#{$important};
+                    }
+
                 }
+            }
+        }
+    }
+}
+
+// ===============================
+// Mixin: generate-variables
+// ===============================
+/// Generates CSS variables based on utility configuration
+@mixin generate-variables($prefix, $utilities) {
+    @each $utility-name, $utility in $utilities {
+
+        // Logical namespace for grouping variables (e.g. border, color, spacing)
+        $namespace: map.get($utility, namespace);
+
+        // Key/value pairs for generated variables
+        $values: map.get($utility, values);
+
+        // Build namespace part of variable name
+        $ns: "";
+
+        @if $namespace {
+            $ns: "#{$namespace}-";
+        }
+
+        // Generate variables
+        @if $values {
+            @each $key, $value in $values {
+                $key-name: "" + $key;
+
+                // Output CSS variable
+                --#{$prefix}#{$ns}#{$key-name}: #{$value};
             }
         }
     }

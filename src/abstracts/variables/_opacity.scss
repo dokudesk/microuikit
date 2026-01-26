@@ -1,3 +1,6 @@
+// ===============================
+// Opacity values
+// ===============================
 $opacitys: (
     0: 0,
     25: .25,
@@ -6,7 +9,9 @@ $opacitys: (
     100: 1,
 ) !default;
 
-
+// ===============================
+// Border Opacity values
+// ===============================
 $border-opacitys: (
     0: color-mix(in srgb, currentColor 0%, transparent),
     25: color-mix(in srgb, currentColor 25%, transparent),

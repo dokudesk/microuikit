@@ -17,10 +17,7 @@
     "build:css": "sass --no-error-css --style=expanded --source-map --embed-sources src/core.scss dist/core.css",
     "build:themes": "sass --no-error-css --style=expanded --source-map --embed-sources src/themes/theme-default.scss dist/themes/theme-default.css",
     "build:cdn": "postcss dist/core.css --map --output dist/core.min.css",
-    "build:themes:cdn": "postcss dist/themes/theme-default.css --map --output dist/themes/theme-default.min.css",
-    "watch": "npm run clean:build && npm-run-all --parallel watch:*",
-    "watch:sass": "sass --watch --style=expanded --source-map --embed-sources src/core.scss:build/core.css",
-    "watch:themes": "sass --watch --style=expanded --source-map --embed-sources src/themes/theme-default.scss:build/themes/theme-default.css"
+    "build:themes:cdn": "postcss dist/themes/theme-default.css --map --output dist/themes/theme-default.min.css"
   },
   "browserslist": [
     ">0.5%",

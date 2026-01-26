@@ -1,167 +1,149 @@
-@use 'sass:color';
+@use "sass:map";
+@use "sass:color";
 
+// ===============================
+// Base Colors
+// ===============================
 $white: #fff !default;
-$gray-100: #f8f9fa !default;
-$gray-200: #e9ecef !default;
-$gray-300: #dee2e6 !default;
-$gray-400: #ced4da !default;
-$gray-500: #adb5bd !default;
-$gray-600: #6c757d !default;
-$gray-700: #495057 !default;
-$gray-800: #343a40 !default;
-$gray-900: #212529 !default;
 $black: #000 !default;
 
-//--------------------------------
-$blue: #0d6efd !default;
-$indigo: #6610f2 !default;
-$purple: #6f42c1 !default;
-$pink: #d63384 !default;
-$red: #dc3545 !default;
-$orange: #fd7e14 !default;
-$yellow: #ffc107 !default;
-$green: #198754 !default;
-$teal: #20c997 !default;
-$cyan: #0dcaf0 !default;
-//--------------------------------
+$grays: (
+  100: #f8f9fa,
+  200: #e9ecef,
+  300: #dee2e6,
+  400: #ced4da,
+  500: #adb5bd,
+  600: #6c757d,
+  700: #495057,
+  800: #343a40,
+  900: #212529) !default;
 
-$primary: $blue !default;
-$secondary: $gray-600 !default;
-$success: $green !default;
-$info: $cyan !default;
-$warning: $yellow !default;
-$danger: $red !default;
-$light: $gray-100 !default;
-$dark: $gray-900 !default;
+$palette: (
+  blue: #0d6efd,
+  indigo: #6610f2,
+  purple: #6f42c1,
+  pink: #d63384,
+  red: #dc3545,
+  orange: #fd7e14,
+  yellow: #ffc107,
+  green: #198754,
+  teal: #20c997,
+  cyan: #0dcaf0) !default;
 
+// ===============================
+// Semantic Colors
+// ===============================
+$primary: map.get($palette, blue) !default;
+$secondary: map.get($grays, 600) !default;
+$success: map.get($palette, green) !default;
+$info: map.get($palette, cyan) !default;
+$warning: map.get($palette, yellow) !default;
+$danger: map.get($palette, red) !default;
+$light: map.get($grays, 100) !default;
+$dark: map.get($grays, 900) !default;
 
-//Text Colors
+// ===============================
+// Text & UI Colors
+// ===============================
 $text-color: #030613 !default;
-$text-color-dark: #e9ecef !default;
+$text-color-dark: map.get($grays, 200) !default;
 
-//Heading Colors
-$heading-color: #030613 !default;
-$heading-color-dark: #e9ecef !default;
+$heading-color: $text-color !default;
+$heading-color-dark: $text-color-dark !default;
 
-//Text Muted Colors
-$text-muted-color: #{$gray-600} !default;
-$text-muted-color-dark: #{$gray-400} !default;
+$text-muted-color: map.get($grays, 600) !default;
+$text-muted-color-dark: map.get($grays, 400) !default;
 
-//Border Colors
-$border-color: $gray-400 !default;
-$border-color-dark: $gray-600 !default;
+$border-color: map.get($grays, 400) !default;
+$border-color-dark: map.get($grays, 600) !default;
 
-//Background Colors
-$background-color: $gray-100 !default;
-$background-color-dark: $gray-900 !default;
+$background-color: map.get($grays, 100) !default;
+$background-color-dark: map.get($grays, 900) !default;
 
-//Box Shadow Colors
 $box-shadow-color: rgba(0, 0, 0, 0.5) !default;
 $box-shadow-color-dark: rgba(255, 255, 255, 0.5) !default;
 
-
-//highlight Colors
+// ===============================
+// Highlight & Links
+// ===============================
 $highlight-color: $warning !default;
-$highlight-background-color: color.mix(white, $highlight-color, 25%) !default;
-$highlight-background-color-dark: color.mix(black, $highlight-color, 25%) !default;
+$highlight-background-color: color.mix($white, $highlight-color, 25%) !default;
+$highlight-background-color-dark: color.mix($black, $highlight-color, 25%) !default;
 
-//Link Colors
 $link-color: $primary !default;
-$link-hover-color: color.mix(black, $link-color, 25%) !default; 
+$link-hover-color: color.mix($black, $link-color, 25%) !default;
 
-$link-color-dark: color.mix(white, $primary, 25%) !default;
-$link-hover-color-dark: color.mix(black, $link-color-dark, 25%) !default; 
+$link-color-dark: color.mix($white, $primary, 25%) !default;
+$link-hover-color-dark: color.mix($black, $link-color-dark, 25%) !default;
 
-
-//Colors
-$colors: (
-  "blue": $blue,
-  "indigo": $indigo,
-  "purple": $purple,
-  "pink": $pink,
-  "red": $red,
-  "orange": $orange,
-  "yellow": $yellow,
-  "green": $green,
-  "teal": $teal,
-  "cyan": $cyan,
-  "black": $black,
-  "white": $white,
-  "gray-lightest": $gray-100,
-  "gray-light": $gray-300,
-  "gray": $gray-500,
-  "gray-dark": $gray-700,
-  "gray-darkest": $gray-900,
-  "transparent": transparent
-  ) !default;
-
-  $extended-colors: (
-
-  ) !default;
+// ===============================
+// Public Color Maps
+// ===============================
+$colors: map.merge($palette,
+    (black: $black,
+      white: $white,
+      gray-lightest: map.get($grays, 100),
+      gray-light: map.get($grays, 300),
+      gray: map.get($grays, 500),
+      gray-dark: map.get($grays, 700),
+      gray-darkest: map.get($grays, 900),
+      transparent: transparent)) !default;
 
 $theme-colors: (
-  "primary": $primary,
-  "secondary": $secondary,
-  "success": $success,
-  "info": $info,
-  "warning": $warning,
-  "danger": $danger,
-  "light": $light,
-  "dark": $dark) !default;
+  primary: $primary,
+  secondary: $secondary,
+  success: $success,
+  info: $info,
+  warning: $warning,
+  danger: $danger,
+  light: $light,
+  dark: $dark) !default;
 
-$theme-colors-text: (
-  "primary-text-color": color.mix($black, $primary, 60%),
-  "secondary-text-color": color.mix($black, $secondary, 60%),
-  "success-text-color": color.mix($black, $success, 60%),
-  "info-text-color": color.mix($black, $info, 60%),
-  "warning-text-color": color.mix($black, $warning, 60%),
-  "danger-text-color": color.mix($black, $danger, 60%),
-  "light-text-color": $gray-700 ,
-  "dark-text-color": $gray-700 ,
-  ) !default;
+// ===============================
+// Theme Colors Text, Background, Border (Light & Dark)
+// ===============================
+$theme-text-colors: (
+  primary-text-color: color.mix($black, $primary, 30%),
+  secondary-text-color: color.mix($black, $secondary, 30%),
+  success-text-color: color.mix($black, $success, 30%),
+  info-text-color: color.mix($black, $info, 30%),
+  warning-text-color: color.mix($black, $warning, 30%),
+  danger-text-color: color.mix($black, $danger, 30%)) !default;
 
-$theme-colors-background: (
-  "primary-bg-color": color.mix($white, $primary, 80%),
-  "secondary-bg-color": color.mix($white, $secondary, 80%),
-  "success-bg-color": color.mix($white, $success, 80%),
-  "info-bg-color": color.mix($white, $info, 80%),
-  "warning-bg-color": color.mix($white, $warning, 80%),
-  "danger-bg-color": color.mix($white, $danger, 80%),
-  "light-bg-color": $gray-100 ,
-  "dark-bg-color": $gray-400 ,
-  ) !default;
+$theme-background-colors: (
+  primary-bg-color: color.mix($white, $primary, 45%),
+  secondary-bg-color: color.mix($white, $secondary, 45%),
+  success-bg-color: color.mix($white, $success, 45%),
+  info-bg-color: color.mix($white, $info, 45%),
+  warning-bg-color: color.mix($white, $warning, 45%),
+  danger-bg-color: color.mix($white, $danger, 45%)) !default;
 
-$theme-colors-border: (
-  "primary-border-color": color.mix($white, $primary, 60%),
-  "secondary-border-color": color.mix($white, $secondary, 60%),
-  "success-border-color": color.mix($white, $success, 60%),
-  "info-border-color": color.mix($white, $info, 60%),
-  "warning-border-color": color.mix($white, $warning, 60%),
-  "danger-border-color": color.mix($white, $danger, 60%),
-  "light-border-color": $gray-200 ,
-  "dark-border-color": $gray-500 ,
-  ) !default;
+$theme-border-colors: (
+  primary-border-color: color.mix($white, $primary, 15%),
+  secondary-border-color: color.mix($white, $secondary, 15%),
+  success-border-color: color.mix($white, $success, 15%),
+  info-border-color: color.mix($white, $info, 15%),
+  warning-border-color: color.mix($white, $warning, 15%),
+  danger-border-color: color.mix($white, $danger, 15%)) !default;
 
-$theme-colors-light: (
-  "text-color": $text-color,
-  "text-muted-color": $text-muted-color,
-  "heading-color": $heading-color,
-  "background-color": $background-color,
-  "border-color": $border-color,
-  "box-shadow-color": $box-shadow-color,
-  "link-color": $link-color,
-  "link-hover-color": $link-hover-color,
-  "highlight-background-color": $highlight-background-color,
-  ) !default;
+$theme-light-colors: (
+  text-color: $text-color,
+  text-muted-color: $text-muted-color,
+  heading-color: $heading-color,
+  background-color: $background-color,
+  border-color: $border-color,
+  box-shadow-color: $box-shadow-color,
+  link-color: $link-color,
+  link-hover-color: $link-hover-color,
+  highlight-background-color: $highlight-background-color) !default;
 
-$theme-colors-dark: (
-  "text-color": $text-color-dark,
-  "text-muted-color": $text-muted-color-dark,
-  "heading-color": $heading-color-dark,
-  "background-color": $background-color-dark,
-  "border-color": $border-color-dark,
-  "box-shadow-color": $box-shadow-color-dark,
-  "link-color": $link-color-dark,
-  "link-hover-color": $link-hover-color-dark,
-  "highlight-background-color": $highlight-background-color-dark,
-  ) !default;
+$theme-dark-colors: (
+  text-color: $text-color-dark,
+  text-muted-color: $text-muted-color-dark,
+  heading-color: $heading-color-dark,
+  background-color: $background-color-dark,
+  border-color: $border-color-dark,
+  box-shadow-color: $box-shadow-color-dark,
+  link-color: $link-color-dark,
+  link-hover-color: $link-hover-color-dark,
+  highlight-background-color: $highlight-background-color-dark) !default;

@@ -2,21 +2,38 @@
 @use 'abstracts/mixins/index' as mixins;
 @use 'foundation/index' as foundation;
 
-@include mixins.Banner(vars.$name, vars.$version, vars.$license, vars.$author);
+@include mixins.banner(vars.$library-name, vars.$library-version, vars.$library-license, vars.$library-author, vars.$library-author-url);
 
-// Root-level utilities (CSS variables only).
-:root
-{
-    @include mixins.generate-utilities(vars.$prefix, vars.$utility-common-properties);
-    @include mixins.generate-utilities(vars.$prefix, vars.$utility-root-properties);
+
+#{vars.$css-variables-root} {
+  
+  @include mixins.generate-variables(vars.$prefix, vars.$root-system-variables);
 }
 
-// Theme and base layer.
-@include mixins.colors-in-html-group(vars.$prefix, "dark", vars.$theme-colors-dark);
-@include foundation.direction-foundation(vars.$prefix);
-@include foundation.root-foundation(vars.$prefix);
-@include foundation.heading-foundation(vars.$prefix);
-@include foundation.reset-foundation(vars.$prefix);
+// Theme selector dark
+@include mixins.theme-selector("dark") {
+  @include mixins.generate-variables(vars.$prefix, vars.$dark-theme-variables);
+}
+// Prefers color scheme dark
+@include mixins.prefers-color-scheme("dark") {
+  @include mixins.generate-variables(vars.$prefix, vars.$dark-theme-variables);
+}
 
-// Utility Classes
-@include mixins.generate-utilities(vars.$prefix, vars.$utility-classes);
+
+// RTL selector
+@include mixins.direction-rtl-selector {
+  @include mixins.generate-variables(vars.$prefix, vars.$rtl-direction-variables);
+}
+
+// Document base
+@include foundation.document-base(vars.$prefix);
+
+// Base elements
+@include foundation.base-elements(vars.$prefix);
+
+// Headings foundation
+@include foundation.headings-foundation(vars.$prefix);
+
+// System classes
+@include mixins.generate-classes(vars.$prefix, vars.$system-classes);
+
