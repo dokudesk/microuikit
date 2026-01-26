@@ -103,28 +103,28 @@ $theme-colors: (
 // Theme Colors Text, Background, Border (Light & Dark)
 // ===============================
 $theme-text-colors: (
-  primary-text-color: color.mix($black, $primary, 30%),
-  secondary-text-color: color.mix($black, $secondary, 30%),
-  success-text-color: color.mix($black, $success, 30%),
-  info-text-color: color.mix($black, $info, 30%),
-  warning-text-color: color.mix($black, $warning, 30%),
-  danger-text-color: color.mix($black, $danger, 30%)) !default;
+  primary-text: color.mix($black, $primary, 30%),
+  secondary-text: color.mix($black, $secondary, 30%),
+  success-text: color.mix($black, $success, 30%),
+  info-text: color.mix($black, $info, 30%),
+  warning-text: color.mix($black, $warning, 30%),
+  danger-text: color.mix($black, $danger, 30%)) !default;
 
 $theme-background-colors: (
-  primary-bg-color: color.mix($white, $primary, 45%),
-  secondary-bg-color: color.mix($white, $secondary, 45%),
-  success-bg-color: color.mix($white, $success, 45%),
-  info-bg-color: color.mix($white, $info, 45%),
-  warning-bg-color: color.mix($white, $warning, 45%),
-  danger-bg-color: color.mix($white, $danger, 45%)) !default;
+  primary-background: color.mix($white, $primary, 45%),
+  secondary-background: color.mix($white, $secondary, 45%),
+  success-background: color.mix($white, $success, 45%),
+  info-background: color.mix($white, $info, 45%),
+  warning-background: color.mix($white, $warning, 45%),
+  danger-background: color.mix($white, $danger, 45%)) !default;
 
 $theme-border-colors: (
-  primary-border-color: color.mix($white, $primary, 15%),
-  secondary-border-color: color.mix($white, $secondary, 15%),
-  success-border-color: color.mix($white, $success, 15%),
-  info-border-color: color.mix($white, $info, 15%),
-  warning-border-color: color.mix($white, $warning, 15%),
-  danger-border-color: color.mix($white, $danger, 15%)) !default;
+  primary-border: color.mix($white, $primary, 15%),
+  secondary-border: color.mix($white, $secondary, 15%),
+  success-border: color.mix($white, $success, 15%),
+  info-border: color.mix($white, $info, 15%),
+  warning-border: color.mix($white, $warning, 15%),
+  danger-border: color.mix($white, $danger, 15%)) !default;
 
 $theme-light-colors: (
   text-color: $text-color,

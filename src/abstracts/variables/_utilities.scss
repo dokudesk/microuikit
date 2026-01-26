@@ -10,6 +10,7 @@
 @use 'borders' as borders;
 @use 'shadows' as shadows;
 @use 'opacity' as opacity;
+@use '../mixins/utilities' as utilities;
 
 
 $root-common-variables: (
@@ -382,6 +383,19 @@ $system-classes: (
         important: true,
         values: opacity.$border-opacitys ),
 
+    //Colors
+    "color": (property: color,
+        class: "",
+        important: true,
+        values: utilities.map-to-vars(colors.$theme-text-colors, global.$prefix)),
 
+    "background-color": (property: background-color,
+        class: "",
+        important: true,
+        values: utilities.map-to-vars(colors.$theme-background-colors, global.$prefix)),
 
+    "border-color": (property: border-color,
+        class: "",
+        important: true,
+        values: utilities.map-to-vars(colors.$theme-border-colors, global.$prefix)),
 );

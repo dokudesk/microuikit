@@ -102,3 +102,25 @@
         }
     }
 }
+
+
+// ===============================
+// Function: map-to-vars
+// ===============================
+/// Converts a map to CSS variables with the given prefix
+@function map-to-vars($map, $prefix) {
+    $result: ();
+    
+    @each $name, $value in $map {
+      $result: map.merge(
+        $result,
+        (
+          $name: var(--#{$prefix}#{$name})
+        )
+      );
+    }
+  
+    @return $result;
+  }
+  
+  
