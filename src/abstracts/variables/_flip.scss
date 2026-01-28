@@ -1,8 +1,9 @@
 // ===============================
-// Flip Variables
+// Transform: Flip Variables
 // ===============================
+/// Flip transformation values for horizontal, vertical, and both axes
 $flips: (
-    x: scaleX(-1),
-    y: scaleY(-1),
-    xy: scale(-1, -1),
+  x: scaleX(-1),
+  y: scaleY(-1),
+  xy: scale(-1, -1),
 ) !default;

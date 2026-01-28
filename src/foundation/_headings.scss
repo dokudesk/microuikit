@@ -7,28 +7,32 @@
 // ===============================
 // Mixin: headings-foundation
 // ===============================
-/// Shared heading styles to avoid repetition.
+/// Applies consistent heading styles (h1-h6) using CSS variables
+/// Sets font sizes, margins, weights, and colors for all heading levels
+/// @param {String} $prefix - CSS class prefix (e.g., "fx-")
 @mixin headings-foundation($prefix) {
-
+  // Map of heading elements to their font sizes
   $headings: (
     h1: typography.$h1-font-size,
     h2: typography.$h2-font-size,
     h3: typography.$h3-font-size,
     h4: typography.$h4-font-size,
     h5: typography.$h5-font-size,
-    h6: typography.$h6-font-size
+    h6: typography.$h6-font-size,
   );
 
+  // Extract heading element names (h1, h2, etc.)
   $heading-elements: map.keys($headings);
+  
+  // Build list of heading class selectors (e.g., ".fx-h1", ".fx-h2")
   $heading-classes: ();
-
   @each $h in $heading-elements {
     $heading-classes: list.append($heading-classes, ".#{$prefix}#{$h}", $separator: comma);
   }
 
+  // Apply common heading styles to both elements and classes
   #{$heading-elements},
   #{$heading-classes} {
-
     margin-top: 0;
     margin-bottom: spacing.$spacer * 0.5;
     font-weight: 500;
@@ -36,6 +40,7 @@
     color: var(--#{$prefix}heading-color);
   }
 
+  // Apply specific font sizes to each heading level
   @each $h, $size in $headings {
     #{$h}, .#{$prefix}#{$h} {
       font-size: $size;

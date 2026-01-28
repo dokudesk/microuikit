@@ -1,0 +1,50 @@
+// ===============================
+// Mixin: theme-selector
+// ===============================
+/// Wraps content for a specific theme selector
+/// @param {String} $mode - Theme mode (e.g., "dark", "light")
+/// @param {String} $selector - Custom selector (optional, defaults to theme attribute selectors)
+@mixin theme-selector($mode, $selector: null) {
+  $sel: $selector;
+  @if $selector == null {
+    $sel: "html[theme='#{$mode}'], html[data-theme='#{$mode}']";
+  }
+  #{$sel} {
+    @content;
+  }
+}
+
+// ===============================
+// Mixin: prefers-color-scheme
+// ===============================
+/// Wraps content for prefers-color-scheme media query with theme selector
+/// @param {String} $mode - Color scheme mode (e.g., "dark", "light")
+/// @param {String} $selector - Custom selector (optional, defaults to auto theme attribute selectors)
+@mixin prefers-color-scheme($mode, $selector: null) {
+  @media (prefers-color-scheme: #{$mode}) {
+    $sel: $selector;
+    @if $selector == null {
+      $sel: "html[theme='auto'], html[data-theme='auto']";
+    }
+    #{$sel} {
+      @content;
+    }
+  }
+}
+
+// ===============================
+// Mixin: direction-rtl-selector
+// ===============================
+/// Wraps content for RTL (Right-to-Left) direction selectors
+/// @param {String} $selector - Custom selector (optional, defaults to RTL attribute selectors)
+@mixin direction-rtl-selector($selector: null) {
+  $sel: $selector;
+
+  @if $selector == null {
+    $sel: "html[dir='rtl'], html[direction='rtl'], html[data-dir='rtl'], html[data-direction='rtl']";
+  }
+
+  #{$sel} {
+    @content;
+  }
+}

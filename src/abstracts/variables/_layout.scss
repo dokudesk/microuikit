@@ -1,8 +1,30 @@
+@use 'sass:string';
+
 // ===============================
 // Overflows & Object Positions
 // ===============================
 $overflows: visible hidden clip scroll auto !default;
+$object-fits: fill contain cover none scale-down !default;
 $object-positions: top bottom left right center !default;
+
+// ===============================
+// User Select
+// ===============================
+$user-selects: none auto all text !default;
+
+// ===============================
+// Aspect Ratio
+// ===============================
+$aspect-ratios: (
+  "auto": auto,
+  "square": string.unquote("1 / 1"),
+  "video": string.unquote("16 / 9"),
+  "4-3": string.unquote("4 / 3"),
+  "3-2": string.unquote("3 / 2"),
+  "2-1": string.unquote("2 / 1"),
+  "1-2": string.unquote("1 / 2"),
+  "9-16": string.unquote("9 / 16"),
+) !default;
 
 // ===============================
 // Container Max Widths

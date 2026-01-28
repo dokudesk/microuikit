@@ -1,0 +1,10 @@
+// ===============================
+// Transition Delays
+// ===============================
+$transition-delays: (
+  "none": 0,
+  "fast": 150ms,
+  "base": 200ms,
+  "slow": 300ms,
+  "slower": 500ms,
+) !default;

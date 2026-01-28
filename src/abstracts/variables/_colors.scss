@@ -1,5 +1,6 @@
 @use "sass:map";
 @use "sass:color";
+@use "../functions" as fn;
 
 // ===============================
 // Base Colors
@@ -16,7 +17,8 @@ $grays: (
   600: #6c757d,
   700: #495057,
   800: #343a40,
-  900: #212529) !default;
+  900: #212529,
+) !default;
 
 $palette: (
   blue: #0d6efd,
@@ -28,7 +30,8 @@ $palette: (
   yellow: #ffc107,
   green: #198754,
   teal: #20c997,
-  cyan: #0dcaf0) !default;
+  cyan: #0dcaf0,
+) !default;
 
 // ===============================
 // Semantic Colors
@@ -67,27 +70,32 @@ $box-shadow-color-dark: rgba(255, 255, 255, 0.5) !default;
 // Highlight & Links
 // ===============================
 $highlight-color: $warning !default;
-$highlight-background-color: color.mix($white, $highlight-color, 25%) !default;
-$highlight-background-color-dark: color.mix($black, $highlight-color, 25%) !default;
+$highlight-background-color: fn.round-color(color.mix($white, $highlight-color, 25%)) !default;
+$highlight-background-color-dark: fn.round-color(color.mix($black, $highlight-color, 25%)) !default;
 
 $link-color: $primary !default;
-$link-hover-color: color.mix($black, $link-color, 25%) !default;
+$link-hover-color: fn.round-color(color.mix($black, $link-color, 25%)) !default;
 
-$link-color-dark: color.mix($white, $primary, 25%) !default;
-$link-hover-color-dark: color.mix($black, $link-color-dark, 25%) !default;
+$link-color-dark-temp: color.mix($white, $primary, 25%) !default;
+$link-color-dark: fn.round-color($link-color-dark-temp) !default;
+$link-hover-color-dark: fn.round-color(color.mix($black, $link-color-dark-temp, 25%)) !default;
 
 // ===============================
 // Public Color Maps
 // ===============================
-$colors: map.merge($palette,
-    (black: $black,
-      white: $white,
-      gray-lightest: map.get($grays, 100),
-      gray-light: map.get($grays, 300),
-      gray: map.get($grays, 500),
-      gray-dark: map.get($grays, 700),
-      gray-darkest: map.get($grays, 900),
-      transparent: transparent)) !default;
+$colors: map.merge(
+  $palette,
+  (
+    black: $black,
+    white: $white,
+    gray-lightest: map.get($grays, 100),
+    gray-light: map.get($grays, 300),
+    gray: map.get($grays, 500),
+    gray-dark: map.get($grays, 700),
+    gray-darkest: map.get($grays, 900),
+    transparent: transparent,
+  ),
+) !default;
 
 $theme-colors: (
   primary: $primary,
@@ -97,34 +105,38 @@ $theme-colors: (
   warning: $warning,
   danger: $danger,
   light: $light,
-  dark: $dark) !default;
+  dark: $dark,
+) !default;
 
 // ===============================
 // Theme Colors Text, Background, Border (Light & Dark)
 // ===============================
 $theme-text-colors: (
-  primary-text: color.mix($black, $primary, 30%),
-  secondary-text: color.mix($black, $secondary, 30%),
-  success-text: color.mix($black, $success, 30%),
-  info-text: color.mix($black, $info, 30%),
-  warning-text: color.mix($black, $warning, 30%),
-  danger-text: color.mix($black, $danger, 30%)) !default;
+  primary-text: fn.round-color(color.mix($black, $primary, 30%)),
+  secondary-text: fn.round-color(color.mix($black, $secondary, 30%)),
+  success-text: fn.round-color(color.mix($black, $success, 30%)),
+  info-text: fn.round-color(color.mix($black, $info, 30%)),
+  warning-text: fn.round-color(color.mix($black, $warning, 30%)),
+  danger-text: fn.round-color(color.mix($black, $danger, 30%)),
+) !default;
 
 $theme-background-colors: (
-  primary-background: color.mix($white, $primary, 45%),
-  secondary-background: color.mix($white, $secondary, 45%),
-  success-background: color.mix($white, $success, 45%),
-  info-background: color.mix($white, $info, 45%),
-  warning-background: color.mix($white, $warning, 45%),
-  danger-background: color.mix($white, $danger, 45%)) !default;
+  primary-background: fn.round-color(color.mix($white, $primary, 45%)),
+  secondary-background: fn.round-color(color.mix($white, $secondary, 45%)),
+  success-background: fn.round-color(color.mix($white, $success, 45%)),
+  info-background: fn.round-color(color.mix($white, $info, 45%)),
+  warning-background: fn.round-color(color.mix($white, $warning, 45%)),
+  danger-background: fn.round-color(color.mix($white, $danger, 45%)),
+) !default;
 
 $theme-border-colors: (
-  primary-border: color.mix($white, $primary, 15%),
-  secondary-border: color.mix($white, $secondary, 15%),
-  success-border: color.mix($white, $success, 15%),
-  info-border: color.mix($white, $info, 15%),
-  warning-border: color.mix($white, $warning, 15%),
-  danger-border: color.mix($white, $danger, 15%)) !default;
+  primary-border: fn.round-color(color.mix($white, $primary, 15%)),
+  secondary-border: fn.round-color(color.mix($white, $secondary, 15%)),
+  success-border: fn.round-color(color.mix($white, $success, 15%)),
+  info-border: fn.round-color(color.mix($white, $info, 15%)),
+  warning-border: fn.round-color(color.mix($white, $warning, 15%)),
+  danger-border: fn.round-color(color.mix($white, $danger, 15%)),
+) !default;
 
 $theme-light-colors: (
   text-color: $text-color,
@@ -135,7 +147,8 @@ $theme-light-colors: (
   box-shadow-color: $box-shadow-color,
   link-color: $link-color,
   link-hover-color: $link-hover-color,
-  highlight-background-color: $highlight-background-color) !default;
+  highlight-background-color: $highlight-background-color,
+) !default;
 
 $theme-dark-colors: (
   text-color: $text-color-dark,
@@ -146,4 +159,5 @@ $theme-dark-colors: (
   box-shadow-color: $box-shadow-color-dark,
   link-color: $link-color-dark,
   link-hover-color: $link-hover-color-dark,
-  highlight-background-color: $highlight-background-color-dark) !default;
+  highlight-background-color: $highlight-background-color-dark,
+) !default;

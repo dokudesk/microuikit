@@ -2,38 +2,55 @@
 @use 'abstracts/mixins/index' as mixins;
 @use 'foundation/index' as foundation;
 
+// ===============================
+// Library Banner
+// ===============================
 @include mixins.banner(vars.$library-name, vars.$library-version, vars.$library-license, vars.$library-author, vars.$library-author-url);
 
-
+// ===============================
+// CSS Variables (Root)
+// ===============================
 #{vars.$css-variables-root} {
-  
   @include mixins.generate-variables(vars.$prefix, vars.$root-system-variables);
 }
 
-// Theme selector dark
+// ===============================
+// Theme Selector: Dark
+// ===============================
 @include mixins.theme-selector("dark") {
   @include mixins.generate-variables(vars.$prefix, vars.$dark-theme-variables);
 }
-// Prefers color scheme dark
+
+// ===============================
+// Prefers Color Scheme: Dark
+// ===============================
 @include mixins.prefers-color-scheme("dark") {
   @include mixins.generate-variables(vars.$prefix, vars.$dark-theme-variables);
 }
 
-
-// RTL selector
+// ===============================
+// RTL Direction Selector
+// ===============================
 @include mixins.direction-rtl-selector {
   @include mixins.generate-variables(vars.$prefix, vars.$rtl-direction-variables);
 }
 
-// Document base
+// ===============================
+// Foundation: Document Base
+// ===============================
 @include foundation.document-base(vars.$prefix);
 
-// Base elements
+// ===============================
+// Foundation: Base Elements
+// ===============================
 @include foundation.base-elements(vars.$prefix);
 
-// Headings foundation
+// ===============================
+// Foundation: Headings
+// ===============================
 @include foundation.headings-foundation(vars.$prefix);
 
-// System classes
+// ===============================
+// Utility Classes
+// ===============================
 @include mixins.generate-classes(vars.$prefix, vars.$system-classes);
-

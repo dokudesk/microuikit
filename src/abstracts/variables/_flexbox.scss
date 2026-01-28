@@ -1,34 +1,65 @@
 @use 'global' as global;
 
 // ===============================
-// Text Aligns
-// ===============================
-$text-aligns-ltr: (
-  "direction": ltr,
-  "text-start": left,
-  "text-end": right
-) !default;
-
-$text-aligns-rtl: (
-  "direction": rtl,
-  "text-start": right,
-  "text-end": left
-) !default;
-
-
-// ===============================
 // Flexbox
 // ===============================
 $flexbox-flex: (fill: 1 1 auto) !default;
-$flexbox-wrap: wrap nowrap wrap-reverse !default;
-$flexbox-shrink: (shrink-0: 0, shrink-1: 1) !default;
-$flexbox-grow: (grow-0: 0, grow-1: 1) !default;
+$flexbox-wrap: (
+  wrap: wrap,
+  nowrap: nowrap,
+  wrap-reverse: wrap-reverse,
+) !default;
+$flexbox-shrink: (0: 0, 1: 1) !default;
+$flexbox-grow: (0: 0, 1: 1) !default;
 $flexbox-position: static relative absolute fixed sticky !default;
 $flexbox-display: inline inline-block block grid inline-grid table table-row table-cell flex inline-flex none !default;
-$flexbox-direction: row column row-reverse column-reverse !default;
-$flexbox-justify-content: flex-start flex-end center space-between space-around space-evenly !default;
-$flexbox-align-items: flex-start flex-end center baseline stretch !default;
-$flexbox-align-content: flex-start flex-end center space-between space-around stretch !default;
-$flexbox-align-self: auto flex-start flex-end center baseline stretch !default;
+$flexbox-direction: (
+  row: row,
+  col: column,
+  row-reverse: row-reverse,
+  col-reverse: column-reverse,
+) !default;
+$flexbox-justify-content: (
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  between: space-between,
+  around: space-around,
+  evenly: space-evenly,
+) !default;
+$flexbox-align-items: (
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  baseline: baseline,
+  stretch: stretch,
+) !default;
+$flexbox-align-content: (
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  between: space-between,
+  around: space-around,
+  stretch: stretch,
+) !default;
+$flexbox-align-self: (
+  auto: auto,
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  baseline: baseline,
+  stretch: stretch,
+) !default;
 $flexbox-float:(start: var(--#{global.$prefix}text-start), end: var(--#{global.$prefix}text-end), none: none) !default;
-$flexbox-vertical-align: baseline top middle bottom text-bottom text-top !default;
+$flexbox-align-vertical: (
+  baseline: baseline,
+  top: top,
+  middle: middle,
+  bottom: bottom,
+  text-bottom: text-bottom,
+  text-top: text-top,
+) !default;
+$flexbox-center: (null: (display: grid, justify-items: center, align-items: center, place-items: center)) !default;
+$flexbox-center-x: (null: (display: flex, justify-content: center)) !default;
+$flexbox-center-y: (null: (display: flex, align-items: center)) !default;
+$flexbox-row: (null: (display: flex, flex-direction: row, flex-wrap: nowrap)) !default;

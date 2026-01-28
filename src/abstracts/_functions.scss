@@ -1,12 +1,16 @@
 @use "sass:math";
 @use "sass:meta";
+@use "sass:color";
+@use "sass:string";
 
 // ===============================
 // Function: to-rem
 // ===============================
-/// Converts px to rem
+/// Converts pixel values to rem units
+/// @param {Number} $v - Value to convert (must be in px)
+/// @return {Number} Value in rem units, or original value if not a px number
 @function to-rem($v) {
-  @if meta.type-of($v)=="number" and math.unit($v)=="px" {
+  @if meta.type-of($v) == "number" and math.unit($v) == "px" {
     @return math.div($v, 16px) * 1rem;
   }
 
@@ -16,10 +20,50 @@
 // ===============================
 // Function: to-px
 // ===============================
-/// Converts rem to px
+/// Converts rem values to pixel units
+/// @param {Number} $v - Value to convert (must be in rem)
+/// @return {Number} Value in px units, or original value if not a rem number
 @function to-px($v) {
-  @if meta.type-of($v)=="number" and math.unit($v)=="rem" {
+  @if meta.type-of($v) == "number" and math.unit($v) == "rem" {
     @return math.div($v, 1rem) * 16px;
   }
+
   @return $v;
+}
+
+// ===============================
+// Function: to-hex
+// ===============================
+/// Converts a number (0-255) to a 2-digit hex string
+/// @param {Number} $num - Number to convert (0-255)
+/// @return {String} 2-digit hex string (e.g., "0a", "ff")
+@function to-hex($num) {
+  $hex-chars: "0123456789abcdef";
+  $first: math.floor(math.div($num, 16));
+  $second: $num % 16;
+  $first-char: string.slice($hex-chars, $first + 1, $first + 1);
+  $second-char: string.slice($hex-chars, $second + 1, $second + 1);
+  @return string.to-upper-case($first-char + $second-char);
+}
+
+// ===============================
+// Function: round-color
+// ===============================
+/// Rounds RGB color values to integers and returns as hex string
+/// Note: This function returns a string, so it should be used after color.mix()
+/// @param {Color} $color - Color to round
+/// @return {String} Hex color string (e.g., "#094db1")
+@function round-color($color) {
+  @if meta.type-of($color) == "color" {
+    $r: math.round(color.channel($color, "red", $space: rgb));
+    $g: math.round(color.channel($color, "green", $space: rgb));
+    $b: math.round(color.channel($color, "blue", $space: rgb));
+    // Convert RGB values to hex string manually
+    $hex-r: to-hex($r);
+    $hex-g: to-hex($g);
+    $hex-b: to-hex($b);
+    @return string.unquote("##{$hex-r}#{$hex-g}#{$hex-b}");
+  }
+
+  @return $color;
 }

@@ -10,392 +10,665 @@
 @use 'borders' as borders;
 @use 'shadows' as shadows;
 @use 'opacity' as opacity;
+@use 'transitions' as transitions;
 @use '../mixins/utilities' as utilities;
 
-
+// ===============================
+// Root Common Variables
+// ===============================
+/// CSS variables that are generated in the :root selector
+/// These variables are available globally and can be used throughout the stylesheet
+/// Organized by priority: Typography → Colors → Layout → Effects
 $root-common-variables: (
-    "colors":(property: "",
-        values: colors.$colors ),
+  // ===============================
+  // Typography (Base - Highest Priority)
+  // ===============================
+  "common-font-variables": (
+    property: "",
+    values: typography.$font-root-common-variables,
+  ),
 
-    "theme-colors":(property: "",
-        values: colors.$theme-colors ),
+  "ltr-font-variables": (
+    property: "",
+    values: typography.$font-root-variables-ltr,
+  ),
 
-    "theme-text-colors":(property: "",
-        values: colors.$theme-text-colors ),
+  // ===============================
+  // Colors (Depends on Typography)
+  // ===============================
+  "colors": (
+    property: "",
+    values: colors.$colors,
+  ),
 
-    "theme-background-colors":(property: "",
-        values: colors.$theme-background-colors ),
+  "theme-colors": (
+    property: "",
+    values: colors.$theme-colors,
+  ),
 
-    "theme-border-colors":(property: "",
-        values: colors.$theme-border-colors ),
+  "theme-light-colors": (
+    property: "",
+    values: colors.$theme-light-colors,
+  ),
 
-    "theme-light-colors":(property: "",
-        values: colors.$theme-light-colors ),
+  "theme-text-colors": (
+    property: "",
+    values: colors.$theme-text-colors,
+  ),
 
-    "common-font-variables":(property: "",
-        values: typography.$font-root-common-variables ),
+  "theme-background-colors": (
+    property: "",
+    values: colors.$theme-background-colors,
+  ),
 
-    "ltr-font-variables":(property: "",
-        values: typography.$font-root-variables-ltr ),
+  "theme-border-colors": (
+    property: "",
+    values: colors.$theme-border-colors,
+  ),
 
-    "border-properties":(property: "",
-        values: borders.$default-border-properties ),
+  // ===============================
+  // Layout & Borders (Depends on Colors)
+  // ===============================
+  "border-properties": (
+    property: "",
+    values: borders.$default-border-properties,
+  ),
 
-    ) !default;
+  // ===============================
+  // Effects & Animations (Lowest Priority)
+  // ===============================
+  "transition-delays": (
+    property: "",
+    namespace: "transition",
+    values: transitions.$transition-delays,
+  ),
+) !default;
 
 
 // Main utilities
-$root-system-variables: map.merge($root-common-variables,
-        ("align":(property: "",
-                values: flexbox.$text-aligns-ltr ),
-        )
+$root-system-variables: map.merge(
+  $root-common-variables,
+  (
+    "align": (
+      property: "",
+      values: typography.$text-aligns-ltr,
+    ),
+  ),
 );
 
-
-// Dark theme utilities
+// ===============================
+// Dark Theme Variables
+// ===============================
+/// CSS variables specific to dark theme
+/// These variables override root variables when dark theme is active
 $dark-theme-variables: (
-    "theme-dark-colors":(property: "",
-        values: colors.$theme-dark-colors ),
+  "theme-dark-colors": (
+    property: "",
+    values: colors.$theme-dark-colors,
+  ),
 );
 
-
-// RTL utilities
+// ===============================
+// RTL Direction Variables
+// ===============================
+/// CSS variables specific to RTL (Right-to-Left) text direction
+/// These variables override root variables when RTL direction is active
 $rtl-direction-variables: (
-    "rtl-font-variables":(property: "",
-        values: typography.$font-root-variables-rtl ),
-    "align":(property: "",
-        values: flexbox.$text-aligns-rtl ),
+  "rtl-font-variables": (
+    property: "",
+    values: typography.$font-root-variables-rtl,
+  ),
+  "align": (
+    property: "",
+    values: typography.$text-aligns-rtl,
+  ),
 );
 
-
-
+// ===============================
+// System Classes Configuration
+// ===============================
+/// Main configuration map for generating utility classes
+/// Each entry defines a utility class with its properties, values, and options
+/// Structure: "utility-name": (property: CSS property, class: "class-name", important: boolean, values: map|list)
 $system-classes: (
-    // Flip
-    "flip": (property: transform,
-        class: "flip",
-        important: true,
-        values: flip.$flips),
-
-    // Width
-    "width": (property: width,
-        class: "w",
-        important: true,
-        values: sizing.$width-values ),
-
-    "max-width": (property: max-width,
-        class: "max",
-        important: true,
-        values: sizing.$max-width-values ),
-
-    "min-width": (property: min-width,
-        class: "min",
-        important: true,
-        values: sizing.$min-width-values ),
-
-    // Height
-    "height": (property: height,
-        class: "h",
-        important: true,
-        values: sizing.$height-values ),
-
-    "max-height": (property: max-height,
-        class: "max",
-        important: true,
-        values: sizing.$max-height-values ),
-
-    "min-height": (property: min-height,
-        class: "min",
-        important: true,
-        values: sizing.$min-height-values ),
-
-    "overflow": (property: overflow,
-        class: "overflow",
-        important: true,
-        values: layout.$overflows ),
-
-    "overflow-x": (property: overflow-x,
-        class: "overflow-x",
-        important: true,
-        values: layout.$overflows ),
-
-    "overflow-y": (property: overflow-y,
-        class: "overflow-y",
-        important: true,
-        values: layout.$overflows ),
-
-    "object-fit": (property: object-fit,
-        class: "object-fit",
-        important: true,
-        values: layout.$object-positions ),
-
-    "object-position": (property: object-position,
-        class: "object-position",
-        important: true,
-        values: layout.$object-positions ),
-
-
-    // Flexbox & Grid
-    "position": (property: position,
-        class: "position",
-        important: true,
-        values: flexbox.$flexbox-position ),
-
-    "display": (property: display,
-        class: "d",
-        important: true,
-        values: flexbox.$flexbox-display ),
-
-    "flex-direction": (property: flex-direction,
-        class: "flex-direction",
-        important: true,
-        values: flexbox.$flexbox-direction ),
-
-    "flex": (property: flex,
-        class: "flex",
-        important: true,
-        values: flexbox.$flexbox-flex ),
-
-    "flex-wrap": (property: flex-wrap,
-        class: "flex",
-        important: true,
-        values: flexbox.$flexbox-wrap ),
-
-    "flex-shrink": (property: flex-shrink,
-        class: "flex",
-        important: true,
-        values: flexbox.$flexbox-shrink),
-
-    "flex-grow": (property: flex-grow,
-        class: "flex",
-        important: true,
-        values: flexbox.$flexbox-grow ),
-
-    "justify-content": (property: justify-content,
-        class: "justify-content",
-        important: true,
-        values: flexbox.$flexbox-justify-content ),
-
-    "align-items": (property: align-items,
-        class: "align-items",
-        important: true,
-        values: flexbox.$flexbox-align-items ),
-
-    "align-content": (property: align-content,
-        class: "align-content",
-        important: true,
-        values: flexbox.$flexbox-align-content ),
-
-    "align-self": (property: align-self,
-        class: "align-self",
-        important: true,
-        values: flexbox.$flexbox-align-self ),
-
-    "float": (property: float,
-        class: "float",
-        important: true,
-        values: flexbox.$flexbox-float ),
-
-    "vertical-align": (property: vertical-align,
-        class: "align",
-        important: true,
-        values: flexbox.$flexbox-vertical-align ),
-
-    // Spacing
-    "margin": (property: margin,
-        class: "m",
-        important: true,
-        values: map.merge(spacing.$spacers, (auto: auto))),
-
-    "margin-x": (property: margin-left margin-right,
-        class: "mx",
-        important: true,
-        values: map.merge(spacing.$spacers, (auto: auto))),
-
-    "margin-y": (property: margin-top margin-bottom,
-        class: "my",
-        important: true,
-        values: map.merge(spacing.$spacers, (auto: auto))),
-
-    "margin-top": (property: margin-top,
-        class: "mt",
-        important: true,
-        values: map.merge(spacing.$spacers, (auto: auto))),
-
-    "margin-bottom": (property: margin-bottom,
-        class: "mb",
-        important: true,
-        values: map.merge(spacing.$spacers, (auto: auto))),
-
-    "margin-left": (property: margin-left,
-        class: "ml",
-        important: true,
-        values: map.merge(spacing.$spacers, (auto: auto))),
-
-    "margin-right": (property: margin-right,
-        class: "mr",
-        important: true,
-        values: map.merge(spacing.$spacers, (auto: auto))),
-
-    "padding": (property: padding,
-        class: "p",
-        important: true,
-        values: spacing.$spacers ),
-
-    "padding-x": (property: padding-left padding-right,
-        class: "px",
-        important: true,
-        values: spacing.$spacers ),
-
-    "padding-y": (property: padding-top padding-bottom,
-        class: "py",
-        important: true,
-        values: spacing.$spacers ),
-
-    "padding-top": (property: padding-top,
-        class: "pt",
-        important: true,
-        values: spacing.$spacers ),
-
-    "padding-bottom": (property: padding-bottom,
-        class: "pb",
-        important: true,
-        values: spacing.$spacers ),
-
-    "padding-left": (property: padding-left,
-        class: "pl",
-        important: true,
-        values: spacing.$spacers ),
-
-    "padding-right": (property: padding-right,
-        class: "pr",
-        important: true,
-        values: spacing.$spacers ),
-
-    "gap": (property: gap,
-        class: "gap",
-        important: true,
-        values: spacing.$spacers ),
-
-    "row-gap": (property: row-gap,
-        class: "row-gap",
-        important: true,
-        values: spacing.$spacers ),
-
-    "column-gap": (property: column-gap,
-        class: "column-gap",
-        important: true,
-        values: spacing.$spacers ),
-
-    // Typography
-    "font-size": (property: font-size,
-        class: "fs",
-        important: true,
-        values: typography.$font-sizes ),
-
-    "font-style": (property: font-style,
-        class: "fst",
-        important: true,
-        values: typography.$font-styles ),
-
-    "font-weight": (property: font-weight,
-        class: "fw",
-        important: true,
-        values: typography.$font-weights ),
-
-    "text-align": (property: text-align,
-        class: "text",
-        important: true,
-        values: typography.$text-aligns ),
-
-    "text-transform": (property: text-transform,
-        class: "transform",
-        important: true,
-        values: typography.$text-transforms ),
-
-    "text-decoration": (property: text-decoration,
-        class: "decoration",
-        important: true,
-        values: typography.$text-decorations ),
-
-    "text-overflow": (property: text-overflow,
-        class: "overflow",
-        important: true,
-        values: typography.$text-overflows ),
-
-    "white-space": (property: white-space,
-        class: "space",
-        important: true,
-        values: typography.$text-white-spaces ),
-
-    "border": (property: border,
-        class: "border",
-        important: true,
-        values: borders.$border-visibility ),
-
-    "border-top": (property: border-top,
-        class: "border-top",
-        important: true,
-        values: borders.$border-visibility ),
-
-    "border-bottom": (property: border-bottom,
-        class: "border-bottom",
-        important: true,
-        values: borders.$border-visibility ),
-
-    "border-right": (property: border-right,
-        class: "border-right",
-        important: true,
-        values: borders.$border-visibility ),
-
-    "border-left": (property: border-left,
-        class: "border-left",
-        important: true,
-        values: borders.$border-visibility ),
-
-    "border-width": (property: border-width,
-        class: "border-width",
-        important: true,
-        values: borders.$border-widths ),
-
-    "border-style": (property: border-style,
-        class: "border-style",
-        important: true,
-        values: borders.$border-style ),
-
-    "border-radius": (property: border-radius,
-        class: "border-radius",
-        important: true,
-        values: borders.$border-radius-classes ),
-
-    // Shadows
-    "box-shadow": (property: box-shadow,
-        class: "box-shadow",
-        important: true,
-        values: shadows.$box-shadows ),
-
-    "opacity": (property: opacity,
-        class: "opacity",
-        important: true,
-        values: opacity.$opacitys ),
-
-    "border-opacity": (property: border-color,
-        class: "border-opacity",
-        important: true,
-        values: opacity.$border-opacitys ),
-
-    //Colors
-    "color": (property: color,
-        class: "",
-        important: true,
-        values: utilities.map-to-vars(colors.$theme-text-colors, global.$prefix)),
-
-    "background-color": (property: background-color,
-        class: "",
-        important: true,
-        values: utilities.map-to-vars(colors.$theme-background-colors, global.$prefix)),
-
-    "border-color": (property: border-color,
-        class: "",
-        important: true,
-        values: utilities.map-to-vars(colors.$theme-border-colors, global.$prefix)),
+  // ===============================
+  // Layout & Display
+  // ===============================
+  "position": (
+    property: position,
+    class: "position",
+    important: true,
+    values: flexbox.$flexbox-position,
+  ),
+
+  "display": (
+    property: display,
+    class: "d",
+    important: true,
+    values: flexbox.$flexbox-display,
+  ),
+
+  "float": (
+    property: float,
+    class: "float",
+    important: true,
+    values: flexbox.$flexbox-float,
+  ),
+
+  "vertical-align": (
+    property: vertical-align,
+    class: "valign",
+    important: true,
+    values: flexbox.$flexbox-align-vertical,
+  ),
+
+  "user-select": (
+    property: user-select,
+    class: "user-select",
+    important: true,
+    values: layout.$user-selects,
+  ),
+
+  // ===============================
+  // Sizing
+  // ===============================
+  "width": (
+    property: width,
+    class: "w",
+    important: true,
+    values: sizing.$width-values,
+  ),
+
+  "max-width": (
+    property: max-width,
+    class: "max-w",
+    important: true,
+    values: sizing.$max-width-values,
+  ),
+
+  "min-width": (
+    property: min-width,
+    class: "min-w",
+    important: true,
+    values: sizing.$min-width-values,
+  ),
+
+  "height": (
+    property: height,
+    class: "h",
+    important: true,
+    values: sizing.$height-values,
+  ),
+
+  "max-height": (
+    property: max-height,
+    class: "max-h",
+    important: true,
+    values: sizing.$max-height-values,
+  ),
+
+  "min-height": (
+    property: min-height,
+    class: "min-h",
+    important: true,
+    values: sizing.$min-height-values,
+  ),
+
+  "aspect-ratio": (
+    property: aspect-ratio,
+    class: "aspect",
+    important: true,
+    values: layout.$aspect-ratios,
+  ),
+
+  // ===============================
+  // Overflow & Object
+  // ===============================
+  "overflow": (
+    property: overflow,
+    class: "overflow",
+    important: true,
+    values: layout.$overflows,
+  ),
+
+  "overflow-x": (
+    property: overflow-x,
+    class: "overflow-x",
+    important: true,
+    values: layout.$overflows,
+  ),
+
+  "overflow-y": (
+    property: overflow-y,
+    class: "overflow-y",
+    important: true,
+    values: layout.$overflows,
+  ),
+
+  "object-fit": (
+    property: object-fit,
+    class: "object",
+    important: true,
+    values: layout.$object-fits,
+  ),
+
+  "object-position": (
+    property: object-position,
+    class: "object-pos",
+    important: true,
+    values: layout.$object-positions,
+  ),
+
+  // ===============================
+  // Spacing
+  // ===============================
+  "margin": (
+    property: margin,
+    class: "m",
+    important: true,
+    values: map.merge(spacing.$spacers, (auto: auto)),
+  ),
+
+  "margin-x": (
+    property: (margin-left, margin-right),
+    class: "mx",
+    important: true,
+    values: map.merge(spacing.$spacers, (auto: auto)),
+  ),
+
+  "margin-y": (
+    property: (margin-top, margin-bottom),
+    class: "my",
+    important: true,
+    values: map.merge(spacing.$spacers, (auto: auto)),
+  ),
+
+  "margin-top": (
+    property: margin-top,
+    class: "mt",
+    important: true,
+    values: map.merge(spacing.$spacers, (auto: auto)),
+  ),
+
+  "margin-bottom": (
+    property: margin-bottom,
+    class: "mb",
+    important: true,
+    values: map.merge(spacing.$spacers, (auto: auto)),
+  ),
+
+  "margin-left": (
+    property: margin-left,
+    class: "ml",
+    important: true,
+    values: map.merge(spacing.$spacers, (auto: auto)),
+  ),
+
+  "margin-right": (
+    property: margin-right,
+    class: "mr",
+    important: true,
+    values: map.merge(spacing.$spacers, (auto: auto)),
+  ),
+
+  "padding": (
+    property: padding,
+    class: "p",
+    important: true,
+    values: spacing.$spacers,
+  ),
+
+  "padding-x": (
+    property: (padding-left, padding-right),
+    class: "px",
+    important: true,
+    values: spacing.$spacers,
+  ),
+
+  "padding-y": (
+    property: (padding-top, padding-bottom),
+    class: "py",
+    important: true,
+    values: spacing.$spacers,
+  ),
+
+  "padding-top": (
+    property: padding-top,
+    class: "pt",
+    important: true,
+    values: spacing.$spacers,
+  ),
+
+  "padding-bottom": (
+    property: padding-bottom,
+    class: "pb",
+    important: true,
+    values: spacing.$spacers,
+  ),
+
+  "padding-left": (
+    property: padding-left,
+    class: "pl",
+    important: true,
+    values: spacing.$spacers,
+  ),
+
+  "padding-right": (
+    property: padding-right,
+    class: "pr",
+    important: true,
+    values: spacing.$spacers,
+  ),
+
+  "gap": (
+    property: gap,
+    class: "gap",
+    important: true,
+    values: spacing.$spacers,
+  ),
+
+  "row-gap": (
+    property: row-gap,
+    class: "row-gap",
+    important: true,
+    values: spacing.$spacers,
+  ),
+
+  "column-gap": (
+    property: column-gap,
+    class: "column-gap",
+    important: true,
+    values: spacing.$spacers,
+  ),
+
+  // ===============================
+  // Flexbox & Grid
+  // ===============================
+  "flex-direction": (
+    property: flex-direction,
+    class: "flex-dir",
+    important: true,
+    values: flexbox.$flexbox-direction,
+  ),
+
+  "flex": (
+    property: flex,
+    class: "flex",
+    important: true,
+    values: flexbox.$flexbox-flex,
+  ),
+
+  "flex-wrap": (
+    property: flex-wrap,
+    class: "flex-wrap",
+    important: true,
+    values: flexbox.$flexbox-wrap,
+  ),
+
+  "flex-shrink": (
+    property: flex-shrink,
+    class: "flex-shrink",
+    important: true,
+    values: flexbox.$flexbox-shrink,
+  ),
+
+  "flex-grow": (
+    property: flex-grow,
+    class: "flex-grow",
+    important: true,
+    values: flexbox.$flexbox-grow,
+  ),
+
+  "justify-content": (
+    property: justify-content,
+    class: "justify",
+    important: true,
+    values: flexbox.$flexbox-justify-content,
+  ),
+
+  "align-items": (
+    property: align-items,
+    class: "items",
+    important: true,
+    values: flexbox.$flexbox-align-items,
+  ),
+
+  "align-content": (
+    property: align-content,
+    class: "content",
+    important: true,
+    values: flexbox.$flexbox-align-content,
+  ),
+
+  "align-self": (
+    property: align-self,
+    class: "self",
+    important: true,
+    values: flexbox.$flexbox-align-self,
+  ),
+
+  "center": (
+    property: display,
+    class: "center",
+    important: true,
+    values: flexbox.$flexbox-center,
+  ),
+
+  "center-x": (
+    property: display,
+    class: "center-x",
+    important: true,
+    values: flexbox.$flexbox-center-x,
+  ),
+
+  "center-y": (
+    property: display,
+    class: "center-y",
+    important: true,
+    values: flexbox.$flexbox-center-y,
+  ),
+
+  "row": (
+    property: display,
+    class: "row",
+    important: true,
+    values: flexbox.$flexbox-row,
+  ),
+
+  // ===============================
+  // Typography
+  // ===============================
+  "font-size": (
+    property: font-size,
+    class: "fs",
+    important: true,
+    values: typography.$font-sizes,
+  ),
+
+  "font-style": (
+    property: font-style,
+    class: "fst",
+    important: true,
+    values: typography.$font-styles,
+  ),
+
+  "font-weight": (
+    property: font-weight,
+    class: "fw",
+    important: true,
+    values: typography.$font-weights,
+  ),
+
+  "text-align": (
+    property: text-align,
+    class: "text",
+    important: true,
+    values: typography.$text-aligns,
+  ),
+
+  "text-transform": (
+    property: text-transform,
+    class: "case",
+    important: true,
+    values: typography.$text-transforms,
+  ),
+
+  "text-decoration": (
+    property: text-decoration,
+    class: "decor",
+    important: true,
+    values: typography.$text-decorations,
+  ),
+
+  "text-overflow": (
+    property: text-overflow,
+    class: "overflow-text",
+    important: true,
+    values: typography.$text-overflows,
+  ),
+
+  "text-indent": (
+    property: text-indent,
+    class: "indent",
+    important: true,
+    values: typography.$text-indents,
+  ),
+
+  "white-space": (
+    property: white-space,
+    class: "whitespace",
+    important: true,
+    values: typography.$text-white-spaces,
+  ),
+
+  "word-break": (
+    property: word-break,
+    class: "word-b",
+    important: true,
+    values: typography.$word-breaks,
+  ),
+
+  "word-wrap": (
+    property: word-wrap,
+    class: "wrap-w",
+    important: true,
+    values: typography.$word-wraps,
+  ),
+
+  "overflow-wrap": (
+    property: overflow-wrap,
+    class: "overflow-wrap",
+    important: true,
+    values: typography.$word-wraps,
+  ),
+
+  // ===============================
+  // Borders
+  // ===============================
+  "border": (
+    property: border,
+    class: "border",
+    important: true,
+    values: borders.$border-visibility,
+  ),
+
+  "border-top": (
+    property: border-top,
+    class: "border-top",
+    important: true,
+    values: borders.$border-visibility,
+  ),
+
+  "border-bottom": (
+    property: border-bottom,
+    class: "border-bottom",
+    important: true,
+    values: borders.$border-visibility,
+  ),
+
+  "border-right": (
+    property: border-right,
+    class: "border-right",
+    important: true,
+    values: borders.$border-visibility,
+  ),
+
+  "border-left": (
+    property: border-left,
+    class: "border-left",
+    important: true,
+    values: borders.$border-visibility,
+  ),
+
+  "border-width": (
+    property: border-width,
+    class: "border-w",
+    important: true,
+    values: borders.$border-widths,
+  ),
+
+  "border-style": (
+    property: border-style,
+    class: "border-s",
+    important: true,
+    values: borders.$border-style,
+  ),
+
+  "border-radius": (
+    property: border-radius,
+    class: "rounded",
+    important: true,
+    values: borders.$border-radius-classes,
+  ),
+
+  // ===============================
+  // Effects
+  // ===============================
+  "box-shadow": (
+    property: box-shadow,
+    class: "shadow",
+    important: true,
+    values: shadows.$box-shadows,
+  ),
+
+  "opacity": (
+    property: opacity,
+    class: "opacity",
+    important: true,
+    values: opacity.$opacitys,
+  ),
+
+  // ===============================
+  // Transform
+  // ===============================
+  "flip": (
+    property: transform,
+    class: "flip",
+    important: true,
+    values: flip.$flips,
+  ),
+
+  // ===============================
+  // Colors
+  // ===============================
+  "color": (
+    property: color,
+    class: "",
+    important: true,
+    values: utilities.map-to-vars(colors.$theme-text-colors, global.$prefix),
+  ),
+
+  "background-color": (
+    property: background-color,
+    class: "",
+    important: true,
+    values: utilities.map-to-vars(colors.$theme-background-colors, global.$prefix),
+  ),
+
+  "border-color": (
+    property: border-color,
+    class: "",
+    important: true,
+    values: utilities.map-to-vars(colors.$theme-border-colors, global.$prefix),
+  ),
 );

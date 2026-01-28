@@ -3,8 +3,9 @@
 // ===============================
 // Mixin: document-base
 // ===============================
-/// Base document styles powered by CSS variables
-/// Applies box-sizing, typography, direction, and layout defaults
+/// Applies base document styles using CSS variables
+/// Sets up box-sizing, typography, direction, and layout defaults
+/// @param {String} $prefix - CSS variable prefix (e.g., "fx-")
 @mixin document-base($prefix) {
 
   // Global box-sizing reset
@@ -15,6 +16,7 @@
   }
 
   // Enable smooth scrolling if user allows motion
+  // Note: scroll-behavior is not supported in IE, but gracefully degrades
   @media (prefers-reduced-motion: no-preference) {
     :root {
       scroll-behavior: smooth;
@@ -24,6 +26,8 @@
   // Document root settings
   html {
     direction: var(--#{$prefix}direction);
+    // Fallback for dvh (IE and older Safari)
+    min-height: 100vh;
     min-height: 100dvh;
     text-rendering: optimizeLegibility;
     -webkit-text-size-adjust: 100%;
@@ -46,11 +50,10 @@
 // ===============================
 // Mixin: base-elements
 // ===============================
-/// Base element styles powered by CSS variables
-/// Applies common element styles
+/// Applies base styles to common HTML elements using CSS variables
+/// Styles paragraphs, links, images, and other base elements
+/// @param {String} $prefix - CSS variable prefix (e.g., "fx-")
 @mixin base-elements($prefix) {
-
-  
   // Paragraph spacing
   p {
     margin-top: 0;
@@ -60,10 +63,10 @@
   // Horizontal rule
   hr {
     margin: 1rem 0;
-    color: inherit; 
+    color: inherit;
     border: 0;
     border-top: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
-    opacity: .5;
+    opacity: 0.5;
   }
 
   // Highlighted text
@@ -94,7 +97,6 @@
 
   // Link styles
   a {
-    user-select: none;
     color: var(--#{$prefix}link-color);
     text-decoration: vars.$link-decoration;
 
@@ -125,7 +127,7 @@
     padding: 0;
     border-style: none;
   }
-  
+
   // Reset textarea resize
   textarea {
     resize: vertical;
