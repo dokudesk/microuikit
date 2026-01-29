@@ -1,5 +1,6 @@
 @use 'sass:map';
 @use '../abstracts/variables/index' as vars;
+
 // ===============================
 // Mixin: document-base
 // ===============================
@@ -7,11 +8,8 @@
 /// Sets up box-sizing, typography, direction, and layout defaults
 /// @param {String} $prefix - CSS variable prefix (e.g., "fx-")
 @mixin document-base($prefix) {
-
   // Global box-sizing reset
-  *,
-  *::before,
-  *::after {
+  *, *::before, *::after {
     box-sizing: border-box;
   }
 
@@ -26,16 +24,15 @@
   // Document root settings
   html {
     direction: var(--#{$prefix}direction);
+
     // Fallback for dvh (IE and older Safari)
     min-height: 100vh;
     min-height: 100dvh;
-    text-rendering: optimizeLegibility;
-    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
 
   // Base typography & colors
-  html,
-  body {
+  html, body {
     margin: 0;
     padding: 0;
     color: var(--#{$prefix}text-color);
@@ -105,8 +102,7 @@
     }
   }
 
-  a:not([href]):not([class]),
-  a:not([href]):not([class]):hover {
+  a:not([href], [class]), a:not([href], [class]):hover {
     color: inherit;
     text-decoration: none;
   }

@@ -23,9 +23,10 @@
 
   // Extract heading element names (h1, h2, etc.)
   $heading-elements: map.keys($headings);
-  
+
   // Build list of heading class selectors (e.g., ".fx-h1", ".fx-h2")
   $heading-classes: ();
+
   @each $h in $heading-elements {
     $heading-classes: list.append($heading-classes, ".#{$prefix}#{$h}", $separator: comma);
   }

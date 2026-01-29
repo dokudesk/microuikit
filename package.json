@@ -17,7 +17,10 @@
     "build:css": "sass --no-error-css --style=expanded --source-map --embed-sources src/core.scss dist/core.css",
     "build:themes": "sass --no-error-css --style=expanded --source-map --embed-sources src/themes/theme-default.scss dist/themes/theme-default.css",
     "build:cdn": "postcss dist/core.css --map --output dist/core.min.css",
-    "build:themes:cdn": "postcss dist/themes/theme-default.css --map --output dist/themes/theme-default.min.css"
+    "build:themes:cdn": "postcss dist/themes/theme-default.css --map --output dist/themes/theme-default.min.css",
+    "stylelint:scss": "stylelint \"src/**/*.scss\"",
+    "stylelint:css": "stylelint \"dist/**/*.css\"",
+    "stylelint:scss:fix": "stylelint \"src/**/*.scss\" --fix"
   },
   "browserslist": [
     ">0.5%",
@@ -25,12 +28,17 @@
     "not dead"
   ],
   "devDependencies": {
+    "@stylistic/stylelint-plugin": "^5.0.1",
     "autoprefixer": "^10.4.20",
     "cssnano": "^7.0.6",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.45",
     "postcss-cli": "^11.0.0",
-    "sass": "^1.80.4"
+    "sass": "^1.80.4",
+    "stylelint": "^17.0.0",
+    "stylelint-config-standard": "^40.0.0",
+    "stylelint-config-standard-scss": "^17.0.0",
+    "stylelint-scss": "^7.0.0"
   },
   "publishConfig": {
     "access": "public"

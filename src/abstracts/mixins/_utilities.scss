@@ -21,6 +21,7 @@
 
     // Normalize property to a list format for consistent iteration
     $properties: ();
+
     @if meta.type-of($property-value) == "list" {
       $properties: $property-value;
     } @else {
@@ -29,6 +30,7 @@
 
     // Determine if !important flag should be appended
     $important: "";
+
     @if $enable-important and $enable-important == true {
       $important: " !important";
     }
@@ -39,6 +41,7 @@
         // Construct class suffix from namespace, class-name, and root-key
         // Joins non-empty parts with hyphens (e.g., "namespace-class-key")
         $suffix: "";
+
         @each $item in $namespace, $class-name, $root-key {
           @if $item != null and $item != "" {
             @if $suffix == "" {
@@ -75,9 +78,9 @@
               @if meta.type-of($root-value) == "map" {
                 @each $k, $v in $root-value {
                   #{$k}: #{$v}#{$important};
-                  
+
                   // Handle 100dvh and 100dvw fallback for IE and older Safari
-                  //-----------------------------------------------------------
+                  // -----------------------------------------------------------
                   @if $v == 100dvh {
                     #{$k}: 100vh#{$important};
                   }
@@ -85,18 +88,19 @@
                   @if $v == 100dvw {
                     #{$k}: 100vw#{$important};
                   }
-                  //-----------------------------------------------------------
+
+                  // -----------------------------------------------------------
 
 
 
-                  
+
                 }
               } @else {
                 // Single property with single value
                 #{$property}: #{$root-value}#{$important};
 
                 // Handle 100dvh and 100dvw fallback for IE and older Safari
-                //-----------------------------------------------------------
+                // -----------------------------------------------------------
                 @if $root-value == 100dvh {
                   #{$property}: 100vh#{$important};
                 }
@@ -104,7 +108,8 @@
                 @if $root-value == 100dvw {
                   #{$property}: 100vw#{$important};
                 }
-                //-----------------------------------------------------------
+
+                // -----------------------------------------------------------
               }
             }
 
@@ -135,6 +140,7 @@
 
     // Build namespace prefix for variable names
     $ns: "";
+
     @if $namespace and $namespace != "" {
       $ns: "#{$namespace}-";
     }

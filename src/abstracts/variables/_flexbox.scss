@@ -50,7 +50,7 @@ $flexbox-align-self: (
   baseline: baseline,
   stretch: stretch,
 ) !default;
-$flexbox-float:(start: var(--#{global.$prefix}text-start), end: var(--#{global.$prefix}text-end), none: none) !default;
+$flexbox-float: (start: var(--#{global.$prefix}text-start), end: var(--#{global.$prefix}text-end), none: none) !default;
 $flexbox-align-vertical: (
   baseline: baseline,
   top: top,

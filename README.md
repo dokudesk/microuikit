@@ -1,39 +1,132 @@
 # Flexa
 
-Starter project for building a custom CSS package with:
-- Sourcemap
-- Sass support
-- CDN-ready build
+Compact CSS package for developing web UI. Responsive-ready and easy to use.
 
-## Setup
+## Features
+
+- **Source maps** — Debug with original SCSS line numbers
+- **Sass (SCSS)** — Variables, mixins, and modular architecture
+- **CDN-ready build** — Minified CSS for unpkg and jsDelivr
+- **CSS Cascade Layers** — Predictable cascade control
+- **Utility-first** — Utility classes generated from design tokens
+- **Theme support** — Dark/light themes and `prefers-color-scheme`
+- **RTL / LTR** — Full direction support via selectors
+- **Design tokens** — Colors, spacing, typography, borders, shadows, transitions, flexbox, and more
+
+## Installation
 
 ```bash
 npm install
 ```
 
-## Build outputs
+## Usage
+
+### CDN
+
+```html
+<!-- unpkg -->
+<link rel="stylesheet" href="https://unpkg.com/flexa@1/dist/core.min.css" />
+
+<!-- jsDelivr -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flexa@1/dist/core.min.css" />
+```
+
+### npm / Local build
+
+After `npm run build`, link the built files:
+
+```html
+<link rel="stylesheet" href="path/to/dist/core.css" />
+<!-- Optional theme -->
+<link rel="stylesheet" href="path/to/dist/themes/theme-default.css" />
+```
+
+### Theme and direction
+
+- **Theme:** Set `data-theme` or `theme` on `<html>` (e.g. `data-theme="dark"`, `data-theme="auto"`).
+- **RTL:** Use `dir="rtl"` or `data-dir="rtl"` on `<html>` for RTL variables.
+
+## Build
 
 ```bash
 npm run build
 ```
 
-Outputs in `dist/`:
-- `core.css` (with sourcemap)
-- `core.min.css` (for CDN)
-- `themes/theme-default.css` (with sourcemap)
-- `themes/theme-default.min.css` (for CDN)
+**Outputs in `dist/`:**
+
+| File | Description |
+|------|-------------|
+| `core.css` | Main stylesheet (expanded, with source map) |
+| `core.min.css` | Minified for CDN |
+| `themes/theme-default.css` | Default theme (expanded, with source map) |
+| `themes/theme-default.min.css` | Theme minified for CDN |
+
+**Individual steps:**
+
+- `npm run build:css` — Build `core.css` only
+- `npm run build:themes` — Build theme CSS only
+- `npm run build:cdn` — Minify `core.css` → `core.min.css`
+- `npm run build:themes:cdn` — Minify theme → `theme-default.min.css`
 
 ## Project structure
 
 ```
-src/
-  core.scss
-  themes/
-    theme-default.scss
-dist/          # Production build
-  core.css
-  core.min.css
-  themes/
-    theme-default.css
-    theme-default.min.css
+flexa/
+├── src/
+│   ├── core.scss              # Main entry
+│   ├── abstracts/
+│   │   ├── _functions.scss    # Sass helpers
+│   │   ├── variables/         # Design tokens (colors, spacing, typography, etc.)
+│   │   │   ├── _index.scss
+│   │   │   ├── _global.scss
+│   │   │   ├── _colors.scss
+│   │   │   ├── _spacing.scss
+│   │   │   ├── _typography.scss
+│   │   │   ├── _borders.scss
+│   │   │   ├── _shadows.scss
+│   │   │   ├── _transitions.scss
+│   │   │   ├── _sizing.scss
+│   │   │   ├── _flexbox.scss
+│   │   │   ├── _utilities.scss
+│   │   │   └── ...
+│   │   └── mixins/            # Theme, typography, utilities, banner
+│   │       ├── _index.scss
+│   │       ├── _theme.scss
+│   │       ├── _utilities.scss
+│   │       └── ...
+│   ├── foundation/            # Base styles, headings
+│   │   ├── _index.scss
+│   │   ├── _base.scss
+│   │   └── _headings.scss
+│   └── themes/
+│       └── theme-default.scss
+├── dist/                      # Production build (generated)
+├── examples/                  # Demos and playground
+├── docs/
+├── stylelint.config.mjs       # Stylelint 17 + SCSS + stylistic
+├── postcss.config.cjs         # Autoprefixer + cssnano
+└── package.json
 ```
+
+## Scripts
+
+| Script | Description |
+|--------|-------------|
+| `npm run build` | Full build (clean + CSS + themes + minify) |
+| `npm run build:css` | Build `core.css` |
+| `npm run build:themes` | Build theme CSS |
+| `npm run build:cdn` | Minify core for CDN |
+| `npm run build:themes:cdn` | Minify theme for CDN |
+| `npm run stylelint:scss` | Lint SCSS |
+| `npm run stylelint:scss:fix` | Lint and auto-fix SCSS |
+| `npm run stylelint:css` | Lint built CSS |
+
+## Development
+
+- **Linting:** Stylelint 17 with `stylelint-config-standard-scss` and `@stylistic/stylelint-plugin`.
+- **Prefix:** Default CSS variable/class prefix is `fx-` (configurable in `src/abstracts/variables/_global.scss`).
+- **Browsers:** Defined in `browserslist` in `package.json` (e.g. `>0.5%`, last 2 versions).
+
+## License
+
+MIT

@@ -26,9 +26,11 @@
 
     // Derive a min size that scales gently from the base size
     $min: $max;
+
     @if $max > $base {
       $min: $base + math.div(($max - $base), $factor);
     }
+
     $raw-slope: math.div(($max - $min), $bp) * 100;
     $slope: math.div(math.round($raw-slope * 10), 10);
 

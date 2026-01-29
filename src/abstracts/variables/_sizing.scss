@@ -18,10 +18,8 @@ $common-size-values: (
 $width-values: map.merge($common-size-values,
     (vw-100: 100vw,
      dvw-100: 100dvw)) !default;
-
 $max-width-values: map.merge($width-values,
     (c-width: max-content)) !default;
-
 $min-width-values: map.merge($width-values,
     (c-width: min-content)) !default;
 
@@ -31,9 +29,7 @@ $min-width-values: map.merge($width-values,
 $height-values: map.merge($common-size-values,
     (vh-100: 100vh,
      dvh-100: 100dvh)) !default;
-
 $max-height-values: map.merge($height-values,
     (c-height: max-content)) !default;
-
 $min-height-values: map.merge($height-values,
     (c-height: min-content)) !default;

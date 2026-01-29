@@ -6,7 +6,8 @@
 /// @param {String} $selector - Custom selector (optional, defaults to theme attribute selectors)
 @mixin theme-selector($mode, $selector: null) {
   $sel: $selector;
-  @if $selector == null {
+
+  @if not $selector {
     $sel: "html[theme='#{$mode}'], html[data-theme='#{$mode}']";
   }
   #{$sel} {
@@ -23,7 +24,8 @@
 @mixin prefers-color-scheme($mode, $selector: null) {
   @media (prefers-color-scheme: #{$mode}) {
     $sel: $selector;
-    @if $selector == null {
+
+    @if not $selector {
       $sel: "html[theme='auto'], html[data-theme='auto']";
     }
     #{$sel} {
@@ -40,7 +42,7 @@
 @mixin direction-rtl-selector($selector: null) {
   $sel: $selector;
 
-  @if $selector == null {
+  @if not $selector {
     $sel: "html[dir='rtl'], html[direction='rtl'], html[data-dir='rtl'], html[data-direction='rtl']";
   }
 

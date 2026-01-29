@@ -43,6 +43,7 @@
   $second: $num % 16;
   $first-char: string.slice($hex-chars, $first + 1, $first + 1);
   $second-char: string.slice($hex-chars, $second + 1, $second + 1);
+
   @return string.to-upper-case($first-char + $second-char);
 }
 
@@ -58,10 +59,12 @@
     $r: math.round(color.channel($color, "red", $space: rgb));
     $g: math.round(color.channel($color, "green", $space: rgb));
     $b: math.round(color.channel($color, "blue", $space: rgb));
+
     // Convert RGB values to hex string manually
     $hex-r: to-hex($r);
     $hex-g: to-hex($g);
     $hex-b: to-hex($b);
+
     @return string.unquote("##{$hex-r}#{$hex-g}#{$hex-b}");
   }
 
