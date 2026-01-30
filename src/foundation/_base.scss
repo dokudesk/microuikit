@@ -99,9 +99,11 @@
 
     &:hover {
       color: var(--#{$prefix}link-hover-color);
+      cursor: pointer;
     }
   }
 
+  // Reset link styles
   a:not([href], [class]), a:not([href], [class]):hover {
     color: inherit;
     text-decoration: none;
@@ -122,11 +124,17 @@
   .#{$prefix}visible {
     visibility: visible !important;
   }
-  
+
   // Reset Firefox focus styles
   ::-moz-focus-inner {
     padding: 0;
     border-style: none;
+  }
+
+  // Focus styles
+  *:focus, *:focus-visible {
+    outline-offset: var(--#{$prefix}focus-ring-outline-offset);
+    outline: var(--#{$prefix}focus-ring-outline-width) solid var(--#{$prefix}focus-ring-color);
   }
 
   // Reset textarea resize

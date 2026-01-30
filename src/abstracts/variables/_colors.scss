@@ -60,6 +60,18 @@ $box-shadow-color: rgb(0 0 0 / 50%) !default;
 $box-shadow-color-dark: rgb(255 255 255 / 50%) !default;
 
 // ===============================
+// Validation Colors
+// ===============================
+$valid-color: $success !default;
+$valid-color-dark: $success !default;
+$valid-border-color: $success !default;
+$valid-border-color-dark: $success !default;
+$invalid-color: $danger !default;
+$invalid-color-dark: $danger !default;
+$invalid-border-color: $danger !default;
+$invalid-border-color-dark: $danger !default;
+
+// ===============================
 // Highlight & Links
 // ===============================
 $highlight-color: $warning !default;
@@ -70,11 +82,8 @@ $link-hover-color: fn.round-color(color.mix($black, $link-color, 25%)) !default;
 $link-color-dark-temp: color.mix($white, $primary, 25%) !default;
 $link-color-dark: fn.round-color($link-color-dark-temp) !default;
 $link-hover-color-dark: fn.round-color(color.mix($black, $link-color-dark-temp, 25%)) !default;
-$valid-color: $success !default;
-$valid-color-dark: fn.round-color(color.mix($white, $valid-color, 25%)) !default;
-$invalid-color: $danger !default;
-$invalid-color-dark: fn.round-color(color.mix($white, $invalid-color, 25%)) !default;
-
+$focus-ring-color: $primary !default;
+$focus-ring-color-dark: $primary !default;
 
 // ===============================
 // Public Color Maps
@@ -142,6 +151,9 @@ $theme-light-colors: (
   highlight-background-color: $highlight-background-color,
   valid-color: $valid-color,
   invalid-color: $invalid-color,
+  valid-border-color: $valid-border-color,
+  invalid-border-color: $invalid-border-color,
+  focus-ring-color: $focus-ring-color,
 ) !default;
 $theme-dark-colors: (
   text-color: $text-color-dark,
@@ -155,4 +167,7 @@ $theme-dark-colors: (
   highlight-background-color: $highlight-background-color-dark,
   valid-color: $valid-color-dark,
   invalid-color: $invalid-color-dark,
+  valid-border-color: $valid-border-color-dark,
+  invalid-border-color: $invalid-border-color-dark,
+  focus-ring-color: $focus-ring-color-dark,
 ) !default;

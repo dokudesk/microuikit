@@ -11,6 +11,8 @@
 @use 'shadows' as shadows;
 @use 'opacity' as opacity;
 @use 'transitions' as transitions;
+@use 'validation' as validation;
+@use 'focus' as focus;
 @use '../mixins/utilities' as utilities;
 
 // ===============================
@@ -24,12 +26,10 @@ $root-common-variables: (
   // Typography (Base - Highest Priority)
   // ===============================
   "common-font-variables": (
-    property: "",
     values: typography.$font-root-common-variables,
   ),
 
   "ltr-font-variables": (
-    property: "",
     values: typography.$font-root-variables-ltr,
   ),
 
@@ -37,32 +37,26 @@ $root-common-variables: (
   // Colors (Depends on Typography)
   // ===============================
   "colors": (
-    property: "",
     values: colors.$colors,
   ),
 
   "theme-colors": (
-    property: "",
     values: colors.$theme-colors,
   ),
 
   "theme-light-colors": (
-    property: "",
     values: colors.$theme-light-colors,
   ),
 
   "theme-text-colors": (
-    property: "",
     values: colors.$theme-text-colors,
   ),
 
   "theme-background-colors": (
-    property: "",
     values: colors.$theme-background-colors,
   ),
 
   "theme-border-colors": (
-    property: "",
     values: colors.$theme-border-colors,
   ),
 
@@ -70,12 +64,10 @@ $root-common-variables: (
   // Layout & Borders (Depends on Colors)
   // ===============================
   "border-properties": (
-    property: "",
     values: borders.$default-border-properties,
   ),
 
   "default-gutter": (
-    property: "",
     values: spacing.$default-gutter,
   ),
 
@@ -83,9 +75,12 @@ $root-common-variables: (
   // Effects & Animations (Lowest Priority)
   // ===============================
   "transition-delays": (
-    property: "",
     namespace: "transition",
     values: transitions.$transition-delays,
+  ),
+  "focus-ring": (
+    namespace: "focus-ring",
+    values: focus.$focus-ring,
   ),
 ) !default;
 
@@ -783,9 +778,9 @@ $system-classes: (
     class-root-key: false,
     important: false,
     values: (null: (
-      flex-shrink: 0 , 
-      width: 100% , 
-      max-width: 100% ,
+      flex-shrink: 0,
+      width: 100%,
+      max-width: 100%,
       margin-top: calc(1 * var(--#{global.$prefix}gutter-y)),
       margin-left: calc(0.5 * var(--#{global.$prefix}gutter-x)),
       margin-right: calc(0.5 * var(--#{global.$prefix}gutter-x)),
@@ -930,8 +925,8 @@ $system-classes: (
     class: "rounded-bottom",
     important: true,
     values: spacing.$spacers,
-  ), 
-  
+  ),
+
   "rounded-left": (
     property: (border-top-left-radius, border-bottom-left-radius),
     class: "rounded-left",
@@ -941,7 +936,7 @@ $system-classes: (
 
   "rounded-right": (
     property: (border-top-right-radius, border-bottom-right-radius),
-    class: "rounded-right", 
+    class: "rounded-right",
     important: true,
     values: spacing.$spacers,
   ),
@@ -980,7 +975,7 @@ $system-classes: (
     important: true,
     values: spacing.$spacers,
   ),
-  
+
   "rounded-end": (
     property: (border-end-start-radius, border-end-end-radius),
     class: "rounded-end",
@@ -1008,7 +1003,7 @@ $system-classes: (
     important: true,
     values: spacing.$spacers,
   ),
-  
+
   "rounded-end-bottom": (
     property: border-end-end-radius,
     class: "rounded-end-bottom",
@@ -1016,5 +1011,22 @@ $system-classes: (
     values: spacing.$spacers,
   ),
 
+// ===============================
+// Validation
+// ===============================
+  "valid": (
+    property: color,
+    class: validation.$valid-classes,
+    class-root-key: false,
+    important: false,
+    values: validation.$valid-properties,
+  ),
 
+  "invalid": (
+    property: color,
+    class: validation.$invalid-classes,
+    class-root-key: false,
+    important: false,
+    values: validation.$invalid-properties,
+  ),
 );

@@ -182,9 +182,6 @@
     // Extract namespace for variable grouping (e.g., "border", "color", "spacing")
     $namespace: map.get($utility, namespace);
 
-    // Extract property value for variable generation
-    $property-value: map.get($utility, property);
-
     // Get key/value pairs for CSS variable generation
     $values: map.get($utility, values);
 
@@ -200,10 +197,6 @@
       @each $key, $value in $values {
         // Convert key to string for interpolation
         $key-name: "" + $key;
-
-        @if $property-value and $property-value != "" {
-          $key-name: #{$property-value};
-        }
 
         // Output CSS variable: --prefix-namespace-key: value
         --#{$prefix}#{$ns}#{$key-name}: #{$value};
