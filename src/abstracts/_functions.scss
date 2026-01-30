@@ -44,7 +44,7 @@
   $first-char: string.slice($hex-chars, $first + 1, $first + 1);
   $second-char: string.slice($hex-chars, $second + 1, $second + 1);
 
-  @return string.to-upper-case($first-char + $second-char);
+  @return string.to-lower-case($first-char + $second-char);
 }
 
 // ===============================

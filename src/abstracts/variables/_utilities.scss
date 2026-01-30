@@ -502,7 +502,7 @@ $system-classes: (
 
   "flex-row": (
     property: display,
-    class: "row",
+    class: "flex-row",
     important: true,
     values: flexbox.$flexbox-row,
   ),
@@ -712,8 +712,7 @@ $system-classes: (
     class: layout.$container-classes,
     class-root-key: false,
     important: true,
-    values: (width: 100%),
-    extended-values: (margin-right: auto, margin-left: auto),
+    values: (null: (width: 100% , margin-right: auto, margin-left: auto)),
   ),
 
   "container-max-width-sm": (
@@ -721,8 +720,8 @@ $system-classes: (
     class: ("container", "container-sm"),
     class-root-key: false,
     important: true,
-    values: (max-width: 540px),
-    min-media-sizes: 576px,
+    values:(max-width: 540px),
+    min-media-sizes: 576px
   ),
 
   "container-max-width-md": (
@@ -730,8 +729,8 @@ $system-classes: (
     class: ("container","container-sm", "container-md"),
     class-root-key: false,
     important: true,
-    values: (max-width: 720px),
-    min-media-sizes: 768px,
+    values:(max-width: 720px),
+    min-media-sizes: 768px
   ),
 
   "container-max-width-lg": (
@@ -739,8 +738,8 @@ $system-classes: (
     class: ("container","container-sm", "container-md", "container-lg"),
     class-root-key: false,
     important: true,
-    values: (max-width: 960px),
-    min-media-sizes: 992px,
+    values:(max-width: 960px),
+    min-media-sizes: 992px
   ),
 
   "container-max-width-xl": (
@@ -748,8 +747,8 @@ $system-classes: (
     class: ("container","container-sm", "container-md", "container-lg", "container-xl"),
     class-root-key: false,
     important: true,
-    values: (max-width: 1140px),
-    min-media-sizes: 1200px,
+    values:(max-width: 1140px),
+    min-media-sizes: 1200px
   ),
 
   "container-max-width-xxl": (
@@ -757,31 +756,40 @@ $system-classes: (
     class: ("container","container-sm", "container-md", "container-lg", "container-xl", "container-xxl"),
     class-root-key: false,
     important: true,
-    values: (max-width: 1320px),
-    min-media-sizes: 1400px,
+    values:(max-width: 1320px),
+    min-media-sizes: 1400px
   ),
 
-    "row": (property: "display",
-      class: "row",
-      class-root-key: false,
-      important: false,
-      values: (display: flex),
-      extended-values: (flex-wrap: wrap,
+  "row": (
+    property: "display",
+    class: "row",
+    class-root-key: false,
+    important: false,
+    values: (null: (
+      display: flex,
+      flex-wrap: wrap,
       "--#{global.$prefix}gutter-y": 0,
       "--#{global.$prefix}gutter-x": var(--#{global.$prefix}gutter-width),
-        margin-top: calc(-1 * var(--#{global.$prefix}gutter-y)),
-        margin-left: calc(-0.5 * var(--#{global.$prefix}gutter-x)),
-        margin-right: calc(-0.5 * var(--#{global.$prefix}gutter-x)),
+      margin-top: calc(-1 * var(--#{global.$prefix}gutter-y)),
+      margin-left: calc(-0.5 * var(--#{global.$prefix}gutter-x)),
+      margin-right: calc(-0.5 * var(--#{global.$prefix}gutter-x)),
       ),
     ),
+  ),
 
   "row-content": (
     property: "flex-shrink",
     class: "row > *",
     class-root-key: false,
     important: false,
-    values: (flex-shrink: 0),
-    extended-values: (width: 100% , max-width: 100%),
+    values: (null: (
+      flex-shrink: 0 , 
+      width: 100% , 
+      max-width: 100% ,
+      margin-top: calc(1 * var(--#{global.$prefix}gutter-y)),
+      margin-left: calc(0.5 * var(--#{global.$prefix}gutter-x)),
+      margin-right: calc(0.5 * var(--#{global.$prefix}gutter-x)),
+    )),
   ),
 
   "column": (

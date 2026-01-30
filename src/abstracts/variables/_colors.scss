@@ -70,6 +70,11 @@ $link-hover-color: fn.round-color(color.mix($black, $link-color, 25%)) !default;
 $link-color-dark-temp: color.mix($white, $primary, 25%) !default;
 $link-color-dark: fn.round-color($link-color-dark-temp) !default;
 $link-hover-color-dark: fn.round-color(color.mix($black, $link-color-dark-temp, 25%)) !default;
+$valid-color: $success !default;
+$valid-color-dark: fn.round-color(color.mix($white, $valid-color, 25%)) !default;
+$invalid-color: $danger !default;
+$invalid-color-dark: fn.round-color(color.mix($white, $invalid-color, 25%)) !default;
+
 
 // ===============================
 // Public Color Maps
@@ -135,6 +140,8 @@ $theme-light-colors: (
   link-color: $link-color,
   link-hover-color: $link-hover-color,
   highlight-background-color: $highlight-background-color,
+  valid-color: $valid-color,
+  invalid-color: $invalid-color,
 ) !default;
 $theme-dark-colors: (
   text-color: $text-color-dark,
@@ -146,4 +153,6 @@ $theme-dark-colors: (
   link-color: $link-color-dark,
   link-hover-color: $link-hover-color-dark,
   highlight-background-color: $highlight-background-color-dark,
+  valid-color: $valid-color-dark,
+  invalid-color: $invalid-color-dark,
 ) !default;
