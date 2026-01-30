@@ -903,4 +903,110 @@ $system-classes: (
     values: spacing.$gutters,
   ),
 
+  "rounded": (
+    property: border-radius,
+    class: "rounded",
+    important: true,
+    values: borders.$rounded,
+  ),
+
+  "rounded-top": (
+    property: (border-top-left-radius, border-top-right-radius),
+    class: "rounded-top",
+    important: true,
+    values: spacing.$spacers,
+  ),
+
+  "rounded-bottom": (
+    property: (border-bottom-left-radius, border-bottom-right-radius),
+    class: "rounded-bottom",
+    important: true,
+    values: spacing.$spacers,
+  ), 
+  
+  "rounded-left": (
+    property: (border-top-left-radius, border-bottom-left-radius),
+    class: "rounded-left",
+    important: true,
+    values: spacing.$spacers,
+  ),
+
+  "rounded-right": (
+    property: (border-top-right-radius, border-bottom-right-radius),
+    class: "rounded-right", 
+    important: true,
+    values: spacing.$spacers,
+  ),
+
+  "rounded-top-left": (
+    property: border-top-left-radius,
+    class: "rounded-top-left",
+    important: true,
+    values: spacing.$spacers,
+  ),
+
+  "rounded-top-right": (
+    property: border-top-right-radius,
+    class: "rounded-top-right",
+    important: true,
+    values: spacing.$spacers,
+  ),
+
+  "rounded-bottom-left": (
+    property: border-bottom-left-radius,
+    class: "rounded-bottom-left",
+    important: true,
+    values: spacing.$spacers,
+  ),
+
+  "rounded-bottom-right": (
+    property: border-bottom-right-radius,
+    class: "rounded-bottom-right",
+    important: true,
+    values: spacing.$spacers,
+  ),
+
+  "rounded-start": (
+    property: (border-start-start-radius, border-end-start-radius),
+    class: "rounded-start",
+    important: true,
+    values: spacing.$spacers,
+  ),
+  
+  "rounded-end": (
+    property: (border-end-start-radius, border-end-end-radius),
+    class: "rounded-end",
+    important: true,
+    values: spacing.$spacers,
+  ),
+
+  "rounded-start-top": (
+    property: border-start-start-radius,
+    class: "rounded-start-top",
+    important: true,
+    values: spacing.$spacers,
+  ),
+
+  "rounded-start-bottom": (
+    property: border-start-end-radius,
+    class: "rounded-start-bottom",
+    important: true,
+    values: spacing.$spacers,
+  ),
+
+  "rounded-end-top": (
+    property: border-end-start-radius,
+    class: "rounded-end-top",
+    important: true,
+    values: spacing.$spacers,
+  ),
+  
+  "rounded-end-bottom": (
+    property: border-end-end-radius,
+    class: "rounded-end-bottom",
+    important: true,
+    values: spacing.$spacers,
+  ),
+
+
 );

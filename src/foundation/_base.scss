@@ -107,17 +107,22 @@
     text-decoration: none;
   }
 
-  // Visibility helpers
+  // Hidden
   [hidden],
   .#{$prefix}hidden {
     display: none !important;
   }
 
-  // Invisible helper
+  // Invisible
   .#{$prefix}invisible {
     visibility: hidden !important;
   }
 
+  // Visible
+  .#{$prefix}visible {
+    visibility: visible !important;
+  }
+  
   // Reset Firefox focus styles
   ::-moz-focus-inner {
     padding: 0;

@@ -45,7 +45,7 @@ $font-root-variables-ltr: (
 $font-root-variables-rtl: (
   "font-family-base": var(--#{global.$prefix}font-family-rtl),
   "font-size-base": var(--#{global.$prefix}font-size-base-rtl),
-  "font-weight-base": var(--#{global.$prefix}font-weight-base-ltr),
+  "font-weight-base": var(--#{global.$prefix}font-weight-base-rtl),
 ) !default;
 
 // ===============================
