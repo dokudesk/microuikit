@@ -74,6 +74,11 @@ $root-common-variables: (
     values: borders.$default-border-properties,
   ),
 
+  "default-gutter": (
+    property: "",
+    values: spacing.$default-gutter,
+  ),
+
   // ===============================
   // Effects & Animations (Lowest Priority)
   // ===============================
@@ -84,7 +89,6 @@ $root-common-variables: (
   ),
 ) !default;
 
-
 // Main utilities
 $root-system-variables: map.merge(
   $root-common-variables,
@@ -92,7 +96,7 @@ $root-system-variables: map.merge(
     "align": (
       property: "",
       values: typography.$text-aligns-ltr,
-    ),
+    )
   ),
 );
 
@@ -311,6 +315,20 @@ $system-classes: (
     values: map.merge(spacing.$spacers, (auto: auto)),
   ),
 
+  "margin-start": (
+    property: margin-inline-start,
+    class: "ms",
+    important: true,
+    values: map.merge(spacing.$spacers, (auto: auto)),
+  ),
+
+  "margin-end": (
+    property: margin-inline-end,
+    class: "me",
+    important: true,
+    values: map.merge(spacing.$spacers, (auto: auto)),
+  ),
+
   "padding": (
     property: padding,
     class: "p",
@@ -356,6 +374,20 @@ $system-classes: (
   "padding-right": (
     property: padding-right,
     class: "pr",
+    important: true,
+    values: spacing.$spacers,
+  ),
+
+  "padding-start": (
+    property: padding-inline-start,
+    class: "ps",
+    important: true,
+    values: spacing.$spacers,
+  ),
+
+  "padding-end": (
+    property: padding-inline-end,
+    class: "pe",
     important: true,
     values: spacing.$spacers,
   ),
@@ -468,7 +500,7 @@ $system-classes: (
     values: flexbox.$flexbox-center-y,
   ),
 
-  "row": (
+  "flex-row": (
     property: display,
     class: "row",
     important: true,
@@ -671,4 +703,204 @@ $system-classes: (
     important: true,
     values: utilities.map-to-vars(colors.$theme-border-colors, global.$prefix),
   ),
+
+  // ===============================
+  // Container
+  // ===============================
+  "container-max-width": (
+    property: max-width,
+    class: layout.$container-classes,
+    class-root-key: false,
+    important: true,
+    values: (width: 100%),
+    extended-values: (margin-right: auto, margin-left: auto),
+  ),
+
+  "container-max-width-sm": (
+    property: max-width,
+    class: ("container", "container-sm"),
+    class-root-key: false,
+    important: true,
+    values: (max-width: 540px),
+    min-media-sizes: 576px,
+  ),
+
+  "container-max-width-md": (
+    property: max-width,
+    class: ("container","container-sm", "container-md"),
+    class-root-key: false,
+    important: true,
+    values: (max-width: 720px),
+    min-media-sizes: 768px,
+  ),
+
+  "container-max-width-lg": (
+    property: max-width,
+    class: ("container","container-sm", "container-md", "container-lg"),
+    class-root-key: false,
+    important: true,
+    values: (max-width: 960px),
+    min-media-sizes: 992px,
+  ),
+
+  "container-max-width-xl": (
+    property: max-width,
+    class: ("container","container-sm", "container-md", "container-lg", "container-xl"),
+    class-root-key: false,
+    important: true,
+    values: (max-width: 1140px),
+    min-media-sizes: 1200px,
+  ),
+
+  "container-max-width-xxl": (
+    property: max-width,
+    class: ("container","container-sm", "container-md", "container-lg", "container-xl", "container-xxl"),
+    class-root-key: false,
+    important: true,
+    values: (max-width: 1320px),
+    min-media-sizes: 1400px,
+  ),
+
+    "row": (property: "display",
+      class: "row",
+      class-root-key: false,
+      important: false,
+      values: (display: flex),
+      extended-values: (flex-wrap: wrap,
+      "--#{global.$prefix}gutter-y": 0,
+      "--#{global.$prefix}gutter-x": var(--#{global.$prefix}gutter-width),
+        margin-top: calc(-1 * var(--#{global.$prefix}gutter-y)),
+        margin-left: calc(-0.5 * var(--#{global.$prefix}gutter-x)),
+        margin-right: calc(-0.5 * var(--#{global.$prefix}gutter-x)),
+      ),
+    ),
+
+  "row-content": (
+    property: "flex-shrink",
+    class: "row > *",
+    class-root-key: false,
+    important: false,
+    values: (flex-shrink: 0),
+    extended-values: (width: 100% , max-width: 100%),
+  ),
+
+  "column": (
+    property: "width",
+    class: "col",
+    important: false,
+    values: layout.$columns,
+    extended-values: (flex: 0 0 auto),
+  ),
+
+  "offset": (
+    property: "margin-inline-start",
+    class: "offset",
+    important: false,
+    values: layout.$offsets,
+  ),
+
+  "column-sm": (
+    property: "width",
+    class: "col-sm",
+    class-root-key: true,
+    important: false,
+    values: layout.$columns,
+    extended-values: (flex: 0 0 auto),
+    min-media-sizes: 576px,
+  ),
+
+  "offset-sm": (
+    property: "margin-inline-start",
+    class: "offset-sm",
+    important: false,
+    values: layout.$offsets,
+    min-media-sizes: 576px,
+  ),
+
+  "column-md": (
+    property: "width",
+    class: "col-md",
+    class-root-key: true,
+    important: false,
+    values: layout.$columns,
+    extended-values: (flex: 0 0 auto),
+    min-media-sizes: 768px,
+  ),
+
+  "offset-md": (
+    property: "margin-inline-start",
+    class: "offset-md",
+    important: false,
+    values: layout.$offsets,
+    min-media-sizes: 768px,
+  ),
+
+  "column-lg": (
+    property: "width",
+    class: "col-lg",
+    class-root-key: true,
+    important: false,
+    values: layout.$columns,
+    extended-values: (flex: 0 0 auto),
+    min-media-sizes: 992px,
+  ),
+
+  "offset-lg": (
+    property: "margin-inline-start",
+    class: "offset-lg",
+    important: false,
+    values: layout.$offsets,
+    min-media-sizes: 992px,
+  ),
+
+  "column-xl": (
+    property: "width",
+    class: "col-xl",
+    class-root-key: true,
+    important: false,
+    values: layout.$columns,
+    extended-values: (flex: 0 0 auto),
+    min-media-sizes: 1200px,
+  ),
+
+  "offset-xl": (
+    property: "margin-inline-start",
+    class: "offset-xl",
+    important: false,
+    values: layout.$offsets,
+    min-media-sizes: 1200px,
+  ),
+
+  "column-xxl": (
+    property: "width",
+    class: "col-xxl",
+    class-root-key: true,
+    important: false,
+    values: layout.$columns,
+    extended-values: (flex: 0 0 auto),
+    min-media-sizes: 1400px,
+  ),
+
+  "offset-xxl": (
+    property: "margin-inline-start",
+    class: "offset-xxl",
+    important: false,
+    values: layout.$offsets,
+    min-media-sizes: 1400px,
+  ),
+
+  "gutters-x": (
+    property: "--#{global.$prefix}gutter-x",
+    class: "gx",
+    important: true,
+    values: spacing.$gutters,
+  ),
+
+  "gutters-y": (
+    property: "--#{global.$prefix}gutter-y",
+    class: "gy",
+    important: true,
+    values: spacing.$gutters,
+  ),
+
 );

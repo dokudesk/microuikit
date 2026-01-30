@@ -23,6 +23,7 @@ export default {
     "scss/selector-no-redundant-nesting-selector": true,
     "scss/dollar-variable-no-missing-interpolation": true,
     "scss/load-no-partial-leading-underscore": true,
+    "scss/at-rule-conditional-no-parentheses": null,
     "no-invalid-position-declaration": null,
 
     // Structure
@@ -30,6 +31,13 @@ export default {
     "selector-max-id": 0,
     "selector-max-universal": 1,
     "no-empty-source": true,
+    "comment-empty-line-before": [
+      "always",
+      {
+        except: ["first-nested"],
+        ignore: ["stylelint-commands", "after-comment"]
+      }
+    ],
 
     // Colors & numbers
     "color-hex-length": "short",
@@ -60,6 +68,7 @@ export default {
     "@stylistic/declaration-colon-space-before": "never",
     "@stylistic/block-opening-brace-space-before": "always",
     "@stylistic/selector-list-comma-space-after": "always",
-    "@stylistic/no-eol-whitespace": true
+    "@stylistic/no-eol-whitespace": true,
+    "@stylistic/max-empty-lines": 1
   }
 };

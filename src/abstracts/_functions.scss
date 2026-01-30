@@ -70,3 +70,26 @@
 
   @return $color;
 }
+
+// ===============================
+// Function: build-class
+// ===============================
+/// Builds a class name from a list of items
+/// @param {String} $prefix - CSS class prefix (e.g., "fx-")
+/// @param {List} $items - List of items to build the class name from
+/// @return {String} Class name (e.g., ".fx-namespace-class-key")
+@function build-class($prefix, $items...) {
+  $result: "";
+
+  @each $item in $items {
+    @if $item != null and $item != "" {
+      @if $result == "" {
+        $result: "." + $prefix + $item;
+      } @else {
+        $result: $result + "-" + $item;
+      }
+    }
+  }
+
+  @return $result;
+}

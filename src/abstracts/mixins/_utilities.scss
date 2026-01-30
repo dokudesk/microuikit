@@ -2,122 +2,169 @@
 @use 'sass:meta';
 @use 'sass:list';
 @use 'sass:string';
+@use '../functions' as functions;
 
 // ===============================
 // Mixin: generate-classes
 // ===============================
-/// Generates utility classes based on utility configuration map
+/// Generates utility classes (non-media) and delegates media utilities to generate-media-queries
 /// @param {String} $prefix - CSS class prefix (e.g., "fx-")
 /// @param {Map} $utilities - Map containing utility class configurations
 @mixin generate-classes($prefix, $utilities) {
   @each $utility-name, $utility in $utilities {
-    // Extract utility configuration from map
-    $class-name: map.get($utility, class);
-    $namespace: map.get($utility, namespace);
-    $property-value: map.get($utility, property);
-    $values: map.get($utility, values);
-    $extended-values: map.get($utility, extended-values);
-    $enable-important: map.get($utility, important);
+    $min-media-sizes: map.get($utility, min-media-sizes);
+    $max-media-sizes: map.get($utility, max-media-sizes);
+    $media-condition: null;
 
-    // Normalize property to a list format for consistent iteration
-    $properties: ();
+    @if ($min-media-sizes and $min-media-sizes != "") or ($max-media-sizes and $max-media-sizes != "") {
+      @if $min-media-sizes and $min-media-sizes != "" {
+        @if $max-media-sizes and $max-media-sizes != "" {
+          $media-condition: "(min-width: #{$min-media-sizes}) and (max-width: #{$max-media-sizes})";
+        } @else {
+          $media-condition: "(min-width: #{$min-media-sizes})";
+        }
+      } @else if $max-media-sizes and $max-media-sizes != "" {
+        $media-condition: "(max-width: #{$max-media-sizes})";
+      }
+    }
 
-    @if meta.type-of($property-value) == "list" {
-      $properties: $property-value;
+    @if $media-condition {
+      @media #{$media-condition} {
+        @include generate-class($prefix, $utility);
+      }
     } @else {
-      $properties: ($property-value);
+      @include generate-class($prefix, $utility);
     }
+  }
+}
 
-    // Determine if !important flag should be appended
-    $important: "";
+// ===============================
+// Mixin: generate-class
+// ===============================
+/// Generates utility classes for a single utility (no media wrapper)
+/// @param {String} $prefix - CSS class prefix (e.g., "fx-")
+/// @param {Map} $utility - Single utility configuration map
+@mixin generate-class($prefix, $utility) {
+  // Extract utility configuration from map
+  $classes: map.get($utility, class);
+  $namespace: map.get($utility, namespace);
+  $property-value: map.get($utility, property);
+  $values: map.get($utility, values);
+  $extended-values: map.get($utility, extended-values);
+  $enable-important: map.get($utility, important);
+  $class-root-key: map.get($utility, class-root-key);
 
-    @if $enable-important and $enable-important == true {
-      $important: " !important";
-    }
+  // Normalize property to a list format for consistent iteration
+  $properties: ();
 
-    // Generate classes only if values are provided
-    @if $values {
-      @each $root-key, $root-value in $values {
-        // Construct class suffix from namespace, class-name, and root-key
-        // Joins non-empty parts with hyphens (e.g., "namespace-class-key")
-        $suffix: "";
+  @if meta.type-of($property-value) == "list" {
+    $properties: $property-value;
+  } @else {
+    $properties: ($property-value);
+  }
 
-        @each $item in $namespace, $class-name, $root-key {
-          @if $item != null and $item != "" {
-            @if $suffix == "" {
-              $suffix: $item;
-            } @else {
-              $suffix: $suffix + "-" + $item;
-            }
+  // Determine if !important flag should be appended
+  $important: "";
+
+  @if $enable-important and $enable-important == true {
+    $important: " !important";
+  }
+
+  // Generate classes only if values are provided
+  @if $values or $extended-values {
+    @each $root-key, $root-value in $values {
+      // Construct class name from namespace, classes, and root-key
+      // If $classes is a list: one full selector per item, joined by comma
+      // Otherwise: single selector with parts joined by hyphens (e.g., "namespace-class-key")
+      $class-name: "";
+      $root-key-value: $root-key;
+
+      @if $class-root-key == false {
+        $root-key-value: "";
+      }
+
+      // Build class name from list of classes
+      // If $classes is a list: one full selector per item, joined by comma
+      // Otherwise: single selector with parts joined by hyphens (e.g., ".fx-namespace-class-key")
+      @if meta.type-of($classes) == "list" {
+        $class-parts: ();
+
+        @each $class-item in $classes {
+          $single-class: functions.build-class($prefix, $namespace, $class-item, $root-key-value);
+
+          @if $single-class != "" {
+            $class-parts: list.append($class-parts, $single-class, comma);
           }
         }
 
-        // Handle list-based values (e.g., flex-direction: row column row-reverse)
-        @if meta.type-of($values) == "list" {
-          .#{$prefix}#{$suffix} {
-            @each $property in $properties {
-              @if $property {
-                #{$property}: #{$root-key}#{$important};
-              }
-            }
+        @if list.length($class-parts) > 0 {
+          $class-name: $class-parts;
+        }
+      } @else {
+        $class-name: functions.build-class($prefix, $namespace, $classes, $root-key-value);
+      }
 
-            // Apply extended values if provided (additional CSS properties)
-            @if meta.type-of($extended-values) == "map" {
-              @each $key, $value in $extended-values {
-                #{$key}: #{$value}#{$important};
-              }
+      // Handle list-based values (e.g., flex-direction: row column row-reverse)
+      @if meta.type-of($values) == "list" {
+        #{$class-name} {
+          @each $property in $properties {
+            @if $property {
+              #{$property}: #{$root-key}#{$important};
+            }
+          }
+
+          // Apply extended values if provided (additional CSS properties)
+          @if meta.type-of($extended-values) == "map" {
+            @each $key, $value in $extended-values {
+              #{$key}: #{$value}#{$important};
             }
           }
         }
+      }
 
-        // Handle map-based values (e.g., spacing: (0: 0, 1: 0.25rem))
-        @else if meta.type-of($values) == "map" {
-          .#{$prefix}#{$suffix} {
-            @each $property in $properties {
-              // If root-value is a map, output multiple CSS properties
-              @if meta.type-of($root-value) == "map" {
-                @each $k, $v in $root-value {
-                  #{$k}: #{$v}#{$important};
-
-                  // Handle 100dvh and 100dvw fallback for IE and older Safari
-                  // -----------------------------------------------------------
-                  @if $v == 100dvh {
-                    #{$k}: 100vh#{$important};
-                  }
-
-                  @if $v == 100dvw {
-                    #{$k}: 100vw#{$important};
-                  }
-
-                  // -----------------------------------------------------------
-
-
-
-
-                }
-              } @else {
-                // Single property with single value
-                #{$property}: #{$root-value}#{$important};
+      // Handle map-based values (e.g., spacing: (0: 0, 1: 0.25rem))
+      @else if meta.type-of($values) == "map" {
+        #{$class-name} {
+          @each $property in $properties {
+            // If root-value is a map, output multiple CSS properties
+            @if meta.type-of($root-value) == "map" {
+              @each $k, $v in $root-value {
+                #{$k}: #{$v}#{$important};
 
                 // Handle 100dvh and 100dvw fallback for IE and older Safari
                 // -----------------------------------------------------------
-                @if $root-value == 100dvh {
-                  #{$property}: 100vh#{$important};
+                @if $v == 100dvh {
+                  #{$k}: 100vh#{$important};
                 }
 
-                @if $root-value == 100dvw {
-                  #{$property}: 100vw#{$important};
+                @if $v == 100dvw {
+                  #{$k}: 100vw#{$important};
                 }
 
                 // -----------------------------------------------------------
               }
-            }
+            } @else {
+              // Single property with single value
+              #{$property}: #{$root-value}#{$important};
 
-            // Apply extended values if provided
-            @if meta.type-of($extended-values) == "map" {
-              @each $key, $value in $extended-values {
-                #{$key}: #{$value}#{$important};
+              // Handle 100dvh and 100dvw fallback for IE and older Safari
+              // -----------------------------------------------------------
+              @if $root-value == 100dvh {
+                #{$property}: 100vh#{$important};
               }
+
+              @if $root-value == 100dvw {
+                #{$property}: 100vw#{$important};
+              }
+
+              // -----------------------------------------------------------
+            }
+          }
+
+          // Apply extended values if provided
+          @if meta.type-of($extended-values) == "map" {
+            @each $key, $value in $extended-values {
+              #{$key}: #{$value}#{$important};
             }
           }
         }
@@ -135,6 +182,9 @@
     // Extract namespace for variable grouping (e.g., "border", "color", "spacing")
     $namespace: map.get($utility, namespace);
 
+    // Extract property value for variable generation
+    $property-value: map.get($utility, property);
+
     // Get key/value pairs for CSS variable generation
     $values: map.get($utility, values);
 
@@ -151,13 +201,16 @@
         // Convert key to string for interpolation
         $key-name: "" + $key;
 
+        @if $property-value and $property-value != "" {
+          $key-name: #{$property-value};
+        }
+
         // Output CSS variable: --prefix-namespace-key: value
         --#{$prefix}#{$ns}#{$key-name}: #{$value};
       }
     }
   }
 }
-
 
 // ===============================
 // Function: map-to-vars
