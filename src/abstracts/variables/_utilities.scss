@@ -13,6 +13,7 @@
 @use 'transitions' as transitions;
 @use 'validation' as validation;
 @use 'focus' as focus;
+@use '../../component/text' as component-text;
 @use '../mixins/utilities' as utilities;
 
 // ===============================
@@ -1028,5 +1029,55 @@ $system-classes: (
     class-root-key: false,
     important: false,
     values: validation.$invalid-properties,
+  ),
+);
+
+// ===============================
+// Component Classes
+// ===============================
+/// CSS classes specific to components
+/// These classes override root classes when components are active
+$component-classes: (
+  "text-muted": (
+    property: color,
+    class: "text-muted",
+    class-root-key: false,
+    important: false,
+    values: component-text.$text-muted,
+  ),
+  "text-feedback": (
+    property: font-size,
+    class: "feedback",
+    class-root-key: false,
+    important: false,
+    values: component-text.$text-feedback,
+  ),
+  "valid-feedback": (
+    property: display,
+    class: "valid-feedback",
+    class-root-key: false,
+    important: false,
+    values: component-text.$valid-feedback,
+  ),
+  "invalid-feedback": (
+    property: display,
+    class: "invalid-feedback",
+    class-root-key: false,
+    important: false,
+    values: component-text.$invalid-feedback,
+  ),
+  "text-title": (
+    property: font-size,
+    class: "text-title",
+    class-root-key: false,
+    important: false,
+    values: component-text.$text-title,
+  ),
+  "text-subtitle": (
+    property: margin-top,
+    class: "text-subtitle",
+    class-root-key: false,
+    important: false,
+    values: component-text.$text-subtitle,
   ),
 );

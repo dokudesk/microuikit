@@ -116,28 +116,28 @@ $theme-colors: (
 // Theme Colors Text, Background, Border (Light & Dark)
 // ===============================
 $theme-text-colors: (
-  primary-text: fn.round-color(color.mix($black, $primary, 30%)),
-  secondary-text: fn.round-color(color.mix($black, $secondary, 30%)),
-  success-text: fn.round-color(color.mix($black, $success, 30%)),
-  info-text: fn.round-color(color.mix($black, $info, 30%)),
-  warning-text: fn.round-color(color.mix($black, $warning, 30%)),
-  danger-text: fn.round-color(color.mix($black, $danger, 30%)),
+  text-primary: fn.round-color(color.mix($black, $primary, 30%)),
+  text-secondary: fn.round-color(color.mix($black, $secondary, 30%)),
+  text-success: fn.round-color(color.mix($black, $success, 30%)),
+  text-info: fn.round-color(color.mix($black, $info, 30%)),
+  text-warning: fn.round-color(color.mix($black, $warning, 30%)),
+  text-danger: fn.round-color(color.mix($black, $danger, 30%)),
 ) !default;
 $theme-background-colors: (
-  primary-background: fn.round-color(color.mix($white, $primary, 45%)),
-  secondary-background: fn.round-color(color.mix($white, $secondary, 45%)),
-  success-background: fn.round-color(color.mix($white, $success, 45%)),
-  info-background: fn.round-color(color.mix($white, $info, 45%)),
-  warning-background: fn.round-color(color.mix($white, $warning, 45%)),
-  danger-background: fn.round-color(color.mix($white, $danger, 45%)),
+  background-primary: fn.round-color(color.mix($white, $primary, 45%)),
+  background-secondary: fn.round-color(color.mix($white, $secondary, 45%)),
+  background-success: fn.round-color(color.mix($white, $success, 45%)),
+  background-info: fn.round-color(color.mix($white, $info, 45%)),
+  background-warning: fn.round-color(color.mix($white, $warning, 45%)),
+  background-danger: fn.round-color(color.mix($white, $danger, 45%)),
 ) !default;
 $theme-border-colors: (
-  primary-border: fn.round-color(color.mix($white, $primary, 15%)),
-  secondary-border: fn.round-color(color.mix($white, $secondary, 15%)),
-  success-border: fn.round-color(color.mix($white, $success, 15%)),
-  info-border: fn.round-color(color.mix($white, $info, 15%)),
-  warning-border: fn.round-color(color.mix($white, $warning, 15%)),
-  danger-border: fn.round-color(color.mix($white, $danger, 15%)),
+  border-primary: fn.round-color(color.mix($white, $primary, 15%)),
+  border-secondary: fn.round-color(color.mix($white, $secondary, 15%)),
+  border-success: fn.round-color(color.mix($white, $success, 15%)),
+  border-info: fn.round-color(color.mix($white, $info, 15%)),
+  border-warning: fn.round-color(color.mix($white, $warning, 15%)),
+  border-danger: fn.round-color(color.mix($white, $danger, 15%)),
 ) !default;
 $theme-light-colors: (
   text-color: $text-color,

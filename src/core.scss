@@ -54,3 +54,8 @@
 // Utility Classes
 // ===============================
 @include mixins.generate-classes(vars.$prefix, vars.$system-classes);
+
+// ===============================
+// Component Classes
+// ===============================
+@include mixins.generate-classes(vars.$prefix, vars.$component-classes);
