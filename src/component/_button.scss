@@ -21,7 +21,6 @@
         background-color: var(--#{$prefix}background-color);
         border: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
         border-radius: var(--#{$prefix}button-border-radius);
-        transition: var(--#{$prefix}transition);
         text-align: center;
         text-decoration: none;
         text-transform: none;
@@ -29,6 +28,7 @@
         text-wrap: nowrap;
         vertical-align: middle;
         user-select: none;
+        cursor: pointer;
 
         &:disabled {
             opacity: var(--#{$prefix}btn-disabled-opacity) !important;
@@ -45,7 +45,6 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 0.25rem;
 
             &::before {
                 content: "";
@@ -68,6 +67,7 @@
                 font-family: inherit;
                 font-weight: inherit;
                 color: inherit;
+                margin-inline-start: 0.25rem;
             }
         }
     }

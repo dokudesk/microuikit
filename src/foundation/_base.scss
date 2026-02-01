@@ -51,6 +51,10 @@
 /// Styles paragraphs, links, images, and other base elements
 /// @param {String} $prefix - CSS variable prefix (e.g., "fx-")
 @mixin base-elements($prefix) {
+
+   *{
+    transition: var(--#{$prefix}transition);
+   }
   // Paragraph spacing
   p {
     margin-top: 0;
@@ -144,10 +148,5 @@
   // Reset textarea resize
   textarea {
     resize: vertical;
-  }
-
-  // Button cursor
-  button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disabled), [type="submit"]:not(:disabled) {
-    cursor: pointer;
   }
 }
