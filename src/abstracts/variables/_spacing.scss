@@ -16,3 +16,9 @@ $spacers: (
 // ===============================
 $default-gutter: (gutter-width: $spacer) !default;
 $gutters: $spacers;
+
+// ===============================
+// Default Button Padding
+// ===============================
+$default-btn-padding-x: (padding-x: 0.625rem) !default;
+$default-btn-padding-y: (padding-y: 1rem ) !default;

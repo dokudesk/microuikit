@@ -83,7 +83,7 @@ $link-color-dark-temp: color.mix($white, $primary, 25%) !default;
 $link-color-dark: fn.round-color($link-color-dark-temp) !default;
 $link-hover-color-dark: fn.round-color(color.mix($black, $link-color-dark-temp, 25%)) !default;
 $focus-ring-color: $primary !default;
-$focus-ring-color-dark: $primary !default;
+$focus-ring-color-dark: map.get($grays, 600) !default;
 
 // ===============================
 // Public Color Maps
@@ -124,20 +124,28 @@ $theme-text-colors: (
   text-danger: fn.round-color(color.mix($black, $danger, 30%)),
 ) !default;
 $theme-background-colors: (
-  background-primary: fn.round-color(color.mix($white, $primary, 45%)),
-  background-secondary: fn.round-color(color.mix($white, $secondary, 45%)),
-  background-success: fn.round-color(color.mix($white, $success, 45%)),
-  background-info: fn.round-color(color.mix($white, $info, 45%)),
-  background-warning: fn.round-color(color.mix($white, $warning, 45%)),
-  background-danger: fn.round-color(color.mix($white, $danger, 45%)),
+  background-primary: fn.round-color(color.mix($white, $primary, 40%)),
+  background-secondary: fn.round-color(color.mix($white, $secondary, 40%)),
+  background-success: fn.round-color(color.mix($white, $success, 40%)),
+  background-info: fn.round-color(color.mix($white, $info, 40%)),
+  background-warning: fn.round-color(color.mix($white, $warning, 40%)),
+  background-danger: fn.round-color(color.mix($white, $danger, 40%)),
+) !default;
+$theme-hover-background-colors: (
+  hover-background-primary: fn.round-color(color.mix($white, $primary, 20%)),
+  hover-background-secondary: fn.round-color(color.mix($white, $secondary, 20%)),
+  hover-background-success: fn.round-color(color.mix($white, $success, 20%)),
+  hover-background-info: fn.round-color(color.mix($white, $info, 20%)),
+  hover-background-warning: fn.round-color(color.mix($white, $warning, 20%)),
+  hover-background-danger: fn.round-color(color.mix($white, $danger, 20%)),
 ) !default;
 $theme-border-colors: (
-  border-primary: fn.round-color(color.mix($white, $primary, 15%)),
-  border-secondary: fn.round-color(color.mix($white, $secondary, 15%)),
-  border-success: fn.round-color(color.mix($white, $success, 15%)),
-  border-info: fn.round-color(color.mix($white, $info, 15%)),
-  border-warning: fn.round-color(color.mix($white, $warning, 15%)),
-  border-danger: fn.round-color(color.mix($white, $danger, 15%)),
+  border-primary: fn.round-color(color.mix($white, $primary, 10%)),
+  border-secondary: fn.round-color(color.mix($white, $secondary, 10%)),
+  border-success: fn.round-color(color.mix($white, $success, 10%)),
+  border-info: fn.round-color(color.mix($white, $info, 10%)),
+  border-warning: fn.round-color(color.mix($white, $warning, 10%)),
+  border-danger: fn.round-color(color.mix($white, $danger, 10%)),
 ) !default;
 $theme-light-colors: (
   text-color: $text-color,

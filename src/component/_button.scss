@@ -1,0 +1,97 @@
+@use "sass:color";
+@use "../abstracts/variables/colors" as colors;
+@use "../abstracts/functions" as fn;
+@use "../abstracts/mixins/theme" as mixins;
+
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@mixin btn($prefix) {
+    .#{$prefix}btn {
+        display: inline-block;
+        padding: var(--#{$prefix}button-padding-x) var(--#{$prefix}button-padding-y);
+        font-family: var(--#{$prefix}font-family-base);
+        font-size: var(--#{$prefix}font-size-base);
+        font-weight: var(--#{$prefix}font-weight-base);
+        color: var(--#{$prefix}text-color);
+        background-color: var(--#{$prefix}background-color);
+        border: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
+        border-radius: var(--#{$prefix}button-border-radius);
+        transition: var(--#{$prefix}transition);
+        text-align: center;
+        text-decoration: none;
+        text-transform: none;
+        text-overflow: ellipsis;
+        text-wrap: nowrap;
+        vertical-align: middle;
+        user-select: none;
+
+        &:disabled {
+            opacity: var(--#{$prefix}btn-disabled-opacity) !important;
+            cursor: not-allowed !important;
+            pointer-events: none !important;
+        }
+
+        &[waiting] {
+            font-size: 0;
+            color: var(--#{$prefix}text-color);
+            opacity: var(--#{$prefix}btn-disabled-opacity) !important;
+            cursor: wait !important;
+            pointer-events: none !important;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.25rem;
+
+            &::before {
+                content: "";
+                display: inline-block;
+                width: auto;
+                height: 100%;
+                aspect-ratio: 1;
+                flex-shrink: 0;
+                align-self: stretch;
+                background-color: currentColor;
+                mask: var(--#{$prefix}spinner-svg) no-repeat center / contain;
+                -webkit-mask: var(--#{$prefix}spinner-svg) no-repeat center / contain;
+                animation: spin 0.8s linear infinite;
+                color: inherit;
+            }
+
+            &::after {
+                content: attr(waiting);
+                font-size: var(--#{$prefix}font-size-base);
+                font-family: inherit;
+                font-weight: inherit;
+                color: inherit;
+            }
+        }
+    }
+
+    @include mixins.direction-rtl-selector {
+        .#{$prefix}btn[waiting]::before {
+            animation-direction: reverse;
+        }
+    }
+
+    @each $name, $value in colors.$theme-colors {
+        .#{$prefix}btn-#{$name} {
+            background-color: var(--#{$prefix}background-#{$name});
+            border-color: var(--#{$prefix}border-#{$name});
+            color: var(--#{$prefix}text-#{$name});
+
+            &[waiting]::before,
+            &[waiting]::after {
+                color: var(--#{$prefix}text-#{$name});
+            }
+
+            &:hover {
+                background-color: var(--#{$prefix}hover-background-#{$name}) !important;
+            }
+        }
+    }
+}

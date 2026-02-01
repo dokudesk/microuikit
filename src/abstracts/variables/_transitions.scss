@@ -1,10 +1,6 @@
 // ===============================
-// Transition Delays
+// Transition Default
 // ===============================
-$transition-delays: (
-  "none": 0,
-  "fast": 150ms,
-  "base": 200ms,
-  "slow": 300ms,
-  "slower": 500ms,
-) !default;
+$transition: (
+  transition: "background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease , box-shadow 0.2s ease , hover 0.2s ease;",
+  ) !default;

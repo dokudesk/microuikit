@@ -1,6 +1,7 @@
 @use 'abstracts/variables/index' as vars;
 @use 'abstracts/mixins/index' as mixins;
 @use 'foundation/index' as foundation;
+@use 'component/index' as component;
 
 // ===============================
 // Library Banner
@@ -59,3 +60,8 @@
 // Component Classes
 // ===============================
 @include mixins.generate-classes(vars.$prefix, vars.$component-classes);
+
+// ===============================
+// Component Mixins
+// ===============================
+@include component.btn(vars.$prefix);

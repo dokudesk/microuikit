@@ -8,3 +8,10 @@ $opacitys: (
   75: 0.75,
   100: 1,
 ) !default;
+
+// ===============================
+// Button Disabled Opacity
+// ===============================
+$btn-disabled-opacity: (
+  disabled-opacity: 0.65,
+) !default;
