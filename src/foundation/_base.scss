@@ -57,9 +57,13 @@
     margin-bottom: vars.$paragraph-margin-bottom;
   }
 
+  label {
+    display: inline-block;
+  }
+
   // Horizontal rule
   hr {
-    margin: 1rem 0;
+    margin: var(--#{$prefix}gutter-width) 0;
     color: inherit;
     border: 0;
     border-top: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
