@@ -69,9 +69,8 @@ $rounded: (
   ) !default;
 
 // ===============================
-// Button Border Radius
+// Control Border Radius
 // ===============================
-$default-button-border-radius: 0.625rem !default;
-$botton-border-radius: (
-  border-radius: $default-button-border-radius,
+$control-border-radius: (
+  border-radius: 0.625rem,
   ) !default;

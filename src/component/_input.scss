@@ -1,0 +1,115 @@
+@use "../abstracts/variables/global" as global;
+
+@mixin input($prefix) {
+    .#{$prefix}input {
+        padding: var(--#{$prefix}control-padding-y) var(--#{$prefix}control-padding-x);
+        font-family: var(--#{$prefix}font-family-base);
+        font-size: var(--#{$prefix}font-size-base);
+        font-weight: var(--#{$prefix}font-weight-base);
+        color: var(--#{$prefix}text-color);
+        background-color: var(--#{$prefix}background-color);
+        background-clip: padding-box;
+        border: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
+        border-radius: var(--#{$prefix}control-border-radius);
+        height: var(--#{$prefix}control-height);
+        outline: none !important;
+
+        &:focus {
+            border-color: var(--#{$prefix}focus-ring-color);
+        }
+
+        &:disabled {
+            background-color: var(--#{$prefix}gray-light) !important;
+            color: var(--#{$prefix}text-muted-color) !important;
+            cursor: not-allowed !important;
+            pointer-events: none !important;
+        }
+
+        &:read-only {
+            cursor: not-allowed !important;
+            pointer-events: none !important;
+        }
+
+        &[invalid] {
+            border-color: var(--#{$prefix}invalid-border-color) !important;
+            color: var(--#{$prefix}invalid-color) !important;
+        }
+
+        &[valid] {
+            border-color: var(--#{$prefix}valid-border-color) !important;
+            color: var(--#{$prefix}valid-color) !important;
+        }
+    }
+
+
+
+
+    .#{$prefix}input:focus + label,
+    .#{$prefix}input:not(:placeholder-shown) + label {
+        font-size: calc(var(--#{global.$prefix}font-size-base) * 0.875);
+        top: 0;
+        color: var(--#{$prefix}focus-ring-color);
+    }
+
+    .#{$prefix}input[invalid]:focus + label,
+    .#{$prefix}input[invalid]:not(:placeholder-shown) + label {
+        font-size: calc(var(--#{global.$prefix}font-size-base) * 0.875);
+        top: 0;
+        color: var(--#{$prefix}invalid-color);
+    }
+
+    .#{$prefix}input[valid]:focus + label,
+    .#{$prefix}input[valid]:not(:placeholder-shown) + label {
+        font-size: calc(var(--#{global.$prefix}font-size-base) * 0.875);
+        top: 0;
+        color: var(--#{$prefix}valid-color);
+    }
+
+    .#{$prefix}input[disabled]:placeholder-shown + label {
+        background-color: var(--#{$prefix}gray-light);
+    }
+
+    .#{$prefix}input[disabled]:not(:placeholder-shown) + label {
+        font-size: calc(var(--#{global.$prefix}font-size-base) * 0.875);
+        top: 0;
+        color: var(--#{$prefix}text-muted-color);
+        background-color: var(--#{$prefix}gray-light);
+    }
+
+    .#{$prefix}input-floating {
+        position: relative;
+        display: inline-block;
+
+        label {
+            position: absolute;
+            top: 50%;
+            inset-inline-start: var(--#{$prefix}control-padding-x);
+            transform: translateY(-50%);
+            pointer-events: none;
+            color: var(--#{$prefix}text-muted-color);
+            background-color: var(--#{$prefix}background-color);
+            padding: var(--#{$prefix}control-padding-y) var(--#{$prefix}control-padding-x);
+            font: inherit;
+            line-height: 1;
+            transition: var(--#{$prefix}transition);
+            display: flex;
+            align-items: center;
+        }
+
+        &:has(.#{$prefix}input:focus:not(:placeholder-shown)) label {
+            color: var(--#{$prefix}focus-ring-color);
+        }
+
+        &:has(.#{$prefix}input[invalid]:not(:placeholder-shown)) label {
+            color: var(--#{$prefix}invalid-color);
+        }
+
+        &:has(.#{$prefix}input[valid]:not(:placeholder-shown)) label {
+            color: var(--#{$prefix}valid-color);
+        }
+
+        &:has(.#{$prefix}input[disabled]:placeholder-shown) label {
+            background-color: var(--#{$prefix}gray-light);
+        }
+    }
+}
