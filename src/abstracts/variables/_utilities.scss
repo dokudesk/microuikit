@@ -31,6 +31,9 @@ $root-common-variables: (
   "spinner-svg": (values: svg.$spinner-svg,
   ),
 
+  "eye-svg": (values: svg.$eye-svg,
+  ),
+
   // ===============================
   // Typography (Base - Highest Priority)
   // ===============================
@@ -98,8 +101,7 @@ $root-common-variables: (
 
 // Main utilities
 $root-system-variables: map.merge($root-common-variables,
-    ("align": (property: "",
-        values: typography.$text-aligns-ltr,
+    ("align": (values: typography.$text-aligns-ltr,
       )),
 );
 
@@ -109,8 +111,7 @@ $root-system-variables: map.merge($root-common-variables,
 /// CSS variables specific to dark theme
 /// These variables override root variables when dark theme is active
 $dark-theme-variables: (
-  "theme-dark-colors": (property: "",
-    values: colors.$theme-dark-colors,
+  "theme-dark-colors": (values: colors.$theme-dark-colors,
   ),
 );
 
@@ -120,11 +121,9 @@ $dark-theme-variables: (
 /// CSS variables specific to RTL (Right-to-Left) text direction
 /// These variables override root variables when RTL direction is active
 $rtl-direction-variables: (
-  "rtl-font-variables": (property: "",
-    values: typography.$font-root-variables-rtl,
+  "rtl-font-variables": (values: typography.$font-root-variables-rtl,
   ),
-  "align": (property: "",
-    values: typography.$text-aligns-rtl,
+  "align": (values: typography.$text-aligns-rtl,
   ),
 );
 
@@ -576,12 +575,6 @@ $system-classes: (
     values: borders.$border-style,
   ),
 
-  "border-radius": (property: border-radius,
-    class: "rounded",
-    important: true,
-    values: borders.$border-radius-classes,
-  ),
-
   // ===============================
   // Effects
   // ===============================
@@ -630,7 +623,7 @@ $system-classes: (
   // ===============================
   // Container
   // ===============================
-  "container-max-width": (property: max-width,
+  "container": (property: max-width,
     class: layout.$container-classes,
     class-root-key: false,
     important: true,
@@ -687,7 +680,7 @@ $system-classes: (
     ),
   ),
 
-  "row-content": (property: "flex-shrink",
+  "row-items": (property: "flex-shrink",
     class: "row > *",
     class-root-key: false,
     important: false,
@@ -700,7 +693,7 @@ $system-classes: (
       )),
   ),
 
-  "column": (property: "width",
+  "col": (property: "width",
     class: "col",
     important: false,
     values: layout.$columns,
@@ -713,7 +706,7 @@ $system-classes: (
     values: layout.$offsets,
   ),
 
-  "column-sm": (property: "width",
+  "col-sm": (property: "width",
     class: "col-sm",
     class-root-key: true,
     important: false,
@@ -729,7 +722,7 @@ $system-classes: (
     min-media-sizes: 576px,
   ),
 
-  "column-md": (property: "width",
+  "col-md": (property: "width",
     class: "col-md",
     class-root-key: true,
     important: false,
@@ -745,7 +738,7 @@ $system-classes: (
     min-media-sizes: 768px,
   ),
 
-  "column-lg": (property: "width",
+  "col-lg": (property: "width",
     class: "col-lg",
     class-root-key: true,
     important: false,
@@ -761,7 +754,7 @@ $system-classes: (
     min-media-sizes: 992px,
   ),
 
-  "column-xl": (property: "width",
+  "col-xl": (property: "width",
     class: "col-xl",
     class-root-key: true,
     important: false,
@@ -777,7 +770,7 @@ $system-classes: (
     min-media-sizes: 1200px,
   ),
 
-  "column-xxl": (property: "width",
+  "col-xxl": (property: "width",
     class: "col-xxl",
     class-root-key: true,
     important: false,
@@ -793,13 +786,13 @@ $system-classes: (
     min-media-sizes: 1400px,
   ),
 
-  "gutters-x": (property: "--#{global.$prefix}gutter-x",
+  "gutter-x": (property: "--#{global.$prefix}gutter-x",
     class: "gx",
     important: true,
     values: spacing.$gutters,
   ),
 
-  "gutters-y": (property: "--#{global.$prefix}gutter-y",
+  "gutter-y": (property: "--#{global.$prefix}gutter-y",
     class: "gy",
     important: true,
     values: spacing.$gutters,
@@ -808,91 +801,91 @@ $system-classes: (
   "rounded": (property: border-radius,
     class: "rounded",
     important: true,
-    values: borders.$rounded,
+    values: borders.$border-radiuses, 
   ),
 
   "rounded-top": (property: (border-top-left-radius, border-top-right-radius),
     class: "rounded-top",
     important: true,
-    values: spacing.$spacers,
+    values: borders.$border-radiuses,
   ),
 
   "rounded-bottom": (property: (border-bottom-left-radius, border-bottom-right-radius),
     class: "rounded-bottom",
     important: true,
-    values: spacing.$spacers,
+    values: borders.$border-radiuses,
   ),
 
   "rounded-left": (property: (border-top-left-radius, border-bottom-left-radius),
     class: "rounded-left",
     important: true,
-    values: spacing.$spacers,
+    values: borders.$border-radiuses,
   ),
 
   "rounded-right": (property: (border-top-right-radius, border-bottom-right-radius),
     class: "rounded-right",
     important: true,
-    values: spacing.$spacers,
+    values: borders.$border-radiuses,
   ),
 
   "rounded-top-left": (property: border-top-left-radius,
     class: "rounded-top-left",
     important: true,
-    values: spacing.$spacers,
+    values: borders.$border-radiuses,
   ),
 
   "rounded-top-right": (property: border-top-right-radius,
     class: "rounded-top-right",
     important: true,
-    values: spacing.$spacers,
+    values: borders.$border-radiuses,
   ),
 
   "rounded-bottom-left": (property: border-bottom-left-radius,
     class: "rounded-bottom-left",
     important: true,
-    values: spacing.$spacers,
+    values: borders.$border-radiuses,
   ),
 
   "rounded-bottom-right": (property: border-bottom-right-radius,
     class: "rounded-bottom-right",
     important: true,
-    values: spacing.$spacers,
+    values: borders.$border-radiuses,
   ),
 
   "rounded-start": (property: (border-start-start-radius, border-end-start-radius),
     class: "rounded-start",
     important: true,
-    values: spacing.$spacers,
+    values: borders.$border-radiuses,
   ),
 
-  "rounded-end": (property: (border-end-start-radius, border-end-end-radius),
+  "rounded-end": (property: (border-start-end-radius, border-end-end-radius),
     class: "rounded-end",
     important: true,
-    values: spacing.$spacers,
+    values: borders.$border-radiuses,
   ),
 
   "rounded-start-top": (property: border-start-start-radius,
     class: "rounded-start-top",
     important: true,
-    values: spacing.$spacers,
+    values: borders.$border-radiuses,
   ),
 
-  "rounded-start-bottom": (property: border-start-end-radius,
+  "rounded-start-bottom": (property: border-end-start-radius,
     class: "rounded-start-bottom",
     important: true,
-    values: spacing.$spacers,
+    values: borders.$border-radiuses,
   ),
 
-  "rounded-end-top": (property: border-end-start-radius,
+  "rounded-end-top": (property: border-start-end-radius,
     class: "rounded-end-top",
     important: true,
-    values: spacing.$spacers,
+    values: borders.$border-radiuses,
   ),
 
   "rounded-end-bottom": (property: border-end-end-radius,
     class: "rounded-end-bottom",
     important: true,
-    values: spacing.$spacers,
+    values: borders.$border-radiuses,
   ),
 
   // ===============================

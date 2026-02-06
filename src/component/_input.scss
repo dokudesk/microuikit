@@ -1,33 +1,24 @@
-@use "../abstracts/variables/global" as global;
+@use "sass:map";
+@use "../abstracts/variables/svg" as svg;
 
 @mixin input($prefix) {
+
+    // Input mixin
     .#{$prefix}input {
-        padding: var(--#{$prefix}control-padding-y) var(--#{$prefix}control-padding-x);
-        font-family: var(--#{$prefix}font-family-base);
-        font-size: var(--#{$prefix}font-size-base);
-        font-weight: var(--#{$prefix}font-weight-base);
-        color: var(--#{$prefix}text-color);
-        background-color: var(--#{$prefix}background-color);
-        background-clip: padding-box;
-        border: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
-        border-radius: var(--#{$prefix}control-border-radius);
         height: var(--#{$prefix}control-height);
-        outline: none !important;
+        width: inherit;
+        padding: var(--#{$prefix}control-padding-y) var(--#{$prefix}control-padding-x);
+        font: var(--#{$prefix}font-weight-base) var(--#{$prefix}font-size-base) / var(--#{$prefix}line-height-base) var(--#{$prefix}font-family-base);
+        color: var(--#{$prefix}text-color);
+        background: var(--#{$prefix}background-color);
+        background-clip: padding-box;
+        border: var(--#{$prefix}border-width, 0px) solid var(--#{$prefix}border-color);
+        border-radius: var(--#{$prefix}control-border-radius);
+        outline: none;
+        transition: var(--#{$prefix}transition);
 
         &:focus {
-            border-color: var(--#{$prefix}focus-ring-color);
-        }
-
-        &:disabled {
-            background-color: var(--#{$prefix}gray-light) !important;
-            color: var(--#{$prefix}text-muted-color) !important;
-            cursor: not-allowed !important;
-            pointer-events: none !important;
-        }
-
-        &:read-only {
-            cursor: not-allowed !important;
-            pointer-events: none !important;
+            border-color: var(--#{$prefix}focus-ring-color, var(--#{$prefix}border-color));
         }
 
         &[invalid] {
@@ -39,77 +30,127 @@
             border-color: var(--#{$prefix}valid-border-color) !important;
             color: var(--#{$prefix}valid-color) !important;
         }
+
+        &[disabled] {
+            color: var(--#{$prefix}text-muted-color) !important;
+            opacity: var(--#{$prefix}disabled-control-opacity) !important;
+        }
     }
 
-
-
-
-    .#{$prefix}input:focus + label,
-    .#{$prefix}input:not(:placeholder-shown) + label {
-        font-size: calc(var(--#{global.$prefix}font-size-base) * 0.875);
-        top: 0;
-        color: var(--#{$prefix}focus-ring-color);
-    }
-
-    .#{$prefix}input[invalid]:focus + label,
-    .#{$prefix}input[invalid]:not(:placeholder-shown) + label {
-        font-size: calc(var(--#{global.$prefix}font-size-base) * 0.875);
-        top: 0;
-        color: var(--#{$prefix}invalid-color);
-    }
-
-    .#{$prefix}input[valid]:focus + label,
-    .#{$prefix}input[valid]:not(:placeholder-shown) + label {
-        font-size: calc(var(--#{global.$prefix}font-size-base) * 0.875);
-        top: 0;
-        color: var(--#{$prefix}valid-color);
-    }
-
-    .#{$prefix}input[disabled]:placeholder-shown + label {
-        background-color: var(--#{$prefix}gray-light);
-    }
-
-    .#{$prefix}input[disabled]:not(:placeholder-shown) + label {
-        font-size: calc(var(--#{global.$prefix}font-size-base) * 0.875);
-        top: 0;
-        color: var(--#{$prefix}text-muted-color);
-        background-color: var(--#{$prefix}gray-light);
-    }
-
-    .#{$prefix}input-floating {
+    // Input frame (container)
+    .#{$prefix}input-frame {
         position: relative;
-        display: inline-block;
 
-        label {
+        label[for] {
             position: absolute;
-            top: 50%;
-            inset-inline-start: var(--#{$prefix}control-padding-x);
+            inset-inline-start: calc(var(--#{$prefix}control-padding-x) + var(--#{$prefix}border-width));
+            inset-block-start: 50%;
             transform: translateY(-50%);
             pointer-events: none;
+            background: var(--#{$prefix}background-color);
             color: var(--#{$prefix}text-muted-color);
-            background-color: var(--#{$prefix}background-color);
-            padding: var(--#{$prefix}control-padding-y) var(--#{$prefix}control-padding-x);
-            font: inherit;
-            line-height: 1;
+            font: var(--#{$prefix}font-weight-base) var(--#{$prefix}font-size-base) / var(--#{$prefix}line-height-base) var(--#{$prefix}font-family-base);
             transition: var(--#{$prefix}transition);
+        }
+
+        .#{$prefix}input:focus+label[for],
+        .#{$prefix}input:not(:placeholder-shown)+label[for] {
+            top: 0;
+            color: var(--#{$prefix}focus-ring-color, var(--#{$prefix}border-color));
+            font-size: calc(var(--fx-font-size-base) * 0.75);
+        }
+
+        .#{$prefix}input[invalid]:focus+label[for],
+        .#{$prefix}input[invalid]:not(:placeholder-shown)+label[for] {
+            top: 0;
+            color: var(--#{$prefix}invalid-color);
+            font-size: calc(var(--fx-font-size-base) * 0.75);
+        }
+
+        .#{$prefix}input[valid]:focus+label[for],
+        .#{$prefix}input[valid]:not(:placeholder-shown)+label[for] {
+            top: 0;
+            color: var(--#{$prefix}valid-color);
+            font-size: calc(var(--fx-font-size-base) * 0.75);
+        }
+
+        .#{$prefix}input[disabled]:placeholder-shown+label[for] {
+            color: var(--#{$prefix}text-muted-color) !important;
+            opacity: var(--#{$prefix}disabled-control-opacity) !important;
+            cursor: not-allowed !important;
+            pointer-events: none !important;
+        }
+
+        .#{$prefix}input[disabled]:not(:placeholder-shown)+label[for] {
+            top: 0;
+            inset-inline-start: 0.3125rem;
+            color: var(--#{$prefix}text-muted-color) !important;
+            opacity: var(--#{$prefix}disabled-control-opacity) !important;
+            cursor: not-allowed !important;
+            pointer-events: none !important;
+        }
+
+        // Toggle password button
+        .#{$prefix}toggle-password {
             display: flex;
             align-items: center;
+            justify-content: center;
+            position: absolute;
+            inset-block-start: + 2px;
+            inset-inline-end: + 2px;
+            width: calc(var(--#{$prefix}control-height) - calc(var(--#{$prefix}border-width) * 2) - 4px);
+            height: calc(100% - calc(var(--#{$prefix}border-width) * 2) - 4px);
+            border: none;
+            margin: var(--#{$prefix}border-width);
+            border-start-end-radius: calc(var(--#{$prefix}control-border-radius) - 2px) !important;
+            border-end-end-radius: calc(var(--#{$prefix}control-border-radius) - 2px) !important;
+            background-color: transparent;
+            cursor: pointer;
+            outline: none !important;
+            transition: var(--#{$prefix}transition);
+
+            &[disabled] {
+                opacity: var(--#{$prefix}disabled-control-opacity) !important;
+                cursor: not-allowed !important;
+                pointer-events: none !important;
+            }
+
+            &:hover {
+                background-color: var(--#{$prefix}gray-light);
+
+                &::before {
+                    background-color: var(--#{$prefix}gray-dark);
+                }
+            }
+
+            &:focus {
+                background-color: var(--#{$prefix}gray-light);
+
+                &::before {
+                    background-color: var(--#{$prefix}gray-dark);
+                }
+            }
+
+            &::before {
+                content: "";
+                width: calc(var(--#{$prefix}control-height) * 0.4);
+                height: calc(var(--#{$prefix}control-height) * 0.4);
+                background-color: var(--#{$prefix}text-muted-color);
+                mask: var(--#{$prefix}eye-open-svg) no-repeat center / contain;
+                -webkit-mask: var(--#{$prefix}eye-open-svg) no-repeat center / contain;
+            }
+
+            &[aria-pressed="true"]::before {
+                mask: var(--#{$prefix}eye-off-svg) no-repeat center / contain;
+                -webkit-mask: var(--#{$prefix}eye-off-svg) no-repeat center / contain;
+            }
         }
 
-        &:has(.#{$prefix}input:focus:not(:placeholder-shown)) label {
-            color: var(--#{$prefix}focus-ring-color);
-        }
-
-        &:has(.#{$prefix}input[invalid]:not(:placeholder-shown)) label {
-            color: var(--#{$prefix}invalid-color);
-        }
-
-        &:has(.#{$prefix}input[valid]:not(:placeholder-shown)) label {
-            color: var(--#{$prefix}valid-color);
-        }
-
-        &:has(.#{$prefix}input[disabled]:placeholder-shown) label {
-            background-color: var(--#{$prefix}gray-light);
+        // Add padding to the input when it has a toggle password button
+        &.has-toggle {
+            input[type="password"] {
+                padding-inline-end: calc(var(--#{$prefix}control-height) + var(--#{$prefix}control-padding-x) - 8px);
+            }
         }
     }
 }

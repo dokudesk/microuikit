@@ -83,7 +83,7 @@ $link-color-dark-temp: color.mix($white, $primary, 25%) !default;
 $link-color-dark: fn.round-color($link-color-dark-temp) !default;
 $link-hover-color-dark: fn.round-color(color.mix($black, $link-color-dark-temp, 25%)) !default;
 $focus-ring-color: $primary !default;
-$focus-ring-color-dark: map.get($grays, 600) !default;
+$focus-ring-color-dark: map.get($grays, 500) !default;
 
 // ===============================
 // Public Color Maps

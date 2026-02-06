@@ -129,34 +129,34 @@
             // If root-value is a map, output multiple CSS properties
             @if meta.type-of($root-value) == "map" {
               @each $k, $v in $root-value {
+                // Handle single value
                 #{$k}: #{$v}#{$important};
 
-                // Handle 100dvh and 100dvw fallback for IE and older Safari
+                // Handle 100dvh/100dvw with fallback order
                 // -----------------------------------------------------------
                 @if $v == 100dvh {
                   #{$k}: 100vh#{$important};
-                }
-
-                @if $v == 100dvw {
+                  #{$k}: 100dvh#{$important};
+                } @else if $v == 100dvw {
                   #{$k}: 100vw#{$important};
+                  #{$k}: 100dvw#{$important};
                 }
-
                 // -----------------------------------------------------------
               }
             } @else {
-              // Single property with single value
+              // Handle single property with single value
               #{$property}: #{$root-value}#{$important};
 
-              // Handle 100dvh and 100dvw fallback for IE and older Safari
+              // Single property with single value
+              // Handle 100dvh/100dvw with fallback order
               // -----------------------------------------------------------
               @if $root-value == 100dvh {
                 #{$property}: 100vh#{$important};
-              }
-
-              @if $root-value == 100dvw {
+                #{$property}: 100dvh#{$important};
+              } @else if $root-value == 100dvw {
                 #{$property}: 100vw#{$important};
-              }
-
+                #{$property}: 100dvw#{$important};
+              } 
               // -----------------------------------------------------------
             }
           }

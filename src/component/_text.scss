@@ -1,12 +1,10 @@
 @use "../abstracts/variables/global" as global;
-@use "../abstracts/variables/spacing" as spacing;
 
 $text-muted: (
     null : ("color": var(--#{global.$prefix}text-muted-color),
     )) !default;
 $text-feedback: (
-    null : (
-        "display": block,
+    null : ("display": block,
         "font-size": calc(var(--#{global.$prefix}font-size-base) * 0.875),
     )) !default;
 $valid-feedback: (

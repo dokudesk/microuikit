@@ -1,97 +1,100 @@
 @use "sass:color";
 @use "../abstracts/variables/colors" as colors;
-@use "../abstracts/functions" as fn;
 @use "../abstracts/mixins/theme" as mixins;
 
-
+// Spinner animation
 @keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
+// Button mixin
 @mixin btn($prefix) {
-    .#{$prefix}btn {
-        display: inline-block;
-        padding: var(--#{$prefix}control-padding-y) var(--#{$prefix}control-padding-x);
-        font-family: var(--#{$prefix}font-family-base);
+  .#{$prefix}btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: var(--#{$prefix}control-padding-y) var(--#{$prefix}control-padding-x);
+    height: var(--#{$prefix}control-height);
+
+    font: var(--#{$prefix}font-weight-base)
+          var(--#{$prefix}font-size-base)
+          var(--#{$prefix}font-family-base);
+
+    color: var(--#{$prefix}text-color);
+    background-color: var(--#{$prefix}background-color);
+
+    border: var(--#{$prefix}border-width, 0) solid var(--#{$prefix}border-color);
+    border-radius: var(--#{$prefix}control-border-radius);
+
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+    transition: var(--#{$prefix}transition);
+
+    // Disabled state
+    &:disabled {
+      opacity: var(--#{$prefix}disabled-control-opacity);
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    // Busy (loading) state — aria standard
+    &[aria-busy="true"] {
+      font-size: 0;
+      opacity: var(--#{$prefix}disabled-control-opacity);
+      cursor: wait;
+      pointer-events: none;
+
+      &::before {
+        content: "";
+        width: calc(var(--#{$prefix}control-height) * 0.4);
+        height: calc(var(--#{$prefix}control-height) * 0.4);
+        background-color: currentColor;
+
+        mask: var(--#{$prefix}spinner-svg) no-repeat center / contain;
+        -webkit-mask: var(--#{$prefix}spinner-svg) no-repeat center / contain;
+
+        animation: spin 1s linear infinite;
+      }
+
+      &::after {
+        content: attr(aria-label);
+        margin-inline-start: 0.3125rem;
+        color: currentColor;
         font-size: var(--#{$prefix}font-size-base);
-        font-weight: var(--#{$prefix}font-weight-base);
-        color: var(--#{$prefix}text-color);
-        background-color: var(--#{$prefix}background-color);
-        border: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
-        border-radius: var(--#{$prefix}control-border-radius);
-        height: var(--#{$prefix}control-height);
-        text-align: center;
-        text-decoration: none;
-        text-transform: none;
-        text-overflow: ellipsis;
-        text-wrap: nowrap;
-        vertical-align: middle;
-        user-select: none;
-        cursor: pointer;
-        
+      }
+    }
+  }
 
-        &:disabled {
-            opacity: var(--#{$prefix}disabled-control-opacity) !important;
-            cursor: not-allowed !important;
-            pointer-events: none !important;
-        }
+// RTL support for spinner
+@include mixins.direction-rtl-selector {
+  .#{$prefix}btn[aria-busy="true"]::before {
+    animation-direction: reverse;
+  }
+}
 
-        &[waiting] {
-            font-size: 0;
-            color: var(--#{$prefix}text-color);
-            opacity: var(--#{$prefix}disabled-control-opacity) !important;
-            cursor: wait !important;
-            pointer-events: none !important;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
+// Theme color variants
+@each $name, $value in colors.$theme-colors {
+  .#{$prefix}btn-#{$name} {
+    background-color: var(--#{$prefix}background-#{$name});
+    border-color: var(--#{$prefix}border-#{$name});
+    color: var(--#{$prefix}text-#{$name});
 
-            &::before {
-                content: "";
-                display: inline-block;
-                width: 20px;
-                height: 20px;
-                align-self: center;
-                background-color: currentColor;
-                mask: var(--#{$prefix}spinner-svg) no-repeat center / contain;
-                -webkit-mask: var(--#{$prefix}spinner-svg) no-repeat center / contain;
-                animation: spin 0.8s linear infinite;
-                color: inherit;
-            }
-
-            &::after {
-                content: attr(waiting);
-                font-size: var(--#{$prefix}font-size-base);
-                font-family: inherit;
-                font-weight: inherit;
-                color: inherit;
-                margin-inline-start: 0.3125rem;
-            }
-        }
+    // Busy state (spinner + text)
+    &[aria-busy="true"] {
+      &::before,
+      &::after {
+        color: var(--#{$prefix}text-#{$name});
+      }
     }
 
-    @include mixins.direction-rtl-selector {
-        .#{$prefix}btn[waiting]::before {
-            animation-direction: reverse;
-        }
+    &:hover {
+      background-color: var(--#{$prefix}hover-background-#{$name});
     }
+  }
+}
 
-    @each $name, $value in colors.$theme-colors {
-        .#{$prefix}btn-#{$name} {
-            background-color: var(--#{$prefix}background-#{$name});
-            border-color: var(--#{$prefix}border-#{$name});
-            color: var(--#{$prefix}text-#{$name});
-
-            &[waiting]::before,
-            &[waiting]::after {
-                color: var(--#{$prefix}text-#{$name});
-            }
-
-            &:hover {
-                background-color: var(--#{$prefix}hover-background-#{$name}) !important;
-            }
-        }
-    }
 }

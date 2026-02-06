@@ -11,7 +11,7 @@
 // ===============================
 // CSS Variables (Root)
 // ===============================
-#{vars.$css-variables-root} {
+:root {
   @include mixins.generate-variables(vars.$prefix, vars.$root-system-variables);
 }
 

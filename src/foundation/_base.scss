@@ -41,6 +41,7 @@
     font-size: var(--#{$prefix}font-size-base);
     font-weight: var(--#{$prefix}font-weight-base);
     line-height: var(--#{$prefix}line-height-base);
+    transition: var(--#{$prefix}transition);
   }
 }
 
@@ -52,9 +53,6 @@
 /// @param {String} $prefix - CSS variable prefix (e.g., "fx-")
 @mixin base-elements($prefix) {
 
-   *{
-    transition: var(--#{$prefix}transition);
-   }
   // Paragraph spacing
   p {
     margin: 0;
@@ -69,7 +67,7 @@
     margin: var(--#{$prefix}gutter-width) 0;
     color: inherit;
     border: 0;
-    border-top: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
+    border-top: var(--#{$prefix}border-width , 1px) solid var(--#{$prefix}border-color);
     opacity: 0.5;
   }
 
@@ -103,6 +101,7 @@
   a {
     color: var(--#{$prefix}link-color);
     text-decoration: vars.$link-decoration;
+    transition: var(--#{$prefix}transition);
 
     &:hover {
       color: var(--#{$prefix}link-hover-color);

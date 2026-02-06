@@ -25,7 +25,7 @@
         <button class="fx-btn fx-btn-secondary" data-theme="dark" onclick="setTheme('dark')">
           <span class="fx-btn-icon">🌙</span> Dark Theme
         </button>
-        <button class="fx-btn fx-btn-info" data-theme="auto" onclick="setTheme('auto')" waiting="Loading..." style="width: 200px;">
+        <button class="fx-btn fx-btn-info" data-theme="auto" onclick="setTheme('auto')" aria-busy="true" aria-label="Loading..." style="width: 200px;">
           <span class="fx-btn-icon">🌐</span> Auto (System)
         </button>
     </div>
@@ -74,6 +74,14 @@
         <p class="text-disabled">Disabled Text Color - for disabled text</p>
       </div>
     </div>
+
+    <div class="text-demo">
+      <p class="fx-feedback">Feedback Text Color - for feedback text</p>
+      <p class="fx-valid-feedback">Valid Text Color - for valid text</p>
+      <p class="fx-invalid-feedback">Invalid Text Color - for invalid text</p>
+      <p class="fx-feedback fx-text-muted">Muted Text Color - for muted text</p>
+    </div>
+  </div>
     
     <div class="demo-section">
       <h2 class="demo-section-title">Links</h2>
@@ -82,33 +90,41 @@
         <a href="#">Link with hover effect</a>
       </p>
     </div>
-    <div class="demo-section fx-d-flex fx-flex-col fx-gap-2 fx-p-2">
-      <div class="fx-input-floating">
+    <div class="demo-section fx-d-flex fx-flex-col fx-gap-2 fx-p-4" >
+     
+      <div class="fx-input-frame">
         <input id="input-1" required type="text" class="fx-input" placeholder="" />
         <label for="input-1">Input 1</label>
       </div>
-      <div class="fx-input-floating">
+      <div class="fx-input-frame">
         <input id="input-2" required type="text" class="fx-input" invalid placeholder="" />
         <label for="input-2">Input 2</label>
       </div>
-      <div class="fx-input-floating">
+      <div class="fx-input-frame">
         <input id="input-3" required type="text" class="fx-input" valid placeholder="" />
         <label for="input-3">Input 3</label>
       </div>
     </div>
-    <div class="demo-section fx-d-flex fx-flex-col fx-gap-2 fx-p-2">
-      <div class="fx-input-floating">
+    <div class="demo-section fx-d-flex fx-flex-col fx-gap-2 fx-p-4">
+      <div class="fx-input-frame">
         <input id="input-4" required type="text" class="fx-input" disabled placeholder="" />
         <label for="input-4">Input 4</label>
       </div>
-      <div class="fx-input-floating">
+      <div class="fx-input-frame">
         <input id="input-5" required type="text" class="fx-input" readonly placeholder="" />
         <label for="input-5">Input 5 (Read Only)</label>
       </div>
-      <div class="fx-input-floating">
+      <div class="fx-input-frame">
         <input id="input-6" required type="text" class="fx-input" required placeholder="" />
         <label for="input-6">Input 6 (Required)</label>
       </div>      
+    </div>
+    <div class="demo-section fx-d-flex fx-flex-col fx-gap-2 fx-p-4">
+      <div class="fx-input-frame has-toggle">
+        <input id="input-7" required type="password" class="fx-input" placeholder="" />
+        <label for="input-7">Password</label>
+        <button class="fx-toggle-password" data-action="input-7" aria-pressed="true" type="button"></button>
+      </div>
     </div>
 
     
