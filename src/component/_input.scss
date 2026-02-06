@@ -2,155 +2,152 @@
 @use "../abstracts/variables/svg" as svg;
 
 @mixin input($prefix) {
+  // Input mixin
+  .#{$prefix}input {
+    height: var(--#{$prefix}control-height);
+    width: inherit;
+    padding: var(--#{$prefix}control-padding-y) var(--#{$prefix}control-padding-x);
+    font: var(--#{$prefix}font-weight-base) var(--#{$prefix}font-size-base) / var(--#{$prefix}line-height-base) var(--#{$prefix}font-family-base);
+    color: var(--#{$prefix}text-color);
+    background: var(--#{$prefix}background-color);
+    background-clip: padding-box;
+    border: var(--#{$prefix}border-width, 0) solid var(--#{$prefix}border-color);
+    border-radius: var(--#{$prefix}control-border-radius);
+    outline: none;
+    transition: var(--#{$prefix}transition);
 
-    // Input mixin
-    .#{$prefix}input {
-        height: var(--#{$prefix}control-height);
-        width: inherit;
-        padding: var(--#{$prefix}control-padding-y) var(--#{$prefix}control-padding-x);
-        font: var(--#{$prefix}font-weight-base) var(--#{$prefix}font-size-base) / var(--#{$prefix}line-height-base) var(--#{$prefix}font-family-base);
-        color: var(--#{$prefix}text-color);
-        background: var(--#{$prefix}background-color);
-        background-clip: padding-box;
-        border: var(--#{$prefix}border-width, 0px) solid var(--#{$prefix}border-color);
-        border-radius: var(--#{$prefix}control-border-radius);
-        outline: none;
-        transition: var(--#{$prefix}transition);
-
-        &:focus {
-            border-color: var(--#{$prefix}focus-ring-color, var(--#{$prefix}border-color));
-        }
-
-        &[invalid] {
-            border-color: var(--#{$prefix}invalid-border-color) !important;
-            color: var(--#{$prefix}invalid-color) !important;
-        }
-
-        &[valid] {
-            border-color: var(--#{$prefix}valid-border-color) !important;
-            color: var(--#{$prefix}valid-color) !important;
-        }
-
-        &[disabled] {
-            color: var(--#{$prefix}text-muted-color) !important;
-            opacity: var(--#{$prefix}disabled-control-opacity) !important;
-        }
+    &:focus {
+      border-color: var(--#{$prefix}focus-ring-color, var(--#{$prefix}border-color));
     }
 
-    // Input frame (container)
-    .#{$prefix}input-frame {
-        position: relative;
-
-        label[for] {
-            position: absolute;
-            inset-inline-start: calc(var(--#{$prefix}control-padding-x) + var(--#{$prefix}border-width));
-            inset-block-start: 50%;
-            transform: translateY(-50%);
-            pointer-events: none;
-            background: var(--#{$prefix}background-color);
-            color: var(--#{$prefix}text-muted-color);
-            font: var(--#{$prefix}font-weight-base) var(--#{$prefix}font-size-base) / var(--#{$prefix}line-height-base) var(--#{$prefix}font-family-base);
-            transition: var(--#{$prefix}transition);
-        }
-
-        .#{$prefix}input:focus+label[for],
-        .#{$prefix}input:not(:placeholder-shown)+label[for] {
-            top: 0;
-            color: var(--#{$prefix}focus-ring-color, var(--#{$prefix}border-color));
-            font-size: calc(var(--fx-font-size-base) * 0.75);
-        }
-
-        .#{$prefix}input[invalid]:focus+label[for],
-        .#{$prefix}input[invalid]:not(:placeholder-shown)+label[for] {
-            top: 0;
-            color: var(--#{$prefix}invalid-color);
-            font-size: calc(var(--fx-font-size-base) * 0.75);
-        }
-
-        .#{$prefix}input[valid]:focus+label[for],
-        .#{$prefix}input[valid]:not(:placeholder-shown)+label[for] {
-            top: 0;
-            color: var(--#{$prefix}valid-color);
-            font-size: calc(var(--fx-font-size-base) * 0.75);
-        }
-
-        .#{$prefix}input[disabled]:placeholder-shown+label[for] {
-            color: var(--#{$prefix}text-muted-color) !important;
-            opacity: var(--#{$prefix}disabled-control-opacity) !important;
-            cursor: not-allowed !important;
-            pointer-events: none !important;
-        }
-
-        .#{$prefix}input[disabled]:not(:placeholder-shown)+label[for] {
-            top: 0;
-            inset-inline-start: 0.3125rem;
-            color: var(--#{$prefix}text-muted-color) !important;
-            opacity: var(--#{$prefix}disabled-control-opacity) !important;
-            cursor: not-allowed !important;
-            pointer-events: none !important;
-        }
-
-        // Toggle password button
-        .#{$prefix}toggle-password {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: absolute;
-            inset-block-start: + 2px;
-            inset-inline-end: + 2px;
-            width: calc(var(--#{$prefix}control-height) - calc(var(--#{$prefix}border-width) * 2) - 4px);
-            height: calc(100% - calc(var(--#{$prefix}border-width) * 2) - 4px);
-            border: none;
-            margin: var(--#{$prefix}border-width);
-            border-start-end-radius: calc(var(--#{$prefix}control-border-radius) - 2px) !important;
-            border-end-end-radius: calc(var(--#{$prefix}control-border-radius) - 2px) !important;
-            background-color: transparent;
-            cursor: pointer;
-            outline: none !important;
-            transition: var(--#{$prefix}transition);
-
-            &[disabled] {
-                opacity: var(--#{$prefix}disabled-control-opacity) !important;
-                cursor: not-allowed !important;
-                pointer-events: none !important;
-            }
-
-            &:hover {
-                background-color: var(--#{$prefix}gray-light);
-
-                &::before {
-                    background-color: var(--#{$prefix}gray-dark);
-                }
-            }
-
-            &:focus {
-                background-color: var(--#{$prefix}gray-light);
-
-                &::before {
-                    background-color: var(--#{$prefix}gray-dark);
-                }
-            }
-
-            &::before {
-                content: "";
-                width: calc(var(--#{$prefix}control-height) * 0.4);
-                height: calc(var(--#{$prefix}control-height) * 0.4);
-                background-color: var(--#{$prefix}text-muted-color);
-                mask: var(--#{$prefix}eye-open-svg) no-repeat center / contain;
-                -webkit-mask: var(--#{$prefix}eye-open-svg) no-repeat center / contain;
-            }
-
-            &[aria-pressed="true"]::before {
-                mask: var(--#{$prefix}eye-off-svg) no-repeat center / contain;
-                -webkit-mask: var(--#{$prefix}eye-off-svg) no-repeat center / contain;
-            }
-        }
-
-        // Add padding to the input when it has a toggle password button
-        &.has-toggle {
-            input[type="password"] {
-                padding-inline-end: calc(var(--#{$prefix}control-height) + var(--#{$prefix}control-padding-x) - 8px);
-            }
-        }
+    &[invalid] {
+      border-color: var(--#{$prefix}invalid-border-color) !important;
+      color: var(--#{$prefix}invalid-color) !important;
     }
+
+    &[valid] {
+      border-color: var(--#{$prefix}valid-border-color) !important;
+      color: var(--#{$prefix}valid-color) !important;
+    }
+
+    &[disabled] {
+      color: var(--#{$prefix}text-muted-color) !important;
+      opacity: var(--#{$prefix}disabled-control-opacity) !important;
+    }
+  }
+
+  // Input frame (container)
+  .#{$prefix}input-frame {
+    position: relative;
+
+    label[for] {
+      position: absolute;
+      inset-inline-start: calc(var(--#{$prefix}control-padding-x) + var(--#{$prefix}border-width));
+      inset-block-start: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      background: var(--#{$prefix}background-color);
+      color: var(--#{$prefix}text-muted-color);
+      font: var(--#{$prefix}font-weight-base) var(--#{$prefix}font-size-base) / var(--#{$prefix}line-height-base) var(--#{$prefix}font-family-base);
+      transition: var(--#{$prefix}transition);
+    }
+
+    .#{$prefix}input:focus+label[for],
+    .#{$prefix}input:not(:placeholder-shown)+label[for] {
+      top: 0;
+      color: var(--#{$prefix}focus-ring-color, var(--#{$prefix}border-color));
+      font-size: calc(var(--fx-font-size-base) * 0.75);
+    }
+
+    .#{$prefix}input[invalid]:focus+label[for],
+    .#{$prefix}input[invalid]:not(:placeholder-shown)+label[for] {
+      top: 0;
+      color: var(--#{$prefix}invalid-color);
+      font-size: calc(var(--fx-font-size-base) * 0.75);
+    }
+
+    .#{$prefix}input[valid]:focus+label[for],
+    .#{$prefix}input[valid]:not(:placeholder-shown)+label[for] {
+      top: 0;
+      color: var(--#{$prefix}valid-color);
+      font-size: calc(var(--fx-font-size-base) * 0.75);
+    }
+
+    .#{$prefix}input[disabled]:placeholder-shown+label[for] {
+      color: var(--#{$prefix}text-muted-color) !important;
+      opacity: var(--#{$prefix}disabled-control-opacity) !important;
+      cursor: not-allowed !important;
+      pointer-events: none !important;
+    }
+
+    .#{$prefix}input[disabled]:not(:placeholder-shown)+label[for] {
+      top: 0;
+      inset-inline-start: 0.3125rem;
+      color: var(--#{$prefix}text-muted-color) !important;
+      opacity: var(--#{$prefix}disabled-control-opacity) !important;
+      cursor: not-allowed !important;
+      pointer-events: none !important;
+    }
+
+    // Toggle password button
+    .#{$prefix}toggle-password {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      inset-block-start: + 2px;
+      inset-inline-end: + 2px;
+      width: calc(var(--#{$prefix}control-height) - calc(var(--#{$prefix}border-width) * 2) - 4px);
+      height: calc(100% - calc(var(--#{$prefix}border-width) * 2) - 4px);
+      border: none;
+      margin: var(--#{$prefix}border-width);
+      border-start-end-radius: calc(var(--#{$prefix}control-border-radius) - 2px) !important;
+      border-end-end-radius: calc(var(--#{$prefix}control-border-radius) - 2px) !important;
+      background-color: transparent;
+      cursor: pointer;
+      outline: none !important;
+      transition: var(--#{$prefix}transition);
+
+      &[disabled] {
+        opacity: var(--#{$prefix}disabled-control-opacity) !important;
+        cursor: not-allowed !important;
+        pointer-events: none !important;
+      }
+
+      &:hover {
+        background-color: var(--#{$prefix}gray-light);
+
+        &::before {
+          background-color: var(--#{$prefix}gray-dark);
+        }
+      }
+
+      &:focus {
+        background-color: var(--#{$prefix}gray-light);
+
+        &::before {
+          background-color: var(--#{$prefix}gray-dark);
+        }
+      }
+
+      &::before {
+        content: "";
+        width: calc(var(--#{$prefix}control-height) * 0.4);
+        height: calc(var(--#{$prefix}control-height) * 0.4);
+        background-color: var(--#{$prefix}text-muted-color);
+        mask: var(--#{$prefix}eye-open-svg) no-repeat center / contain;
+      }
+
+      &[aria-pressed="true"]::before {
+        mask: var(--#{$prefix}eye-off-svg) no-repeat center / contain;
+      }
+    }
+
+    // Add padding to the input when it has a toggle password button
+    &.has-toggle {
+      input[type="password"] {
+        padding-inline-end: calc(var(--#{$prefix}control-height) + var(--#{$prefix}control-padding-x) - 8px);
+      }
+    }
+  }
 }

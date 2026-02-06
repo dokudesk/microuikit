@@ -52,7 +52,9 @@ export default {
       "dvh",
       "dvw",
       "ms",
-      "s"
+      "s",
+      "deg",
+      "turn" 
     ],
 
     // Stylistic rules (Stylelint 17 compatible via @stylistic/stylelint-plugin)

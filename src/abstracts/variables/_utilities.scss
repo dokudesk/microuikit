@@ -77,7 +77,7 @@ $root-common-variables: (
   ),
 
   // ===============================
-  // Effects & Animations (Lowest Priority) 
+  // Effects & Animations (Lowest Priority)
   // ===============================
   "transition": (namespace: "",
     values: transitions.$transition,
@@ -94,9 +94,16 @@ $root-common-variables: (
   "control-height": (namespace: "control",
     values: spacing.$default-control-height,
   ),
+  "checkbox-border-radius": (namespace: "checkbox",
+    values: borders.$checkbox-border-radius,
+  ),
+  "checkbox-size": (namespace: "checkbox",
+    values: sizing.$checkbox-size,
+  ),
   "disabled-control-opacity": (namespace: "disabled-control",
     values: opacity.$disabled-control-opacity,
   ),
+
   ) !default;
 
 // Main utilities
@@ -801,7 +808,7 @@ $system-classes: (
   "rounded": (property: border-radius,
     class: "rounded",
     important: true,
-    values: borders.$border-radiuses, 
+    values: borders.$border-radiuses,
   ),
 
   "rounded-top": (property: (border-top-left-radius, border-top-right-radius),

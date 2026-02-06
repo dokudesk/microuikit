@@ -52,11 +52,10 @@
 /// Styles paragraphs, links, images, and other base elements
 /// @param {String} $prefix - CSS variable prefix (e.g., "fx-")
 @mixin base-elements($prefix) {
-
   // Paragraph spacing
   p {
     margin: 0;
-   }
+  }
 
   label {
     display: inline-block;

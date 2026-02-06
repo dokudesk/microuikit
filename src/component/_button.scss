@@ -15,20 +15,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
     padding: var(--#{$prefix}control-padding-y) var(--#{$prefix}control-padding-x);
     height: var(--#{$prefix}control-height);
-
     font: var(--#{$prefix}font-weight-base)
-          var(--#{$prefix}font-size-base)
-          var(--#{$prefix}font-family-base);
-
+      var(--#{$prefix}font-size-base)
+      var(--#{$prefix}font-family-base);
     color: var(--#{$prefix}text-color);
     background-color: var(--#{$prefix}background-color);
-
     border: var(--#{$prefix}border-width, 0) solid var(--#{$prefix}border-color);
     border-radius: var(--#{$prefix}control-border-radius);
-
     white-space: nowrap;
     cursor: pointer;
     user-select: none;
@@ -52,49 +47,45 @@
         content: "";
         width: calc(var(--#{$prefix}control-height) * 0.4);
         height: calc(var(--#{$prefix}control-height) * 0.4);
-        background-color: currentColor;
-
+        background-color: currentcolor;
         mask: var(--#{$prefix}spinner-svg) no-repeat center / contain;
-        -webkit-mask: var(--#{$prefix}spinner-svg) no-repeat center / contain;
-
         animation: spin 1s linear infinite;
       }
 
       &::after {
         content: attr(aria-label);
         margin-inline-start: 0.3125rem;
-        color: currentColor;
+        color: currentcolor;
         font-size: var(--#{$prefix}font-size-base);
       }
     }
   }
 
-// RTL support for spinner
-@include mixins.direction-rtl-selector {
-  .#{$prefix}btn[aria-busy="true"]::before {
-    animation-direction: reverse;
+  // RTL support for spinner
+  @include mixins.direction-rtl-selector {
+    .#{$prefix}btn[aria-busy="true"]::before {
+      animation-direction: reverse;
+    }
   }
-}
 
-// Theme color variants
-@each $name, $value in colors.$theme-colors {
-  .#{$prefix}btn-#{$name} {
-    background-color: var(--#{$prefix}background-#{$name});
-    border-color: var(--#{$prefix}border-#{$name});
-    color: var(--#{$prefix}text-#{$name});
+  // Theme color variants
+  @each $name, $value in colors.$theme-colors {
+    .#{$prefix}btn-#{$name} {
+      background-color: var(--#{$prefix}background-#{$name});
+      border-color: var(--#{$prefix}border-#{$name});
+      color: var(--#{$prefix}text-#{$name});
 
-    // Busy state (spinner + text)
-    &[aria-busy="true"] {
-      &::before,
-      &::after {
-        color: var(--#{$prefix}text-#{$name});
+      // Busy state (spinner + text)
+      &[aria-busy="true"] {
+        &::before, &::after {
+          color: var(--#{$prefix}text-#{$name});
+        }
+      }
+
+      &:hover {
+        background-color: var(--#{$prefix}hover-background-#{$name});
       }
     }
-
-    &:hover {
-      background-color: var(--#{$prefix}hover-background-#{$name});
-    }
   }
-}
 
 }

@@ -61,3 +61,4 @@
 // ===============================
 @include component.btn(vars.$prefix);
 @include component.input(vars.$prefix);
+@include component.checkbox(vars.$prefix);

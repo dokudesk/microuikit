@@ -1,3 +1,4 @@
+@use 'global' as global;
 @use 'sass:map';
 
 // ===============================
@@ -33,3 +34,10 @@ $max-height-values: map.merge($height-values,
     (c-height: max-content)) !default;
 $min-height-values: map.merge($height-values,
     (c-height: min-content)) !default;
+
+// ===============================
+// Checkbox Size
+// ===============================
+$checkbox-size: (
+  size:  1.5rem,
+) !default;
