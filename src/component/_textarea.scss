@@ -1,0 +1,98 @@
+@mixin textarea($prefix) {
+  .#{$prefix}textarea-frame {
+    position: relative;
+    display: inline-flex;
+    width: 100%;
+
+    label[for] {
+      position: absolute;
+      inset-inline-start: var(--#{$prefix}control-padding-x);
+      top: calc(
+        var(--#{$prefix}control-padding-y) + var(--#{$prefix}border-width, 0px)
+      );
+      transform: none;
+      display: flex;
+      align-items: center;
+      pointer-events: none;
+      background: var(--#{$prefix}background-color);
+      color: var(--#{$prefix}text-muted-color);
+      font: var(--#{$prefix}font-weight-base) var(--#{$prefix}font-size-base) / var(--#{$prefix}line-height-base) var(--#{$prefix}font-family-base);
+      transition: var(--#{$prefix}transition);
+    }
+
+    .#{$prefix}textarea:focus + label[for],
+    .#{$prefix}textarea:not(:placeholder-shown) + label[for] {
+      top: 0;
+      transform: translateY(-50%);
+      color: var(--#{$prefix}focus-ring-color, var(--#{$prefix}border-color));
+      font-size: calc(var(--#{$prefix}font-size-base) * 0.75);
+    }
+
+    .#{$prefix}textarea[invalid]:focus + label[for],
+    .#{$prefix}textarea[invalid]:not(:placeholder-shown) + label[for] {
+      top: 0;
+      transform: translateY(-50%);
+      color: var(--#{$prefix}invalid-color);
+      font-size: calc(var(--#{$prefix}font-size-base) * 0.75);
+    }
+
+    .#{$prefix}textarea[valid]:focus + label[for],
+    .#{$prefix}textarea[valid]:not(:placeholder-shown) + label[for] {
+      top: 0;
+      transform: translateY(-50%);
+      color: var(--#{$prefix}valid-color);
+      font-size: calc(var(--#{$prefix}font-size-base) * 0.75);
+    }
+
+    .#{$prefix}textarea[disabled]:placeholder-shown + label[for] {
+      color: var(--#{$prefix}text-muted-color) !important;
+      opacity: var(--#{$prefix}disabled-control-opacity) !important;
+      cursor: not-allowed !important;
+      pointer-events: none !important;
+    }
+
+    .#{$prefix}textarea[disabled]:not(:placeholder-shown) + label[for] {
+      top: 0;
+      transform: translateY(-50%);
+      inset-inline-start: 0.3125rem;
+      color: var(--#{$prefix}text-muted-color) !important;
+      opacity: var(--#{$prefix}disabled-control-opacity) !important;
+      cursor: not-allowed !important;
+      pointer-events: none !important;
+    }
+  }
+
+  .#{$prefix}textarea {
+    width: 100%;
+    height: 100%;
+    padding: var(--#{$prefix}control-padding-y) var(--#{$prefix}control-padding-x);
+    font: var(--#{$prefix}font-weight-base) var(--#{$prefix}font-size-base) var(--#{$prefix}font-family-base);
+    line-height: var(--#{$prefix}line-height-base);
+    color: var(--#{$prefix}text-color);
+    background: var(--#{$prefix}background-color);
+    background-clip: padding-box;
+    border: var(--#{$prefix}border-width, 0) solid var(--#{$prefix}border-color);
+    border-radius: var(--#{$prefix}control-border-radius);
+    outline: none;
+    transition: var(--#{$prefix}transition);
+
+    &:focus {
+      border-color: var(--#{$prefix}focus-ring-color, var(--#{$prefix}border-color));
+    }
+
+    &[invalid] {
+      border-color: var(--#{$prefix}invalid-border-color);
+      color: var(--#{$prefix}invalid-color);
+    }
+
+    &[valid] {
+      border-color: var(--#{$prefix}valid-border-color);
+      color: var(--#{$prefix}valid-color);
+    }
+
+    &[disabled] {
+      color: var(--#{$prefix}text-muted-color);
+      opacity: var(--#{$prefix}disabled-control-opacity);
+    }
+  }
+}

@@ -40,11 +40,10 @@
         pointer-events: none;
       }
 
-      &:disabled + label::before,
-      &:disabled + label::after {
+      &:disabled + label::before, &:disabled + label::after {
         opacity: var(--#{$prefix}disabled-control-opacity);
       }
-      
+
       &:disabled:not(:checked) + label::after {
         opacity: 0;
         transform: translate(-50%, -50%) scale(0.6);
@@ -80,11 +79,11 @@
     input[type="radio"].#{$prefix}radio + label {
       position: relative;
       cursor: pointer;
+      font: var(--#{$prefix}font-weight-base) var(--#{$prefix}font-size-base) / var(--#{$prefix}line-height-base) var(--#{$prefix}font-family-base);
       color: var(--#{$prefix}text-color);
       padding-inline-start: calc(
         var(--#{$prefix}radio-size) + var(--#{$prefix}control-padding-x)
       );
-      line-height: var(--#{$prefix}line-height-base);
       user-select: none;
       transition: var(--#{$prefix}transition);
     }

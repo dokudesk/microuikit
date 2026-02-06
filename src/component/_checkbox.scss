@@ -79,11 +79,11 @@
     input[type="checkbox"].#{$prefix}checkbox + label {
       position: relative;
       cursor: pointer;
+      font: var(--#{$prefix}font-weight-base) var(--#{$prefix}font-size-base) / var(--#{$prefix}line-height-base) var(--#{$prefix}font-family-base);
       color: var(--#{$prefix}text-color);
       padding-inline-start: calc(
           var(--#{$prefix}checkbox-size) + var(--#{$prefix}control-padding-x)
         );
-      line-height: var(--#{$prefix}line-height-base);
       user-select: none;
       transition: var(--#{$prefix}transition);
     }

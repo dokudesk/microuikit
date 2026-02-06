@@ -58,6 +58,8 @@ $background-color: map.get($grays, 100) !default;
 $background-color-dark: map.get($grays, 900) !default;
 $box-shadow-color: rgb(0 0 0 / 50%) !default;
 $box-shadow-color-dark: rgb(255 255 255 / 50%) !default;
+$scrollbar-color: map.get($grays, 600)  !default;
+$scrollbar-color-dark: map.get($grays, 400) !default;
 
 // ===============================
 // Validation Colors
@@ -162,6 +164,7 @@ $theme-light-colors: (
   valid-border-color: $valid-border-color,
   invalid-border-color: $invalid-border-color,
   focus-ring-color: $focus-ring-color,
+  scrollbar-color: $scrollbar-color,
 ) !default;
 $theme-dark-colors: (
   text-color: $text-color-dark,
@@ -178,4 +181,5 @@ $theme-dark-colors: (
   valid-border-color: $valid-border-color-dark,
   invalid-border-color: $invalid-border-color-dark,
   focus-ring-color: $focus-ring-color-dark,
+  scrollbar-color: $scrollbar-color-dark,
 ) !default;
