@@ -1,11 +1,10 @@
-// Checkbox mixin
-@mixin checkbox($prefix) {
-  .#{$prefix}checkbox-frame {
+@mixin radio($prefix) {
+  .#{$prefix}radio-frame {
     position: relative;
     display: inline-flex;
     align-items: center;
 
-    input[type="checkbox"].#{$prefix}checkbox {
+    input[type="radio"].#{$prefix}radio {
       position: absolute;
       width: 1px;
       height: 1px;
@@ -18,14 +17,12 @@
 
       /* checked */
       &:checked + label::before {
-        background-color: var(--#{$prefix}primary);
         border-color: var(--#{$prefix}primary);
       }
 
       &:checked + label::after {
         opacity: 1;
-
-        //  transform: translateY(-50%) rotate(45deg) scale(1);
+        transform: translate(-50%, -50%) scale(1);
       }
 
       /* focus */
@@ -43,8 +40,14 @@
         pointer-events: none;
       }
 
-      &:disabled + label::before, &:disabled + label::after {
+      &:disabled + label::before,
+      &:disabled + label::after {
         opacity: var(--#{$prefix}disabled-control-opacity);
+      }
+      
+      &:disabled:not(:checked) + label::after {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.6);
       }
 
       /* invalid */
@@ -56,9 +59,8 @@
         border-color: var(--#{$prefix}invalid-border-color);
       }
 
-      &[invalid]:checked + label::before {
+      &[invalid]:checked + label::after {
         background-color: var(--#{$prefix}invalid-color);
-        border-color: var(--#{$prefix}invalid-color);
       }
 
       /* valid */
@@ -70,49 +72,48 @@
         border-color: var(--#{$prefix}valid-border-color);
       }
 
-      &[valid]:checked + label::before {
+      &[valid]:checked + label::after {
         background-color: var(--#{$prefix}valid-color);
-        border-color: var(--#{$prefix}valid-color);
       }
     }
 
-    input[type="checkbox"].#{$prefix}checkbox + label {
+    input[type="radio"].#{$prefix}radio + label {
       position: relative;
       cursor: pointer;
       color: var(--#{$prefix}text-color);
       padding-inline-start: calc(
-          var(--#{$prefix}checkbox-size) + var(--#{$prefix}control-padding-x)
-        );
+        var(--#{$prefix}radio-size) + var(--#{$prefix}control-padding-x)
+      );
       line-height: var(--#{$prefix}line-height-base);
       user-select: none;
       transition: var(--#{$prefix}transition);
     }
 
-    input[type="checkbox"].#{$prefix}checkbox + label::before {
+    input[type="radio"].#{$prefix}radio + label::before {
       content: "";
       position: absolute;
       inset-inline-start: 0;
       inset-block-start: 50%;
       transform: translateY(-50%);
-      width: var(--#{$prefix}checkbox-size, 1.5rem);
-      height: var(--#{$prefix}checkbox-size, 1.5rem);
+      width: var(--#{$prefix}radio-size, 1.5rem);
+      height: var(--#{$prefix}radio-size, 1.5rem);
       border: var(--#{$prefix}border-width, 1px) solid var(--#{$prefix}border-color);
-      border-radius: var(--#{$prefix}checkbox-border-radius);
+      border-radius: 50%;
       background-color: var(--#{$prefix}background-color);
       box-sizing: border-box;
       transition: var(--#{$prefix}transition);
     }
 
-    input[type="checkbox"].#{$prefix}checkbox + label::after {
+    input[type="radio"].#{$prefix}radio + label::after {
       content: "";
       position: absolute;
-      inset-inline-start: calc(var(--#{$prefix}checkbox-size, 1.5rem) / 2);
+      inset-inline-start: calc(var(--#{$prefix}radio-size, 1.5rem) / 2);
       inset-block-start: 50%;
-      width: calc(var(--#{$prefix}checkbox-size, 1.5rem) * 0.35);
-      height: calc(var(--#{$prefix}checkbox-size, 1.5rem) * 0.7);
-      border-right: 2px solid var(--#{$prefix}checkbox-check-color, var(--#{$prefix}white));
-      border-bottom: 2px solid var(--#{$prefix}checkbox-check-color, var(--#{$prefix}white));
-      transform: translate(-50%, -50%) rotate(45deg) scale(0.8);
+      width: calc(var(--#{$prefix}radio-size, 1.5rem) * 0.45);
+      height: calc(var(--#{$prefix}radio-size, 1.5rem) * 0.45);
+      background-color: var(--#{$prefix}radio-dot-color, var(--#{$prefix}primary));
+      border-radius: 50%;
+      transform: translate(-50%, -50%) scale(0.6);
       opacity: 0;
       transition: var(--#{$prefix}transition);
       box-sizing: border-box;
