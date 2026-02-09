@@ -14,6 +14,7 @@
 @use 'validation' as validation;
 @use 'focus' as focus;
 @use 'svg' as svg;
+@use 'direction' as direction;
 @use '../mixins/utilities' as utilities;
 @use '../../component/text' as component-text;
 @use '../../component/button' as component-button;
@@ -106,6 +107,12 @@ $root-common-variables: (
   "disabled-control-opacity": (namespace: "disabled-control",
     values: opacity.$disabled-control-opacity,
   ),
+  "scrollbar-size": (namespace: "scrollbar",
+    values: sizing.$scrollbar-size,
+  ),
+  "edge-scrollbar-size": (namespace: "edge-scrollbar",
+    values: sizing.$edge-scrollbar-size,
+  ),
 
   ) !default;
 
@@ -144,6 +151,14 @@ $rtl-direction-variables: (
 /// Each entry defines a utility class with its properties, values, and options
 /// Structure: "utility-name": (property: CSS property, class: "class-name", important: boolean, values: map|list)
 $system-classes: (
+  // ===============================
+  // Direction
+  // ===============================
+  "direction": (property: "direction",
+    class: "",
+    important: true,
+    values: direction.$directions,
+  ),
   // ===============================
   // Layout & Display
   // ===============================

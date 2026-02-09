@@ -36,6 +36,21 @@ $min-height-values: map.merge($height-values,
     (c-height: min-content)) !default;
 
 // ===============================
+// Scrollbar Size
+// ===============================
+$scrollbar-size: (
+  width: auto,
+) !default;
+
+// ===============================
+// Edge Scrollbar Size
+// ===============================
+$edge-scrollbar-size: (
+  width:  0.75rem,
+  height:  0.75rem,
+) !default;
+
+// ===============================
 // Checkbox Size
 // ===============================
 $checkbox-size: (
@@ -47,4 +62,5 @@ $checkbox-size: (
 // ===============================
 $radio-size: (
   size:  1.25rem,
+  dot-space: 5px,
 ) !default;

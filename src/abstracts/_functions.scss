@@ -72,6 +72,23 @@
 }
 
 // ===============================
+// Function: rgb-color
+// ===============================
+/// Converts a color to an RGB color object
+/// @param {Color} $color - Color to convert
+/// @return {Map} RGB color object
+@function rgb-color($color) {
+  @if meta.type-of($color) == "color" {
+    @return
+      math.round(color.channel($color, "red", $space: rgb)),
+      math.round(color.channel($color, "green", $space: rgb)),
+      math.round(color.channel($color, "blue", $space: rgb));
+  }
+
+  @return $color;
+}
+
+// ===============================
 // Function: build-class
 // ===============================
 /// Builds a class name from a list of items

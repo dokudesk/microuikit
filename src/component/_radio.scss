@@ -1,3 +1,4 @@
+// Radio mixin
 @mixin radio($prefix) {
   .#{$prefix}radio-frame {
     position: relative;
@@ -15,68 +16,63 @@
       clip-path: inset(50%);
       overflow: hidden;
 
-      /* checked */
-      &:checked + label::before {
-        border-color: var(--#{$prefix}primary);
+      &:checked + label[for]::before {
+        border-color: var(--#{$prefix}radio-checked-color);
       }
 
-      &:checked + label::after {
+      &:checked + label[for]::after {
         opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
+        transform: translateY(-50%) scale(1);
       }
 
-      /* focus */
-      &:focus-visible:not(:disabled) + label::before {
+      &:focus-visible:not(:disabled) + label[for]::before {
         outline: var(--#{$prefix}focus-ring-outline-width)
           solid var(--#{$prefix}focus-ring-color);
         outline-offset: var(--#{$prefix}focus-ring-outline-offset);
       }
 
-      /* disabled */
-      &:disabled + label {
+      &:disabled + label[for] {
         color: var(--#{$prefix}text-muted-color);
         opacity: var(--#{$prefix}disabled-control-opacity);
         cursor: not-allowed;
         pointer-events: none;
       }
 
-      &:disabled + label::before, &:disabled + label::after {
+      &:disabled + label[for]::before, &:disabled + label[for]::after {
         opacity: var(--#{$prefix}disabled-control-opacity);
       }
 
-      &:disabled:not(:checked) + label::after {
+      &:disabled:not(:checked) + label[for]::after {
         opacity: 0;
-        transform: translate(-50%, -50%) scale(0.6);
+        transform: translateY(-50%) scale(0.6);
       }
 
-      /* invalid */
-      &[invalid] + label {
+      &[invalid] + label[for] {
         color: var(--#{$prefix}invalid-border-color);
       }
 
-      &[invalid] + label::before {
+      &[invalid] + label[for]::before {
         border-color: var(--#{$prefix}invalid-border-color);
       }
 
-      &[invalid]:checked + label::after {
+      &[invalid]:checked + label[for]::after {
         background-color: var(--#{$prefix}invalid-color);
       }
 
-      /* valid */
-      &[valid] + label {
+      &[valid] + label[for] {
         color: var(--#{$prefix}valid-border-color);
       }
 
-      &[valid] + label::before {
+      &[valid] + label[for]::before {
         border-color: var(--#{$prefix}valid-border-color);
       }
 
-      &[valid]:checked + label::after {
+      &[valid]:checked + label[for]::after {
         background-color: var(--#{$prefix}valid-color);
       }
     }
 
-    input[type="radio"].#{$prefix}radio + label {
+    input[type="radio"].#{$prefix}radio + label[for] {
       position: relative;
       cursor: pointer;
       font: var(--#{$prefix}font-weight-base) var(--#{$prefix}font-size-base) / var(--#{$prefix}line-height-base) var(--#{$prefix}font-family-base);
@@ -88,7 +84,7 @@
       transition: var(--#{$prefix}transition);
     }
 
-    input[type="radio"].#{$prefix}radio + label::before {
+    input[type="radio"].#{$prefix}radio + label[for]::before {
       content: "";
       position: absolute;
       inset-inline-start: 0;
@@ -99,20 +95,23 @@
       border: var(--#{$prefix}border-width, 1px) solid var(--#{$prefix}border-color);
       border-radius: 50%;
       background-color: var(--#{$prefix}background-color);
+      background-clip: padding-box;
       box-sizing: border-box;
       transition: var(--#{$prefix}transition);
     }
 
-    input[type="radio"].#{$prefix}radio + label::after {
+    input[type="radio"].#{$prefix}radio + label[for]::after {
       content: "";
       position: absolute;
-      inset-inline-start: calc(var(--#{$prefix}radio-size, 1.5rem) / 2);
+
+      /* Center in ::before for both LTR and RTL (no translateX so RTL is correct) */
+      inset-inline-start: var(--#{$prefix}radio-dot-space);
       inset-block-start: 50%;
-      width: calc(var(--#{$prefix}radio-size, 1.5rem) * 0.45);
-      height: calc(var(--#{$prefix}radio-size, 1.5rem) * 0.45);
-      background-color: var(--#{$prefix}radio-dot-color, var(--#{$prefix}primary));
+      width: calc(var(--#{$prefix}radio-size, 1.5rem) - var(--#{$prefix}radio-dot-space) * 2);
+      height: calc(var(--#{$prefix}radio-size, 1.5rem) - var(--#{$prefix}radio-dot-space) * 2);
+      background-color: var(--#{$prefix}radio-checked-color);
       border-radius: 50%;
-      transform: translate(-50%, -50%) scale(0.6);
+      transform: translateY(-50%) scale(0.6);
       opacity: 0;
       transition: var(--#{$prefix}transition);
       box-sizing: border-box;

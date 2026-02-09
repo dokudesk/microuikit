@@ -1,0 +1,67 @@
+@use "../abstracts/mixins/theme" as mixins;
+
+@mixin select($prefix) {
+  .#{$prefix}select {
+    display: block;
+    width: 100%;
+    height: var(--#{$prefix}control-height);
+    padding-inline: var(--#{$prefix}control-padding-x) calc(var(--#{$prefix}control-padding-x) * 2 + calc(var(--#{$prefix}control-height) * 0.25));
+    padding-block: var(--#{$prefix}control-padding-y);
+    font: var(--#{$prefix}font-weight-base) var(--#{$prefix}font-size-base) var(--#{$prefix}font-family-base) var(--#{$prefix}line-height-base);
+    color: var(--#{$prefix}text-color);
+    background-color: var(--#{$prefix}background-color);
+    background-clip: padding-box;
+    border: var(--#{$prefix}border-width, 0) solid var(--#{$prefix}border-color);
+    border-radius: var(--#{$prefix}control-border-radius);
+    outline: none;
+    appearance: none;
+    text-transform: none;
+    transition: var(--#{$prefix}transition);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right var(--#{$prefix}control-padding-x) center;
+    background-size: calc(var(--#{$prefix}control-height) * 0.25);
+
+    &:focus {
+      border-color: var(--#{$prefix}focus-ring-color, var(--#{$prefix}border-color));
+    }
+
+    &[invalid] {
+      border-color: var(--#{$prefix}invalid-border-color) !important;
+      color: var(--#{$prefix}invalid-color) !important;
+    }
+
+    &[valid] {
+      border-color: var(--#{$prefix}valid-border-color) !important;
+      color: var(--#{$prefix}valid-color) !important;
+    }
+
+    &[disabled] {
+      color: var(--#{$prefix}text-muted-color) !important;
+      border-color: var(--#{$prefix}border-color) !important;
+      opacity: var(--#{$prefix}disabled-control-opacity) !important;
+    }
+
+    option {
+      color: var(--#{$prefix}text-color);
+      background-color: var(--#{$prefix}background-color);
+      font-family: inherit;
+      font-size: inherit;
+
+      &:checked {
+        color: var(--#{$prefix}select-checked-option-color);
+        background-color: var(--#{$prefix}select-checked-option-background-color);
+      }
+
+      &:disabled {
+        opacity: var(--#{$prefix}disabled-control-opacity) !important;
+      }
+    }
+  }
+
+  @include mixins.direction-rtl-selector {
+    .#{$prefix}select {
+      background-position: left var(--#{$prefix}control-padding-x) center;
+    }
+  }
+}

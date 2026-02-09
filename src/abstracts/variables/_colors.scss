@@ -60,6 +60,18 @@ $box-shadow-color: rgb(0 0 0 / 50%) !default;
 $box-shadow-color-dark: rgb(255 255 255 / 50%) !default;
 $scrollbar-color: map.get($grays, 600)  !default;
 $scrollbar-color-dark: map.get($grays, 400) !default;
+$scrollbar-hover-color: map.get($grays, 500) !default;
+$scrollbar-hover-color-dark: map.get($grays, 600) !default;
+$checkbox-checked-color: $primary !default;
+$checkbox-checked-color-dark: $primary !default;
+$radio-checked-color: $primary !default;
+$radio-checked-color-dark: $primary !default;
+$select-arrow-color: map.get($grays, 400) !default;
+$select-arrow-color-dark: map.get($grays, 600) !default;
+$select-checked-option-color: $text-color !default;
+$select-checked-option-color-dark: $text-color-dark !default;
+$select-checked-option-background-color: $background-color !default;
+$select-checked-option-background-color-dark: $background-color-dark !default;
 
 // ===============================
 // Validation Colors
@@ -152,6 +164,7 @@ $theme-border-colors: (
 $theme-light-colors: (
   text-color: $text-color,
   text-muted-color: $text-muted-color,
+  text-muted-color-rgb: fn.rgb-color($text-muted-color),
   heading-color: $heading-color,
   background-color: $background-color,
   border-color: $border-color,
@@ -165,10 +178,17 @@ $theme-light-colors: (
   invalid-border-color: $invalid-border-color,
   focus-ring-color: $focus-ring-color,
   scrollbar-color: $scrollbar-color,
+  scrollbar-hover-color: $scrollbar-hover-color,
+  checkbox-checked-color: $checkbox-checked-color,
+  radio-checked-color: $radio-checked-color,
+  select-arrow-color: $select-arrow-color,
+  select-checked-option-color: $select-checked-option-color,
+  select-checked-option-background-color: $select-checked-option-background-color,
 ) !default;
 $theme-dark-colors: (
   text-color: $text-color-dark,
   text-muted-color: $text-muted-color-dark,
+  text-muted-color-rgb: fn.rgb-color($text-muted-color-dark),
   heading-color: $heading-color-dark,
   background-color: $background-color-dark,
   border-color: $border-color-dark,
@@ -182,4 +202,10 @@ $theme-dark-colors: (
   invalid-border-color: $invalid-border-color-dark,
   focus-ring-color: $focus-ring-color-dark,
   scrollbar-color: $scrollbar-color-dark,
+  scrollbar-hover-color: $scrollbar-hover-color-dark,
+  checkbox-checked-color: $checkbox-checked-color-dark,
+  radio-checked-color: $radio-checked-color-dark,
+  select-arrow-color: $select-arrow-color-dark,
+  select-checked-option-color: $select-checked-option-color-dark,
+  select-checked-option-background-color: $select-checked-option-background-color-dark,
 ) !default;

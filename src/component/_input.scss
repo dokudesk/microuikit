@@ -2,14 +2,12 @@
 @use "../abstracts/variables/svg" as svg;
 
 @mixin input($prefix) {
-  // Input mixin
   .#{$prefix}input {
     height: var(--#{$prefix}control-height);
-    width: inherit;
     padding: var(--#{$prefix}control-padding-y) var(--#{$prefix}control-padding-x);
     font: var(--#{$prefix}font-weight-base) var(--#{$prefix}font-size-base) / var(--#{$prefix}line-height-base) var(--#{$prefix}font-family-base);
     color: var(--#{$prefix}text-color);
-    background: var(--#{$prefix}background-color);
+    background-color: var(--#{$prefix}background-color);
     background-clip: padding-box;
     border: var(--#{$prefix}border-width, 0) solid var(--#{$prefix}border-color);
     border-radius: var(--#{$prefix}control-border-radius);
@@ -32,11 +30,11 @@
 
     &[disabled] {
       color: var(--#{$prefix}text-muted-color) !important;
+      border-color: var(--#{$prefix}border-color) !important;
       opacity: var(--#{$prefix}disabled-control-opacity) !important;
     }
   }
 
-  // Input frame (container)
   .#{$prefix}input-frame {
     position: relative;
 
@@ -46,50 +44,55 @@
       inset-block-start: 50%;
       transform: translateY(-50%);
       pointer-events: none;
-      background: var(--#{$prefix}background-color);
+      background-color: transparent;
       color: var(--#{$prefix}text-muted-color);
       font: var(--#{$prefix}font-weight-base) var(--#{$prefix}font-size-base) / var(--#{$prefix}line-height-base) var(--#{$prefix}font-family-base);
       transition: var(--#{$prefix}transition);
     }
 
-    .#{$prefix}input:focus+label[for],
-    .#{$prefix}input:not(:placeholder-shown)+label[for] {
+    .#{$prefix}input::placeholder {
+      color: transparent;
+    }
+
+    .#{$prefix}input:focus ~ label[for],
+    .#{$prefix}input:not(:placeholder-shown) ~ label[for] {
       top: 0;
+      background-color: var(--#{$prefix}background-color);
       color: var(--#{$prefix}focus-ring-color, var(--#{$prefix}border-color));
       font-size: calc(var(--fx-font-size-base) * 0.75);
     }
 
-    .#{$prefix}input[invalid]:focus+label[for],
-    .#{$prefix}input[invalid]:not(:placeholder-shown)+label[for] {
+    .#{$prefix}input[invalid]:focus ~ label[for],
+    .#{$prefix}input[invalid]:not(:placeholder-shown) ~ label[for] {
       top: 0;
+      background-color: var(--#{$prefix}background-color);
       color: var(--#{$prefix}invalid-color);
       font-size: calc(var(--fx-font-size-base) * 0.75);
     }
 
-    .#{$prefix}input[valid]:focus+label[for],
-    .#{$prefix}input[valid]:not(:placeholder-shown)+label[for] {
+    .#{$prefix}input[valid]:focus ~ label[for],
+    .#{$prefix}input[valid]:not(:placeholder-shown) ~ label[for] {
       top: 0;
+      background-color: var(--#{$prefix}background-color);
       color: var(--#{$prefix}valid-color);
       font-size: calc(var(--fx-font-size-base) * 0.75);
     }
 
-    .#{$prefix}input[disabled]:placeholder-shown+label[for] {
+    .#{$prefix}input[disabled]:placeholder-shown ~ label[for] {
       color: var(--#{$prefix}text-muted-color) !important;
       opacity: var(--#{$prefix}disabled-control-opacity) !important;
       cursor: not-allowed !important;
       pointer-events: none !important;
     }
 
-    .#{$prefix}input[disabled]:not(:placeholder-shown)+label[for] {
+    .#{$prefix}input[disabled]:not(:placeholder-shown) ~ label[for] {
       top: 0;
-      inset-inline-start: 0.3125rem;
-      color: var(--#{$prefix}text-muted-color) !important;
-      opacity: var(--#{$prefix}disabled-control-opacity) !important;
+      background-color: var(--#{$prefix}background-color);
+      color: rgb(var(--#{$prefix}text-muted-color-rgb), var(--#{$prefix}disabled-control-opacity)) !important;
       cursor: not-allowed !important;
       pointer-events: none !important;
     }
 
-    // Toggle password button
     .#{$prefix}toggle-password {
       display: flex;
       align-items: center;
@@ -143,7 +146,6 @@
       }
     }
 
-    // Add padding to the input when it has a toggle password button
     &.has-toggle {
       input[type="password"] {
         padding-inline-end: calc(var(--#{$prefix}control-height) + var(--#{$prefix}control-padding-x) - 8px);

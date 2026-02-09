@@ -22,6 +22,7 @@
       var(--#{$prefix}font-family-base);
     color: var(--#{$prefix}text-color);
     background-color: var(--#{$prefix}background-color);
+    background-clip: padding-box;
     border: var(--#{$prefix}border-width, 0) solid var(--#{$prefix}border-color);
     border-radius: var(--#{$prefix}control-border-radius);
     white-space: nowrap;
@@ -29,14 +30,12 @@
     user-select: none;
     transition: var(--#{$prefix}transition);
 
-    // Disabled state
     &:disabled {
       opacity: var(--#{$prefix}disabled-control-opacity);
       cursor: not-allowed;
       pointer-events: none;
     }
 
-    // Busy (loading) state — aria standard
     &[aria-busy="true"] {
       font-size: 0;
       opacity: var(--#{$prefix}disabled-control-opacity);
@@ -61,21 +60,18 @@
     }
   }
 
-  // RTL support for spinner
   @include mixins.direction-rtl-selector {
     .#{$prefix}btn[aria-busy="true"]::before {
       animation-direction: reverse;
     }
   }
 
-  // Theme color variants
   @each $name, $value in colors.$theme-colors {
     .#{$prefix}btn-#{$name} {
       background-color: var(--#{$prefix}background-#{$name});
       border-color: var(--#{$prefix}border-#{$name});
       color: var(--#{$prefix}text-#{$name});
 
-      // Busy state (spinner + text)
       &[aria-busy="true"] {
         &::before, &::after {
           color: var(--#{$prefix}text-#{$name});
