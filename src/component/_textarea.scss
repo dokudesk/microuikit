@@ -1,6 +1,5 @@
 @mixin textarea($prefix) {
   .#{$prefix}textarea {
-    height: var(--#{$prefix}control-height);
     padding: var(--#{$prefix}control-padding-y) var(--#{$prefix}control-padding-x);
     font: var(--#{$prefix}font-weight-base) var(--#{$prefix}font-size-base) var(--#{$prefix}font-family-base);
     line-height: var(--#{$prefix}line-height-base);
@@ -35,14 +34,13 @@
 
   .#{$prefix}textarea-frame {
     position: relative;
-
+    height: auto !important;
+    max-height: none !important;
     label[for] {
       position: absolute;
       inset-inline-start: calc(var(--#{$prefix}control-padding-x) + var(--#{$prefix}border-width));
       inset-block-start: 50%;
-      top: calc(
-        var(--#{$prefix}control-padding-y) + var(--#{$prefix}border-width, 0px)
-      );
+      top: calc(var(--#{$prefix}control-padding-y) + var(--#{$prefix}border-width, 0px));
       transform: none;
       pointer-events: none;
       background-color: transparent;
@@ -55,8 +53,8 @@
       color: transparent;
     }
 
-    .#{$prefix}textarea:focus ~ label[for],
-    .#{$prefix}textarea:not(:placeholder-shown) ~ label[for] {
+    .#{$prefix}textarea:focus + label[for],
+    .#{$prefix}textarea:not(:placeholder-shown) + label[for] {
       top: 0;
       transform: translateY(-50%);
       background-color: var(--#{$prefix}background-color);
@@ -64,8 +62,8 @@
       font-size: calc(var(--fx-font-size-base) * 0.75);
     }
 
-    .#{$prefix}textarea[invalid]:focus ~ label[for],
-    .#{$prefix}textarea[invalid]:not(:placeholder-shown) ~ label[for] {
+    .#{$prefix}textarea[invalid]:focus + label[for],
+    .#{$prefix}textarea[invalid]:not(:placeholder-shown) + label[for] {
       top: 0;
       transform: translateY(-50%);
       background-color: var(--#{$prefix}background-color);
@@ -73,8 +71,8 @@
       font-size: calc(var(--fx-font-size-base) * 0.75);
     }
 
-    .#{$prefix}textarea[valid]:focus ~ label[for],
-    .#{$prefix}textarea[valid]:not(:placeholder-shown) ~ label[for] {
+    .#{$prefix}textarea[valid]:focus + label[for],
+    .#{$prefix}textarea[valid]:not(:placeholder-shown) + label[for] {
       top: 0;
       transform: translateY(-50%);
       background-color: var(--#{$prefix}background-color);
@@ -82,14 +80,14 @@
       font-size: calc(var(--fx-font-size-base) * 0.75);
     }
 
-    .#{$prefix}textarea[disabled]:placeholder-shown ~ label[for] {
+    .#{$prefix}textarea[disabled]:placeholder-shown + label[for] {
       color: var(--#{$prefix}text-muted-color) !important;
       opacity: var(--#{$prefix}disabled-control-opacity) !important;
       cursor: not-allowed !important;
       pointer-events: none !important;
     }
 
-    .#{$prefix}textarea[disabled]:not(:placeholder-shown) ~ label[for] {
+    .#{$prefix}textarea[disabled]:not(:placeholder-shown) + label[for] {
       top: 0;
       transform: translateY(-50%);
       background-color: var(--#{$prefix}background-color);

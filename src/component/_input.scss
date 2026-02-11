@@ -37,7 +37,8 @@
 
   .#{$prefix}input-frame {
     position: relative;
-
+    height: auto !important;
+    max-height: none !important;
     label[for] {
       position: absolute;
       inset-inline-start: calc(var(--#{$prefix}control-padding-x) + var(--#{$prefix}border-width));
@@ -54,38 +55,38 @@
       color: transparent;
     }
 
-    .#{$prefix}input:focus ~ label[for],
-    .#{$prefix}input:not(:placeholder-shown) ~ label[for] {
+    .#{$prefix}input:focus + label[for],
+    .#{$prefix}input:not(:placeholder-shown) + label[for] {
       top: 0;
       background-color: var(--#{$prefix}background-color);
       color: var(--#{$prefix}focus-ring-color, var(--#{$prefix}border-color));
       font-size: calc(var(--fx-font-size-base) * 0.75);
     }
 
-    .#{$prefix}input[invalid]:focus ~ label[for],
-    .#{$prefix}input[invalid]:not(:placeholder-shown) ~ label[for] {
+    .#{$prefix}input[invalid]:focus + label[for],
+    .#{$prefix}input[invalid]:not(:placeholder-shown) + label[for] {
       top: 0;
       background-color: var(--#{$prefix}background-color);
       color: var(--#{$prefix}invalid-color);
       font-size: calc(var(--fx-font-size-base) * 0.75);
     }
 
-    .#{$prefix}input[valid]:focus ~ label[for],
-    .#{$prefix}input[valid]:not(:placeholder-shown) ~ label[for] {
+    .#{$prefix}input[valid]:focus + label[for],
+    .#{$prefix}input[valid]:not(:placeholder-shown) + label[for] {
       top: 0;
       background-color: var(--#{$prefix}background-color);
       color: var(--#{$prefix}valid-color);
       font-size: calc(var(--fx-font-size-base) * 0.75);
     }
 
-    .#{$prefix}input[disabled]:placeholder-shown ~ label[for] {
+    .#{$prefix}input[disabled]:placeholder-shown + label[for] {
       color: var(--#{$prefix}text-muted-color) !important;
       opacity: var(--#{$prefix}disabled-control-opacity) !important;
       cursor: not-allowed !important;
       pointer-events: none !important;
     }
 
-    .#{$prefix}input[disabled]:not(:placeholder-shown) ~ label[for] {
+    .#{$prefix}input[disabled]:not(:placeholder-shown) + label[for] {
       top: 0;
       background-color: var(--#{$prefix}background-color);
       color: rgb(var(--#{$prefix}text-muted-color-rgb), var(--#{$prefix}disabled-control-opacity)) !important;
@@ -147,7 +148,7 @@
     }
 
     &.has-toggle {
-      input[type="password"] {
+      input {
         padding-inline-end: calc(var(--#{$prefix}control-height) + var(--#{$prefix}control-padding-x) - 8px);
       }
     }

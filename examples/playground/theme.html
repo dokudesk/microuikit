@@ -7,8 +7,8 @@
   <title>Flexa Theme Demo - Light / Dark / Auto</title>
   <!-- Main Flexa CSS -->
   <link rel="stylesheet" href="../css/demo.css" />
-  <link rel="stylesheet" href="../../dist/core.css" />
-  <link rel="stylesheet" href="../../dist/themes/theme-default.css" />
+  <link rel="stylesheet" href="../../dist/css/core.css" />
+  <link rel="stylesheet" href="../../dist/css/themes/theme-default.css" />
 </head>
 
 <body>
@@ -21,15 +21,23 @@
 
 
   <div class="demo-controls">
-    <button class="fx-btn fx-btn-primary" data-theme="light" onclick="setTheme('light')" class="active">
+    <button class="fx-btn fx-btn-primary" data-theme="light" onclick="Flexa.Theme.set('light')" class="active">
       <span class="fx-btn-icon">🌞</span> Light Theme
     </button>
-    <button class="fx-btn fx-btn-secondary" data-theme="dark" onclick="setTheme('dark')">
+    <button class="fx-btn fx-btn-secondary" data-theme="dark" onclick="Flexa.Theme.set('dark')" >
       <span class="fx-btn-icon">🌙</span> Dark Theme
     </button>
-    <button class="fx-btn fx-btn-info" data-theme="auto" onclick="setTheme('auto')" aria-busy="true"
+    <button class="fx-btn fx-btn-info" data-theme="auto" aria-busy="true" onclick="Flexa.Theme.set('auto')"
       aria-label="Loading..." style="width: 200px;">
       <span class="fx-btn-icon">🌐</span> Auto (System)
+    </button>
+    <button class="fx-btn fx-btn-danger" data-theme="rtl" onclick="Flexa.Direction.set('rtl')"
+      style="width: 200px;">
+      <span class="fx-btn-icon"></span> RTL
+    </button>
+    <button class="fx-btn fx-btn-danger" data-theme="ltr" onclick="Flexa.Direction.set('ltr')"
+      style="width: 200px;">
+      <span class="fx-btn-icon"></span> LTR
     </button>
   </div>
 
@@ -165,7 +173,7 @@
   </div>
   <div class="demo-section fx-d-flex fx-flex-col fx-gap-2 fx-p-4">
     <div class="fx-select-frame">
-      <select class="fx-select">
+      <select id="select-1" class="fx-select">
         <optgroup label="Condiments" >
           <option>Mustard</option>
           <option disabled>Ketchup</option>
@@ -180,13 +188,16 @@
       
       </select>
     </div>
+    <div class="fx-select-frame fx-flex fx-flex-col fx-w-100 fx-h-100" > 
+      <select id="select-2" class="fx-select fx-flex fx-w-100 fx-h-100" multiple>  
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+      </select>
+    </div>
 
-    <script>
-      function setTheme(theme) {
-        const html = document.documentElement;
-        html.setAttribute('data-theme', theme);
-      }
-    </script>
+    <!-- Flexa JavaScript -->
+    <script src="../../dist/js/flexa.js"></script>
 </body>
 
 </html>

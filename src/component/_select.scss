@@ -4,8 +4,10 @@
   .#{$prefix}select {
     display: block;
     width: 100%;
+    overflow: auto;
     height: var(--#{$prefix}control-height);
-    padding-inline: var(--#{$prefix}control-padding-x) calc(var(--#{$prefix}control-padding-x) * 2 + calc(var(--#{$prefix}control-height) * 0.25));
+    padding-inline-start: var(--#{$prefix}control-padding-x);
+    padding-inline-end: calc(var(--#{$prefix}control-padding-x) * 2 + calc(calc(var(--#{$prefix}control-height) * 0.25) + 4px));
     padding-block: var(--#{$prefix}control-padding-y);
     font: var(--#{$prefix}font-weight-base) var(--#{$prefix}font-size-base) var(--#{$prefix}font-family-base) var(--#{$prefix}line-height-base);
     color: var(--#{$prefix}text-color);
@@ -17,10 +19,15 @@
     appearance: none;
     text-transform: none;
     transition: var(--#{$prefix}transition);
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+    background-image: var(--#{$prefix}arrow-down-svg);
     background-repeat: no-repeat;
-    background-position: right var(--#{$prefix}control-padding-x) center;
+    background-position: right calc(var(--#{$prefix}control-padding-x) + 2px) center;
     background-size: calc(var(--#{$prefix}control-height) * 0.25);
+
+    &[multiple] {
+      padding-inline-end: var(--#{$prefix}control-padding-x);
+      background-image: none;
+    }
 
     &:focus {
       border-color: var(--#{$prefix}focus-ring-color, var(--#{$prefix}border-color));
@@ -49,8 +56,8 @@
       font-size: inherit;
 
       &:checked {
-        color: var(--#{$prefix}select-checked-option-color);
-        background-color: var(--#{$prefix}select-checked-option-background-color);
+        color: var(--#{$prefix}select-selected-text-color);
+        background-color: var(--#{$prefix}select-selected-background-color);
       }
 
       &:disabled {
@@ -61,7 +68,7 @@
 
   @include mixins.direction-rtl-selector {
     .#{$prefix}select {
-      background-position: left var(--#{$prefix}control-padding-x) center;
+      background-position: left calc(var(--#{$prefix}control-padding-x) + 2px) center;
     }
   }
 }

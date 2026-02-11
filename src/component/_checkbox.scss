@@ -1,10 +1,6 @@
 // Checkbox mixin
 @mixin checkbox($prefix) {
   .#{$prefix}checkbox-frame {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-
     input[type="checkbox"].#{$prefix}checkbox {
       position: absolute;
       width: 1px;
@@ -17,8 +13,8 @@
       overflow: hidden;
 
       &:checked + label[for]::before {
-        background-color: var(--#{$prefix}checkbox-checked-color);
-        border-color: var(--#{$prefix}checkbox-checked-color);
+        background-color: var(--#{$prefix}checkbox-checked-background-color);
+        border-color: var(--#{$prefix}checkbox-checked-background-color);
       }
 
       &:checked + label[for]::after {
@@ -40,6 +36,15 @@
 
       &:disabled + label[for]::before, &:disabled + label[for]::after {
         opacity: var(--#{$prefix}disabled-control-opacity);
+      }
+
+      &[readonly] {
+        pointer-events: none;
+      }
+
+      &[readonly] + label[for] {
+        cursor: default;
+        pointer-events: none;
       }
 
       &[invalid] + label[for] {
@@ -106,7 +111,7 @@
       transform: translateY(-50%);
       opacity: 0;
       transition: var(--#{$prefix}transition);
-      background-color: var(--#{$prefix}white);
+      background-color: var(--#{$prefix}checkbox-tick-color);
       mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 12 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 5 L4.5 8.5 L11 1.5' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
       mask-repeat: no-repeat;
       mask-position: center;

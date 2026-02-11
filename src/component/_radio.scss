@@ -1,10 +1,6 @@
 // Radio mixin
 @mixin radio($prefix) {
   .#{$prefix}radio-frame {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-
     input[type="radio"].#{$prefix}radio {
       position: absolute;
       width: 1px;
@@ -45,6 +41,15 @@
       &:disabled:not(:checked) + label[for]::after {
         opacity: 0;
         transform: translateY(-50%) scale(0.6);
+      }
+
+      &[readonly] {
+        pointer-events: none;
+      }
+
+      &[readonly] + label[for] {
+        cursor: default;
+        pointer-events: none;
       }
 
       &[invalid] + label[for] {

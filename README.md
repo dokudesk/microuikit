@@ -39,6 +39,14 @@ After `npm run build`, link the built files:
 <link rel="stylesheet" href="path/to/dist/core.css" />
 <!-- Optional theme -->
 <link rel="stylesheet" href="path/to/dist/themes/theme-default.css" />
+<!-- Optional JavaScript -->
+<script src="path/to/dist/flexa.js"></script>
+```
+
+### ES Modules
+
+```javascript
+import { setTheme, getTheme, initSelects } from 'flexa/src/js/index.js';
 ```
 
 ### Theme and direction
@@ -60,11 +68,13 @@ npm run build
 | `core.min.css` | Minified for CDN |
 | `themes/theme-default.css` | Default theme (expanded, with source map) |
 | `themes/theme-default.min.css` | Theme minified for CDN |
+| `flexa.js` | JavaScript library (UMD format) |
 
 **Individual steps:**
 
 - `npm run build:css` — Build `core.css` only
 - `npm run build:themes` — Build theme CSS only
+- `npm run build:js` — Copy JavaScript files to `dist/`
 - `npm run build:cdn` — Minify `core.css` → `core.min.css`
 - `npm run build:themes:cdn` — Minify theme → `theme-default.min.css`
 
@@ -98,6 +108,11 @@ flexa/
 │   │   ├── _index.scss
 │   │   ├── _base.scss
 │   │   └── _headings.scss
+│   ├── js/                    # JavaScript modules
+│   │   ├── index.js          # ES modules entry point
+│   │   ├── theme.js          # Theme management
+│   │   ├── select.js         # Select component enhancement
+│   │   └── flexa.js          # UMD bundle for browsers
 │   └── themes/
 │       └── theme-default.scss
 ├── dist/                      # Production build (generated)
@@ -108,13 +123,43 @@ flexa/
 └── package.json
 ```
 
+## JavaScript API
+
+### Theme Management
+
+```javascript
+// Using UMD (browser)
+Flexa.Theme.set('dark');        // Set theme to dark
+Flexa.Theme.set('light');       // Set theme to light
+Flexa.Theme.set('auto');        // Use system preference
+Flexa.Theme.get();              // Get current theme
+Flexa.Theme.init();             // Initialize theme from localStorage
+
+// Using ES Modules
+import { setTheme, getTheme, initTheme } from 'flexa/src/js/index.js';
+setTheme('dark');
+getTheme();
+initTheme();
+```
+
+### Select Component Enhancement
+
+The JavaScript automatically enhances `<select>` elements with `fx-select` class to manage `aria-expanded` attribute for proper arrow icon display.
+
+```javascript
+// Auto-initialized, but can be manually initialized
+import { initSelects } from 'flexa/src/js/index.js';
+initSelects();
+```
+
 ## Scripts
 
 | Script | Description |
 |--------|-------------|
-| `npm run build` | Full build (clean + CSS + themes + minify) |
+| `npm run build` | Full build (clean + CSS + themes + JS + minify) |
 | `npm run build:css` | Build `core.css` |
 | `npm run build:themes` | Build theme CSS |
+| `npm run build:js` | Copy JavaScript files to `dist/` |
 | `npm run build:cdn` | Minify core for CDN |
 | `npm run build:themes:cdn` | Minify theme for CDN |
 | `npm run stylelint:scss` | Lint SCSS |
