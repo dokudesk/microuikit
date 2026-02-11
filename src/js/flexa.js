@@ -20,6 +20,7 @@
   /**
    * Prefix configuration
    * Change this value to customize class prefixes
+   * Default prefix is 'fx-' (Flexa)
    */
   var PREFIX = 'fx-';
 
@@ -93,6 +94,61 @@
   };
 
   /**
+   * Button Busy Manager
+   */
+  const ButtonBusy = {
+    /**
+     * Set button busy state
+     * @param {HTMLElement|string} button - Button element or selector
+     * @param {boolean} busy - Busy state
+     * @param {string} label - Optional label to show when busy
+     */
+    set: function(button, busy, label) {
+      var btn = typeof button === 'string' ? document.querySelector(button) : button;
+      if (!btn) return;
+      
+      if (busy) {
+        btn.setAttribute('aria-busy', 'true');
+        if (label) {
+          btn.setAttribute('aria-label', label);
+        }
+        btn.dispatchEvent(new CustomEvent('flexa:button-busy', { detail: { busy: true } }));
+      } else {
+        btn.setAttribute('aria-busy', 'false');
+        btn.dispatchEvent(new CustomEvent('flexa:button-busy', { detail: { busy: false } }));
+      }
+    },
+
+    /**
+     * Get button busy state
+     * @param {HTMLElement|string} button - Button element or selector
+     * @returns {boolean} Busy state
+     */
+    get: function(button) {
+      var btn = typeof button === 'string' ? document.querySelector(button) : button;
+      if (!btn) return false;
+      return btn.getAttribute('aria-busy') === 'true';
+    },
+
+    /**
+     * Enable busy state for button
+     * @param {HTMLElement|string} button - Button element or selector
+     * @param {string} label - Optional label to show when busy
+     */
+    enableBusy: function(button, label) {
+      this.set(button, true, label);
+    },
+
+    /**
+     * Disable busy state for button
+     * @param {HTMLElement|string} button - Button element or selector
+     */
+    disableBusy: function(button) {
+      this.set(button, false);
+    }
+  };
+
+  /**
    * Password Toggle Manager
    */
   const PasswordToggle = {
@@ -147,6 +203,7 @@
     PREFIX: PREFIX,
     Theme: Theme,
     Direction: Direction,
+    ButtonBusy: ButtonBusy,
     PasswordToggle: PasswordToggle,
     init: init
   };

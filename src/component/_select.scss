@@ -11,7 +11,7 @@
     padding-block: var(--#{$prefix}control-padding-y);
     font: var(--#{$prefix}font-weight-base) var(--#{$prefix}font-size-base) var(--#{$prefix}font-family-base) var(--#{$prefix}line-height-base);
     color: var(--#{$prefix}text-color);
-    background-color: var(--#{$prefix}background-color);
+    background-color: var(--#{$prefix}control-background-color);
     background-clip: padding-box;
     border: var(--#{$prefix}border-width, 0) solid var(--#{$prefix}border-color);
     border-radius: var(--#{$prefix}control-border-radius);
@@ -51,7 +51,7 @@
 
     option {
       color: var(--#{$prefix}text-color);
-      background-color: var(--#{$prefix}background-color);
+      background-color: var(--#{$prefix}control-background-color);
       font-family: inherit;
       font-size: inherit;
 

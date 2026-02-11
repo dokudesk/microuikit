@@ -21,7 +21,7 @@
       var(--#{$prefix}font-size-base)
       var(--#{$prefix}font-family-base);
     color: var(--#{$prefix}text-color);
-    background-color: var(--#{$prefix}background-color);
+    background-color: var(--#{$prefix}control-background-color);
     background-clip: padding-box;
     border: var(--#{$prefix}border-width, 0) solid var(--#{$prefix}border-color);
     border-radius: var(--#{$prefix}control-border-radius);

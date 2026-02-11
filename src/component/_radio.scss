@@ -99,7 +99,7 @@
       height: var(--#{$prefix}radio-size, 1.5rem);
       border: var(--#{$prefix}border-width, 1px) solid var(--#{$prefix}border-color);
       border-radius: 50%;
-      background-color: var(--#{$prefix}background-color);
+      background-color: var(--#{$prefix}control-background-color);
       background-clip: padding-box;
       box-sizing: border-box;
       transition: var(--#{$prefix}transition);

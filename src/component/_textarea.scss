@@ -4,7 +4,7 @@
     font: var(--#{$prefix}font-weight-base) var(--#{$prefix}font-size-base) var(--#{$prefix}font-family-base);
     line-height: var(--#{$prefix}line-height-base);
     color: var(--#{$prefix}text-color);
-    background-color: var(--#{$prefix}background-color);
+    background-color: var(--#{$prefix}control-background-color);
     background-clip: padding-box;
     border: var(--#{$prefix}border-width, 0) solid var(--#{$prefix}border-color);
     border-radius: var(--#{$prefix}control-border-radius);
@@ -44,7 +44,7 @@
       transform: none;
       pointer-events: none;
       background-color: transparent;
-      color: var(--#{$prefix}text-muted-color);
+      color: var(--#{$prefix}placeholder-color);
       font: var(--#{$prefix}font-weight-base) var(--#{$prefix}font-size-base) / var(--#{$prefix}line-height-base) var(--#{$prefix}font-family-base);
       transition: var(--#{$prefix}transition);
     }
@@ -57,7 +57,7 @@
     .#{$prefix}textarea:not(:placeholder-shown) + label[for] {
       top: 0;
       transform: translateY(-50%);
-      background-color: var(--#{$prefix}background-color);
+      background-color: var(--#{$prefix}control-background-color);
       color: var(--#{$prefix}focus-ring-color, var(--#{$prefix}border-color));
       font-size: calc(var(--fx-font-size-base) * 0.75);
     }
@@ -66,7 +66,7 @@
     .#{$prefix}textarea[invalid]:not(:placeholder-shown) + label[for] {
       top: 0;
       transform: translateY(-50%);
-      background-color: var(--#{$prefix}background-color);
+      background-color: var(--#{$prefix}control-background-color);
       color: var(--#{$prefix}invalid-color);
       font-size: calc(var(--fx-font-size-base) * 0.75);
     }
@@ -75,7 +75,7 @@
     .#{$prefix}textarea[valid]:not(:placeholder-shown) + label[for] {
       top: 0;
       transform: translateY(-50%);
-      background-color: var(--#{$prefix}background-color);
+      background-color: var(--#{$prefix}control-background-color);
       color: var(--#{$prefix}valid-color);
       font-size: calc(var(--fx-font-size-base) * 0.75);
     }
@@ -90,7 +90,7 @@
     .#{$prefix}textarea[disabled]:not(:placeholder-shown) + label[for] {
       top: 0;
       transform: translateY(-50%);
-      background-color: var(--#{$prefix}background-color);
+      background-color: var(--#{$prefix}control-background-color);
       color: rgb(var(--#{$prefix}text-muted-color-rgb), var(--#{$prefix}disabled-control-opacity)) !important;
       cursor: not-allowed !important;
       pointer-events: none !important;

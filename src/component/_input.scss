@@ -7,7 +7,7 @@
     padding: var(--#{$prefix}control-padding-y) var(--#{$prefix}control-padding-x);
     font: var(--#{$prefix}font-weight-base) var(--#{$prefix}font-size-base) / var(--#{$prefix}line-height-base) var(--#{$prefix}font-family-base);
     color: var(--#{$prefix}text-color);
-    background-color: var(--#{$prefix}background-color);
+    background-color: var(--#{$prefix}control-background-color);
     background-clip: padding-box;
     border: var(--#{$prefix}border-width, 0) solid var(--#{$prefix}border-color);
     border-radius: var(--#{$prefix}control-border-radius);
@@ -46,7 +46,7 @@
       transform: translateY(-50%);
       pointer-events: none;
       background-color: transparent;
-      color: var(--#{$prefix}text-muted-color);
+      color: var(--#{$prefix}placeholder-color);
       font: var(--#{$prefix}font-weight-base) var(--#{$prefix}font-size-base) / var(--#{$prefix}line-height-base) var(--#{$prefix}font-family-base);
       transition: var(--#{$prefix}transition);
     }
@@ -58,7 +58,7 @@
     .#{$prefix}input:focus + label[for],
     .#{$prefix}input:not(:placeholder-shown) + label[for] {
       top: 0;
-      background-color: var(--#{$prefix}background-color);
+      background-color: var(--#{$prefix}control-background-color);
       color: var(--#{$prefix}focus-ring-color, var(--#{$prefix}border-color));
       font-size: calc(var(--fx-font-size-base) * 0.75);
     }
@@ -66,7 +66,7 @@
     .#{$prefix}input[invalid]:focus + label[for],
     .#{$prefix}input[invalid]:not(:placeholder-shown) + label[for] {
       top: 0;
-      background-color: var(--#{$prefix}background-color);
+      background-color: var(--#{$prefix}control-background-color);
       color: var(--#{$prefix}invalid-color);
       font-size: calc(var(--fx-font-size-base) * 0.75);
     }
@@ -74,7 +74,7 @@
     .#{$prefix}input[valid]:focus + label[for],
     .#{$prefix}input[valid]:not(:placeholder-shown) + label[for] {
       top: 0;
-      background-color: var(--#{$prefix}background-color);
+      background-color: var(--#{$prefix}control-background-color);
       color: var(--#{$prefix}valid-color);
       font-size: calc(var(--fx-font-size-base) * 0.75);
     }
@@ -88,7 +88,7 @@
 
     .#{$prefix}input[disabled]:not(:placeholder-shown) + label[for] {
       top: 0;
-      background-color: var(--#{$prefix}background-color);
+      background-color: var(--#{$prefix}control-background-color);
       color: rgb(var(--#{$prefix}text-muted-color-rgb), var(--#{$prefix}disabled-control-opacity)) !important;
       cursor: not-allowed !important;
       pointer-events: none !important;

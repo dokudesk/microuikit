@@ -52,10 +52,14 @@ $heading-color: $text-color !default;
 $heading-color-dark: $text-color-dark !default;
 $text-muted-color: map.get($grays, 600) !default;
 $text-muted-color-dark: map.get($grays, 400) !default;
+$placeholder-color: map.get($grays, 600) !default;
+$placeholder-color-dark: map.get($grays, 600) !default;
 $border-color: map.get($grays, 400) !default;
 $border-color-dark: map.get($grays, 600) !default;
 $background-color: map.get($grays, 100) !default;
 $background-color-dark: map.get($grays, 900) !default;
+$control-background-color: map.get($grays, 100) !default;
+$control-background-color-dark: map.get($grays, 900) !default;
 $box-shadow-color: rgb(0 0 0 / 50%) !default;
 $box-shadow-color-dark: rgb(255 255 255 / 50%) !default;
 $scrollbar-color: map.get($grays, 600)  !default;
@@ -167,8 +171,10 @@ $theme-light-colors: (
   text-color: $text-color,
   text-muted-color: $text-muted-color,
   text-muted-color-rgb: fn.rgb-color($text-muted-color),
+  placeholder-color: $placeholder-color,
   heading-color: $heading-color,
   background-color: $background-color,
+  control-background-color: $control-background-color,
   border-color: $border-color,
   box-shadow-color: $box-shadow-color,
   link-color: $link-color,
@@ -192,8 +198,10 @@ $theme-dark-colors: (
   text-color: $text-color-dark,
   text-muted-color: $text-muted-color-dark,
   text-muted-color-rgb: fn.rgb-color($text-muted-color-dark),
+  placeholder-color: $placeholder-color-dark,
   heading-color: $heading-color-dark,
   background-color: $background-color-dark,
+  control-background-color: $control-background-color-dark,
   border-color: $border-color-dark,
   box-shadow-color: $box-shadow-color-dark,
   link-color: $link-color-dark,
