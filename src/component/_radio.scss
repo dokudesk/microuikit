@@ -1,6 +1,9 @@
 // Radio mixin
 @mixin radio($prefix) {
   .#{$prefix}radio-frame {
+    height: fit-content;
+    margin: 0 !important;
+
     input[type="radio"].#{$prefix}radio {
       position: absolute;
       width: 1px;
@@ -28,19 +31,25 @@
       }
 
       &:disabled + label[for] {
-        color: var(--#{$prefix}text-muted-color);
+        color: var(--#{$prefix}text-muted-color) !important;
         opacity: var(--#{$prefix}disabled-control-opacity);
         cursor: not-allowed;
         pointer-events: none;
       }
 
-      &:disabled + label[for]::before, &:disabled + label[for]::after {
-        opacity: var(--#{$prefix}disabled-control-opacity);
+      &:disabled + label[for]::before {
+        background-color: var(--#{$prefix}control-background-color) !important;
+        border-color: var(--#{$prefix}text-muted-color) !important;
+        opacity: var(--#{$prefix}disabled-control-opacity) !important;
+      }
+
+      &:disabled:checked + label[for]::after {
+        background-color: var(--#{$prefix}text-muted-color) !important;
+        opacity: var(--#{$prefix}disabled-control-opacity) !important;
       }
 
       &:disabled:not(:checked) + label[for]::after {
-        opacity: 0;
-        transform: translateY(-50%) scale(0.6);
+        background-color: var(--#{$prefix}control-background-color) !important;
       }
 
       &[readonly] {
@@ -102,7 +111,6 @@
       background-color: var(--#{$prefix}control-background-color);
       background-clip: padding-box;
       box-sizing: border-box;
-      transition: var(--#{$prefix}transition);
     }
 
     input[type="radio"].#{$prefix}radio + label[for]::after {
@@ -118,7 +126,6 @@
       border-radius: 50%;
       transform: translateY(-50%) scale(0.6);
       opacity: 0;
-      transition: var(--#{$prefix}transition);
       box-sizing: border-box;
     }
   }

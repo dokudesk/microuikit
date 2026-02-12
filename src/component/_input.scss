@@ -11,8 +11,11 @@
     background-clip: padding-box;
     border: var(--#{$prefix}border-width, 0) solid var(--#{$prefix}border-color);
     border-radius: var(--#{$prefix}control-border-radius);
-    outline: none;
     transition: var(--#{$prefix}transition);
+
+    &::placeholder {
+      color: var(--#{$prefix}placeholder-color);
+    }
 
     &:focus {
       border-color: var(--#{$prefix}focus-ring-color, var(--#{$prefix}border-color));
@@ -37,8 +40,13 @@
 
   .#{$prefix}input-frame {
     position: relative;
-    height: auto !important;
-    max-height: none !important;
+    height: fit-content;
+    margin: 0 !important;
+
+    .#{$prefix}input {
+      outline: none !important;
+    }
+
     label[for] {
       position: absolute;
       inset-inline-start: calc(var(--#{$prefix}control-padding-x) + var(--#{$prefix}border-width));
@@ -52,7 +60,7 @@
     }
 
     .#{$prefix}input::placeholder {
-      color: transparent;
+      color: transparent !important;
     }
 
     .#{$prefix}input:focus + label[for],
@@ -119,18 +127,18 @@
       }
 
       &:hover {
-        background-color: var(--#{$prefix}gray-light);
+        background-color: var(--#{$prefix}password-toggle-background-hover-color);
 
         &::before {
-          background-color: var(--#{$prefix}gray-dark);
+          background-color: var(--#{$prefix}password-toggle-icon-hover-color);
         }
       }
 
       &:focus {
-        background-color: var(--#{$prefix}gray-light);
+        background-color: var(--#{$prefix}password-toggle-background-hover-color);
 
         &::before {
-          background-color: var(--#{$prefix}gray-dark);
+          background-color: var(--#{$prefix}password-toggle-icon-hover-color);
         }
       }
 
@@ -138,7 +146,7 @@
         content: "";
         width: calc(var(--#{$prefix}control-height) * 0.4);
         height: calc(var(--#{$prefix}control-height) * 0.4);
-        background-color: var(--#{$prefix}text-muted-color);
+        background-color: var(--#{$prefix}password-toggle-icon-color);
         mask: var(--#{$prefix}eye-open-svg) no-repeat center / contain;
       }
 

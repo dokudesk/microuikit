@@ -66,6 +66,12 @@ $scrollbar-color: map.get($grays, 600)  !default;
 $scrollbar-color-dark: map.get($grays, 400) !default;
 $scrollbar-hover-color: map.get($grays, 500) !default;
 $scrollbar-hover-color-dark: map.get($grays, 600) !default;
+$password-toggle-icon-color: map.get($grays, 600) !default;
+$password-toggle-icon-color-dark: map.get($grays, 600) !default;
+$password-toggle-icon-hover-color: map.get($grays, 700) !default;
+$password-toggle-icon-hover-color-dark: map.get($grays, 700) !default;
+$password-toggle-background-hover-color: map.get($grays, 300) !default;
+$password-toggle-background-hover-color-dark: map.get($grays, 300) !default;
 $checkbox-checked-background-color: $primary !default;
 $checkbox-checked-background-color-dark: $primary !default;
 $checkbox-tick-color: $white !default;
@@ -142,6 +148,8 @@ $theme-text-colors: (
   text-info: fn.round-color(color.mix($black, $info, 30%)),
   text-warning: fn.round-color(color.mix($black, $warning, 30%)),
   text-danger: fn.round-color(color.mix($black, $danger, 30%)),
+  text-light: fn.round-color(color.mix($black, $light, 30%)),
+  text-dark: fn.round-color(color.mix($black, $dark, 30%)),
 ) !default;
 $theme-background-colors: (
   background-primary: fn.round-color(color.mix($white, $primary, 40%)),
@@ -150,6 +158,8 @@ $theme-background-colors: (
   background-info: fn.round-color(color.mix($white, $info, 40%)),
   background-warning: fn.round-color(color.mix($white, $warning, 40%)),
   background-danger: fn.round-color(color.mix($white, $danger, 40%)),
+  background-light: fn.round-color(color.mix($white, $light, 40%)),
+  background-dark: fn.round-color(color.mix($white, $dark, 40%)),
 ) !default;
 $theme-hover-background-colors: (
   hover-background-primary: fn.round-color(color.mix($white, $primary, 20%)),
@@ -158,6 +168,8 @@ $theme-hover-background-colors: (
   hover-background-info: fn.round-color(color.mix($white, $info, 20%)),
   hover-background-warning: fn.round-color(color.mix($white, $warning, 20%)),
   hover-background-danger: fn.round-color(color.mix($white, $danger, 20%)),
+  hover-background-light: fn.round-color(color.mix($white, $light, 20%)),
+  hover-background-dark: fn.round-color(color.mix($white, $dark, 20%)),
 ) !default;
 $theme-border-colors: (
   border-primary: fn.round-color(color.mix($white, $primary, 10%)),
@@ -166,6 +178,8 @@ $theme-border-colors: (
   border-info: fn.round-color(color.mix($white, $info, 10%)),
   border-warning: fn.round-color(color.mix($white, $warning, 10%)),
   border-danger: fn.round-color(color.mix($white, $danger, 10%)),
+  border-light: fn.round-color(color.mix($white, $light, 10%)),
+  border-dark: fn.round-color(color.mix($white, $dark, 10%)),
 ) !default;
 $theme-light-colors: (
   text-color: $text-color,
@@ -187,6 +201,9 @@ $theme-light-colors: (
   focus-ring-color: $focus-ring-color,
   scrollbar-color: $scrollbar-color,
   scrollbar-hover-color: $scrollbar-hover-color,
+  password-toggle-icon-color: $password-toggle-icon-color,
+  password-toggle-icon-hover-color: $password-toggle-icon-hover-color,
+  password-toggle-background-hover-color: $password-toggle-background-hover-color,
   checkbox-checked-background-color: $checkbox-checked-background-color,
   checkbox-tick-color: $checkbox-tick-color,
   radio-checked-color: $radio-checked-color,
@@ -214,6 +231,9 @@ $theme-dark-colors: (
   focus-ring-color: $focus-ring-color-dark,
   scrollbar-color: $scrollbar-color-dark,
   scrollbar-hover-color: $scrollbar-hover-color-dark,
+  password-toggle-icon-color: $password-toggle-icon-color-dark,
+  password-toggle-icon-hover-color: $password-toggle-icon-hover-color-dark,
+  password-toggle-background-hover-color: $password-toggle-background-hover-color-dark,
   checkbox-checked-background-color: $checkbox-checked-background-color-dark,
   checkbox-tick-color: $checkbox-tick-color-dark,
   radio-checked-color: $radio-checked-color-dark,

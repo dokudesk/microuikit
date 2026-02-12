@@ -6,8 +6,7 @@
     width: 100%;
     overflow: auto;
     height: var(--#{$prefix}control-height);
-    padding-inline-start: var(--#{$prefix}control-padding-x);
-    padding-inline-end: calc(var(--#{$prefix}control-padding-x) * 2 + calc(calc(var(--#{$prefix}control-height) * 0.25) + 4px));
+    padding-inline: var(--#{$prefix}control-padding-x) calc(var(--#{$prefix}control-padding-x) * 2 + calc(calc(var(--#{$prefix}control-height) * 0.25) + 4px));
     padding-block: var(--#{$prefix}control-padding-y);
     font: var(--#{$prefix}font-weight-base) var(--#{$prefix}font-size-base) var(--#{$prefix}font-family-base) var(--#{$prefix}line-height-base);
     color: var(--#{$prefix}text-color);

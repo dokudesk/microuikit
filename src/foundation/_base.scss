@@ -56,7 +56,6 @@
   * {
     scrollbar-width: var(--#{$prefix}scrollbar-width);
     scrollbar-color: var(--#{$prefix}scrollbar-color) var(--#{$prefix}background-color);
-    scrollbar-gutter: stable;
   }
 
   // Edge scrollbar styles
@@ -116,6 +115,11 @@
   b,
   .#{$prefix}strong {
     font-weight: bolder;
+  }
+
+  // Textarea styles
+  textarea {
+    resize: vertical;
   }
 
   // Small text

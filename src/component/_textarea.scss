@@ -8,8 +8,11 @@
     background-clip: padding-box;
     border: var(--#{$prefix}border-width, 0) solid var(--#{$prefix}border-color);
     border-radius: var(--#{$prefix}control-border-radius);
-    outline: none;
     transition: var(--#{$prefix}transition);
+
+    &::placeholder {
+      color: var(--#{$prefix}placeholder-color);
+    }
 
     &:focus {
       border-color: var(--#{$prefix}focus-ring-color, var(--#{$prefix}border-color));
@@ -34,8 +37,21 @@
 
   .#{$prefix}textarea-frame {
     position: relative;
-    height: auto !important;
-    max-height: none !important;
+    height: fit-content;
+    margin: 0 !important;
+    background-color: var(--#{$prefix}control-background-color);
+    background-clip: padding-box;
+    border: var(--#{$prefix}border-width, 0) solid var(--#{$prefix}border-color);
+    border-radius: var(--#{$prefix}control-border-radius);
+    padding: calc(var(--#{$prefix}control-border-radius) * 0.25);
+
+    .#{$prefix}textarea {
+      display: block !important;
+      outline: none !important;
+      background-color: transparent !important;
+      border: none !important;
+    }
+
     label[for] {
       position: absolute;
       inset-inline-start: calc(var(--#{$prefix}control-padding-x) + var(--#{$prefix}border-width));
@@ -50,34 +66,49 @@
     }
 
     .#{$prefix}textarea::placeholder {
-      color: transparent;
+      color: transparent !important;
     }
 
     .#{$prefix}textarea:focus + label[for],
     .#{$prefix}textarea:not(:placeholder-shown) + label[for] {
-      top: 0;
+      top: calc(var(--#{$prefix}border-width, 0) * -1);
       transform: translateY(-50%);
       background-color: var(--#{$prefix}control-background-color);
       color: var(--#{$prefix}focus-ring-color, var(--#{$prefix}border-color));
       font-size: calc(var(--fx-font-size-base) * 0.75);
     }
 
+    &:has(.#{$prefix}textarea:focus),
+    &:has(.#{$prefix}textarea:not(:placeholder-shown)) {
+      border-color: var(--#{$prefix}focus-ring-color, var(--#{$prefix}border-color)) !important;
+    }
+
     .#{$prefix}textarea[invalid]:focus + label[for],
     .#{$prefix}textarea[invalid]:not(:placeholder-shown) + label[for] {
-      top: 0;
+      top: calc(var(--#{$prefix}border-width, 0) * -1);
       transform: translateY(-50%);
       background-color: var(--#{$prefix}control-background-color);
       color: var(--#{$prefix}invalid-color);
       font-size: calc(var(--fx-font-size-base) * 0.75);
     }
 
+    &:has(.#{$prefix}textarea[invalid]:focus),
+    &:has(.#{$prefix}textarea[invalid]:not(:placeholder-shown)) {
+      border-color: var(--#{$prefix}invalid-border-color) !important;
+    }
+
     .#{$prefix}textarea[valid]:focus + label[for],
     .#{$prefix}textarea[valid]:not(:placeholder-shown) + label[for] {
-      top: 0;
+      top: calc(var(--#{$prefix}border-width, 0) * -1);
       transform: translateY(-50%);
       background-color: var(--#{$prefix}control-background-color);
       color: var(--#{$prefix}valid-color);
       font-size: calc(var(--fx-font-size-base) * 0.75);
+    }
+
+    &:has(.#{$prefix}textarea[valid]:focus),
+    &:has(.#{$prefix}textarea[valid]:not(:placeholder-shown)) {
+      border-color: var(--#{$prefix}valid-border-color) !important;
     }
 
     .#{$prefix}textarea[disabled]:placeholder-shown + label[for] {
@@ -87,13 +118,20 @@
       pointer-events: none !important;
     }
 
+    &:has(.#{$prefix}textarea[disabled]:placeholder-shown) {
+      border-color: var(--#{$prefix}border-color) !important;
+      opacity: var(--#{$prefix}disabled-control-opacity) !important;
+    }
+
     .#{$prefix}textarea[disabled]:not(:placeholder-shown) + label[for] {
-      top: 0;
-      transform: translateY(-50%);
-      background-color: var(--#{$prefix}control-background-color);
       color: rgb(var(--#{$prefix}text-muted-color-rgb), var(--#{$prefix}disabled-control-opacity)) !important;
       cursor: not-allowed !important;
       pointer-events: none !important;
+    }
+
+    &:has(.#{$prefix}textarea[disabled]:not(:placeholder-shown)) {
+      border-color: var(--#{$prefix}border-color) !important;
+      opacity: var(--#{$prefix}disabled-control-opacity) !important;
     }
 
   }
