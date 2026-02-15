@@ -1,7 +1,9 @@
+// Input component: .fx-input, .fx-input-frame (floating label), .fx-toggle-password. States: focus, invalid, valid, disabled.
 @use "sass:map";
 @use "../abstracts/variables/svg" as svg;
 
 @mixin input($prefix) {
+  // Base text input
   .#{$prefix}input {
     height: var(--#{$prefix}control-height);
     padding: var(--#{$prefix}control-padding-y) var(--#{$prefix}control-padding-x);
@@ -22,29 +24,30 @@
     }
 
     &[invalid] {
-      border-color: var(--#{$prefix}invalid-border-color) !important;
-      color: var(--#{$prefix}invalid-color) !important;
+      border-color: var(--#{$prefix}invalid-border-color);
+      color: var(--#{$prefix}invalid-color);
     }
 
     &[valid] {
-      border-color: var(--#{$prefix}valid-border-color) !important;
-      color: var(--#{$prefix}valid-color) !important;
+      border-color: var(--#{$prefix}valid-border-color);
+      color: var(--#{$prefix}valid-color);
     }
 
     &[disabled] {
-      color: var(--#{$prefix}text-muted-color) !important;
-      border-color: var(--#{$prefix}border-color) !important;
-      opacity: var(--#{$prefix}disabled-control-opacity) !important;
+      color: var(--#{$prefix}text-muted-color);
+      border-color: var(--#{$prefix}border-color);
+      opacity: var(--#{$prefix}disabled-control-opacity);
     }
   }
 
+  // Frame: wrapper for floating label and optional password toggle
   .#{$prefix}input-frame {
     position: relative;
-    height: fit-content;
-    margin: 0 !important;
+    display: inline-block;
+    margin: 0;
 
     .#{$prefix}input {
-      outline: none !important;
+      outline: none;
     }
 
     label[for] {
@@ -60,9 +63,10 @@
     }
 
     .#{$prefix}input::placeholder {
-      color: transparent !important;
+      color: transparent;
     }
 
+    // Floating label: moves up on focus or when input has value
     .#{$prefix}input:focus + label[for],
     .#{$prefix}input:not(:placeholder-shown) + label[for] {
       top: 0;
@@ -88,20 +92,21 @@
     }
 
     .#{$prefix}input[disabled]:placeholder-shown + label[for] {
-      color: var(--#{$prefix}text-muted-color) !important;
-      opacity: var(--#{$prefix}disabled-control-opacity) !important;
-      cursor: not-allowed !important;
-      pointer-events: none !important;
+      color: var(--#{$prefix}text-muted-color);
+      opacity: var(--#{$prefix}disabled-control-opacity);
+      cursor: not-allowed;
+      pointer-events: none;
     }
 
     .#{$prefix}input[disabled]:not(:placeholder-shown) + label[for] {
       top: 0;
       background-color: var(--#{$prefix}control-background-color);
-      color: rgb(var(--#{$prefix}text-muted-color-rgb), var(--#{$prefix}disabled-control-opacity)) !important;
-      cursor: not-allowed !important;
-      pointer-events: none !important;
+      color: rgb(var(--#{$prefix}text-muted-color-rgb), var(--#{$prefix}disabled-control-opacity));
+      cursor: not-allowed;
+      pointer-events: none;
     }
 
+    // Password visibility toggle (mask-based icon)
     .#{$prefix}toggle-password {
       display: flex;
       align-items: center;
@@ -113,52 +118,53 @@
       height: calc(100% - calc(var(--#{$prefix}border-width) * 2) - 4px);
       border: none;
       margin: var(--#{$prefix}border-width);
-      border-start-end-radius: calc(var(--#{$prefix}control-border-radius) - 2px) !important;
-      border-end-end-radius: calc(var(--#{$prefix}control-border-radius) - 2px) !important;
+      border-start-end-radius: calc(var(--#{$prefix}control-border-radius) - 2px);
+      border-end-end-radius: calc(var(--#{$prefix}control-border-radius) - 2px);
       background-color: transparent;
       cursor: pointer;
-      outline: none !important;
+      outline: none;
       transition: var(--#{$prefix}transition);
 
       &[disabled] {
-        opacity: var(--#{$prefix}disabled-control-opacity) !important;
-        cursor: not-allowed !important;
-        pointer-events: none !important;
+        opacity: var(--#{$prefix}disabled-control-opacity);
+        cursor: not-allowed;
+        pointer-events: none;
       }
 
       &:hover {
         background-color: var(--#{$prefix}password-toggle-background-hover-color);
-
-        &::before {
-          background-color: var(--#{$prefix}password-toggle-icon-hover-color);
-        }
       }
 
       &:focus {
         background-color: var(--#{$prefix}password-toggle-background-hover-color);
-
-        &::before {
-          background-color: var(--#{$prefix}password-toggle-icon-hover-color);
-        }
       }
 
       &::before {
         content: "";
         width: calc(var(--#{$prefix}control-height) * 0.4);
         height: calc(var(--#{$prefix}control-height) * 0.4);
-        background-color: var(--#{$prefix}password-toggle-icon-color);
+        background-color: var(--#{$prefix}control-icon-color);
         mask: var(--#{$prefix}eye-open-svg) no-repeat center / contain;
+        -webkit-mask: var(--#{$prefix}eye-open-svg) no-repeat center / contain;
       }
 
       &[aria-pressed="true"]::before {
         mask: var(--#{$prefix}eye-off-svg) no-repeat center / contain;
+        -webkit-mask: var(--#{$prefix}eye-off-svg) no-repeat center / contain;
       }
     }
 
-    &.has-toggle {
-      input {
-        padding-inline-end: calc(var(--#{$prefix}control-height) + var(--#{$prefix}control-padding-x) - 8px);
-      }
+    // When frame has toggle: reserve space so text does not overlap arrow
+    &:has(.#{$prefix}toggle-password) .#{$prefix}input {
+      padding-inline-end: calc(var(--#{$prefix}control-height) + var(--#{$prefix}control-padding-x) - 8px);
     }
+
+    // When input is disabled, toggle-password is not clickable
+    &:has(.#{$prefix}input[disabled]) .#{$prefix}toggle-password {
+      opacity: var(--#{$prefix}disabled-control-opacity);
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+ 
   }
 }

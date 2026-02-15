@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flexa - Checkbox Component</title>
+    <link rel="stylesheet" href="../../dist/css/core.css" />
+    <link rel="stylesheet" href="../../dist/css/themes/theme-default.css" />
+    <link rel="stylesheet" href="../css/demo.css" />
+
+  </head>
+  <body class="fx-demo fx-demo--fullscreen">
+    <header class="fx-demo-header">
+      <div>
+        <p class="fx-demo-header-title">Flexa CSS Framework</p>
+        <p class="fx-demo-header-subtitle">Version 1.0.0</p>
+      </div>
+      <div class="fx-demo-header-controls">
+        <label>
+          Color mode
+          <select id="fx-theme-select">
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+            <option value="auto">Auto (System)</option>
+          </select>
+        </label>
+        <label>
+          Text direction
+          <select id="fx-dir-select">
+            <option value="rtl">RTL</option>
+            <option value="ltr">LTR</option>
+          </select>
+        </label>
+      </div>
+      <a class="fx-demo-link" href="../index.html">Back</a>
+    </header>
+
+    <main class="fx-demo-content">
+      <h1 class="fx-demo-hero-title">Checkbox Component Documentation</h1>
+      <p class="fx-demo-hero-description">
+        The Checkbox component styles a native <code>input[type="checkbox"]</code> with a custom visual box and tick.
+        It uses <code>fx-checkbox-frame</code> as wrapper, with the input and a <code>label[for]</code>. Supports checked, focus-visible, disabled, readonly, invalid, and valid states.
+      </p>
+
+      <section class="fx-demo-section">
+        <h2 class="fx-demo-section-title">Base usage</h2>
+        <div class="fx-demo-panel">
+          <div class="fx-demo-row">
+            <div class="fx-checkbox-frame">
+              <input id="cb-base" type="checkbox" class="fx-checkbox" />
+              <label for="cb-base">Option</label>
+            </div>
+          </div>
+          <pre><code>&lt;div class="fx-checkbox-frame"&gt;
+  &lt;input id="cb-base" type="checkbox" class="fx-checkbox" /&gt;
+  &lt;label for="cb-base"&gt;Option&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+
+      <section class="fx-demo-section">
+        <h2 class="fx-demo-section-title">Checked and unchecked</h2>
+        <div class="fx-demo-panel">
+          <div class="fx-demo-row">
+            <div class="fx-checkbox-frame">
+              <input id="cb-unchecked" type="checkbox" class="fx-checkbox" />
+              <label for="cb-unchecked">Unchecked</label>
+            </div>
+            <div class="fx-checkbox-frame">
+              <input id="cb-checked" type="checkbox" class="fx-checkbox" checked />
+              <label for="cb-checked">Checked</label>
+            </div>
+          </div>
+          <pre><code>&lt;input type="checkbox" class="fx-checkbox" /&gt;
+&lt;input type="checkbox" class="fx-checkbox" checked /&gt;</code></pre>
+          <ul>
+            <li>Checked state uses <code>--fx-checkbox-checked-background-color</code> and <code>--fx-checkbox-tick-color</code> for the tick icon.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="fx-demo-section">
+        <h2 class="fx-demo-section-title">Focus-visible</h2>
+        <div class="fx-demo-panel">
+          <div class="fx-demo-row">
+            <div class="fx-checkbox-frame">
+              <input id="cb-focus" type="checkbox" class="fx-checkbox" />
+              <label for="cb-focus">Focus me (keyboard or click)</label>
+            </div>
+          </div>
+          <pre><code>&lt;input type="checkbox" class="fx-checkbox" /&gt;
+&lt;label for="..."&gt;Focus me&lt;/label&gt;</code></pre>
+          <ul>
+            <li>Focus ring on the custom box uses <code>--fx-focus-ring-outline-width</code>, <code>--fx-focus-ring-color</code>, <code>--fx-focus-ring-outline-offset</code>.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="fx-demo-section">
+        <h2 class="fx-demo-section-title">Disabled state</h2>
+        <div class="fx-demo-panel">
+          <div class="fx-demo-row">
+            <div class="fx-checkbox-frame">
+              <input id="cb-disabled" type="checkbox" class="fx-checkbox" disabled />
+              <label for="cb-disabled">Disabled unchecked</label>
+            </div>
+            <div class="fx-checkbox-frame">
+              <input id="cb-disabled-checked" type="checkbox" class="fx-checkbox" disabled checked />
+              <label for="cb-disabled-checked">Disabled checked</label>
+            </div>
+          </div>
+          <pre><code>&lt;input type="checkbox" class="fx-checkbox" disabled /&gt;
+&lt;input type="checkbox" class="fx-checkbox" disabled checked /&gt;</code></pre>
+          <ul>
+            <li>Label and box use muted color and <code>--fx-disabled-control-opacity</code>.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="fx-demo-section">
+        <h2 class="fx-demo-section-title">Readonly state</h2>
+        <div class="fx-demo-panel">
+          <div class="fx-demo-row">
+            <div class="fx-checkbox-frame">
+              <input id="cb-readonly" type="checkbox" class="fx-checkbox" readonly checked />
+              <label for="cb-readonly">Readonly (no pointer events)</label>
+            </div>
+          </div>
+          <pre><code>&lt;input type="checkbox" class="fx-checkbox" readonly checked /&gt;</code></pre>
+          <ul>
+            <li><code>readonly</code> disables pointer events so the value cannot be toggled by click; use when the value is display-only or controlled elsewhere.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="fx-demo-section">
+        <h2 class="fx-demo-section-title">Validation states (invalid / valid)</h2>
+        <div class="fx-demo-panel">
+          <div class="fx-demo-row">
+            <div class="fx-checkbox-frame">
+              <input id="cb-invalid" type="checkbox" class="fx-checkbox" invalid />
+              <label for="cb-invalid">Invalid (e.g. required and unchecked)</label>
+            </div>
+            <div class="fx-checkbox-frame">
+              <input id="cb-invalid-checked" type="checkbox" class="fx-checkbox" invalid checked />
+              <label for="cb-invalid-checked">Invalid checked</label>
+            </div>
+            <div class="fx-checkbox-frame">
+              <input id="cb-valid" type="checkbox" class="fx-checkbox" valid checked />
+              <label for="cb-valid">Valid</label>
+            </div>
+          </div>
+          <div class="fx-demo-row">
+            <div class="fx-checkbox-frame">
+              <input id="cb-invalid-disabled" type="checkbox" class="fx-checkbox" invalid disabled />
+              <label for="cb-invalid-disabled">Invalid + disabled (unchecked)</label>
+            </div>
+            <div class="fx-checkbox-frame">
+              <input id="cb-invalid-disabled-checked" type="checkbox" class="fx-checkbox" invalid disabled checked />
+              <label for="cb-invalid-disabled-checked">Invalid + disabled (checked)</label>
+            </div>
+          </div>
+          <pre><code>&lt;input type="checkbox" class="fx-checkbox" invalid /&gt;
+&lt;input type="checkbox" class="fx-checkbox" valid checked /&gt;
+
+&lt;!-- Invalid and disabled together --&gt;
+&lt;input type="checkbox" class="fx-checkbox" invalid disabled /&gt;
+&lt;input type="checkbox" class="fx-checkbox" invalid disabled checked /&gt;</code></pre>
+          <ul>
+            <li>Set <code>invalid</code> or <code>valid</code> (e.g. via JS after validation). Uses <code>--fx-invalid-border-color</code>, <code>--fx-invalid-color</code>, <code>--fx-valid-border-color</code>, <code>--fx-valid-color</code>.</li>
+            <li>When both <code>invalid</code> and <code>disabled</code> are set, the result combines invalid border/color with disabled opacity, cursor, and non-interactivity (see the two examples above).</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="fx-demo-section">
+        <h2 class="fx-demo-section-title">Quick customization</h2>
+        <div class="fx-demo-panel">
+          <div class="fx-demo-row">
+            <div class="fx-checkbox-frame" style="--fx-checkbox-size: 1.25rem;">
+              <input id="cb-small" type="checkbox" class="fx-checkbox" />
+              <label for="cb-small">Smaller box</label>
+            </div>
+            <div class="fx-checkbox-frame" style="--fx-checkbox-size: 2rem; --fx-checkbox-border-radius: 6px;">
+              <input id="cb-large" type="checkbox" class="fx-checkbox" checked />
+              <label for="cb-large">Larger, rounded box</label>
+            </div>
+          </div>
+          <pre><code>&lt;div class="fx-checkbox-frame" style="--fx-checkbox-size: 1.25rem;"&gt;...&lt;/div&gt;
+&lt;div class="fx-checkbox-frame" style="--fx-checkbox-size: 2rem; --fx-checkbox-border-radius: 6px;"&gt;...&lt;/div&gt;</code></pre>
+          <ul>
+            <li><code>--fx-checkbox-size</code> box size</li>
+            <li><code>--fx-checkbox-border-radius</code> corner radius</li>
+            <li><code>--fx-checkbox-checked-background-color</code> filled box when checked</li>
+            <li><code>--fx-checkbox-tick-color</code> tick icon color</li>
+            <li><code>--fx-checkbox-tick-svg</code> tick mask image</li>
+            <li><code>--fx-border-width</code>, <code>--fx-border-color</code>, <code>--fx-control-background-color</code></li>
+            <li><code>--fx-focus-ring-*</code> focus outline</li>
+            <li><code>--fx-control-padding-x</code> gap between box and label</li>
+            <li><code>--fx-text-color</code>, <code>--fx-text-muted-color</code>, <code>--fx-disabled-control-opacity</code></li>
+            <li><code>--fx-transition</code> animation</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="fx-demo-section">
+        <h2 class="fx-demo-section-title">What the CSS package covers</h2>
+        <div class="fx-demo-panel">
+          <ul>
+            <li><strong>Frame:</strong> <code>.fx-checkbox-frame</code> — wrapper with <code>margin: 0</code> and layout for input + label.</li>
+            <li><strong>Input:</strong> <code>input[type="checkbox"].fx-checkbox</code> — visually hidden (clip, opacity), positioned for accessibility.</li>
+            <li><strong>Label:</strong> <code>label[for]</code> — cursor, font, color, padding; <code>::before</code> = custom box (size, border, background, border-radius); <code>::after</code> = tick (mask, color when checked).</li>
+            <li><strong>Checked:</strong> <code>:checked + label::before</code> background/border; tick visible via <code>::after</code>.</li>
+            <li><strong>Focus:</strong> <code>:focus-visible:not(:disabled) + label::before</code> — outline and offset.</li>
+            <li><strong>Disabled:</strong> label color/opacity/cursor/pointer-events; box and tick use muted color and opacity.</li>
+            <li><strong>Readonly:</strong> <code>[readonly]</code> — pointer-events none on input and label.</li>
+            <li><strong>Invalid/Valid:</strong> <code>[invalid]</code> and <code>[valid]</code> — label color, box border, and when checked box background/tick colors.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="fx-demo-section">
+        <h2 class="fx-demo-section-title">Accessibility notes</h2>
+        <div class="fx-demo-panel">
+          <ul>
+            <li>Always use a <code>label[for]</code> that matches the input <code>id</code> so the checkbox is properly associated and clickable.</li>
+            <li>The native input is visually hidden but remains focusable and announced by screen readers; the custom box is purely visual.</li>
+            <li>For validation, set <code>invalid</code>/<code>valid</code> in sync with <code>aria-invalid</code> and provide error/success messages for screen readers.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <script src="../../dist/js/flexa.js"></script>
+    <script src="../js/demo.js"></script>
+  </body>
+</html>

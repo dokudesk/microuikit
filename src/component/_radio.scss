@@ -1,14 +1,19 @@
-// Radio mixin
+// Radio component: .fx-radio-frame, input + label, custom circle (::before) and inner dot (::after). States: checked, focus-visible, disabled, readonly, invalid, valid.
 @mixin radio($prefix) {
+  // Frame and visually hidden native radio
   .#{$prefix}radio-frame {
-    height: fit-content;
-    margin: 0 !important;
+    position: relative;
+    display: inline-block;
+    margin: 0;
 
     input[type="radio"].#{$prefix}radio {
       position: absolute;
-      width: 1px;
-      height: 1px;
-      margin: -1px;
+      inset-inline-start: 0;
+      inset-block-start: 50%;
+      transform: translateY(-50%);
+      width: var(--#{$prefix}radio-size, 1.5rem);
+      height: var(--#{$prefix}radio-size, 1.5rem);
+      margin: 0;
       padding: 0;
       border: 0;
       opacity: 0;
@@ -40,12 +45,12 @@
       &:disabled + label[for]::before {
         background-color: var(--#{$prefix}control-background-color) !important;
         border-color: var(--#{$prefix}text-muted-color) !important;
-        opacity: var(--#{$prefix}disabled-control-opacity) !important;
+        opacity: var(--#{$prefix}disabled-control-opacity);
       }
 
       &:disabled:checked + label[for]::after {
         background-color: var(--#{$prefix}text-muted-color) !important;
-        opacity: var(--#{$prefix}disabled-control-opacity) !important;
+        opacity: var(--#{$prefix}disabled-control-opacity);
       }
 
       &:disabled:not(:checked) + label[for]::after {
@@ -86,6 +91,7 @@
       }
     }
 
+    // Label and custom circle (::before)
     input[type="radio"].#{$prefix}radio + label[for] {
       position: relative;
       cursor: pointer;
@@ -98,6 +104,7 @@
       transition: var(--#{$prefix}transition);
     }
 
+    // Custom circle appearance
     input[type="radio"].#{$prefix}radio + label[for]::before {
       content: "";
       position: absolute;
@@ -113,11 +120,10 @@
       box-sizing: border-box;
     }
 
+    // Inner dot (::after), visible when :checked
     input[type="radio"].#{$prefix}radio + label[for]::after {
       content: "";
       position: absolute;
-
-      /* Center in ::before for both LTR and RTL (no translateX so RTL is correct) */
       inset-inline-start: var(--#{$prefix}radio-dot-space);
       inset-block-start: 50%;
       width: calc(var(--#{$prefix}radio-size, 1.5rem) - var(--#{$prefix}radio-dot-space) * 2);

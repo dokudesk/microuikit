@@ -1,73 +1,153 @@
+// Select component: .fx-select, .fx-select-frame, .fx-select-arrow, option styling, select[multiple] in frame.
 @use "../abstracts/mixins/theme" as mixins;
 
 @mixin select($prefix) {
+  // Base select and option styling
   .#{$prefix}select {
     display: block;
     width: 100%;
     overflow: auto;
     height: var(--#{$prefix}control-height);
-    padding-inline: var(--#{$prefix}control-padding-x) calc(var(--#{$prefix}control-padding-x) * 2 + calc(calc(var(--#{$prefix}control-height) * 0.25) + 4px));
-    padding-block: var(--#{$prefix}control-padding-y);
-    font: var(--#{$prefix}font-weight-base) var(--#{$prefix}font-size-base) var(--#{$prefix}font-family-base) var(--#{$prefix}line-height-base);
+    padding: var(--#{$prefix}control-padding-y) var(--#{$prefix}control-padding-x);
+    font: var(--#{$prefix}font-weight-base) var(--#{$prefix}font-size-base) / var(--#{$prefix}line-height-base) var(--#{$prefix}font-family-base);
     color: var(--#{$prefix}text-color);
     background-color: var(--#{$prefix}control-background-color);
     background-clip: padding-box;
     border: var(--#{$prefix}border-width, 0) solid var(--#{$prefix}border-color);
     border-radius: var(--#{$prefix}control-border-radius);
-    outline: none;
-    appearance: none;
-    text-transform: none;
     transition: var(--#{$prefix}transition);
-    background-image: var(--#{$prefix}arrow-down-svg);
-    background-repeat: no-repeat;
-    background-position: right calc(var(--#{$prefix}control-padding-x) + 2px) center;
-    background-size: calc(var(--#{$prefix}control-height) * 0.25);
 
-    &[multiple] {
-      padding-inline-end: var(--#{$prefix}control-padding-x);
-      background-image: none;
+    option {
+      display: flex;
+      align-items: center;
+      color: var(--#{$prefix}text-color);
+      font-family: inherit;
+      font-size: inherit;
+      height: var(--#{$prefix}select-option-height);
+    
+      &:checked {
+        color: var(--#{$prefix}select-selected-option-text-color);
+        background-color: var(--#{$prefix}select-selected-option-background-color);
+      }
     }
-
+ 
     &:focus {
-      border-color: var(--#{$prefix}focus-ring-color, var(--#{$prefix}border-color));
+      border-color: var(--#{$prefix}border-color);
     }
 
     &[invalid] {
-      border-color: var(--#{$prefix}invalid-border-color) !important;
-      color: var(--#{$prefix}invalid-color) !important;
+      border-color: var(--#{$prefix}invalid-border-color) ;
+      color: var(--#{$prefix}invalid-color) ;
     }
 
     &[valid] {
-      border-color: var(--#{$prefix}valid-border-color) !important;
-      color: var(--#{$prefix}valid-color) !important;
+      border-color: var(--#{$prefix}valid-border-color);
+      color: var(--#{$prefix}valid-color);
     }
 
     &[disabled] {
-      color: var(--#{$prefix}text-muted-color) !important;
-      border-color: var(--#{$prefix}border-color) !important;
-      opacity: var(--#{$prefix}disabled-control-opacity) !important;
-    }
+      color: var(--#{$prefix}text-muted-color);
+      border-color: var(--#{$prefix}border-color);
+      opacity: var(--#{$prefix}disabled-control-opacity);
 
-    option {
-      color: var(--#{$prefix}text-color);
-      background-color: var(--#{$prefix}control-background-color);
-      font-family: inherit;
-      font-size: inherit;
-
-      &:checked {
-        color: var(--#{$prefix}select-selected-text-color);
-        background-color: var(--#{$prefix}select-selected-background-color);
-      }
-
-      &:disabled {
-        opacity: var(--#{$prefix}disabled-control-opacity) !important;
+      option:checked {
+        color: var(--#{$prefix}text-muted-color);
+        background-color: var(--#{$prefix}background-muted-color);
       }
     }
   }
 
-  @include mixins.direction-rtl-selector {
+  // Frame: optional .fx-select-arrow (mask-based); border for select[multiple]
+  .#{$prefix}select-frame {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+
     .#{$prefix}select {
-      background-position: left calc(var(--#{$prefix}control-padding-x) + 2px) center;
+      outline: none;
+    }
+
+    .#{$prefix}select:focus {
+      border-color: var(--#{$prefix}focus-ring-color, var(--#{$prefix}border-color));
+    } 
+
+    .#{$prefix}select[invalid] {
+      border-color: var(--#{$prefix}invalid-border-color);
+      color: var(--#{$prefix}invalid-color);
+    }
+
+    .#{$prefix}select[valid] {
+      border-color: var(--#{$prefix}valid-border-color);
+      color: var(--#{$prefix}valid-color);
+    }
+
+    .#{$prefix}select[disabled] {
+      color: var(--#{$prefix}text-muted-color);
+      border-color: var(--#{$prefix}border-color);
+      opacity: var(--#{$prefix}disabled-control-opacity);
+    }
+
+
+    // Only when frame contains .fx-select-arrow: reserve space for the arrow
+    &:has(.#{$prefix}select-arrow) .#{$prefix}select {
+      padding-inline-end: calc(var(--#{$prefix}control-height) - calc(var(--#{$prefix}border-width) * 2) - 4px);
+      appearance: none;
+    }
+
+    .#{$prefix}select[multiple] {
+      padding: var(--#{$prefix}control-padding-y) var(--#{$prefix}control-padding-x);
+      border-color: transparent;
+    }
+
+    // When frame contains select[multiple]: border on frame (select has none), color by state
+    &:has(.#{$prefix}select[multiple]) {
+      border: var(--#{$prefix}border-width, 1px) solid  var(--#{$prefix}border-color);
+      border-radius: var(--#{$prefix}control-border-radius);
+      padding: calc(var(--#{$prefix}control-border-radius) * 0.25);
+    }
+
+    &:has(.#{$prefix}select[multiple]:focus) {
+      border-color: var(--#{$prefix}focus-ring-color, var(--#{$prefix}border-color)) ;
+    }
+
+    &:has(.#{$prefix}select[multiple][invalid]) {
+      border-color: var(--#{$prefix}invalid-border-color) ;
+    }
+
+    &:has(.#{$prefix}select[multiple][valid]) {
+      border-color: var(--#{$prefix}valid-border-color) ;
+    }
+
+    &:has(.#{$prefix}select[multiple][disabled]) {
+      border-color: var(--#{$prefix}border-color) ;
+    }
+
+    // Decorative arrow: SVG via mask, color via --fx-select-arrow-color; hidden when select[multiple]
+    .#{$prefix}select-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      inset-block-start: 0;
+      inset-inline-end: 0;
+      width: var(--#{$prefix}control-height);
+      min-width: var(--#{$prefix}control-height);
+      height: var(--#{$prefix}control-height);
+      pointer-events: none;
+      box-sizing: border-box;
+
+      &::before {
+        content: "";
+        width: calc(var(--#{$prefix}control-height) * 0.25);
+        height: calc(var(--#{$prefix}control-height) * 0.25);
+        background-color: var(--#{$prefix}select-arrow-color, var(--#{$prefix}control-icon-color));
+        mask: var(--#{$prefix}arrow-down-svg) no-repeat center / contain;
+        -webkit-mask: var(--#{$prefix}arrow-down-svg) no-repeat center / contain;
+      }
+    }
+
+    &:has(.#{$prefix}select[multiple]) .#{$prefix}select-arrow {
+      display: none;
     }
   }
 }

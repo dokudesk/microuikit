@@ -58,18 +58,21 @@ $border-color: map.get($grays, 400) !default;
 $border-color-dark: map.get($grays, 600) !default;
 $background-color: map.get($grays, 100) !default;
 $background-color-dark: map.get($grays, 900) !default;
+$background-muted-color: map.get($grays, 400) !default;
+$background-muted-color-dark: map.get($grays, 600) !default;
+
+
+$control-icon-color: map.get($grays, 600) !default;
+$control-icon-color-dark: map.get($grays, 600) !default;
 $control-background-color: map.get($grays, 100) !default;
 $control-background-color-dark: map.get($grays, 900) !default;
+
 $box-shadow-color: rgb(0 0 0 / 50%) !default;
 $box-shadow-color-dark: rgb(255 255 255 / 50%) !default;
 $scrollbar-color: map.get($grays, 600)  !default;
 $scrollbar-color-dark: map.get($grays, 400) !default;
 $scrollbar-hover-color: map.get($grays, 500) !default;
 $scrollbar-hover-color-dark: map.get($grays, 600) !default;
-$password-toggle-icon-color: map.get($grays, 600) !default;
-$password-toggle-icon-color-dark: map.get($grays, 600) !default;
-$password-toggle-icon-hover-color: map.get($grays, 700) !default;
-$password-toggle-icon-hover-color-dark: map.get($grays, 700) !default;
 $password-toggle-background-hover-color: map.get($grays, 300) !default;
 $password-toggle-background-hover-color-dark: map.get($grays, 300) !default;
 $checkbox-checked-background-color: $primary !default;
@@ -80,10 +83,10 @@ $radio-checked-color: $primary !default;
 $radio-checked-color-dark: $primary !default;
 $select-arrow-color: map.get($grays, 400) !default;
 $select-arrow-color-dark: map.get($grays, 600) !default;
-$select-selected-text-color: $text-color !default;
-$select-selected-text-color-dark: $text-color-dark !default;
-$select-selected-background-color: $background-color !default;
-$select-selected-background-color-dark: $background-color-dark !default;
+$select-selected-option-text-color: $text-color !default;
+$select-selected-option-text-color-dark: $text-color-dark !default;
+$select-selected-option-background-color: $primary !default;
+$select-selected-option-background-color-dark: $primary !default;
 
 // ===============================
 // Validation Colors
@@ -188,6 +191,8 @@ $theme-light-colors: (
   placeholder-color: $placeholder-color,
   heading-color: $heading-color,
   background-color: $background-color,
+  background-muted-color: $background-muted-color,
+  control-icon-color: $control-icon-color,
   control-background-color: $control-background-color,
   border-color: $border-color,
   box-shadow-color: $box-shadow-color,
@@ -201,15 +206,13 @@ $theme-light-colors: (
   focus-ring-color: $focus-ring-color,
   scrollbar-color: $scrollbar-color,
   scrollbar-hover-color: $scrollbar-hover-color,
-  password-toggle-icon-color: $password-toggle-icon-color,
-  password-toggle-icon-hover-color: $password-toggle-icon-hover-color,
   password-toggle-background-hover-color: $password-toggle-background-hover-color,
   checkbox-checked-background-color: $checkbox-checked-background-color,
   checkbox-tick-color: $checkbox-tick-color,
   radio-checked-color: $radio-checked-color,
   select-arrow-color: $select-arrow-color,
-  select-selected-text-color: $select-selected-text-color,
-  select-selected-background-color: $select-selected-background-color,
+  select-selected-option-text-color: $select-selected-option-text-color,
+  select-selected-option-background-color: $select-selected-option-background-color,
 ) !default;
 $theme-dark-colors: (
   text-color: $text-color-dark,
@@ -218,7 +221,9 @@ $theme-dark-colors: (
   placeholder-color: $placeholder-color-dark,
   heading-color: $heading-color-dark,
   background-color: $background-color-dark,
+  background-muted-color: $background-muted-color-dark,
   control-background-color: $control-background-color-dark,
+  control-icon-color: $control-icon-color-dark,
   border-color: $border-color-dark,
   box-shadow-color: $box-shadow-color-dark,
   link-color: $link-color-dark,
@@ -231,13 +236,11 @@ $theme-dark-colors: (
   focus-ring-color: $focus-ring-color-dark,
   scrollbar-color: $scrollbar-color-dark,
   scrollbar-hover-color: $scrollbar-hover-color-dark,
-  password-toggle-icon-color: $password-toggle-icon-color-dark,
-  password-toggle-icon-hover-color: $password-toggle-icon-hover-color-dark,
   password-toggle-background-hover-color: $password-toggle-background-hover-color-dark,
   checkbox-checked-background-color: $checkbox-checked-background-color-dark,
   checkbox-tick-color: $checkbox-tick-color-dark,
   radio-checked-color: $radio-checked-color-dark,
   select-arrow-color: $select-arrow-color-dark,
-  select-selected-text-color: $select-selected-text-color-dark,
-  select-selected-background-color: $select-selected-background-color-dark,
+  select-selected-option-text-color: $select-selected-option-text-color-dark,
+  select-selected-option-background-color: $select-selected-option-background-color-dark,
 ) !default;

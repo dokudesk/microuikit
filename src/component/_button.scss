@@ -1,25 +1,24 @@
+// Button component: .fx-btn (base, disabled, aria-busy, theme modifiers), RTL spinner.
 @use "sass:color";
 @use "../abstracts/variables/colors" as colors;
 @use "../abstracts/mixins/theme" as mixins;
 
-// Spinner animation
+// Spinner animation for aria-busy state
 @keyframes spin {
   to {
     transform: rotate(360deg);
   }
 }
 
-// Button mixin
 @mixin btn($prefix) {
+  // Base button
   .#{$prefix}btn {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: var(--#{$prefix}control-padding-y) var(--#{$prefix}control-padding-x);
     height: var(--#{$prefix}control-height);
-    font: var(--#{$prefix}font-weight-base)
-      var(--#{$prefix}font-size-base)
-      var(--#{$prefix}font-family-base);
+    font: var(--#{$prefix}font-weight-base) var(--#{$prefix}font-size-base) / var(--#{$prefix}line-height-base) var(--#{$prefix}font-family-base);
     color: var(--#{$prefix}text-color);
     background-color: var(--#{$prefix}control-background-color);
     background-clip: padding-box;
@@ -60,12 +59,14 @@
     }
   }
 
+  // RTL: reverse spinner rotation
   @include mixins.direction-rtl-selector {
     .#{$prefix}btn[aria-busy="true"]::before {
       animation-direction: reverse;
     }
   }
 
+  // Theme color modifiers (.fx-btn-primary, .fx-btn-success, …)
   @each $name, $value in colors.$theme-colors {
     .#{$prefix}btn-#{$name} {
       background-color: var(--#{$prefix}background-#{$name});
