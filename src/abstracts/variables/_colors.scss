@@ -60,13 +60,10 @@ $background-color: map.get($grays, 100) !default;
 $background-color-dark: map.get($grays, 900) !default;
 $background-muted-color: map.get($grays, 400) !default;
 $background-muted-color-dark: map.get($grays, 600) !default;
-
-
 $control-icon-color: map.get($grays, 600) !default;
 $control-icon-color-dark: map.get($grays, 600) !default;
 $control-background-color: map.get($grays, 100) !default;
 $control-background-color-dark: map.get($grays, 900) !default;
-
 $box-shadow-color: rgb(0 0 0 / 50%) !default;
 $box-shadow-color-dark: rgb(255 255 255 / 50%) !default;
 $scrollbar-color: map.get($grays, 600)  !default;

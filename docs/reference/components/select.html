@@ -5,9 +5,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Flexa - Select Component</title>
-  <link rel="stylesheet" href="../../dist/css/core.css" />
-  <link rel="stylesheet" href="../../dist/css/themes/theme-default.css" />
-  <link rel="stylesheet" href="../css/demo.css" />
+  <link rel="stylesheet" href="../../../dist/css/core.css" />
+  <link rel="stylesheet" href="../../../dist/css/themes/theme-default.css" />
+  <link rel="stylesheet" href="../../assets/css/wiki.css" />
 
 </head>
 
@@ -34,22 +34,22 @@
         </select>
       </label>
     </div>
-    <a class="fx-demo-link" href="../index.html">Back</a>
+    <a class="fx-demo-link" href="../../index.html">Back</a>
   </header>
 
   <main class="fx-demo-content">
     <h1 class="fx-demo-hero-title">Select Component Documentation</h1>
-    <p class="fx-demo-hero-description">
+    <p class="fx-demo-hero-description fx-text-muted">
       The Select component styles a native <code>&lt;select&gt;</code> with custom appearance, arrow icon, and support
       for focus, validation (invalid/valid), disabled state, and multiple selection.
       Use <code>fx-select-frame</code> with <code>fx-select-arrow</code> for a themeable arrow (mask +
       <code>--fx-select-arrow-color</code>) so it matches light/dark mode.
     </p>
 
-    <section class="fx-demo-section">
-      <h2 class="fx-demo-section-title">Base usage</h2>
-      <div class="fx-demo-panel">
-        <div class="fx-demo-row">
+    <section class="fx-demo-section fx-mt-4">
+      <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Base usage</h2>
+      <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+        <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
           <select class="fx-select" style="max-width: 20rem;">
             <option>Option A</option>
             <option>Option B</option>
@@ -62,18 +62,18 @@
   &lt;option&gt;Option C&lt;/option&gt;
 &lt;/select&gt;</code></pre>
         <ul>
-          <li>Without <code>fx-select-frame</code>, the select uses the browser’s native appearance.</li>
+          <li>Without <code>fx-select-frame</code>, the select uses the browser�s native appearance.</li>
         </ul>
       </div>
     </section>
 
-    <section class="fx-demo-section">
-      <h2 class="fx-demo-section-title">With frame and arrow (mask-based)</h2>
-      <div class="fx-demo-panel">
-        <div class="fx-demo-row">
+    <section class="fx-demo-section fx-mt-4">
+      <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">With frame and arrow (mask-based)</h2>
+      <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+        <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
           <div class="fx-select-frame" style="max-width: 20rem;">
             <select id="sel-frame" class="fx-select">
-              <option value="">Choose…</option>
+              <option value="">Choose�</option>
               <option>Apple</option>
               <option>Banana</option>
               <option>Cherry</option>
@@ -83,7 +83,7 @@
         </div>
         <pre><code>&lt;div class="fx-select-frame"&gt;
   &lt;select id="sel-frame" class="fx-select"&gt;
-    &lt;option value=""&gt;Choose…&lt;/option&gt;
+    &lt;option value=""&gt;Choose�&lt;/option&gt;
     &lt;option&gt;Apple&lt;/option&gt;
     &lt;option&gt;Banana&lt;/option&gt;
     &lt;option&gt;Cherry&lt;/option&gt;
@@ -99,10 +99,10 @@
       </div>
     </section>
 
-    <section class="fx-demo-section">
-      <h2 class="fx-demo-section-title">Validation states (invalid / valid)</h2>
-      <div class="fx-demo-panel">
-        <div class="fx-demo-row">
+    <section class="fx-demo-section fx-mt-4">
+      <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Validation states (invalid / valid)</h2>
+      <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+        <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
           <div class="fx-select-frame" style="max-width: 20rem;">
             <select class="fx-select" invalid>
               <option value="">Invalid (no selection)</option>
@@ -118,7 +118,7 @@
             <span class="fx-select-arrow" aria-hidden="true"></span>
           </div>
         </div>
-        <div class="fx-demo-row">
+        <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
           <div class="fx-select-frame" style="max-width: 20rem;">
             <select class="fx-select" invalid disabled>
               <option value="">Invalid + disabled</option>
@@ -148,10 +148,10 @@
       </div>
     </section>
 
-    <section class="fx-demo-section">
-      <h2 class="fx-demo-section-title">Disabled state</h2>
-      <div class="fx-demo-panel">
-        <div class="fx-demo-row">
+    <section class="fx-demo-section fx-mt-4">
+      <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Disabled state</h2>
+      <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+        <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
           <div class="fx-select-frame" style="max-width: 20rem;">
             <select class="fx-select" disabled>
               <option>Disabled</option>
@@ -166,10 +166,10 @@
       </div>
     </section>
 
-    <section class="fx-demo-section">
-      <h2 class="fx-demo-section-title">Multiple selection</h2>
-      <div class="fx-demo-panel">
-        <div class="fx-demo-row">
+    <section class="fx-demo-section fx-mt-4">
+      <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Multiple selection</h2>
+      <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+        <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
           <select class="fx-select" multiple style="width: 20rem; height: 6rem;">
             <option>Option 1</option>
             <option selected>Option 2</option>
@@ -177,7 +177,7 @@
             <option selected>Option 4</option>
           </select>
         </div>
-        <div class="fx-demo-row">
+        <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
           <select class="fx-select" multiple invalid style="width: 20rem; height: 6rem;">
             <option>Option 1</option>
             <option selected>Option 2</option>
@@ -186,7 +186,7 @@
           </select>
         </div>
 
-        <div class="fx-demo-row">
+        <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
           <select class="fx-select" multiple disabled style="width: 20rem; height: 6rem;">
             <option>Option 1</option>
             <option selected>Option 2</option>
@@ -223,10 +223,10 @@
       </div>
     </section>
 
-    <section class="fx-demo-section">
-      <h2 class="fx-demo-section-title">Multiple selection in frame</h2>
-      <div class="fx-demo-panel">
-        <div class="fx-demo-row">
+    <section class="fx-demo-section fx-mt-4">
+      <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Multiple selection in frame</h2>
+      <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+        <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
           <div class="fx-select-frame" style="width: 20rem;">
             <select class="fx-select" multiple style="max-width: 20rem; height: 6rem;">
               <option>Option 1</option>
@@ -237,7 +237,7 @@
             <span class="fx-select-arrow" aria-hidden="true"></span>
           </div>
         </div>
-        <div class="fx-demo-row">
+        <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
           <div class="fx-select-frame" style="width: 20rem;">
             <select class="fx-select" multiple invalid style="max-width: 20rem; height: 6rem;">
               <option>Option 1</option>
@@ -248,7 +248,7 @@
             <span class="fx-select-arrow" aria-hidden="true"></span>
           </div>
         </div>
-        <div class="fx-demo-row">
+        <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
           <div class="fx-select-frame" style="width: 20rem;">
             <select class="fx-select" multiple invalid disabled style="max-width: 20rem; height: 6rem;">
               <option>Option 1</option>
@@ -292,10 +292,10 @@
     </section>
 
 
-    <section class="fx-demo-section">
-      <h2 class="fx-demo-section-title">Optgroups</h2>
-      <div class="fx-demo-panel">
-        <div class="fx-demo-row">
+    <section class="fx-demo-section fx-mt-4">
+      <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Optgroups</h2>
+      <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+        <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
           <div class="fx-select-frame" style="max-width: 20rem;">
             <select class="fx-select">
               <optgroup label="Fruits">
@@ -323,9 +323,9 @@
       </div>
     </section>
 
-    <section class="fx-demo-section">
-      <h2 class="fx-demo-section-title">Quick customization</h2>
-      <div class="fx-demo-panel">
+    <section class="fx-demo-section fx-mt-4">
+      <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Quick customization</h2>
+      <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
         <ul>
           <li><code>--fx-control-height</code>, <code>--fx-control-padding-x</code>,
             <code>--fx-control-padding-y</code>, <code>--fx-control-border-radius</code>
@@ -343,36 +343,36 @@
       </div>
     </section>
 
-    <section class="fx-demo-section">
-      <h2 class="fx-demo-section-title">What the CSS package covers</h2>
-      <div class="fx-demo-panel">
+    <section class="fx-demo-section fx-mt-4">
+      <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">What the CSS package covers</h2>
+      <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
         <ul>
-          <li><strong>Base:</strong> <code>.fx-select</code> — size, padding, font, color, background, border,
+          <li><strong>Base:</strong> <code>.fx-select</code> � size, padding, font, color, background, border,
             focus, invalid, valid, disabled; <code>option</code>, <code>option:checked</code>;
             <code>multiple</code> (no arrow, different padding). Without frame, native browser appearance.</li>
-          <li><strong>Frame:</strong> <code>.fx-select-frame</code> — wrapper; <code>.fx-select</code> inside gets
+          <li><strong>Frame:</strong> <code>.fx-select-frame</code> � wrapper; <code>.fx-select</code> inside gets
             <code>appearance: none</code> and padding for the arrow when <code>.fx-select-arrow</code> is present;
-            <code>.fx-select-arrow</code> — decorative arrow (mask + <code>--fx-select-arrow-color</code>); arrow hidden when select is <code>multiple</code>.</li>
+            <code>.fx-select-arrow</code> � decorative arrow (mask + <code>--fx-select-arrow-color</code>); arrow hidden when select is <code>multiple</code>.</li>
         </ul>
       </div>
     </section>
 
-    <section class="fx-demo-section">
-      <h2 class="fx-demo-section-title">Accessibility notes</h2>
-      <div class="fx-demo-panel">
+    <section class="fx-demo-section fx-mt-4">
+      <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Accessibility notes</h2>
+      <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
         <ul>
-          <li>Associate a <code>label[for]</code> with the select’s <code>id</code> so it’s announced and clickable.
+          <li>Associate a <code>label[for]</code> with the select�s <code>id</code> so it�s announced and clickable.
           </li>
           <li>Use <code>invalid</code>/<code>valid</code> together with <code>aria-invalid</code> and provide
             error/success text for screen readers.</li>
-          <li><code>fx-select-arrow</code> has <code>aria-hidden="true"</code> so it’s ignored by assistive tech.</li>
+          <li><code>fx-select-arrow</code> has <code>aria-hidden="true"</code> so it�s ignored by assistive tech.</li>
         </ul>
       </div>
     </section>
   </main>
 
   <script src="../../dist/js/flexa.js"></script>
-  <script src="../js/demo.js"></script>
+  <script src="../../assets/js/wiki.js"></script>
 </body>
 
 </html>

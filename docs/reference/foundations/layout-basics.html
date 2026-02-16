@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flexa - Layout Basics</title>
+    <link rel="stylesheet" href="../../../dist/css/core.css" />
+    <link rel="stylesheet" href="../../../dist/css/themes/theme-default.css" />
+    <link rel="stylesheet" href="../../assets/css/wiki.css" />
+  </head>
+  <body class="fx-demo fx-demo--fullscreen">
+    <header class="fx-demo-header">
+      <div><p class="fx-demo-header-title">Flexa CSS Framework</p><p class="fx-demo-header-subtitle">Core Documentation</p></div>
+      <div class="fx-demo-header-controls">
+        <label>Color mode<select id="fx-theme-select"><option value="light">Light</option><option value="dark">Dark</option><option value="auto">Auto (System)</option></select></label>
+        <label>Text direction<select id="fx-dir-select"><option value="ltr">LTR</option><option value="rtl">RTL</option></select></label>
+      </div>
+      <a class="fx-demo-link" href="../../index.html">Back</a>
+    </header>
+    <main class="fx-demo-content">
+      <h1 class="fx-demo-hero-title">Layout Basics</h1>
+      <p class="fx-demo-hero-description fx-text-muted">Build low-level structure with display, position, float, and alignment utilities.</p>
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Display and positioning</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+          <div class="fx-position-relative fx-border fx-rounded fx-p-3" style="height: 8rem;">
+            <div class="fx-position-absolute fx-demo-doc-sample-box" style="top: 0.5rem; inset-inline-start: 0.5rem;">Absolute</div>
+            <div class="fx-d-inline-block fx-demo-doc-sample-box">Inline block</div>
+          </div>
+          <pre><code>&lt;div class="fx-position-relative"&gt;
+  &lt;div class="fx-position-absolute"&gt;Absolute&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Float and vertical alignment</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+          <div class="fx-border fx-rounded fx-p-3">
+            <span class="fx-float-start">Start float</span>
+            <span class="fx-float-end">End float</span>
+            <p class="fx-mt-4 fx-valign-middle">Vertical alignment utilities are useful in inline/table contexts.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="../../../dist/js/flexa.js"></script>
+    <script src="../../assets/js/wiki.js"></script>
+  </body>
+</html>

@@ -4,9 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Flexa - Checkbox Component</title>
-    <link rel="stylesheet" href="../../dist/css/core.css" />
-    <link rel="stylesheet" href="../../dist/css/themes/theme-default.css" />
-    <link rel="stylesheet" href="../css/demo.css" />
+    <link rel="stylesheet" href="../../../dist/css/core.css" />
+    <link rel="stylesheet" href="../../../dist/css/themes/theme-default.css" />
+    <link rel="stylesheet" href="../../assets/css/wiki.css" />
 
   </head>
   <body class="fx-demo fx-demo--fullscreen">
@@ -32,20 +32,20 @@
           </select>
         </label>
       </div>
-      <a class="fx-demo-link" href="../index.html">Back</a>
+      <a class="fx-demo-link" href="../../index.html">Back</a>
     </header>
 
     <main class="fx-demo-content">
       <h1 class="fx-demo-hero-title">Checkbox Component Documentation</h1>
-      <p class="fx-demo-hero-description">
+      <p class="fx-demo-hero-description fx-text-muted">
         The Checkbox component styles a native <code>input[type="checkbox"]</code> with a custom visual box and tick.
         It uses <code>fx-checkbox-frame</code> as wrapper, with the input and a <code>label[for]</code>. Supports checked, focus-visible, disabled, readonly, invalid, and valid states.
       </p>
 
-      <section class="fx-demo-section">
-        <h2 class="fx-demo-section-title">Base usage</h2>
-        <div class="fx-demo-panel">
-          <div class="fx-demo-row">
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Base usage</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+          <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
             <div class="fx-checkbox-frame">
               <input id="cb-base" type="checkbox" class="fx-checkbox" />
               <label for="cb-base">Option</label>
@@ -58,10 +58,10 @@
         </div>
       </section>
 
-      <section class="fx-demo-section">
-        <h2 class="fx-demo-section-title">Checked and unchecked</h2>
-        <div class="fx-demo-panel">
-          <div class="fx-demo-row">
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Checked and unchecked</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+          <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
             <div class="fx-checkbox-frame">
               <input id="cb-unchecked" type="checkbox" class="fx-checkbox" />
               <label for="cb-unchecked">Unchecked</label>
@@ -79,10 +79,10 @@
         </div>
       </section>
 
-      <section class="fx-demo-section">
-        <h2 class="fx-demo-section-title">Focus-visible</h2>
-        <div class="fx-demo-panel">
-          <div class="fx-demo-row">
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Focus-visible</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+          <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
             <div class="fx-checkbox-frame">
               <input id="cb-focus" type="checkbox" class="fx-checkbox" />
               <label for="cb-focus">Focus me (keyboard or click)</label>
@@ -96,10 +96,10 @@
         </div>
       </section>
 
-      <section class="fx-demo-section">
-        <h2 class="fx-demo-section-title">Disabled state</h2>
-        <div class="fx-demo-panel">
-          <div class="fx-demo-row">
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Disabled state</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+          <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
             <div class="fx-checkbox-frame">
               <input id="cb-disabled" type="checkbox" class="fx-checkbox" disabled />
               <label for="cb-disabled">Disabled unchecked</label>
@@ -117,10 +117,10 @@
         </div>
       </section>
 
-      <section class="fx-demo-section">
-        <h2 class="fx-demo-section-title">Readonly state</h2>
-        <div class="fx-demo-panel">
-          <div class="fx-demo-row">
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Readonly state</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+          <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
             <div class="fx-checkbox-frame">
               <input id="cb-readonly" type="checkbox" class="fx-checkbox" readonly checked />
               <label for="cb-readonly">Readonly (no pointer events)</label>
@@ -133,10 +133,10 @@
         </div>
       </section>
 
-      <section class="fx-demo-section">
-        <h2 class="fx-demo-section-title">Validation states (invalid / valid)</h2>
-        <div class="fx-demo-panel">
-          <div class="fx-demo-row">
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Validation states (invalid / valid)</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+          <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
             <div class="fx-checkbox-frame">
               <input id="cb-invalid" type="checkbox" class="fx-checkbox" invalid />
               <label for="cb-invalid">Invalid (e.g. required and unchecked)</label>
@@ -150,7 +150,7 @@
               <label for="cb-valid">Valid</label>
             </div>
           </div>
-          <div class="fx-demo-row">
+          <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
             <div class="fx-checkbox-frame">
               <input id="cb-invalid-disabled" type="checkbox" class="fx-checkbox" invalid disabled />
               <label for="cb-invalid-disabled">Invalid + disabled (unchecked)</label>
@@ -173,10 +173,10 @@
         </div>
       </section>
 
-      <section class="fx-demo-section">
-        <h2 class="fx-demo-section-title">Quick customization</h2>
-        <div class="fx-demo-panel">
-          <div class="fx-demo-row">
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Quick customization</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+          <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
             <div class="fx-checkbox-frame" style="--fx-checkbox-size: 1.25rem;">
               <input id="cb-small" type="checkbox" class="fx-checkbox" />
               <label for="cb-small">Smaller box</label>
@@ -203,25 +203,25 @@
         </div>
       </section>
 
-      <section class="fx-demo-section">
-        <h2 class="fx-demo-section-title">What the CSS package covers</h2>
-        <div class="fx-demo-panel">
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">What the CSS package covers</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
           <ul>
-            <li><strong>Frame:</strong> <code>.fx-checkbox-frame</code> — wrapper with <code>margin: 0</code> and layout for input + label.</li>
-            <li><strong>Input:</strong> <code>input[type="checkbox"].fx-checkbox</code> — visually hidden (clip, opacity), positioned for accessibility.</li>
-            <li><strong>Label:</strong> <code>label[for]</code> — cursor, font, color, padding; <code>::before</code> = custom box (size, border, background, border-radius); <code>::after</code> = tick (mask, color when checked).</li>
+            <li><strong>Frame:</strong> <code>.fx-checkbox-frame</code> � wrapper with <code>margin: 0</code> and layout for input + label.</li>
+            <li><strong>Input:</strong> <code>input[type="checkbox"].fx-checkbox</code> � visually hidden (clip, opacity), positioned for accessibility.</li>
+            <li><strong>Label:</strong> <code>label[for]</code> � cursor, font, color, padding; <code>::before</code> = custom box (size, border, background, border-radius); <code>::after</code> = tick (mask, color when checked).</li>
             <li><strong>Checked:</strong> <code>:checked + label::before</code> background/border; tick visible via <code>::after</code>.</li>
-            <li><strong>Focus:</strong> <code>:focus-visible:not(:disabled) + label::before</code> — outline and offset.</li>
+            <li><strong>Focus:</strong> <code>:focus-visible:not(:disabled) + label::before</code> � outline and offset.</li>
             <li><strong>Disabled:</strong> label color/opacity/cursor/pointer-events; box and tick use muted color and opacity.</li>
-            <li><strong>Readonly:</strong> <code>[readonly]</code> — pointer-events none on input and label.</li>
-            <li><strong>Invalid/Valid:</strong> <code>[invalid]</code> and <code>[valid]</code> — label color, box border, and when checked box background/tick colors.</li>
+            <li><strong>Readonly:</strong> <code>[readonly]</code> � pointer-events none on input and label.</li>
+            <li><strong>Invalid/Valid:</strong> <code>[invalid]</code> and <code>[valid]</code> � label color, box border, and when checked box background/tick colors.</li>
           </ul>
         </div>
       </section>
 
-      <section class="fx-demo-section">
-        <h2 class="fx-demo-section-title">Accessibility notes</h2>
-        <div class="fx-demo-panel">
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Accessibility notes</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
           <ul>
             <li>Always use a <code>label[for]</code> that matches the input <code>id</code> so the checkbox is properly associated and clickable.</li>
             <li>The native input is visually hidden but remains focusable and announced by screen readers; the custom box is purely visual.</li>
@@ -232,6 +232,6 @@
     </main>
 
     <script src="../../dist/js/flexa.js"></script>
-    <script src="../js/demo.js"></script>
+    <script src="../../assets/js/wiki.js"></script>
   </body>
 </html>

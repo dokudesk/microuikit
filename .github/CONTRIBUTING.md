@@ -1,4 +1,4 @@
-# Contributing to FLEXA
+﻿# Contributing to FLEXA
 
 Thank you for considering contributing to FLEXA! 
 By following these guidelines, you help keep the project organized, readable, and easy to maintain.

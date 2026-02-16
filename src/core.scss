@@ -65,3 +65,4 @@
 @include component.radio(vars.$prefix);
 @include component.textarea(vars.$prefix);
 @include component.select(vars.$prefix);
+@include component.card(vars.$prefix);

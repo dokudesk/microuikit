@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flexa - Text Title Helpers</title>
+    <link rel="stylesheet" href="../../../dist/css/core.css" />
+    <link rel="stylesheet" href="../../../dist/css/themes/theme-default.css" />
+    <link rel="stylesheet" href="../../assets/css/wiki.css" />
+  </head>
+  <body class="fx-demo fx-demo--fullscreen">
+    <header class="fx-demo-header">
+      <div><p class="fx-demo-header-title">Flexa CSS Framework</p><p class="fx-demo-header-subtitle">Core Documentation</p></div>
+      <div class="fx-demo-header-controls">
+        <label>Color mode<select id="fx-theme-select"><option value="light">Light</option><option value="dark">Dark</option><option value="auto">Auto (System)</option></select></label>
+        <label>Text direction<select id="fx-dir-select"><option value="ltr">LTR</option><option value="rtl">RTL</option></select></label>
+      </div>
+      <a class="fx-demo-link" href="../../index.html">Back</a>
+    </header>
+    <main class="fx-demo-content">
+      <h1 class="fx-demo-hero-title">Text Title Helpers</h1>
+      <p class="fx-demo-hero-description fx-text-muted">Use <code>fx-text-title</code> and <code>fx-text-subtitle</code> for consistent content section headers.</p>
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Title pair demo</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+          <span class="fx-text-title">Release Notes</span>
+          <span class="fx-text-subtitle">Core utility updates and migration guidance</span>
+          <div class="fx-mt-3 fx-border fx-rounded fx-p-3">
+            <p class="fx-m-0">These helper classes provide quick visual hierarchy without custom typography declarations.</p>
+          </div>
+        </div>
+      </section>
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Usage</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+          <pre><code>&lt;span class="fx-text-title"&gt;Page Title&lt;/span&gt;
+&lt;span class="fx-text-subtitle"&gt;Optional secondary context&lt;/span&gt;</code></pre>
+        </div>
+      </section>
+    </main>
+    <script src="../../../dist/js/flexa.js"></script>
+    <script src="../../assets/js/wiki.js"></script>
+  </body>
+</html>

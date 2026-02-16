@@ -4,9 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Flexa - Textarea Component</title>
-    <link rel="stylesheet" href="../../dist/css/core.css" />
-    <link rel="stylesheet" href="../../dist/css/themes/theme-default.css" />
-    <link rel="stylesheet" href="../css/demo.css" />
+    <link rel="stylesheet" href="../../../dist/css/core.css" />
+    <link rel="stylesheet" href="../../../dist/css/themes/theme-default.css" />
+    <link rel="stylesheet" href="../../assets/css/wiki.css" />
 
   </head>
   <body class="fx-demo fx-demo--fullscreen">
@@ -32,30 +32,30 @@
           </select>
         </label>
       </div>
-      <a class="fx-demo-link" href="../index.html">Back</a>
+      <a class="fx-demo-link" href="../../index.html">Back</a>
     </header>
 
     <main class="fx-demo-content">
       <h1 class="fx-demo-hero-title">Textarea Component Documentation</h1>
-      <p class="fx-demo-hero-description">
+      <p class="fx-demo-hero-description fx-text-muted">
         The Textarea component styles multi-line text fields with support for placeholder, focus, validation (invalid/valid), disabled state,
         and floating labels via <code>fx-textarea-frame</code>.
       </p>
 
-      <section class="fx-demo-section">
-        <h2 class="fx-demo-section-title">Base usage</h2>
-        <div class="fx-demo-panel">
-          <div class="fx-demo-row">
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Base usage</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+          <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
             <textarea class="fx-textarea" rows="3" placeholder="Enter text..."></textarea>
           </div>
           <pre><code>&lt;textarea class="fx-textarea" rows="3" placeholder="Enter text..."&gt;&lt;/textarea&gt;</code></pre>
         </div>
       </section>
 
-      <section class="fx-demo-section">
-        <h2 class="fx-demo-section-title">Placeholder and focus</h2>
-        <div class="fx-demo-panel">
-          <div class="fx-demo-row">
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Placeholder and focus</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+          <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
             <textarea class="fx-textarea" rows="3" placeholder="Placeholder (focus to see border)"></textarea>
           </div>
           <pre><code>&lt;textarea class="fx-textarea" rows="3" placeholder="Placeholder"&gt;&lt;/textarea&gt;</code></pre>
@@ -66,14 +66,14 @@
         </div>
       </section>
 
-      <section class="fx-demo-section">
-        <h2 class="fx-demo-section-title">Validation states (invalid / valid)</h2>
-        <div class="fx-demo-panel">
-          <div class="fx-demo-row">
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Validation states (invalid / valid)</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+          <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
             <textarea class="fx-textarea" rows="2" invalid placeholder="Invalid">Error text</textarea>
             <textarea class="fx-textarea" rows="2" valid placeholder="Valid">Valid text</textarea>
           </div>
-          <div class="fx-demo-row">
+          <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
             <textarea class="fx-textarea" rows="2" invalid disabled placeholder="Invalid + disabled">Error</textarea>
             <textarea class="fx-textarea" rows="2" valid disabled placeholder="Valid + disabled">Valid</textarea>
           </div>
@@ -89,10 +89,10 @@
         </div>
       </section>
 
-      <section class="fx-demo-section">
-        <h2 class="fx-demo-section-title">Disabled state</h2>
-        <div class="fx-demo-panel">
-          <div class="fx-demo-row">
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Disabled state</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+          <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
             <textarea class="fx-textarea" rows="2" disabled placeholder="Disabled">Disabled value</textarea>
           </div>
           <pre><code>&lt;textarea class="fx-textarea" disabled&gt;...&lt;/textarea&gt;</code></pre>
@@ -102,10 +102,10 @@
         </div>
       </section>
 
-      <section class="fx-demo-section">
-        <h2 class="fx-demo-section-title">Floating label (fx-textarea-frame)</h2>
-        <div class="fx-demo-panel">
-          <div class="fx-demo-row">
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Floating label (fx-textarea-frame)</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+          <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
             <div class="fx-textarea-frame" style="min-width: 16rem;">
               <textarea id="ta-float-1" class="fx-textarea" rows="3" placeholder=""></textarea>
               <label for="ta-float-1">Label</label>
@@ -115,7 +115,7 @@
               <label for="ta-float-2">Invalid with label</label>
             </div>
           </div>
-          <div class="fx-demo-row">
+          <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
             <div class="fx-textarea-frame" style="min-width: 16rem;">
               <textarea id="ta-float-3" class="fx-textarea" rows="3" valid placeholder="">Valid</textarea>
               <label for="ta-float-3">Valid with label</label>
@@ -152,10 +152,10 @@
         </div>
       </section>
 
-      <section class="fx-demo-section">
-        <h2 class="fx-demo-section-title">Quick customization</h2>
-        <div class="fx-demo-panel">
-          <div class="fx-demo-row">
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Quick customization</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+          <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
              <textarea class="fx-textarea" rows="2" placeholder="Extra padding" style="--fx-control-padding-x: 2rem; width: 100%; max-width: 20rem;"></textarea>
           </div>
           <pre><code>&lt;textarea class="fx-textarea"
@@ -172,19 +172,19 @@
         </div>
       </section>
 
-      <section class="fx-demo-section">
-        <h2 class="fx-demo-section-title">What the CSS package covers</h2>
-        <div class="fx-demo-panel">
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">What the CSS package covers</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
           <ul>
-            <li><strong>Base:</strong> <code>.fx-textarea</code> — padding, font, color, background, border, border-radius, transition, placeholder, focus, invalid, valid, disabled.</li>
-            <li><strong>Frame:</strong> <code>.fx-textarea-frame</code> — wrapper with border and padding; textarea inside is transparent with no border; floating label (focus / not placeholder-shown / invalid / valid / disabled); frame border color follows state via <code>:has()</code>.</li>
+            <li><strong>Base:</strong> <code>.fx-textarea</code> � padding, font, color, background, border, border-radius, transition, placeholder, focus, invalid, valid, disabled.</li>
+            <li><strong>Frame:</strong> <code>.fx-textarea-frame</code> � wrapper with border and padding; textarea inside is transparent with no border; floating label (focus / not placeholder-shown / invalid / valid / disabled); frame border color follows state via <code>:has()</code>.</li>
           </ul>
         </div>
       </section>
 
-      <section class="fx-demo-section">
-        <h2 class="fx-demo-section-title">Accessibility notes</h2>
-        <div class="fx-demo-panel">
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Accessibility notes</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
           <ul>
             <li>Always associate a label with the textarea (e.g. <code>label[for]</code> or <code>aria-label</code>).</li>
             <li>For validation, use <code>invalid</code>/<code>valid</code> in addition to <code>aria-invalid</code> and announce errors to screen readers.</li>
@@ -194,6 +194,6 @@
     </main>
 
     <script src="../../dist/js/flexa.js"></script>
-    <script src="../js/demo.js"></script>
+    <script src="../../assets/js/wiki.js"></script>
   </body>
 </html>

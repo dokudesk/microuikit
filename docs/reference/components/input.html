@@ -4,9 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Flexa - Input Component</title>
-    <link rel="stylesheet" href="../../dist/css/core.css" />
-    <link rel="stylesheet" href="../../dist/css/themes/theme-default.css" />
-    <link rel="stylesheet" href="../css/demo.css" />
+    <link rel="stylesheet" href="../../../dist/css/core.css" />
+    <link rel="stylesheet" href="../../../dist/css/themes/theme-default.css" />
+    <link rel="stylesheet" href="../../assets/css/wiki.css" />
 
   </head>
   <body class="fx-demo fx-demo--fullscreen">
@@ -32,30 +32,30 @@
           </select>
         </label>
       </div>
-      <a class="fx-demo-link" href="../index.html">Back</a>
+      <a class="fx-demo-link" href="../../index.html">Back</a>
     </header>
 
     <main class="fx-demo-content">
       <h1 class="fx-demo-hero-title">Input Component Documentation</h1>
-      <p class="fx-demo-hero-description">
+      <p class="fx-demo-hero-description fx-text-muted">
         The Input component styles text fields with support for placeholder, focus, validation (invalid/valid), disabled state,
         floating labels via <code>fx-input-frame</code>, and password visibility toggle.
       </p>
 
-      <section class="fx-demo-section">
-        <h2 class="fx-demo-section-title">Base usage</h2>
-        <div class="fx-demo-panel">
-          <div class="fx-demo-row">
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Base usage</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+          <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
             <input type="text" class="fx-input" placeholder="Enter text..." />
           </div>
           <pre><code>&lt;input type="text" class="fx-input" placeholder="Enter text..." /&gt;</code></pre>
         </div>
       </section>
 
-      <section class="fx-demo-section">
-        <h2 class="fx-demo-section-title">Placeholder and focus</h2>
-        <div class="fx-demo-panel">
-          <div class="fx-demo-row">
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Placeholder and focus</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+          <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
             <input type="text" class="fx-input" placeholder="Placeholder text (focus to see border)" />
           </div>
           <pre><code>&lt;input type="text" class="fx-input" placeholder="Placeholder text" /&gt;</code></pre>
@@ -66,14 +66,14 @@
         </div>
       </section>
 
-      <section class="fx-demo-section">
-        <h2 class="fx-demo-section-title">Validation states (invalid / valid)</h2>
-        <div class="fx-demo-panel">
-          <div class="fx-demo-row">
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Validation states (invalid / valid)</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+          <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
             <input type="text" class="fx-input" invalid placeholder="Invalid state" value="Error value" />
             <input type="text" class="fx-input" valid placeholder="Valid state" value="Valid value" />
           </div>
-          <div class="fx-demo-row">
+          <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
             <input type="text" class="fx-input" invalid disabled placeholder="Invalid + disabled" value="Error value" />
             <input type="text" class="fx-input" valid disabled placeholder="Valid + disabled" value="Valid value" />
           </div>
@@ -91,10 +91,10 @@
         </div>
       </section>
 
-      <section class="fx-demo-section">
-        <h2 class="fx-demo-section-title">Disabled state</h2>
-        <div class="fx-demo-panel">
-          <div class="fx-demo-row">
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Disabled state</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+          <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
             <input type="text" class="fx-input" disabled placeholder="Disabled" value="Disabled value" />
           </div>
           <pre><code>&lt;input type="text" class="fx-input" disabled placeholder="Disabled" value="..." /&gt;</code></pre>
@@ -104,10 +104,10 @@
         </div>
       </section>
 
-      <section class="fx-demo-section">
-        <h2 class="fx-demo-section-title">Floating label (fx-input-frame)</h2>
-        <div class="fx-demo-panel">
-          <div class="fx-demo-row">
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Floating label (fx-input-frame)</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+          <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
             <div class="fx-input-frame">
               <input id="input-float-1" type="text" class="fx-input" placeholder="" />
               <label for="input-float-1">Label</label>
@@ -147,17 +147,17 @@
         </div>
       </section>
 
-      <section class="fx-demo-section">
-        <h2 class="fx-demo-section-title">Password with visibility toggle</h2>
-        <div class="fx-demo-panel">
-          <div class="fx-demo-row">
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Password with visibility toggle</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+          <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
             <div class="fx-input-frame">
               <input id="input-pwd" type="password" class="fx-input" placeholder="" />
               <label for="input-pwd">Password</label>
               <button type="button" class="fx-toggle-password" data-action="input-pwd" aria-pressed="false" aria-label="Show password"></button>
             </div>
             <div class="fx-input-frame" style="max-width: 20rem;">
-              <input id="input-pwd-disabled" type="password" class="fx-input" placeholder="" disabled value="••••••••" />
+              <input id="input-pwd-disabled" type="password" class="fx-input" placeholder="" disabled value="��������" />
               <label for="input-pwd-disabled">Password (disabled)</label>
               <button type="button" class="fx-toggle-password" data-action="input-pwd-disabled" aria-pressed="false" aria-label="Show password"></button>
             </div>
@@ -191,16 +191,16 @@
             <li><code>data-action</code> must be the <code>id</code> of the input.</li>
             <li>Ensure <code>flexa.js</code> is loaded so the toggle works.</li>
             <li>Use <code>aria-pressed</code> and <code>aria-label</code> for accessibility.</li>
-            <li><strong>Styling <code>fx-toggle-password</code>:</strong> icon color — <code>--fx-control-icon-color</code>; background on hover/focus — <code>--fx-password-toggle-background-hover-color</code>. Set these on <code>fx-input-frame</code> (or a parent); see the second example above.</li>
+            <li><strong>Styling <code>fx-toggle-password</code>:</strong> icon color � <code>--fx-control-icon-color</code>; background on hover/focus � <code>--fx-password-toggle-background-hover-color</code>. Set these on <code>fx-input-frame</code> (or a parent); see the second example above.</li>
             <li>When the input has <code>disabled</code>, the toggle is non-interactive (opacity and pointer-events) and reflects the disabled state.</li>
           </ul>
         </div>
       </section>
 
-      <section class="fx-demo-section">
-        <h2 class="fx-demo-section-title">Quick customization</h2>
-        <div class="fx-demo-panel">
-          <div class="fx-demo-row">
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Quick customization</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+          <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
             <input
               type="text"
               class="fx-input"
@@ -234,24 +234,24 @@
         </div>
       </section>
 
-      <section class="fx-demo-section">
-        <h2 class="fx-demo-section-title">What the CSS package covers</h2>
-        <div class="fx-demo-panel">
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">What the CSS package covers</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
           <ul>
-            <li><strong>Base:</strong> <code>.fx-input</code> — height, padding, font, color, background, border, border-radius, transition.</li>
+            <li><strong>Base:</strong> <code>.fx-input</code> � height, padding, font, color, background, border, border-radius, transition.</li>
             <li><strong>Placeholder:</strong> <code>::placeholder</code> color via <code>--fx-placeholder-color</code>.</li>
             <li><strong>Focus:</strong> border color via <code>--fx-focus-ring-color</code>.</li>
-            <li><strong>Validation:</strong> <code>[invalid]</code> and <code>[valid]</code> — border and text color.</li>
-            <li><strong>Disabled:</strong> <code>[disabled]</code> — muted color and opacity.</li>
-            <li><strong>Frame:</strong> <code>.fx-input-frame</code> — floating label layout and transitions (focus / not placeholder-shown / invalid / valid / disabled).</li>
-            <li><strong>Password toggle:</strong> <code>.fx-toggle-password</code> — position, icon (eye / eye-off via <code>aria-pressed</code>), hover/focus.</li>
+            <li><strong>Validation:</strong> <code>[invalid]</code> and <code>[valid]</code> � border and text color.</li>
+            <li><strong>Disabled:</strong> <code>[disabled]</code> � muted color and opacity.</li>
+            <li><strong>Frame:</strong> <code>.fx-input-frame</code> � floating label layout and transitions (focus / not placeholder-shown / invalid / valid / disabled).</li>
+            <li><strong>Password toggle:</strong> <code>.fx-toggle-password</code> � position, icon (eye / eye-off via <code>aria-pressed</code>), hover/focus.</li>
           </ul>
         </div>
       </section>
 
-      <section class="fx-demo-section">
-        <h2 class="fx-demo-section-title">Accessibility notes</h2>
-        <div class="fx-demo-panel">
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Accessibility notes</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
           <ul>
             <li>Always associate a label with the input (e.g. <code>label[for]</code> or <code>aria-label</code>).</li>
             <li>For validation, use <code>invalid</code>/<code>valid</code> in addition to <code>aria-invalid</code> and announce errors to screen readers.</li>
@@ -262,6 +262,6 @@
     </main>
 
     <script src="../../dist/js/flexa.js"></script>
-    <script src="../js/demo.js"></script>
+    <script src="../../assets/js/wiki.js"></script>
   </body>
 </html>

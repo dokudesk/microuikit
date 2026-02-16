@@ -24,13 +24,13 @@
       font-family: inherit;
       font-size: inherit;
       height: var(--#{$prefix}select-option-height);
-    
+
       &:checked {
         color: var(--#{$prefix}select-selected-option-text-color);
         background-color: var(--#{$prefix}select-selected-option-background-color);
       }
     }
- 
+
     &:focus {
       border-color: var(--#{$prefix}border-color);
     }
@@ -69,7 +69,7 @@
 
     .#{$prefix}select:focus {
       border-color: var(--#{$prefix}focus-ring-color, var(--#{$prefix}border-color));
-    } 
+    }
 
     .#{$prefix}select[invalid] {
       border-color: var(--#{$prefix}invalid-border-color);
@@ -86,7 +86,6 @@
       border-color: var(--#{$prefix}border-color);
       opacity: var(--#{$prefix}disabled-control-opacity);
     }
-
 
     // Only when frame contains .fx-select-arrow: reserve space for the arrow
     &:has(.#{$prefix}select-arrow) .#{$prefix}select {
@@ -142,7 +141,6 @@
         height: calc(var(--#{$prefix}control-height) * 0.25);
         background-color: var(--#{$prefix}select-arrow-color, var(--#{$prefix}control-icon-color));
         mask: var(--#{$prefix}arrow-down-svg) no-repeat center / contain;
-        -webkit-mask: var(--#{$prefix}arrow-down-svg) no-repeat center / contain;
       }
     }
 

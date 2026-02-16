@@ -4,9 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Flexa - Radio Component</title>
-    <link rel="stylesheet" href="../../dist/css/core.css" />
-    <link rel="stylesheet" href="../../dist/css/themes/theme-default.css" />
-    <link rel="stylesheet" href="../css/demo.css" />
+    <link rel="stylesheet" href="../../../dist/css/core.css" />
+    <link rel="stylesheet" href="../../../dist/css/themes/theme-default.css" />
+    <link rel="stylesheet" href="../../assets/css/wiki.css" />
 
   </head>
   <body class="fx-demo fx-demo--fullscreen">
@@ -32,20 +32,20 @@
           </select>
         </label>
       </div>
-      <a class="fx-demo-link" href="../index.html">Back</a>
+      <a class="fx-demo-link" href="../../index.html">Back</a>
     </header>
 
     <main class="fx-demo-content">
       <h1 class="fx-demo-hero-title">Radio Component Documentation</h1>
-      <p class="fx-demo-hero-description">
+      <p class="fx-demo-hero-description fx-text-muted">
         The Radio component styles a native <code>input[type="radio"]</code> with a custom circle and inner dot.
         It uses <code>fx-radio-frame</code> as wrapper, with the input and a <code>label[for]</code>. Options in the same group share the same <code>name</code>. Supports checked, focus-visible, disabled, readonly, invalid, and valid states.
       </p>
 
-      <section class="fx-demo-section">
-        <h2 class="fx-demo-section-title">Base usage</h2>
-        <div class="fx-demo-panel">
-          <div class="fx-demo-row">
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Base usage</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+          <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
             <div class="fx-radio-frame">
               <input id="r-base-a" type="radio" class="fx-radio" name="base" />
               <label for="r-base-a">Option A</label>
@@ -69,10 +69,10 @@
         </div>
       </section>
 
-      <section class="fx-demo-section">
-        <h2 class="fx-demo-section-title">Checked and unchecked</h2>
-        <div class="fx-demo-panel">
-          <div class="fx-demo-row">
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Checked and unchecked</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+          <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
             <div class="fx-radio-frame">
               <input id="r-unchecked" type="radio" class="fx-radio" name="checked-demo" />
               <label for="r-unchecked">Unchecked</label>
@@ -90,10 +90,10 @@
         </div>
       </section>
 
-      <section class="fx-demo-section">
-        <h2 class="fx-demo-section-title">Focus-visible</h2>
-        <div class="fx-demo-panel">
-          <div class="fx-demo-row">
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Focus-visible</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+          <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
             <div class="fx-radio-frame">
               <input id="r-focus" type="radio" class="fx-radio" name="focus-demo" />
               <label for="r-focus">Focus me (keyboard or click)</label>
@@ -107,10 +107,10 @@
         </div>
       </section>
 
-      <section class="fx-demo-section">
-        <h2 class="fx-demo-section-title">Disabled state</h2>
-        <div class="fx-demo-panel">
-          <div class="fx-demo-row">
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Disabled state</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+          <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
             <div class="fx-radio-frame">
               <input id="r-disabled" type="radio" class="fx-radio" name="disabled-demo" disabled />
               <label for="r-disabled">Disabled unchecked</label>
@@ -128,10 +128,10 @@
         </div>
       </section>
 
-      <section class="fx-demo-section">
-        <h2 class="fx-demo-section-title">Readonly state</h2>
-        <div class="fx-demo-panel">
-          <div class="fx-demo-row">
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Readonly state</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+          <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
             <div class="fx-radio-frame">
               <input id="r-readonly" type="radio" class="fx-radio" name="readonly-demo" readonly checked />
               <label for="r-readonly">Readonly (no pointer events)</label>
@@ -144,10 +144,10 @@
         </div>
       </section>
 
-      <section class="fx-demo-section">
-        <h2 class="fx-demo-section-title">Validation states (invalid / valid)</h2>
-        <div class="fx-demo-panel">
-          <div class="fx-demo-row">
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Validation states (invalid / valid)</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+          <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
             <div class="fx-radio-frame">
               <input id="r-invalid" type="radio" class="fx-radio" name="invalid-demo" invalid />
               <label for="r-invalid">Invalid</label>
@@ -161,7 +161,7 @@
               <label for="r-valid">Valid</label>
             </div>
           </div>
-          <div class="fx-demo-row">
+          <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
             <div class="fx-radio-frame">
               <input id="r-invalid-disabled" type="radio" class="fx-radio" name="inv-dis-demo" invalid disabled />
               <label for="r-invalid-disabled">Invalid + disabled (unchecked)</label>
@@ -184,10 +184,10 @@
         </div>
       </section>
 
-      <section class="fx-demo-section">
-        <h2 class="fx-demo-section-title">Quick customization</h2>
-        <div class="fx-demo-panel">
-          <div class="fx-demo-row">
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Quick customization</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+          <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
             <div class="fx-radio-frame" style="--fx-radio-size: 1.25rem;">
               <input id="r-small" type="radio" class="fx-radio" name="size-demo" />
               <label for="r-small">Smaller circle</label>
@@ -212,25 +212,25 @@
         </div>
       </section>
 
-      <section class="fx-demo-section">
-        <h2 class="fx-demo-section-title">What the CSS package covers</h2>
-        <div class="fx-demo-panel">
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">What the CSS package covers</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
           <ul>
-            <li><strong>Frame:</strong> <code>.fx-radio-frame</code> — wrapper with <code>margin: 0</code> and layout for input + label.</li>
-            <li><strong>Input:</strong> <code>input[type="radio"].fx-radio</code> — visually hidden (clip, opacity), positioned for accessibility.</li>
-            <li><strong>Label:</strong> <code>label[for]</code> — cursor, font, color, padding; <code>::before</code> = custom circle (size, border, background, border-radius 50%); <code>::after</code> = inner dot (visible when checked).</li>
+            <li><strong>Frame:</strong> <code>.fx-radio-frame</code> � wrapper with <code>margin: 0</code> and layout for input + label.</li>
+            <li><strong>Input:</strong> <code>input[type="radio"].fx-radio</code> � visually hidden (clip, opacity), positioned for accessibility.</li>
+            <li><strong>Label:</strong> <code>label[for]</code> � cursor, font, color, padding; <code>::before</code> = custom circle (size, border, background, border-radius 50%); <code>::after</code> = inner dot (visible when checked).</li>
             <li><strong>Checked:</strong> <code>:checked + label::before</code> border color; <code>:checked + label::after</code> opacity and scale for the dot.</li>
-            <li><strong>Focus:</strong> <code>:focus-visible:not(:disabled) + label::before</code> — outline and offset.</li>
+            <li><strong>Focus:</strong> <code>:focus-visible:not(:disabled) + label::before</code> � outline and offset.</li>
             <li><strong>Disabled:</strong> label color/opacity/cursor/pointer-events; circle and dot use muted color and opacity.</li>
-            <li><strong>Readonly:</strong> <code>[readonly]</code> — pointer-events none on input and label.</li>
-            <li><strong>Invalid/Valid:</strong> <code>[invalid]</code> and <code>[valid]</code> — label color, circle border, and when checked dot color.</li>
+            <li><strong>Readonly:</strong> <code>[readonly]</code> � pointer-events none on input and label.</li>
+            <li><strong>Invalid/Valid:</strong> <code>[invalid]</code> and <code>[valid]</code> � label color, circle border, and when checked dot color.</li>
           </ul>
         </div>
       </section>
 
-      <section class="fx-demo-section">
-        <h2 class="fx-demo-section-title">Accessibility notes</h2>
-        <div class="fx-demo-panel">
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Accessibility notes</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
           <ul>
             <li>Always use a <code>label[for]</code> that matches the input <code>id</code> so the radio is properly associated and clickable.</li>
             <li>Use the same <code>name</code> for all options in a group so the selection is mutually exclusive and keyboard navigation works.</li>
@@ -242,6 +242,6 @@
     </main>
 
     <script src="../../dist/js/flexa.js"></script>
-    <script src="../js/demo.js"></script>
+    <script src="../../assets/js/wiki.js"></script>
   </body>
 </html>

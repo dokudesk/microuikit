@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flexa - Card Component</title>
+    <link rel="stylesheet" href="../../../dist/css/core.css" />
+    <link rel="stylesheet" href="../../../dist/css/themes/theme-default.css" />
+    <link rel="stylesheet" href="../../assets/css/wiki.css" />
+  </head>
+  <body class="fx-demo fx-demo--fullscreen">
+    <header class="fx-demo-header">
+      <div>
+        <p class="fx-demo-header-title">Flexa CSS Framework</p>
+        <p class="fx-demo-header-subtitle">Version 1.0.0</p>
+      </div>
+      <div class="fx-demo-header-controls">
+        <label>
+          Color mode
+          <select id="fx-theme-select">
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+            <option value="auto">Auto (System)</option>
+          </select>
+        </label>
+        <label>
+          Text direction
+          <select id="fx-dir-select">
+            <option value="rtl">RTL</option>
+            <option value="ltr">LTR</option>
+          </select>
+        </label>
+      </div>
+      <a class="fx-demo-link" href="../../index.html">Back</a>
+    </header>
+
+    <main class="fx-demo-content">
+      <h1 class="fx-demo-hero-title">Card Component Documentation</h1>
+      <p class="fx-demo-hero-description fx-text-muted">
+        The Card component provides a flexible container with optional <code>fx-card-header</code>, <code>fx-card-body</code>,
+        and <code>fx-card-footer</code>. Uses flexbox column layout, theme variables for background, border, shadow, and transition.
+      </p>
+
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Base usage (header + body + footer)</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+          <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3" style="max-width: 22rem;">
+            <div class="fx-card">
+              <div class="fx-card-header fx-border-bottom">
+                <strong>Card title</strong>
+              </div>
+              <div class="fx-card-body">
+                <p style="margin: 0;">Some supporting text or content goes here. The card body can contain any HTML.</p>
+              </div>
+              <div class="fx-card-footer fx-border-top">
+                <small>Footer text or actions</small>
+              </div>
+            </div>
+          </div>
+          <pre><code>&lt;div class="fx-card"&gt;
+  &lt;div class="fx-card-header"&gt;
+    &lt;strong&gt;Card title&lt;/strong&gt;
+  &lt;/div&gt;
+  &lt;div class="fx-card-body"&gt;
+    &lt;p&gt;Some supporting text...&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="fx-card-footer"&gt;
+    &lt;small&gt;Footer text or actions&lt;/small&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          <ul>
+            <li><code>fx-card</code> is a flex column container; <code>width: 100%</code> by default � constrain with a wrapper or <code>max-width</code>.</li>
+            <li>Header has bottom border, footer has top border; all use theme padding and border variables.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Body only</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+          <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3" style="max-width: 22rem;">
+            <div class="fx-card fx-border">
+              <div class="fx-card-body">
+                <p style="margin: 0;">A simple card with only a body. No header or footer.</p>
+              </div>
+            </div>
+          </div>
+          <pre><code>&lt;div class="fx-card"&gt;
+  &lt;div class="fx-card-body"&gt;
+    &lt;p&gt;A simple card with only a body.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Header + body (no footer)</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+          <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3" style="max-width: 22rem;">
+            <div class="fx-card fx-border">
+              <div class="fx-card-header">
+                <strong>Section title</strong>
+              </div>
+              <div class="fx-card-body">
+                <p style="margin: 0;">Content without a footer. Useful for info blocks or panels.</p>
+              </div>
+            </div>
+          </div>
+          <pre><code>&lt;div class="fx-card"&gt;
+  &lt;div class="fx-card-header"&gt;&lt;strong&gt;Section title&lt;/strong&gt;&lt;/div&gt;
+  &lt;div class="fx-card-body"&gt;&lt;p&gt;Content...&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Body + footer (no header)</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+          <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3" style="max-width: 22rem;">
+            <div class="fx-card fx-border">
+              <div class="fx-card-body">
+                <p style="margin: 0;">Content with a footer only. Good for call-to-action cards.</p>
+              </div>
+              <div class="fx-card-footer fx-d-flex fx-justify-center">
+                <button type="button" class="fx-btn fx-btn-primary">Action</button>
+              </div>
+            </div>
+          </div>
+          <pre><code>&lt;div class="fx-card"&gt;
+  &lt;div class="fx-card-body"&gt;&lt;p&gt;Content...&lt;/p&gt;&lt;/div&gt;
+  &lt;div class="fx-card-footer fx-d-flex fx-justify-center"&gt;
+    &lt;button type="button" class="fx-btn fx-btn-primary"&gt;Action&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Multiple cards in a row</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+          <div class="fx-d-flex fx-gap-3">
+            <div class="fx-card fx-border">
+              <div class="fx-card-header"><strong>One</strong></div>
+              <div class="fx-card-body"><p style="margin: 0;">First card.</p></div>
+            </div>
+            <div class="fx-card fx-border">
+              <div class="fx-card-header"><strong>Two</strong></div>
+              <div class="fx-card-body"><p style="margin: 0;">Second card.</p></div>
+            </div>
+            <div class="fx-card fx-border">
+              <div class="fx-card-header"><strong>Three</strong></div>
+              <div class="fx-card-body"><p style="margin: 0;">Third card.</p></div>
+            </div>
+          </div>
+          <pre><code>&lt;div class="fx-d-flex fx-gap-3"&gt;
+  &lt;div class="fx-card"&gt;...&lt;/div&gt;
+  &lt;div class="fx-card"&gt;...&lt;/div&gt;
+  &lt;div class="fx-card"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          <ul>
+            <li>Use CSS Grid or flexbox on a wrapper to lay out several cards. <code>fx-card</code> has <code>width: 100%</code> so it fills the grid cell.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Card with link in footer</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+          <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3" style="max-width: 22rem;">
+            <div class="fx-card fx-border">
+              <div class="fx-card-header fx-border-bottom">
+                <strong>Article title</strong>
+              </div>
+              <div class="fx-card-body">
+                <p style="margin: 0;">A short excerpt or description. Use semantic HTML: if the whole card is a link, wrap in <code>&lt;a&gt;</code> or use a link in the footer.</p>
+              </div>
+              <div class="fx-card-footer fx-border-top">
+                <a class="fx-demo-link" href="#">Read more</a>
+              </div>
+            </div>
+          </div>
+          <pre><code>&lt;div class="fx-card"&gt;
+  &lt;div class="fx-card-header"&gt;&lt;strong&gt;Article title&lt;/strong&gt;&lt;/div&gt;
+  &lt;div class="fx-card-body"&gt;&lt;p&gt;Excerpt...&lt;/p&gt;&lt;/div&gt;
+  &lt;div class="fx-card-footer"&gt;
+    &lt;a href="#"&gt;Read more&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Quick customization</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+          <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3" style="max-width: 22rem;">
+            <div class="fx-card fx-border fx-shadow-sm">
+              <div class="fx-card-body">
+                <p style="margin: 0;">Custom border-radius and box-shadow via CSS variables.</p>
+              </div>
+            </div>
+          </div>
+          <pre><code>&lt;div class="fx-card fx-border fx-shadow-sm"&gt;
+  ...
+&lt;/div&gt;</code></pre>
+          <ul>
+            <li><code>--fx-control-background-color</code> card background</li>
+            <li><code>--fx-control-border-radius</code> corner radius</li>
+            <li><code>--fx-shadow-sm</code> shadow</li>
+            <li><code>--fx-card-padding-x</code>, <code>--fx-card-padding-y</code> padding for header, body, footer</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">What the CSS package covers</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+          <ul>
+            <li><strong>Card:</strong> <code>.fx-card</code> � flex column, full width, background, border, border-radius, box-shadow, overflow hidden, transition.</li>
+            <li><strong>Header:</strong> <code>.fx-card-header</code> � padding (top, left, right), no bottom padding; bottom border.</li>
+            <li><strong>Body:</strong> <code>.fx-card-body</code> � padding on all sides.</li>
+            <li><strong>Footer:</strong> <code>.fx-card-footer</code> � padding (bottom, left, right), no top padding; top border.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Accessibility notes</h2>
+        <div class="fx-demo-panel fx-border fx-rounded fx-p-3">
+          <ul>
+            <li>Use semantic headings (<code>h2</code>, <code>h3</code>) in the header when the card represents a section or article.</li>
+            <li>If the entire card is clickable, use a single <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code> with sufficient hit area and a clear label; avoid multiple links that are hard to distinguish.</li>
+            <li>For card lists, consider <code>role="list"</code> on the container and <code>role="listitem"</code> on each card if they are not already list markup.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <script src="../../dist/js/flexa.js"></script>
+    <script src="../../assets/js/wiki.js"></script>
+  </body>
+</html>

@@ -145,12 +145,10 @@
         height: calc(var(--#{$prefix}control-height) * 0.4);
         background-color: var(--#{$prefix}control-icon-color);
         mask: var(--#{$prefix}eye-open-svg) no-repeat center / contain;
-        -webkit-mask: var(--#{$prefix}eye-open-svg) no-repeat center / contain;
       }
 
       &[aria-pressed="true"]::before {
         mask: var(--#{$prefix}eye-off-svg) no-repeat center / contain;
-        -webkit-mask: var(--#{$prefix}eye-off-svg) no-repeat center / contain;
       }
     }
 
@@ -165,6 +163,6 @@
       cursor: not-allowed;
       pointer-events: none;
     }
- 
+
   }
 }
