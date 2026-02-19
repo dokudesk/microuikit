@@ -23,12 +23,14 @@
       border-color: var(--#{$prefix}focus-ring-color, var(--#{$prefix}border-color));
     }
 
-    &[invalid] {
+    &[invalid],
+    &[aria-invalid="true"] {
       border-color: var(--#{$prefix}invalid-border-color);
       color: var(--#{$prefix}invalid-color);
     }
 
-    &[valid] {
+    &[valid],
+    &[aria-invalid="false"] {
       border-color: var(--#{$prefix}valid-border-color);
       color: var(--#{$prefix}valid-color);
     }
@@ -76,7 +78,9 @@
     }
 
     .#{$prefix}input[invalid]:focus + label[for],
-    .#{$prefix}input[invalid]:not(:placeholder-shown) + label[for] {
+    .#{$prefix}input[invalid]:not(:placeholder-shown) + label[for],
+    .#{$prefix}input[aria-invalid="true"]:focus + label[for],
+    .#{$prefix}input[aria-invalid="true"]:not(:placeholder-shown) + label[for] {
       top: 0;
       background-color: var(--#{$prefix}control-background-color);
       color: var(--#{$prefix}invalid-color);
@@ -84,7 +88,9 @@
     }
 
     .#{$prefix}input[valid]:focus + label[for],
-    .#{$prefix}input[valid]:not(:placeholder-shown) + label[for] {
+    .#{$prefix}input[valid]:not(:placeholder-shown) + label[for],
+    .#{$prefix}input[aria-invalid="false"]:focus + label[for],
+    .#{$prefix}input[aria-invalid="false"]:not(:placeholder-shown) + label[for] {
       top: 0;
       background-color: var(--#{$prefix}control-background-color);
       color: var(--#{$prefix}valid-color);
@@ -101,7 +107,8 @@
     .#{$prefix}input[disabled]:not(:placeholder-shown) + label[for] {
       top: 0;
       background-color: var(--#{$prefix}control-background-color);
-      color: rgb(var(--#{$prefix}text-muted-color-rgb), var(--#{$prefix}disabled-control-opacity));
+      color: var(--#{$prefix}text-muted-color);
+      opacity: var(--#{$prefix}disabled-control-opacity);
       cursor: not-allowed;
       pointer-events: none;
     }

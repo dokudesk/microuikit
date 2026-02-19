@@ -36,9 +36,9 @@ npm install
 After `npm run build`, link the built files:
 
 ```html
-<link rel="stylesheet" href="path/to/dist/core.css" />
+<link rel="stylesheet" href="path/to/dist/flexa.css" />
 <!-- Optional theme -->
-<link rel="stylesheet" href="path/to/dist/themes/theme-default.css" />
+<link rel="stylesheet" href="path/to/dist/themes/flexa-theme-default.css" />
 <!-- Optional JavaScript -->
 <script src="path/to/dist/flexa.js"></script>
 ```

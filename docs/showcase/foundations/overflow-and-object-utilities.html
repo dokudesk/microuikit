@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flexa - Overflow and Object Utilities</title>
+    <link rel="stylesheet" href="../../../dist/css/flexa.css" />
+    <link rel="stylesheet" href="../../../dist/css/themes/flexa-theme-default.css" />
+    <link rel="stylesheet" href="../../assets/css/docs.css" />
+  </head>
+  <body class="fx-demo fx-demo--fullscreen">
+    <header class="fx-demo-header">
+      <div><p class="fx-demo-header-title">Flexa CSS Framework</p><p class="fx-demo-header-subtitle">Core Documentation</p></div>
+      <div class="fx-demo-header-controls">
+        <label>Color mode<select id="fx-theme-select"><option value="light">Light</option><option value="dark">Dark</option><option value="auto">Auto (System)</option></select></label>
+        <label>Text direction<select id="fx-dir-select"><option value="ltr">LTR</option><option value="rtl">RTL</option></select></label>
+      </div>
+      <a class="fx-demo-link" href="../../index.html">Back</a>
+    </header>
+    <main class="fx-demo-content">
+      <h1 class="fx-demo-hero-title">Overflow and Object Utilities</h1>
+      <p class="fx-demo-hero-description fx-text-muted">Handle content clipping and media rendering with dedicated overflow and object-fit/object-position classes.</p>
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Overflow patterns</h2>
+        <div class="fx-demo-panel fx-border fx-rounded">
+          <div class="fx-border fx-rounded fx-p-2 fx-overflow-auto" style="max-height: 6rem;">
+            <p class="fx-mb-2">Scrollable content line 1</p><p class="fx-mb-2">Scrollable content line 2</p><p class="fx-mb-2">Scrollable content line 3</p><p class="fx-mb-2">Scrollable content line 4</p>
+          </div>
+          <pre><code>&lt;div class="fx-overflow-auto" style="max-height: 6rem;"&gt;...&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Object fit and position</h2>
+        <div class="fx-demo-panel fx-border fx-rounded">
+          <img class="fx-w-100 fx-h-100 fx-object-cover fx-rounded" style="max-width: 20rem; height: 9rem;" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='300'%3E%3Crect width='100%25' height='100%25' fill='%23dbeafe'/%3E%3Ccircle cx='200' cy='150' r='90' fill='%2393c5fd'/%3E%3Crect x='320' y='55' width='240' height='190' fill='%2360a5fa'/%3E%3C/svg%3E" alt="Object cover sample" />
+          <p class="fx-mt-2 fx-text-muted">Switch to <code>fx-object-contain</code> or position utilities like <code>fx-object-pos-top</code> based on crop requirements.</p>
+        </div>
+      </section>
+    </main>
+    <script src="../../../dist/js/flexa.js"></script>
+    <script src="../../assets/js/docs.js"></script>
+  </body>
+</html>

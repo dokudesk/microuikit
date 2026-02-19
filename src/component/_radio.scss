@@ -66,27 +66,33 @@
         pointer-events: none;
       }
 
-      &[invalid] + label[for] {
+      &[invalid] + label[for],
+      &[aria-invalid="true"] + label[for] {
         color: var(--#{$prefix}invalid-border-color);
       }
 
-      &[invalid] + label[for]::before {
+      &[invalid] + label[for]::before,
+      &[aria-invalid="true"] + label[for]::before {
         border-color: var(--#{$prefix}invalid-border-color);
       }
 
-      &[invalid]:checked + label[for]::after {
+      &[invalid]:checked + label[for]::after,
+      &[aria-invalid="true"]:checked + label[for]::after {
         background-color: var(--#{$prefix}invalid-color);
       }
 
-      &[valid] + label[for] {
+      &[valid] + label[for],
+      &[aria-invalid="false"] + label[for] {
         color: var(--#{$prefix}valid-border-color);
       }
 
-      &[valid] + label[for]::before {
+      &[valid] + label[for]::before,
+      &[aria-invalid="false"] + label[for]::before {
         border-color: var(--#{$prefix}valid-border-color);
       }
 
-      &[valid]:checked + label[for]::after {
+      &[valid]:checked + label[for]::after,
+      &[aria-invalid="false"]:checked + label[for]::after {
         background-color: var(--#{$prefix}valid-color);
       }
     }

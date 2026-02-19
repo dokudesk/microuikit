@@ -20,12 +20,14 @@
       border-color: var(--#{$prefix}border-color);
     }
 
-    &[invalid] {
+    &[invalid],
+    &[aria-invalid="true"] {
       border-color: var(--#{$prefix}invalid-border-color);
       color: var(--#{$prefix}invalid-color);
     }
 
-    &[valid] {
+    &[valid],
+    &[aria-invalid="false"] {
       border-color: var(--#{$prefix}valid-border-color);
       color: var(--#{$prefix}valid-color);
     }
@@ -84,12 +86,16 @@
     }
 
     .#{$prefix}textarea[invalid]:focus + label[for],
-    .#{$prefix}textarea[invalid]:not(:placeholder-shown) + label[for] {
+    .#{$prefix}textarea[invalid]:not(:placeholder-shown) + label[for],
+    .#{$prefix}textarea[aria-invalid="true"]:focus + label[for],
+    .#{$prefix}textarea[aria-invalid="true"]:not(:placeholder-shown) + label[for] {
       color: var(--#{$prefix}invalid-color);
     }
 
     .#{$prefix}textarea[valid]:focus + label[for],
-    .#{$prefix}textarea[valid]:not(:placeholder-shown) + label[for] {
+    .#{$prefix}textarea[valid]:not(:placeholder-shown) + label[for],
+    .#{$prefix}textarea[aria-invalid="false"]:focus + label[for],
+    .#{$prefix}textarea[aria-invalid="false"]:not(:placeholder-shown) + label[for] {
       color: var(--#{$prefix}valid-color);
     }
 
@@ -100,12 +106,16 @@
     }
 
     &:has(.#{$prefix}textarea[invalid]:focus),
-    &:has(.#{$prefix}textarea[invalid]:not(:placeholder-shown)) {
+    &:has(.#{$prefix}textarea[invalid]:not(:placeholder-shown)),
+    &:has(.#{$prefix}textarea[aria-invalid="true"]:focus),
+    &:has(.#{$prefix}textarea[aria-invalid="true"]:not(:placeholder-shown)) {
       border-color: var(--#{$prefix}invalid-border-color);
     }
 
     &:has(.#{$prefix}textarea[valid]:focus),
-    &:has(.#{$prefix}textarea[valid]:not(:placeholder-shown)) {
+    &:has(.#{$prefix}textarea[valid]:not(:placeholder-shown)),
+    &:has(.#{$prefix}textarea[aria-invalid="false"]:focus),
+    &:has(.#{$prefix}textarea[aria-invalid="false"]:not(:placeholder-shown)) {
       border-color: var(--#{$prefix}valid-border-color);
     }
 
@@ -117,7 +127,8 @@
     }
 
     .#{$prefix}textarea[disabled]:not(:placeholder-shown) + label[for] {
-      color: rgb(var(--#{$prefix}text-muted-color-rgb), var(--#{$prefix}disabled-control-opacity));
+      color: var(--#{$prefix}text-muted-color);
+      opacity: var(--#{$prefix}disabled-control-opacity);
       cursor: not-allowed;
       pointer-events: none;
     }

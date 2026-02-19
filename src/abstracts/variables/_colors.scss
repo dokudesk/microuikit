@@ -184,7 +184,6 @@ $theme-border-colors: (
 $theme-light-colors: (
   text-color: $text-color,
   text-muted-color: $text-muted-color,
-  text-muted-color-rgb: fn.rgb-color($text-muted-color),
   placeholder-color: $placeholder-color,
   heading-color: $heading-color,
   background-color: $background-color,
@@ -214,7 +213,6 @@ $theme-light-colors: (
 $theme-dark-colors: (
   text-color: $text-color-dark,
   text-muted-color: $text-muted-color-dark,
-  text-muted-color-rgb: fn.rgb-color($text-muted-color-dark),
   placeholder-color: $placeholder-color-dark,
   heading-color: $heading-color-dark,
   background-color: $background-color-dark,

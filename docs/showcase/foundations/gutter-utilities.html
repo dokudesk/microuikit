@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flexa - Gutter Utilities</title>
+    <link rel="stylesheet" href="../../../dist/css/flexa.css" />
+    <link rel="stylesheet" href="../../../dist/css/themes/flexa-theme-default.css" />
+    <link rel="stylesheet" href="../../assets/css/docs.css" />
+  </head>
+  <body class="fx-demo fx-demo--fullscreen">
+    <header class="fx-demo-header">
+      <div><p class="fx-demo-header-title">Flexa CSS Framework</p><p class="fx-demo-header-subtitle">Core Documentation</p></div>
+      <div class="fx-demo-header-controls">
+        <label>Color mode<select id="fx-theme-select"><option value="light">Light</option><option value="dark">Dark</option><option value="auto">Auto (System)</option></select></label>
+        <label>Text direction<select id="fx-dir-select"><option value="ltr">LTR</option><option value="rtl">RTL</option></select></label>
+      </div>
+      <a class="fx-demo-link" href="../../index.html">Back</a>
+    </header>
+    <main class="fx-demo-content">
+      <h1 class="fx-demo-hero-title">Gutter Utilities</h1>
+      <p class="fx-demo-hero-description fx-text-muted">Control row spacing with horizontal and vertical gutter classes: <code>fx-gx-*</code> and <code>fx-gy-*</code>.</p>
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Horizontal gutter scale</h2>
+        <div class="fx-demo-panel fx-border fx-rounded">
+          <div class="fx-row fx-gx-1 fx-gy-2 fx-mb-3">
+            <div class="fx-col-6"><div class="fx-demo-doc-sample-box">gx-1</div></div>
+            <div class="fx-col-6"><div class="fx-demo-doc-sample-box">gx-1</div></div>
+          </div>
+          <div class="fx-row fx-gx-4 fx-gy-2">
+            <div class="fx-col-6"><div class="fx-demo-doc-sample-box">gx-4</div></div>
+            <div class="fx-col-6"><div class="fx-demo-doc-sample-box">gx-4</div></div>
+          </div>
+        </div>
+      </section>
+      <section class="fx-demo-section fx-mt-4">
+        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Vertical gutter scale</h2>
+        <div class="fx-demo-panel fx-border fx-rounded">
+          <div class="fx-row fx-gx-2 fx-gy-4">
+            <div class="fx-col-12"><div class="fx-demo-doc-sample-box">row 1</div></div>
+            <div class="fx-col-12"><div class="fx-demo-doc-sample-box">row 2 with gy-4</div></div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="../../../dist/js/flexa.js"></script>
+    <script src="../../assets/js/docs.js"></script>
+  </body>
+</html>

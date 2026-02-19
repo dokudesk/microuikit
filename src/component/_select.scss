@@ -35,12 +35,14 @@
       border-color: var(--#{$prefix}border-color);
     }
 
-    &[invalid] {
+    &[invalid],
+    &[aria-invalid="true"] {
       border-color: var(--#{$prefix}invalid-border-color) ;
       color: var(--#{$prefix}invalid-color) ;
     }
 
-    &[valid] {
+    &[valid],
+    &[aria-invalid="false"] {
       border-color: var(--#{$prefix}valid-border-color);
       color: var(--#{$prefix}valid-color);
     }
@@ -71,12 +73,14 @@
       border-color: var(--#{$prefix}focus-ring-color, var(--#{$prefix}border-color));
     }
 
-    .#{$prefix}select[invalid] {
+    .#{$prefix}select[invalid],
+    .#{$prefix}select[aria-invalid="true"] {
       border-color: var(--#{$prefix}invalid-border-color);
       color: var(--#{$prefix}invalid-color);
     }
 
-    .#{$prefix}select[valid] {
+    .#{$prefix}select[valid],
+    .#{$prefix}select[aria-invalid="false"] {
       border-color: var(--#{$prefix}valid-border-color);
       color: var(--#{$prefix}valid-color);
     }
@@ -109,11 +113,13 @@
       border-color: var(--#{$prefix}focus-ring-color, var(--#{$prefix}border-color)) ;
     }
 
-    &:has(.#{$prefix}select[multiple][invalid]) {
+    &:has(.#{$prefix}select[multiple][invalid]),
+    &:has(.#{$prefix}select[multiple][aria-invalid="true"]) {
       border-color: var(--#{$prefix}invalid-border-color) ;
     }
 
-    &:has(.#{$prefix}select[multiple][valid]) {
+    &:has(.#{$prefix}select[multiple][valid]),
+    &:has(.#{$prefix}select[multiple][aria-invalid="false"]) {
       border-color: var(--#{$prefix}valid-border-color) ;
     }
 
@@ -131,7 +137,7 @@
       inset-inline-end: 0;
       width: var(--#{$prefix}control-height);
       min-width: var(--#{$prefix}control-height);
-      height: var(--#{$prefix}control-height);
+      height: 100%;
       pointer-events: none;
       box-sizing: border-box;
 

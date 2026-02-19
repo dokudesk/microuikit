@@ -166,7 +166,7 @@
      */
     init: function() {
       document.querySelectorAll('button.' + PREFIX + 'toggle-password').forEach(function(button) {
-        const input = document.getElementById(button.getAttribute('data-action'));
+        const input = document.getElementById(button.getAttribute('aria-controls'));
         if (!input || (input.type !== 'password' && input.type !== 'text')) return;
         
         // Set initial state
