@@ -1,8 +1,9 @@
 {
   "name": "Flexa",
   "version": "1.0.0",
-  "description": "Compact CSS package for Developing Web UI. Responsive ready and easy to use.",
+  "description": "Compact CSS package for developing web UI. Responsive-ready and easy to use.",
   "license": "MIT",
+  "author": "DokuDesk",
   "type": "module",
   "main": "dist/js/flexa.js",
   "style": "dist/css/flexa.css",
@@ -11,9 +12,17 @@
   "files": [
     "dist"
   ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/js/flexa.js",
+      "require": "./dist/js/flexa.js",
+      "default": "./dist/js/flexa.js"
+    }
+  },
   "scripts": {
-    "clean:build": "node -e \"require('fs').rmSync('build', { recursive: true, force: true })\"",
-    "clean:dist": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\"",
     "build": "npm run clean:dist && npm run build:css && npm run build:themes && npm run build:js && npm run build:cdn && npm run build:themes:cdn && npm run build:js:cdn",
     "build:css": "node -e \"require('fs').mkdirSync('dist/css', { recursive: true })\" && sass --no-error-css --style=expanded --source-map --embed-sources src/flexa.scss dist/css/flexa.css",
     "build:themes": "node -e \"require('fs').mkdirSync('dist/css/themes', { recursive: true })\" && sass --no-error-css --style=expanded --source-map --embed-sources src/themes/flexa-theme-default.scss dist/css/themes/flexa-theme-default.css",
@@ -21,9 +30,43 @@
     "build:cdn": "postcss dist/css/flexa.css --map --output dist/css/flexa.min.css",
     "build:themes:cdn": "postcss dist/css/themes/flexa-theme-default.css --map --output dist/css/themes/flexa-theme-default.min.css",
     "build:js:cdn": "npx terser dist/js/flexa.js --compress --mangle --output dist/js/flexa.min.js --source-map \"url='flexa.min.js.map'\"",
+    "clean:build": "node -e \"require('fs').rmSync('build', { recursive: true, force: true })\"",
+    "clean:dist": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\"",
+    "lint": "npm run stylelint:scss",
+    "lint:fix": "npm run stylelint:scss:fix",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "pretest": "npm run build:js",
+    "pretest:run": "npm run build:js",
+    "pretest:coverage": "npm run build:js",
     "stylelint:scss": "stylelint \"src/**/*.scss\"",
-    "stylelint:css": "stylelint \"dist/css/**/*.css\"",
+    "stylelint:css": "stylelint \"dist/css/**/*.css\" \"docs/assets/css/**/*.css\"",
     "stylelint:scss:fix": "stylelint \"src/**/*.scss\" --fix"
+  },
+  "keywords": [
+    "css",
+    "scss",
+    "design-tokens",
+    "utility-classes",
+    "responsive",
+    "rtl",
+    "theme",
+    "dark-mode",
+    "ui",
+    "flexbox",
+    "frontend"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DokuDesk/flexa.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DokuDesk/flexa/issues"
+  },
+  "homepage": "https://github.com/DokuDesk/flexa#readme",
+  "engines": {
+    "node": ">=18.0.0"
   },
   "browserslist": [
     ">0.5%",
@@ -32,17 +75,20 @@
   ],
   "devDependencies": {
     "@stylistic/stylelint-plugin": "^5.0.1",
+    "@vitest/coverage-v8": "^2.1.0",
     "autoprefixer": "^10.4.20",
     "cssnano": "^7.0.6",
+    "jsdom": "^25.0.0",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.45",
     "postcss-cli": "^11.0.0",
     "sass": "^1.80.4",
-    "terser": "^5.36.0",
     "stylelint": "^17.0.0",
     "stylelint-config-standard": "^40.0.0",
     "stylelint-config-standard-scss": "^17.0.0",
-    "stylelint-scss": "^7.0.0"
+    "stylelint-scss": "^7.0.0",
+    "terser": "^5.36.0",
+    "vitest": "^2.1.0"
   },
   "publishConfig": {
     "access": "public"
