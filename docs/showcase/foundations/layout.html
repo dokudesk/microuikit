@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flexa - Layout</title>
+  <link rel="stylesheet" href="../../../dist/css/flexa.css" />
+  <link rel="stylesheet" href="../../../dist/css/themes/flexa-theme-default.css" />
+  <link rel="stylesheet" href="../../assets/css/docs.css" />
+</head>
+
+<body class="fx-d-flex fx-flex-dir-col fx-h-vh-100 fx-m-0">
+  <include src="../_header.html"></include>
+
+  <main class="fx-overflow-y-auto fx-px-5 fx-py-3">
+    <h3 >Layout</h3>
+    <p class="fx-text-muted">
+      Low-level layout is handled by display, position, float, and vertical-align utilities. Use them to structure
+      blocks, inline content, flex/grid parents, or legacy table layouts. Floats use <code>--fx-text-start</code> and
+      <code>--fx-text-end</code> so they flip with RTL.
+    </p>
+
+    <div class="fx-demo-section">
+      <h5 >Position</h5>
+      <div class="fx-demo-panel">
+        <div class="fx-position-relative fx-p-3">
+          <div class="fx-position-absolute fx-demo-null-box fx-border"
+            style="top: 0.5rem; inset-inline-start: 0.5rem;">Absolute</div>
+          <div class="fx-d-inline-block fx-demo-null-box fx-border">Inline block</div>
+        </div>
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-position-relative"&gt;
+  &lt;div class="fx-position-absolute" style="top: 0.5rem; inset-inline-start: 0.5rem;"&gt;Absolute&lt;/div&gt;
+  &lt;div class="fx-d-inline-block"&gt;Inline block&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+      </div>
+    </div>
+
+    <div class="fx-demo-section">
+      <h5 >Display</h5>
+      <div class="fx-demo-panel">
+        <ul >
+          <li> <strong>Block/inline:</strong> <code>fx-d-block</code>, <code>fx-d-inline</code>,
+            <code>fx-d-inline-block</code>,
+            <code>fx-d-none</code>.
+          </li>
+          <li><strong>Flex:</strong> <code>fx-d-flex</code>, <code>fx-d-inline-flex</code> (see Flex utilities for
+            alignment and wrap).</li>
+          <li><strong>Grid:</strong> <code>fx-d-grid</code>, <code>fx-d-inline-grid</code> (see Grid system for columns
+            and gutters).</li>
+          <li><strong>Table:</strong> <code>fx-d-table</code>, <code>fx-d-table-row</code>, <code>fx-d-table-cell</code>
+            for table-like layout without semantic table markup.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="fx-demo-section">
+      <h5 >Float and vertical alignment</h5>
+      <div class="fx-demo-panel">
+        <div class="fx-p-3">
+          <span class="fx-float-start">Start float</span>
+          <span class="fx-float-end">End float</span>
+          <p class="fx-mt-4">Valign in one line: <span class="fx-d-inline-block fx-valign-middle"
+              style="height: 3rem;"></span> <span class="fx-valign-top">top</span>
+            <span class="fx-valign-middle">mid</span> <span
+              class="fx-valign-bottom">bottom</span></p>
+        </div>
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;span class="fx-float-start"&gt;Start float&lt;/span&gt;
+&lt;span class="fx-float-end"&gt;End float&lt;/span&gt;
+
+&lt;p&gt;Valign in one line: 
+  &lt;span class="fx-valign-top"&gt;top&lt;/span&gt;
+  &lt;span class="fx-valign-middle"&gt;mid&lt;/span&gt;
+  &lt;span class="fx-valign-bottom"&gt;bottom&lt;/span&gt;
+&lt;/p&gt;</code>
+        </div>
+      </div>
+    </main>
+    <script src="../../../dist/js/flexa.js"></script>
+    <script src="../../assets/js/docs.js"></script>
+  </body>
+</html>

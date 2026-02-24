@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flexa - Flex</title>
+  <link rel="stylesheet" href="../../../dist/css/flexa.css" />
+  <link rel="stylesheet" href="../../../dist/css/themes/flexa-theme-default.css" />
+  <link rel="stylesheet" href="../../assets/css/docs.css" />
+</head>
+
+<body class="fx-d-flex fx-flex-dir-col fx-h-vh-100 fx-m-0">
+  <include src="../_header.html"></include>
+
+  <main class="fx-overflow-y-auto fx-px-5 fx-py-3">
+    <h3 >Flex</h3>
+    <p class="fx-text-muted">
+      Use <code>fx-d-flex</code> or <code>fx-d-inline-flex</code> (see Layout basics) to create a flex container, then
+      control direction, wrap, justify-content, align-items, align-content, and flex grow/shrink on children. Shortcuts
+      <code>fx-center</code> (grid + place-items center), <code>fx-center-x</code> / <code>fx-center-y</code> (flex +
+      justify/align center), and <code>fx-flex-row</code> (flex row nowrap) are available.
+    </p>
+
+    <div class="fx-demo-section">
+      <h5 >Direction and wrap</h5>
+      <div class="fx-demo-panel">
+        <div class="fx-d-flex fx-flex-dir-row fx-flex-wrap-wrap">
+          <div class="fx-demo-null-box fx-border" style="width: 300px;">A</div>
+          <div class="fx-demo-null-box fx-border" style="width: 300px;">B</div>
+          <div class="fx-demo-null-box fx-border" style="width: 300px;">C</div>
+        </div>
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-d-flex fx-flex-dir-row fx-flex-wrap-wrap"&gt;
+  &lt;div class="fx-demo-null-box fx-border" style="width: 300px;"&gt;A&lt;/div&gt;
+  &lt;div class="fx-demo-null-box fx-border" style="width: 300px;"&gt;B&lt;/div&gt;
+  &lt;div class="fx-demo-null-box fx-border" style="width: 300px;"&gt;C&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </div>
+
+    <div class="fx-demo-section">
+      <h5 >Justify and align</h5>
+      <div class="fx-demo-panel">
+        <div class="fx-d-flex fx-justify-between fx-items-center fx-p-2">
+          <div class="fx-demo-null-box fx-border">A</div>
+          <div class="fx-demo-null-box fx-border">B</div>
+          <div class="fx-demo-null-box fx-border">C</div>
+        </div>
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-d-flex fx-justify-between fx-items-center"&gt;
+  &lt;div class="fx-demo-null-box fx-border"&gt;A&lt;/div&gt;
+  &lt;div class="fx-demo-null-box fx-border"&gt;B&lt;/div&gt;
+  &lt;div class="fx-demo-null-box fx-border"&gt;C&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </div>
+
+    <div class="fx-demo-section">
+      <h5 >Grow, shrink, and fill</h5>
+      <div class="fx-demo-panel">
+        <div class="fx-d-flex fx-flex-wrap-wrap fx-gap-2">
+          <div class="fx-demo-null-box fx-flex-grow-1 fx-border">fx-flex-grow-1</div>
+          <div class="fx-demo-null-box fx-flex-grow-1 fx-border">fx-flex-grow-1</div>
+          <div class="fx-demo-null-box fx-flex-grow-0 fx-border">fx-flex-grow-0</div>
+        </div>
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-d-flex fx-flex-wrap-wrap fx-gap-2"&gt;
+  &lt;div class="fx-demo-null-box fx-flex-grow-1 fx-border"&gt;fx-flex-grow-1&lt;/div&gt;
+  &lt;div class="fx-demo-null-box fx-flex-grow-1 fx-border"&gt;fx-flex-grow-1&lt;/div&gt;
+  &lt;div class="fx-demo-null-box fx-flex-grow-0"&gt;fx-flex-grow-0&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </div>
+  </main>
+  <script src="../../../dist/js/flexa.js"></script>
+  <script src="../../assets/js/docs.js"></script>
+</body>
+
+</html>

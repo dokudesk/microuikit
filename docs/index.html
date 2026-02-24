@@ -10,175 +10,185 @@
   <link rel="stylesheet" href="assets/css/docs.css" />
 </head>
 
-<body class="fx-demo">
-  <header class="fx-demo-header">
-    <div class="fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
-      <h3>Flexa CSS Framework</h3><span class="fx-demo-badge">
+<body class="fx-d-flex fx-flex-dir-col fx-h-vh-100 fx-m-0">
+  <header class="fx-ltr fx-d-flex fx-position-relative fx-flex-wrap-wrap fx-p-3 fx-gap-1 fx-border-bottom fx-shadow-sm">
+    <div class="fx-d-flex fx-flex-wrap-wrap fx-items-center">
+      <h3 class="fx-me-3">Flexa CSS Framework</h3>
+      <span
+        class=" fx-rounded-pill fx-border fx-background-warning fx-border fx-border-warning fx-text-warning fx-fs-xs fx-px-1">
         <include src="showcase/_version.html"></include>
       </span>
     </div>
-    <p class="fx-text-muted">
+    <p class="fx-fs-sm fx-text-muted">
       A lightweight, utility-first CSS framework built for microsystems with minimal UI needs - optimized for
       multilingual environments and fast performance.
       Designed with component-based architecture, full RTL/LTR support, WCAG 2.1 accessibility compliance,
       and powered by CSS Cascade Layers for predictable styling and seamless theme switching.
     </p>
   </header>
-  <main class="fx-demo-content">
+  <main class="fx-overflow-y-auto fx-px-5 fx-py-3">
     <section class="fx-demo-section">
-      <h5 class="fx-demo-section-title">Foundations and Utilities</h2>
-        <div class="fx-demo-list">
-          <div class="fx-demo-list-item">
-            <a class="fx-demo-link" href="showcase/foundations/introduction.html">Package Introduction</a>
-            <span class="fx-text-muted">Overview of the core layer, scope, and naming conventions</span>
-          </div>
-          <div class="fx-demo-list-item">
-            <a class="fx-demo-link" href="showcase/foundations/design-tokens.html">Design Tokens (CSS Variables)</a>
-            <span class="fx-text-muted">Color, typography, spacing, radius, system-level variables, and customizable
-              themes</span>
-          </div>
-          <div class="fx-demo-list-item">
-            <a class="fx-demo-link" href="showcase/foundations/theme-system.html">Theme System</a>
-            <span class="fx-text-muted">Light, dark, and auto theme behavior and token overrides</span>
-          </div>
-          <div class="fx-demo-list-item">
-            <a class="fx-demo-link" href="showcase/foundations/direction-and-locale.html">Direction and Locale</a>
-            <span class="fx-text-muted">LTR and RTL support with logical alignment behavior</span>
-          </div>
-          <div class="fx-demo-list-item">
-            <a class="fx-demo-link" href="showcase/foundations/base-reset-and-elements.html">Base Reset and Elements</a>
-            <span class="fx-text-muted">Global defaults, element normalization, and baseline styles</span>
-          </div>
-          <div class="fx-demo-list-item">
-            <a class="fx-demo-link" href="showcase/foundations/accessibility-and-motion.html">Accessibility and
-              Motion</a>
-            <span class="fx-text-muted">Focus styles, reduced motion handling, and visibility helpers</span>
-          </div>
-          <div class="fx-demo-list-item">
-            <a class="fx-demo-link" href="showcase/foundations/scrollbar-styling.html">Scrollbar Styling</a>
-            <span class="fx-text-muted">Native scrollbar customization for standard and webkit engines</span>
-          </div>
-          <div class="fx-demo-list-item">
-            <a class="fx-demo-link" href="showcase/foundations/typography-utilities.html">Typography Utilities</a>
-            <span class="fx-text-muted">Text size, weight, alignment, transform, decoration, and wrapping</span>
-          </div>
-          <div class="fx-demo-list-item">
-            <a class="fx-demo-link" href="showcase/foundations/visibility-and-interaction-utilities.html">Visibility and
-              Interaction Utilities</a>
-            <span class="fx-text-muted">Hidden, invisible, visible, and user-select utility classes</span>
-          </div>
-          <div class="fx-demo-list-item">
-            <a class="fx-demo-link" href="showcase/foundations/layout-basics.html">Layout Basics</a>
-            <span class="fx-text-muted">Position, display, float, and vertical alignment utilities</span>
-          </div>
-          <div class="fx-demo-list-item">
-            <a class="fx-demo-link" href="showcase/foundations/sizing-utilities.html">Sizing Utilities</a>
-            <span class="fx-text-muted">Width, height, min/max sizing, fit-content, and viewport units</span>
-          </div>
-          <div class="fx-demo-list-item">
-            <a class="fx-demo-link" href="showcase/foundations/aspect-ratio-utilities.html">Aspect Ratio Utilities</a>
-            <span class="fx-text-muted">Fixed ratio helpers such as square, video, and portrait presets</span>
-          </div>
-          <div class="fx-demo-list-item">
-            <a class="fx-demo-link" href="showcase/foundations/overflow-and-object-utilities.html">Overflow and Object
-              Utilities</a>
-            <span class="fx-text-muted">Overflow control, object-fit, and object-position helpers</span>
-          </div>
-          <div class="fx-demo-list-item">
-            <a class="fx-demo-link" href="showcase/foundations/spacing-utilities.html">Spacing Utilities</a>
-            <span class="fx-text-muted">Margin, padding, logical spacing, row-gap, and column-gap classes</span>
-          </div>
-          <div class="fx-demo-list-item">
-            <a class="fx-demo-link" href="showcase/foundations/flex-utilities.html">Flex Utilities</a>
-            <span class="fx-text-muted">Direction, wrap, grow, shrink, justify, align, and self controls</span>
-          </div>
-          <div class="fx-demo-list-item">
-            <a class="fx-demo-link" href="showcase/foundations/text-flow-utilities.html">Text Flow Utilities</a>
-            <span class="fx-text-muted">Indentation, whitespace, word breaking, and text overflow behavior</span>
-          </div>
-          <div class="fx-demo-list-item">
-            <a class="fx-demo-link" href="showcase/foundations/border-utilities.html">Border Utilities</a>
-            <span class="fx-text-muted">Border sides, width, style, and semantic border color classes</span>
-          </div>
-          <div class="fx-demo-list-item">
-            <a class="fx-demo-link" href="showcase/foundations/shadow-utilities.html">Shadow Utilities</a>
-            <span class="fx-text-muted">Shadow depth presets and inner/none variants</span>
-          </div>
-          <div class="fx-demo-list-item">
-            <a class="fx-demo-link" href="showcase/foundations/opacity-and-transform-utilities.html">Opacity and
-              Transform Utilities</a>
-            <span class="fx-text-muted">Opacity scales and flip transforms for mirrored rendering</span>
-          </div>
-          <div class="fx-demo-list-item">
-            <a class="fx-demo-link" href="showcase/foundations/color-utilities.html">Color Utilities</a>
-            <span class="fx-text-muted">Semantic text, background, and border color utility classes</span>
-          </div>
-          <div class="fx-demo-list-item">
-            <a class="fx-demo-link" href="showcase/foundations/grid-system.html">Grid System</a>
-            <span class="fx-text-muted">Container, row, column, and offset architecture</span>
-          </div>
-          <div class="fx-demo-list-item">
-            <a class="fx-demo-link" href="showcase/foundations/responsive-grid-variants.html">Responsive Grid
-              Variants</a>
-            <span class="fx-text-muted">Breakpoint-based column and offset utilities from sm to xxl</span>
-          </div>
-          <div class="fx-demo-list-item">
-            <a class="fx-demo-link" href="showcase/foundations/gutter-utilities.html">Gutter Utilities</a>
-            <span class="fx-text-muted">Horizontal and vertical gutter variables for row-based layouts</span>
-          </div>
-          <div class="fx-demo-list-item">
-            <a class="fx-demo-link" href="showcase/foundations/radius-utilities-physical.html">Radius Utilities
-              (Physical)</a>
-            <span class="fx-text-muted">Top, bottom, left, right, and corner radius utilities</span>
-          </div>
-          <div class="fx-demo-list-item">
-            <a class="fx-demo-link" href="showcase/foundations/radius-utilities-logical.html">Radius Utilities
-              (Logical)</a>
-            <span class="fx-text-muted">Start/end logical radius utilities for directional layouts</span>
-          </div>
-          <div class="fx-demo-list-item">
-            <a class="fx-demo-link" href="showcase/foundations/validation-and-feedback-helpers.html">Validation and
-              Feedback Helpers</a>
-            <span class="fx-text-muted">Generic valid/invalid states and feedback text helpers</span>
-          </div>
-          <div class="fx-demo-list-item">
-            <a class="fx-demo-link" href="showcase/foundations/text-title-helpers.html">Text Title Helpers</a>
-            <span class="fx-text-muted">Title and subtitle helper classes for page and section headings</span>
-          </div>
+      <h5 class="fx-demo-section-title">Introduction</h5>
+      <div class="fx-demo-list">
+        <div class="fx-demo-list-row">
+          <a class="fx-demo-link" href="showcase/foundations/introduction.html">Introduction</a>
+          <span class="fx-text-muted">Quick start guide to Flexa core concepts, setup flow, and practical usage.</span>
         </div>
+      </div>
     </section>
     <section class="fx-demo-section">
-      <h5 class="fx-demo-section-title">Components</h4>
-        <div class="fx-demo-list">
-          <div class="fx-demo-list-item">
-            <a class="fx-demo-link" href="showcase/components/button.html">Button</a>
-            <span class="fx-text-muted">Theme colors, disabled, loading spinner (aria-busy), form types</span>
-          </div>
-          <div class="fx-demo-list-item">
-            <a class="fx-demo-link" href="showcase/components/input.html">Input</a>
-            <span class="fx-text-muted">Single-line text, floating label, password show/hide toggle</span>
-          </div>
-          <div class="fx-demo-list-item">
-            <a class="fx-demo-link" href="showcase/components/checkbox.html">Checkbox</a>
-            <span class="fx-text-muted">Custom box and tick, focus ring, readonly, invalid/valid</span>
-          </div>
-          <div class="fx-demo-list-item">
-            <a class="fx-demo-link" href="showcase/components/radio.html">Radio</a>
-            <span class="fx-text-muted">Custom circle and dot, grouped by name, validation states</span>
-          </div>
-          <div class="fx-demo-list-item">
-            <a class="fx-demo-link" href="showcase/components/textarea.html">Textarea</a>
-            <span class="fx-text-muted">Multi-line text, floating label, frame border by state</span>
-          </div>
-          <div class="fx-demo-list-item">
-            <a class="fx-demo-link" href="showcase/components/select.html">Select</a>
-            <span class="fx-text-muted">Native select, frame with arrow, multiple selection, optgroups</span>
-          </div>
-          <div class="fx-demo-list-item">
-            <a class="fx-demo-link" href="showcase/components/card.html">Card</a>
-            <span class="fx-text-muted">Container with optional header, body, footer; border and shadow</span>
-          </div>
+      <h5 class="fx-demo-section-title">Foundations</h5>
+      <div class="fx-demo-list">
+        <div class="fx-demo-list-row">
+          <a class="fx-demo-link" href="showcase/foundations/design-tokens.html">Design tokens (CSS variables)</a>
+          <span class="fx-text-muted">CSS variables that drive look and behavior.</span>
         </div>
+        <div class="fx-demo-list-row">
+          <a class="fx-demo-link" href="showcase/foundations/theming.html">Theming</a>
+          <span class="fx-text-muted">Three theme modes supported: light, dark, and auto (system preference).</span>
+        </div>
+        <div class="fx-demo-list-row">
+          <a class="fx-demo-link" href="showcase/foundations/direction.html">Direction</a>
+          <span class="fx-text-muted">Full RTL/LTR support with the same markup.</span>
+        </div>
+        <div class="fx-demo-list-row">
+          <a class="fx-demo-link" href="showcase/foundations/base-reset-and-elements.html">Base reset and elements</a>
+          <span class="fx-text-muted">Core resets normalize browser defaults and establish a predictable baseline for
+            typography, links, headings, and media elements.</span>
+        </div>
+        <div class="fx-demo-list-row">
+          <a class="fx-demo-link" href="showcase/foundations/accessibility.html">Accessibility guidelines</a>
+          <span class="fx-text-muted">Global focus styles, reduced-motion support, and visibility utilities for
+            accessible UIs.</span>
+        </div>
+        <div class="fx-demo-list-row">
+          <a class="fx-demo-link" href="showcase/foundations/scrollbar.html">Scrollbar</a>
+          <span class="fx-text-muted">Cross-browser scrollbar styling for standards-based and WebKit engines.</span>
+        </div>
+        <div class="fx-demo-list-row">
+          <a class="fx-demo-link" href="showcase/foundations/typography.html">Typography</a>
+          <span class="fx-text-muted">Font size, weight, alignment, transform, decoration, white-space, overflow, and
+            indentation utilities.</span>
+        </div>
+        <div class="fx-demo-list-row">
+          <a class="fx-demo-link" href="showcase/foundations/visibility-and-interaction.html">Visibility and
+            interaction</a>
+          <span class="fx-text-muted">Visibility helpers and user-selection utilities.</span>
+        </div>
+        <div class="fx-demo-list-row">
+          <a class="fx-demo-link" href="showcase/foundations/layout.html">Layout</a>
+          <span class="fx-text-muted">Position, display, float, and vertical alignment utilities for block, inline,
+            flex, grid, and table layouts.</span>
+        </div>
+        <div class="fx-demo-list-row">
+          <a class="fx-demo-link" href="showcase/foundations/sizing.html">Sizing</a>
+          <span class="fx-text-muted">Width and height utilities, including min/max constraints, fit-content, and
+            viewport units.</span>
+        </div>
+        <div class="fx-demo-list-row">
+          <a class="fx-demo-link" href="showcase/foundations/aspect-ratio.html">Aspect ratio</a>
+          <span class="fx-text-muted">Aspect-ratio classes fix the width-to-height proportion of an element so it keeps
+            a consistent shape when the width (or height) is constrained.</span>
+        </div>
+        <div class="fx-demo-list-row">
+          <a class="fx-demo-link" href="showcase/foundations/overflow-and-object.html">Overflow and object</a>
+          <span class="fx-text-muted">Overflow (clip/scroll) and object-fit/object-position for images and video; full
+            class reference injected by the docs script.</span>
+        </div>
+        <div class="fx-demo-list-row">
+          <a class="fx-demo-link" href="showcase/foundations/spacing.html">Spacing</a>
+          <span class="fx-text-muted">Margin and padding scale, logical spacing, and row/column gap utilities.</span>
+        </div>
+        <div class="fx-demo-list-row">
+          <a class="fx-demo-link" href="showcase/foundations/flex.html">Flex</a>
+          <span class="fx-text-muted">Flex container and item utilities for direction, wrapping, growth, shrinking, and
+            alignment control.</span>
+        </div>
+        <div class="fx-demo-list-row">
+          <a class="fx-demo-link" href="showcase/foundations/text-flow.html">Text flow</a>
+          <span class="fx-text-muted">Text-flow controls for indentation, white-space handling, wrapping, and word
+            breaking.</span>
+        </div>
+        <div class="fx-demo-list-row">
+          <a class="fx-demo-link" href="showcase/foundations/border.html">Border</a>
+          <span class="fx-text-muted">Border utilities for side targeting, width, style, and semantic color
+            variants.</span>
+        </div>
+        <div class="fx-demo-list-row">
+          <a class="fx-demo-link" href="showcase/foundations/shadow.html">Shadow</a>
+          <span class="fx-text-muted">Shadow depth presets plus inner-shadow and no-shadow options.</span>
+        </div>
+        <div class="fx-demo-list-row">
+          <a class="fx-demo-link" href="showcase/foundations/opacity-and-transform.html">Opacity and transform</a>
+          <span class="fx-text-muted">Opacity scale classes and flip transforms for mirrored visual rendering.</span>
+        </div>
+        <div class="fx-demo-list-row">
+          <a class="fx-demo-link" href="showcase/foundations/color.html">Color</a>
+          <span class="fx-text-muted">Semantic color utilities for text, background, and border surfaces.</span>
+        </div>
+        <div class="fx-demo-list-row">
+          <a class="fx-demo-link" href="showcase/foundations/grid.html">Grid</a>
+          <span class="fx-text-muted">Core grid layout utilities for rows, columns, and column offsets.</span>
+        </div>
+        <div class="fx-demo-list-row">
+          <a class="fx-demo-link" href="showcase/foundations/responsive-grid-variants.html">Responsive grid
+            variants</a>
+          <span class="fx-text-muted">Responsive grid variants for breakpoint-based columns and offsets.</span>
+        </div>
+        <div class="fx-demo-list-row">
+          <a class="fx-demo-link" href="showcase/foundations/gutter.html">Gutter</a>
+          <span class="fx-text-muted">Horizontal and vertical gutter utilities for controlling grid spacing.</span>
+        </div>
+        <div class="fx-demo-list-row">
+          <a class="fx-demo-link" href="showcase/foundations/radius.html">Radius</a>
+          <span class="fx-text-muted">Radius utilities for logical start/end, side-specific, and corner-specific
+            rounding.</span>
+        </div>
+        <div class="fx-demo-list-row">
+          <a class="fx-demo-link" href="showcase/foundations/validation-and-feedback.html">Validation and feedback</a>
+          <span class="fx-text-muted">Validation state helpers and feedback text classes for form UX.</span>
+        </div>
+        <div class="fx-demo-list-row">
+          <a class="fx-demo-link" href="showcase/foundations/text-title.html">Text title and subtitle</a>
+          <span class="fx-text-muted">Title and subtitle helpers for page and section heading hierarchy.</span>
+        </div>
+      </div>
+    </section>
+    <section class="fx-demo-section">
+      <h5 class="fx-demo-section-title">Components</h5>
+      <div class="fx-demo-list">
+        <div class="fx-demo-list-row">
+          <a class="fx-demo-link" href="showcase/components/button.html">Button</a>
+          <span class="fx-text-muted">Button variants, disabled states, loading behavior, and form button types.</span>
+        </div>
+        <div class="fx-demo-list-row">
+          <a class="fx-demo-link" href="showcase/components/input.html">Input</a>
+          <span class="fx-text-muted">Single-line input patterns with floating labels and password visibility
+            toggle.</span>
+        </div>
+        <div class="fx-demo-list-row">
+          <a class="fx-demo-link" href="showcase/components/checkbox.html">Checkbox</a>
+          <span class="fx-text-muted">Custom checkbox UI with focus ring, readonly mode, and validation states.</span>
+        </div>
+        <div class="fx-demo-list-row">
+          <a class="fx-demo-link" href="showcase/components/radio.html">Radio</a>
+          <span class="fx-text-muted">Custom radio controls with grouping behavior and validation support.</span>
+        </div>
+        <div class="fx-demo-list-row">
+          <a class="fx-demo-link" href="showcase/components/textarea.html">Textarea</a>
+          <span class="fx-text-muted">Textarea patterns with floating labels and state-based border styling.</span>
+        </div>
+        <div class="fx-demo-list-row">
+          <a class="fx-demo-link" href="showcase/components/select.html">Select</a>
+          <span class="fx-text-muted">Select control patterns including native behavior, multi-select, and optgroup
+            support.</span>
+        </div>
+        <div class="fx-demo-list-row">
+          <a class="fx-demo-link" href="showcase/components/card.html">Card</a>
+          <span class="fx-text-muted">Card container structure with optional header, body, footer, border, and
+            shadow.</span>
+        </div>
+      </div>
     </section>
   </main>
   <script src="assets/js/docs.js"></script>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flexa - Validation and feedback</title>
+  <link rel="stylesheet" href="../../../dist/css/flexa.css" />
+  <link rel="stylesheet" href="../../../dist/css/themes/flexa-theme-default.css" />
+  <link rel="stylesheet" href="../../assets/css/docs.css" />
+</head>
+
+<body class="fx-d-flex fx-flex-dir-col fx-h-vh-100 fx-m-0">
+  <include src="../_header.html"></include>
+
+  <main class="fx-overflow-y-auto fx-px-5 fx-py-3">
+    <h3 >Validation and feedback</h3>
+    <p class="fx-text-muted">Validation and feedback cover generic valid/invalid states and
+      feedback text classes.</p>
+
+    <div class="fx-demo-section">
+      <h5 >State helpers</h5>
+      <div class="fx-demo-panel">
+        <div class="fx-demo-preview">
+          <p class="fx-valid">Valid state</p>
+          <p class="fx-invalid">Invalid state</p>
+        </div>
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;p class="fx-valid"&gt;Valid state&lt;/p&gt;
+&lt;p class="fx-invalid"&gt;Invalid state&lt;/p&gt;</code></pre>
+      </div>
+    </div>
+
+    <div class="fx-demo-section">
+      <h5 >Feedback messaging</h5>
+      <div class="fx-demo-panel">
+        <div class="fx-demo-preview">
+          <p class="fx-feedback">Neutral helper message.</p>
+          <p class="fx-valid-feedback">Looks good. Your input meets the requirements.</p>
+          <p class="fx-invalid-feedback">Please correct this field before submission.</p>
+        </div>
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;p class="fx-feedback"&gt;Neutral helper message.&lt;/p&gt;
+&lt;p class="fx-valid-feedback"&gt;Looks good. Your input meets the requirements.&lt;/p&gt;
+&lt;p class="fx-invalid-feedback"&gt;Please correct this field before submission.&lt;/p&gt;</code></pre>
+      </div>
+    </div>
+  </main>
+  <script src="../../../dist/js/flexa.js"></script>
+  <script src="../../assets/js/docs.js"></script>
+</body>
+
+</html>

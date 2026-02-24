@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flexa - Typography</title>
+  <link rel="stylesheet" href="../../../dist/css/flexa.css" />
+  <link rel="stylesheet" href="../../../dist/css/themes/flexa-theme-default.css" />
+  <link rel="stylesheet" href="../../assets/css/docs.css" />
+</head>
+
+<body class="fx-d-flex fx-flex-dir-col fx-h-vh-100 fx-m-0">
+  <include src="../_header.html"></include>
+
+  <main class="fx-overflow-y-auto fx-px-5 fx-py-3">
+    <h3 >Typography</h3>
+    <p class="fx-text-muted">
+      Typography provides utility classes for font size, weight, style, alignment, transform, decoration, white-space,
+      word-break, text-overflow, and indentation. All sizes are relative to <code>--fx-font-size-base</code> so they
+      scale with your theme and direction (e.g. RTL font size).
+    </p>
+    <div class="fx-demo-section">
+      <h5 >Font size, weight, and style</h5>
+      <div class="fx-demo-panel">
+        <div class="fx-p-3">
+          <p class="fx-fs-xs">Extra small text</p>
+          <p class="fx-fs-sm">Small text</p>
+          <p class="fx-fs-normal">Normal text</p>
+          <p class="fx-fs-lg fx-fw-semibold">Large semi-bold text</p>
+          <p class="fx-fs-xl fx-fst-italic">Extra large italic text</p>
+        </div>
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;p class="fx-fs-xs"&gt;Extra small text&lt;/p&gt;
+&lt;p class="fx-fs-sm"&gt;Small text&lt;/p&gt;
+&lt;p class="fx-fs-normal"&gt;Normal text&lt;/p&gt;
+&lt;p class="fx-fs-lg fx-fw-semibold"&gt;Large semi-bold text&lt;/p&gt;
+&lt;p class="fx-fs-xl fx-fst-italic"&gt;Extra large italic text&lt;/p&gt;</code></pre>
+      </div>
+    </div>
+
+    <div class="fx-demo-section">
+      <h5 >Alignment, transform, and decoration</h5>
+      <div class="fx-demo-panel">
+        <div class="fx-p-3">
+          <p class="fx-case-uppercase">Uppercase text</p>
+          <p class="fx-text-center fx-case-uppercase fx-decor-underline">Centered uppercase underlined text</p>
+        </div>
+        <pre
+          ><code>&lt;p class="fx-case-uppercase"&gt;Uppercase text&lt;/p&gt;
+&lt;p class="fx-text-center fx-case-uppercase fx-decor-underline"&gt;Centered uppercase underlined text&lt;/p&gt;</code></pre>
+      </div>
+    </div>
+
+    <div class="fx-demo-section">
+      <h5 >White-space, overflow, indent, and word-break</h5>
+      <div class="fx-demo-panel">
+        <div class="fx-p-3">
+          <p class="fx-overflow-text-ellipsis fx-whitespace-nowrap fx-overflow-hidden" style="max-width: 16rem;">This
+            sentence demonstrates text-overflow ellipsis in a narrow container.</p>
+          <p class="fx-indent-3">This paragraph has utility-based indentation.</p>
+          <p class="fx-word-b-break-all" style="max-width: 12rem;">SuperLongTokenWithoutSpacesToDemonstrateBreakAll</p>
+        </div>
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;p class="fx-overflow-text-ellipsis fx-whitespace-nowrap fx-overflow-hidden" style="max-width: 16rem;"&gt;...&lt;/p&gt;
+&lt;p class="fx-indent-3"&gt;Indented paragraph.&lt;/p&gt;
+&lt;p class="fx-word-b-break-all"&gt;Long unbroken token&lt;/p&gt;</code></pre>
+      </div>
+    </div>
+  </main>
+  <script src="../../../dist/js/flexa.js"></script>
+  <script src="../../assets/js/docs.js"></script>
+</body>
+
+</html>

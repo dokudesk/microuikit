@@ -9,13 +9,13 @@
   <link rel="stylesheet" href="../../../dist/css/themes/flexa-theme-default.css" />
   <link rel="stylesheet" href="../../assets/css/docs.css" />
 
-</head>
+</head> 
 
-<body class="fx-demo fx-demo--fullscreen">
+<body class="fx-d-flex fx-flex-dir-col fx-h-vh-100 fx-m-0">
   <include src="../_header.html"></include>
 
-  <main class="fx-demo-content">
-    <h3>Input Component</h3>
+  <main class="fx-overflow-y-auto fx-px-5 fx-py-3">
+    <h3 >Input Component</h3>
     <p class="fx-text-muted">
       The Input component styles text fields with support for placeholder, focus, validation (invalid/valid), disabled
       state,
@@ -23,20 +23,19 @@
     </p>
 
     <div class="fx-demo-section">
-      <h5>Base usage</h5>
+      <h5 >Base usage</h5>
       <div class="fx-demo-panel">
-        <div class="fx-demo-showcase">
+        <div class="fx-demo-preview">
           <input type="text" class="fx-input" style="width: 50%;" placeholder="Placeholder text" />
           <input type="text" class="fx-input" style="width: 50%; --fx-focus-ring-color: var(--fx-danger);"
             placeholder="Placeholder text (focus to see custom focus ring)" />
         </div>
-        <pre><code>&lt;input type="text" class="fx-input" style="width: 50%;" placeholder="Placeholder text" /&gt;
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;input type="text" class="fx-input" style="width: 50%;" placeholder="Placeholder text" /&gt;
 
 &lt;input type="text" class="fx-input" 
   style="width: 50%; --fx-focus-ring-color: var(--fx-danger);" 
-  placeholder="Placeholder text (focus to see custom focus ring)"
- /&gt;</code></pre>
-        <ul>
+  placeholder="Placeholder text (focus to see custom focus ring)"/&gt;</code></pre>
+        <ul >
           <li>Placeholder uses <code>--fx-placeholder-color</code>.</li>
           <li>Focus uses <code>--fx-focus-ring-color</code> for border.</li>
         </ul>
@@ -44,25 +43,25 @@
     </div>
 
     <div class="fx-demo-section">
-      <h5>Validation states (invalid / valid)</h5>
+      <h5 >Validation states (invalid / valid)</h5>
       <div class="fx-demo-panel">
-        <div class="fx-demo-showcase">
+        <div class="fx-demo-preview">
           <input type="text" class="fx-input" invalid placeholder="Invalid state" value="Error value" />
           <input type="text" class="fx-input" valid placeholder="Valid state" value="Valid value" />
         </div>
-        <div class="fx-demo-showcase">
+        <div class="fx-demo-preview">
           <input type="text" class="fx-input" aria-invalid="true" placeholder="ARIA invalid=true"
             value="Error value (aria)" />
           <input type="text" class="fx-input" aria-invalid="false" placeholder="ARIA invalid=false"
             value="Valid value (aria)" />
         </div>
-        <div class="fx-demo-showcase">
+        <div class="fx-demo-preview">
           <input type="text" class="fx-input" invalid disabled placeholder="Invalid + disabled"
             value="Error value (disabled)" />
           <input type="text" class="fx-input" valid disabled placeholder="Valid + disabled"
             value="Valid value (disabled)" />
         </div>
-        <pre><code>&lt;input type="text" class="fx-input" invalid placeholder="Invalid" value="Error value" /&gt;
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;input type="text" class="fx-input" invalid placeholder="Invalid" value="Error value" /&gt;
 &lt;input type="text" class="fx-input" valid placeholder="Valid" value="Valid value" /&gt;
 
 &lt;input type="text" class="fx-input" aria-invalid="true" placeholder="ARIA invalid=true" value="Error value (aria)" /&gt;
@@ -70,7 +69,7 @@
 
 &lt;input type="text" class="fx-input" invalid disabled placeholder="Invalid + disabled" value="Error value (disabled)" /&gt;
 &lt;input type="text" class="fx-input" valid disabled placeholder="Valid + disabled" value="Valid value (disabled)" /&gt;</code></pre>
-        <ul>
+        <ul >
           <li>Set <code>invalid (or aria-invalid="true")</code> / <code>valid (or aria-invalid="false")</code> attribute
             (e.g. via JS after validation).</li>
           <li>Colors: <code>--fx-invalid-border-color</code>, <code>--fx-valid-border-color</code>.</li>
@@ -82,13 +81,13 @@
     </div>
 
     <div class="fx-demo-section">
-      <h5>Disabled state</h5>
+      <h5 >Disabled state</h5>
       <div class="fx-demo-panel">
-        <div class="fx-demo-showcase">
+        <div class="fx-demo-preview">
           <input type="text" class="fx-input" disabled placeholder="Disabled" value="Disabled value" />
         </div>
-        <pre><code>&lt;input type="text" class="fx-input" disabled placeholder="Disabled" value="Disabled value" /&gt;</code></pre>
-        <ul>
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;input type="text" class="fx-input" disabled placeholder="Disabled" value="Disabled value" /&gt;</code></pre>
+        <ul >
           <li><code>--fx-disabled-control-opacity</code> controls the visual de-emphasis level for disabled inputs.</li>
           <li><code>--fx-text-muted-color</code> defines the disabled text color for better contrast consistency across
             themes.</li>
@@ -97,9 +96,9 @@
     </div>
 
     <div class="fx-demo-section">
-      <h5>Floating label (fx-input-frame)</h5>
+      <h5 >Floating label (fx-input-frame)</h5>
       <div class="fx-demo-panel">
-        <div class="fx-demo-showcase">
+        <div class="fx-demo-preview">
           <div class="fx-input-frame">
             <input id="input-float-1" type="text" class="fx-input" placeholder="" />
             <label for="input-float-1">Label</label>
@@ -122,7 +121,7 @@
             <label for="input-float-5">Valid + Disabled with label</label>
           </div>
         </div>
-        <pre><code>&lt;div class="fx-input-frame"&gt;
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-input-frame"&gt;
   &lt;input id="..." type="text" class="fx-input" placeholder="" /&gt;
   &lt;label for="..."&gt;Label&lt;/label&gt;
 &lt;/div&gt;
@@ -147,7 +146,7 @@
   &lt;label for="..."&gt;Valid + Disabled with label&lt;/label&gt;
 &lt;/div&gt;</code></pre>
         </code></pre>
-        <ul>
+        <ul >
           <li>Use empty <code>placeholder=""</code> so the label can float when the input has value or is focused.</li>
           <li>Label moves up and shrinks when focused or when input is not placeholder-shown.</li>
           <li>Invalid/valid/disabled states style the floating label accordingly (see the examples above).</li>
@@ -156,9 +155,9 @@
     </div>
 
     <div class="fx-demo-section">
-      <h5>Password with visibility toggle</h5>
+      <h5 >Password with visibility toggle</h5>
       <div class="fx-demo-panel">
-        <div class="fx-demo-showcase">
+        <div class="fx-demo-preview">
           <div class="fx-input-frame">
             <input id="input-pwd" type="password" class="fx-input" placeholder="" />
             <label for="input-pwd">Password</label>
@@ -170,7 +169,7 @@
               value="Password (disabled)" />
             <label for="input-pwd-disabled">Password (disabled)</label>
             <button type="button" class="fx-toggle-password" aria-controls="input-pwd-disabled" aria-pressed="false"
-              aria-label="Show password"></button>
+              aria-label="Show password" disabled></button>
           </div>
           <div class="fx-input-frame"
             style="--fx-control-icon-color: #0d6efd; --fx-password-toggle-background-hover-color: rgba(13, 110, 253, 0.15); max-width: 20rem;">
@@ -180,7 +179,7 @@
               aria-label="Show password"></button>
           </div>
         </div>
-        <pre><code>&lt;div class="fx-input-frame"&gt;
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-input-frame"&gt;
   &lt;input id="..." type="password" class="fx-input" placeholder="" /&gt;
   &lt;label for="..."&gt;Password&lt;/label&gt;
   &lt;button type="button" class="fx-toggle-password" aria-controls="..." aria-pressed="false" aria-label="Show password"&gt;&lt;/button&gt;
@@ -198,7 +197,7 @@
   &lt;button type="button" class="fx-toggle-password" aria-controls="input-pwd-custom" aria-pressed="false" aria-label="Show password"&gt;&lt;/button&gt;
 &lt;/div&gt;</code></pre>
         </code></pre>
-        <ul>
+        <ul >
           <li>Add a <code>fx-toggle-password</code> button.</li>
           <li><code>aria-controls</code> must reference the target input <code>id</code>.</li>
           <li>Ensure <code>flexa.js</code> is loaded so the toggle works.</li>
@@ -214,18 +213,18 @@
     </div>
 
     <div class="fx-demo-section">
-      <h5>Quick customization</h5>
+      <h5 >Quick customization</h5>
       <div class="fx-demo-panel">
-        <div class="fx-demo-showcase">
+        <div class="fx-demo-preview">
           <input type="text" class="fx-input" placeholder="Tall & round"
             style="--fx-control-height: 3.5rem; --fx-control-border-radius: 999px; width: 100%; max-width: 20rem;" />
           <input type="text" class="fx-input" placeholder="Extra padding"
             style="--fx-control-padding-x: 2rem; width: 100%; max-width: 20rem;" />
         </div>
-        <pre><code>&lt;input class="fx-input" style="--fx-control-height: 3.5rem; --fx-control-border-radius: 999px;" /&gt;
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;input class="fx-input" style="--fx-control-height: 3.5rem; --fx-control-border-radius: 999px;" /&gt;
 
 &lt;input class="fx-input" style="--fx-control-padding-x: 2rem;" /&gt;</code></pre>
-        <ul>
+        <ul >
           <li><code>--fx-control-height</code> sets the input height.</li>
           <li><code>--fx-control-padding-x</code> and <code>--fx-control-padding-y</code> control internal spacing.</li>
           <li><code>--fx-control-border-radius</code> controls corner roundness.</li>
@@ -244,41 +243,47 @@
     </div>
 
     <div class="fx-demo-section">
-      <h5>What the CSS package covers</h5>
+      <h5 >What the CSS package covers</h5>
       <div class="fx-demo-panel">
-        <ul>
-          <li><strong>Base field:</strong> <code>.fx-input</code> defines height, padding, typography, text/background,
-            border, radius, and transition using <code>--fx-control-height</code>, <code>--fx-control-padding-*</code>,
-            <code>--fx-control-background-color</code>, <code>--fx-border-width</code>, <code>--fx-border-color</code>,
-            <code>--fx-control-border-radius</code>, and <code>--fx-transition</code>.</li>
-          <li><strong>Placeholder and focus:</strong> <code>::placeholder</code> uses
-            <code>--fx-placeholder-color</code>, and focus border uses <code>--fx-focus-ring-color</code> (with
-            border-color fallback).</li>
-          <li><strong>Validation mapping:</strong> <code>[invalid]</code> and <code>[aria-invalid="true"]</code> apply
-            invalid border/text via <code>--fx-invalid-border-color</code> and <code>--fx-invalid-color</code>;
-            <code>[valid]</code> and <code>[aria-invalid="false"]</code> apply valid border/text via
-            <code>--fx-valid-border-color</code> and <code>--fx-valid-color</code>.</li>
-          <li><strong>Disabled state:</strong> <code>[disabled]</code> uses muted text color and
-            <code>--fx-disabled-control-opacity</code>.</li>
-          <li><strong>Floating-label frame:</strong> <code>.fx-input-frame</code> manages label positioning, focus/value
-            transitions, and state-aware label colors for invalid/valid/disabled.</li>
-          <li><strong>Password toggle:</strong> <code>.fx-toggle-password</code> is rendered inside
-            <code>.fx-input-frame</code>; icon color uses <code>--fx-control-icon-color</code>, hover/focus surface uses
-            <code>--fx-password-toggle-background-hover-color</code>, and the icon state follows
-            <code>aria-pressed</code>.</li>
+        <ul >
+          <li><strong>Base.</strong> <code>.fx-input</code> applies height, padding, typography, color, background,
+            border, border-radius, and transition via <code>--fx-control-height</code>,
+            <code>--fx-control-padding-x</code>/<code>--fx-control-padding-y</code>, <code>--fx-control-background-color</code>,
+            <code>--fx-border-width</code>, <code>--fx-border-color</code>, <code>--fx-control-border-radius</code>, and
+            <code>--fx-transition</code>.</li>
+          <li><strong>Placeholder and focus.</strong> <code>::placeholder</code> uses <code>--fx-placeholder-color</code>.
+            Inside <code>.fx-input-frame</code>, placeholder is transparent so the floating label is visible. Focus
+            border uses <code>--fx-focus-ring-color</code>; the framed input has <code>outline: none</code> so the frame
+            border reflects focus.</li>
+          <li><strong>Validation.</strong> <code>[invalid]</code> and <code>[aria-invalid="true"]</code> apply invalid
+            border and text colors (<code>--fx-invalid-border-color</code>, <code>--fx-invalid-color</code>).
+            <code>[valid]</code> and <code>[aria-invalid="false"]</code> apply valid border and text colors
+            (<code>--fx-valid-border-color</code>, <code>--fx-valid-color</code>).</li>
+          <li><strong>Disabled state.</strong> <code>[disabled]</code> applies muted text color and
+            <code>--fx-disabled-control-opacity</code>. When the input is disabled, the password toggle inside the
+            frame is styled as disabled (opacity and pointer-events).</li>
+          <li><strong>Floating-label frame.</strong> <code>.fx-input-frame</code> positions the label absolutely and
+            animates it on focus and <code>:not(:placeholder-shown)</code>. Label and frame colors reflect invalid,
+            valid, and disabled states. The inner input has a transparent background so the frame background is
+            visible.</li>
+          <li><strong>Password toggle.</strong> <code>.fx-toggle-password</code> inside <code>.fx-input-frame</code> is
+            styled with icon color <code>--fx-control-icon-color</code> and mask images <code>--fx-eye-open-svg</code> /
+            <code>--fx-eye-off-svg</code> depending on <code>aria-pressed</code>. Hover and focus use
+            <code>--fx-password-toggle-background-hover-color</code>. When the toggle is present, the input receives
+            extra end padding so text does not overlap the control.</li>
         </ul>
       </div>
     </div>
     <div class="fx-demo-section">
-      <h5>Accessibility notes</h5>
+      <h5 >Accessibility notes</h5>
       <div class="fx-demo-panel">
-        <ul>
-          <li>Always use a <code>label[for]</code> that matches the input <code>id</code> so the input is properly
-            associated and clickable.</li>
-          <li>For validation, use <code>invalid (or aria-invalid="true")</code> /
-            <code>valid (or aria-invalid="false")</code> attributes to control the border/text colors.</li>
-          <li>Password toggle: set <code>aria-pressed</code> and a clear <code>aria-label</code> (e.g. "Show password" /
-            "Hide password").</li>
+        <ul >
+          <li>Associate a visible or off-screen <code>label</code> with the input via <code>for</code> and matching
+            <code>id</code> so the control is announced and the label click area activates the input.</li>
+          <li>Expose validation state to assistive technologies and drive styling by using the <code>invalid</code> and
+            <code>valid</code> attributes, or <code>aria-invalid="true"</code> and <code>aria-invalid="false"</code>.</li>
+          <li>For the password toggle, set <code>aria-pressed</code> to reflect show/hide state and provide a clear
+            <code>aria-label</code> (e.g. "Show password" or "Hide password") that updates with the state.</li>
         </ul>
       </div>
     </div>

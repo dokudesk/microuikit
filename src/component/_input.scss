@@ -19,18 +19,12 @@
       color: var(--#{$prefix}placeholder-color);
     }
 
-    &:focus {
-      border-color: var(--#{$prefix}focus-ring-color, var(--#{$prefix}border-color));
-    }
-
-    &[invalid],
-    &[aria-invalid="true"] {
+    &[invalid], &[aria-invalid="true"] {
       border-color: var(--#{$prefix}invalid-border-color);
       color: var(--#{$prefix}invalid-color);
     }
 
-    &[valid],
-    &[aria-invalid="false"] {
+    &[valid], &[aria-invalid="false"] {
       border-color: var(--#{$prefix}valid-border-color);
       color: var(--#{$prefix}valid-color);
     }
@@ -48,10 +42,6 @@
     display: inline-block;
     margin: 0;
 
-    .#{$prefix}input {
-      outline: none;
-    }
-
     label[for] {
       position: absolute;
       inset-inline-start: calc(var(--#{$prefix}control-padding-x) + var(--#{$prefix}border-width));
@@ -64,37 +54,70 @@
       transition: var(--#{$prefix}transition);
     }
 
+    .#{$prefix}input {
+      outline-color: var(--#{$prefix}focus-ring-color);
+
+      &:focus {
+        border-color: var(--#{$prefix}focus-ring-color);
+      }
+    }
+
+    .#{$prefix}input[invalid] {
+      outline-color: var(--#{$prefix}invalid-border-color);
+
+      &:focus {
+        border-color: var(--#{$prefix}invalid-border-color);
+      }
+    }
+    .#{$prefix}input[valid] {
+      outline-color: var(--#{$prefix}valid-border-color);
+
+      &:focus {
+        border-color: var(--#{$prefix}valid-border-color);
+      }
+    }
+    .#{$prefix}input[disabled] {
+      outline: none !important;
+    }
+
     .#{$prefix}input::placeholder {
       color: transparent;
     }
 
+    .#{$prefix}input:focus {
+      outline-offset: 0;
+      outline-width: calc(var(--#{$prefix}focus-ring-outline-width) - var(--#{$prefix}border-width, 0px));
+    }
+
     // Floating label: moves up on focus or when input has value
+
+    .#{$prefix}input:not(:placeholder-shown) + label[for] {
+      color: var(--#{$prefix}placeholder-color);
+    }
+
     .#{$prefix}input:focus + label[for],
     .#{$prefix}input:not(:placeholder-shown) + label[for] {
-      top: 0;
+      top: min(0px , calc(0px - calc(var(--#{$prefix}focus-ring-outline-width) - var(--#{$prefix}border-width, 0px))));
       background-color: var(--#{$prefix}control-background-color);
-      color: var(--#{$prefix}focus-ring-color, var(--#{$prefix}border-color));
-      font-size: calc(var(--fx-font-size-base) * 0.75);
+      font-size: calc(var(--#{$prefix}font-size-base) * 0.75);
     }
 
     .#{$prefix}input[invalid]:focus + label[for],
     .#{$prefix}input[invalid]:not(:placeholder-shown) + label[for],
     .#{$prefix}input[aria-invalid="true"]:focus + label[for],
     .#{$prefix}input[aria-invalid="true"]:not(:placeholder-shown) + label[for] {
-      top: 0;
-      background-color: var(--#{$prefix}control-background-color);
       color: var(--#{$prefix}invalid-color);
-      font-size: calc(var(--fx-font-size-base) * 0.75);
     }
 
     .#{$prefix}input[valid]:focus + label[for],
     .#{$prefix}input[valid]:not(:placeholder-shown) + label[for],
     .#{$prefix}input[aria-invalid="false"]:focus + label[for],
     .#{$prefix}input[aria-invalid="false"]:not(:placeholder-shown) + label[for] {
-      top: 0;
-      background-color: var(--#{$prefix}control-background-color);
       color: var(--#{$prefix}valid-color);
-      font-size: calc(var(--fx-font-size-base) * 0.75);
+    }
+
+    .#{$prefix}input:focus + label[for] {
+      color: var(--#{$prefix}focus-ring-color);
     }
 
     .#{$prefix}input[disabled]:placeholder-shown + label[for] {
@@ -105,7 +128,7 @@
     }
 
     .#{$prefix}input[disabled]:not(:placeholder-shown) + label[for] {
-      top: 0;
+      top: min(0px , calc(0px - calc(var(--#{$prefix}focus-ring-outline-width) - var(--#{$prefix}border-width, 0px))));
       background-color: var(--#{$prefix}control-background-color);
       color: var(--#{$prefix}text-muted-color);
       opacity: var(--#{$prefix}disabled-control-opacity);

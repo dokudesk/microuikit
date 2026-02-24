@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flexa - Aspect ratio</title>
+    <link rel="stylesheet" href="../../../dist/css/flexa.css" />
+    <link rel="stylesheet" href="../../../dist/css/themes/flexa-theme-default.css" />
+    <link rel="stylesheet" href="../../assets/css/docs.css" />
+  </head>
+  <body class="fx-d-flex fx-flex-dir-col fx-h-vh-100 fx-m-0">
+    <include src="../_header.html"></include>
+
+    <main class="fx-overflow-y-auto fx-px-5 fx-py-3">
+      <h3 >Aspect ratio</h3>
+      <p class="fx-text-muted">
+        Aspect-ratio classes fix the width-to-height proportion of an element so it keeps a consistent shape when the
+        width (or height) is constrained. Use them for thumbnails, video placeholders, cards, or responsive media
+        containers.
+      </p>
+
+      <div class="fx-demo-section">
+        <h5 >Preset ratios</h5>
+        <div class="fx-demo-panel">
+          <div class="fx-row fx-gap-3 fx-p-3">
+            <div class="fx-col-6 fx-col-md-3">
+              <div class="fx-aspect-square fx-border fx-center">1:1</div>
+            </div>
+            <div class="fx-col-6 fx-col-md-3">
+              <div class="fx-aspect-video fx-border fx-center">16:9</div>
+            </div>
+            <div class="fx-col-6 fx-col-md-3">
+              <div class="fx-aspect-4-3 fx-border fx-center">4:3</div>
+            </div>
+            <div class="fx-col-6 fx-col-md-3">
+              <div class="fx-aspect-9-16 fx-border fx-center">9:16</div>
+            </div>
+          </div>
+          <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-aspect-square"&gt;1:1&lt;/div&gt;
+&lt;div class="fx-aspect-video"&gt;16:9 video placeholder&lt;/div&gt;
+&lt;div class="fx-aspect-4-3"&gt;4:3&lt;/div&gt;
+&lt;div class="fx-aspect-9-16"&gt;9:16&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+    </main>
+    <script src="../../../dist/js/flexa.js"></script>
+    <script src="../../assets/js/docs.js"></script>
+  </body>
+</html>

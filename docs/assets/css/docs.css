@@ -1,373 +1,195 @@
 /**
- * Flexa Demo CSS
- * Provides flexa demo styles
+ * Flexa documentation styles (production-ready).
+ * Sections: base, demo panels, code blocks, class-reference list, helpers, responsive.
+ * Depends on Flexa design tokens (--fx-*) from flexa.css.
  */
 
-
-/* =========================================
-   Tokens
-========================================= */
+/* -----------------------------------------------------------------------------
+   Base & layout
+   ----------------------------------------------------------------------------- */
 :root {
-  --fx-demo-font-family: var(--fx-font-family-base);
-  --fx-demo-font-family-monospace: var(--fx-font-family-monospace);
-  --fx-demo-font-family-ltr: var(--fx-font-family-ltr);
-  --fx-demo-box-shadow-color: var(--fx-box-shadow-color);
-  --fx-demo-bg: var(--fx-background-color);
-  --fx-demo-surface: var(--fx-control-background-color);
-  --fx-demo-text: var(--fx-text-color);
-  --fx-demo-muted: var(--fx-text-muted-color);
-  --fx-demo-border: var(--fx-border-color);
-  --fx-demo-code-preview-bg: var(--fx-background-muted-color);
-  --fx-demo-primary: var(--fx-primary);
-  --fx-demo-warning-background-color: var(--fx-background-warning);
-  --fx-demo-warning-border-color: var(--fx-border-warning);
-  --fx-demo-warning-text-color: var(--fx-text-warning);
-  --fx-demo-token-color: color-mix(in oklab, var(--fx-primary) 62%, var(--fx-demo-text) 25%);
-  --fx-demo-font-size-base: var(--fx-font-size-base);
-  --fx-demo-fs-xxs: calc(var(--fx-demo-font-size-base) * 0.625);
-  /* 10px */
-  --fx-demo-fs-xs: calc(var(--fx-demo-font-size-base) * 0.75);
-  /* 12px */
-  --fx-demo-fs-sm: calc(var(--fx-demo-font-size-base) * 0.875);
-  /* 14px */
-  --fx-demo-fs-lg: calc(var(--fx-demo-font-size-base) * 1.25);
-  /* 20px */
-  --fx-demo-fs-xl: calc(var(--fx-demo-font-size-base) * 1.75);
-  /* 28px */
-  --fx-demo-radius: var(--fx-control-border-radius);
+  --fx-demo-copy-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='currentColor' d='M9 2h7v4h4v10h-3v1h4V4.6L17.4 1H8v5h1zm8 0h.31L20 4.69V5h-3zM5 19h7v1H5zm-2 4h13V10.6L12.4 7H3zm9-15h.31L15 10.69V11h-3zM4 8h7v4h4v10H4zm1 5h9v1H5zm4 3h5v1H5v-1z'/%3E%3C/svg%3E");
 }
 
-/* =========================================
-   Wrapper (Namespace)
-========================================= */
-.fx-demo {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  overflow: hidden;
-  margin: 0;
-  font-family: var(--fx-demo-font-family);
-  font-size: var(--fx-demo-fs-sm);
-  background-color: var(--fx-demo-bg);
-  color: var(--fx-demo-text);
-  line-height: 1.6;
+p, h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 0.5rem;
 }
 
-.fx-demo-content {
-  flex: 1;
-  min-height: 0;
-  overflow-y: auto;
-  padding: 1.5rem 3rem;
+ul , ol {
+  margin-block: 0.5rem;
 }
 
-/* =========================================
-   Header
-========================================= */
-.fx-demo-header {
-  font-family: var(--fx-demo-font-family-ltr);
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 1.5rem;
-  border-bottom: 1px solid var(--fx-demo-border);
-  background-color: var(--fx-demo-surface);
-  box-shadow: 0 1px 4px color-mix(in oklab, var(--fx-demo-box-shadow-color) 35%, transparent 65%);
-  z-index: 1;
-  direction: ltr;
+header,
+header * {
+  font-family: var(--fx-font-family-ltr) !important;
 }
 
-.fx-demo-header-controls {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: space-evenly;
-}
-
-.fx-demo-header-controls label {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
-
-.fx-demo-header-controls select {
-  min-width: 9rem;
-  padding: 0.45rem 0.6rem;
-  border-radius: var(--fx-demo-radius);
-  border: 1px solid var(--fx-demo-border);
-  background-color: var(--fx-demo-surface);
-  color: var(--fx-demo-text);
-  outline: none;
-}
-
-.fx-demo-badge {
-  padding: 0.125rem 0.5rem;
-  border-radius: 999px;
-  font-size: var(--fx-demo-fs-xs);
-  border: 1px solid var(--fx-demo-warning-border-color);
-  background-color: var(--fx-demo-warning-background-color);
-  color: var(--fx-demo-warning-text-color);
-}
-
-.fx-flexa-framework-info {
-  display: flex;
-  flex-direction: column;
-
-}
-
-/* =========================================
-   Links
-========================================= */
-.fx-demo-link,
-.fx-demo-hero-credit a {
-  outline: none;
-  text-decoration: none;
-}
-
-.fx-demo-link:hover,
-.fx-demo-hero-credit a:hover {
-  text-decoration: underline;
-}
-
-/* =========================================
-   List (Grid-based)
-========================================= */
-.fx-demo-list {
-  border: 1px solid var(--fx-demo-border);
-  border-radius: var(--fx-demo-radius);
-  background-color: var(--fx-demo-surface);
-}
-
-.fx-demo-list-item {
-  display: grid;
-  grid-template-columns: 20% 1fr;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.25rem 1rem;
-  border-bottom: 1px solid var(--fx-demo-border);
-}
-
-.fx-demo-list-item:last-child {
-  border-bottom: none;
-}
-
-/* =========================================
-   Sections
-========================================= */
 .fx-demo-section {
   margin-top: 2rem;
 }
-
-.fx-demo-content > :where(h3, h4, h5, h6, p , span) ,
-.fx-demo-section > :where(h3, h4, h5, h6, p , span) {
-  font-family: var(--fx-demo-font-family-ltr);
-  direction: ltr;
-}
-
 
 .fx-demo-panel {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 0.9rem;
-  border: 1px solid var(--fx-demo-border);
-  border-radius: var(--fx-demo-radius);
-  background-color: var(--fx-demo-surface);
+  margin-bottom: 0.5rem;
+  padding: 0.75rem;
+  border: 1px solid var(--fx-border-color);
+  border-radius: var(--fx-control-border-radius);
+  background-color: var(--fx-background-color);
 }
 
-.fx-demo-showcase {
+.fx-demo-preview {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 1rem;
-  padding:  0 calc(0.9rem + 1px);
+  padding-inline: calc(0.9rem + 1px);
 }
 
-.fx-demo-panel ul {
-  list-style: none;
-  padding: 0 calc(0.9rem + 1px);
-  margin: 0;
-  direction: ltr;
+.fx-demo-preview:first-of-type {
+  padding-top: 0.9rem;
 }
 
-/* =========================================
-   Code Blocks
-========================================= */
-.fx-demo pre {
+.fx-demo-preview:last-of-type {
+  padding-bottom: 0.9rem;
+}
+
+/* -----------------------------------------------------------------------------
+   Code blocks & copy button
+   ----------------------------------------------------------------------------- */
+pre {
+  position: relative;
   margin: 0;
   padding: 0.9rem;
-  border-radius: var(--fx-demo-radius);
-  border: 1px solid var(--fx-demo-border);
-  background-color: color-mix(in oklab, var(--fx-demo-code-preview-bg) 55%, var(--fx-demo-surface) 45%);
-  font-size: var(--fx-demo-fs-sm);
+  border-radius: var(--fx-control-border-radius);
+  border: 1px solid var(--fx-border-color);
+  background-color: color-mix(in oklab, var(--fx-background-muted-color) 55%, var(--fx-background-color) 45%);
   overflow-x: auto;
-  line-height: 1.4;
-  color: var(--fx-demo-text);
-  direction: ltr;
+  color: var(--fx-text-color);
 }
 
 code {
-  font-family: var(--fx-demo-font-family-monospace);
-  font-size: var(--fx-demo-fs-sm);
+  font-family: var(--fx-font-family-monospace);
+  color: var(--fx-pink);
 }
 
-.fx-demo pre code {
-  background: transparent;
-  padding: 0;
-  color: var(--fx-demo-text);
-}
-
-.fx-demo code {
-  color: var(--fx-demo-token-color);
-}
-
-
-
-
-/* =========================================
-  Documentation Helpers
-========================================= */
-.fx-demo-doc-callout {
-  margin-top: 0.75rem;
-  padding: 0.9rem;
-  border: 1px solid var(--fx-demo-border);
-  border-inline-start: 0.25rem solid var(--fx-demo-primary);
-  border-radius: var(--fx-demo-radius);
-  background: color-mix(in oklab, var(--fx-demo-code-preview-bg) 70%, var(--fx-demo-surface) 30%);
+pre code {
+  font-size: 0.9rem;
   color: var(--fx-text-color);
-  font-size: var(--fx-demo-fs-sm);
 }
 
-.fx-demo-doc-kbd {
-  background-color: var(--fx-demo-code-preview-bg);
-  border: 1px solid var(--fx-demo-border);
+.fx-demo-code-copy {
+  position: absolute;
+  top: 0.9rem;
+  inset-inline-end: 0.9rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0.9rem 0.5rem;
+  border: 0;
   border-radius: 0.25rem;
-  padding: 0 0.35rem;
+  background: transparent;
+  cursor: pointer;
 }
 
-.fx-demo-doc-reference-list {
-  margin-top: 1rem;
+.fx-demo-code-copy::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  transform: translate(-50%, -50%);
+  mask-image: var(--fx-demo-copy-svg);
+  background: var(--fx-text-muted-color);
+}
+
+.fx-demo-code-copy:hover {
+  background-color: var(--fx-background-muted-color);
+}
+
+/* -----------------------------------------------------------------------------
+   Class reference list (grid)
+   ----------------------------------------------------------------------------- */
+.fx-demo-list {
+  border: 1px solid var(--fx-border-color);
+  border-radius: var(--fx-control-border-radius);
   overflow: hidden;
 }
 
-.fx-demo-doc-reference-head {
-  background-color: color-mix(in oklab, var(--fx-demo-primary) 8%, var(--fx-background-color) 92%);
-}
-
-.fx-demo-doc-reference-head .fx-demo-list-label,
-.fx-demo-doc-reference-head .fx-demo-list-description {
-  font-weight: 600;
-  color: var(--fx-demo-text);
-}
-
-.fx-demo-doc-reference-item {
-  align-items: start;
-}
-
-.fx-demo-doc-reference-item:nth-child(even) {
-  background-color: color-mix(in oklab, var(--fx-demo-code-preview-bg) 55%, var(--fx-background-color) 45%);
-}
-
-.fx-demo-doc-reference-label {
-  display: inline-flex;
+.fx-demo-list-row {
+  display: grid;
+  grid-template-columns: 20% 1fr;
   align-items: center;
   gap: 1rem;
+  padding: 0.25rem 1rem;
+  border-bottom: 1px solid var(--fx-border-color);
 }
 
-.fx-demo-doc-reference-description {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+.fx-demo-list-row:last-child {
+  border-bottom: none !important;
 }
 
-.fx-demo-doc-reference-description code,
-.fx-demo-doc-reference-label code {
-  display: inline-block;
-  white-space: pre-wrap;
-  word-break: break-word;
+.fx-demo-list-toolbar {
+  background-color: color-mix(in oklab, var(--fx-background-muted-color) 55%, var(--fx-background-color) 45%);
+  color: var(--fx-text-muted-color);
 }
 
-.fx-demo-doc-reference-description strong {
-  color: var(--fx-demo-text);
-  font-weight: 600;
-}
 
-.fx-demo-doc-inline-title {
-  display: inline-block;
-  margin-inline-end: 0.5rem;
-}
-
-.fx-demo-doc-row-index {
-  color: var(--fx-demo-muted);
-}
-
-.fx-demo-doc-toolbar {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 0.6rem;
-  align-items: center;
-  padding: 0.6rem;
-  border: 1px solid var(--fx-demo-border);
-  border-radius: var(--fx-demo-radius);
-  background-color: color-mix(in oklab, var(--fx-demo-code-preview-bg) 65%, var(--fx-background-color) 35%);
-}
-
-.fx-demo-doc-toolbar-label {
-  font-size: calc(var(--fx-demo-font-size-base) * 0.8);
-  color: var(--fx-demo-muted);
-  white-space: nowrap;
-}
-
-.fx-demo-doc-search-input {
-  width: 100%;
+.fx-demo-list-toolbar .fx-demo-search-input {
   height: 2.5rem;
-  border: 1px solid var(--fx-demo-border);
-  border-radius: var(--fx-demo-radius);
-  padding: 0.5rem 0.65rem;
-  background-color: var(--fx-demo-surface);
-  color: var(--fx-demo-text);
-  font-size: calc(var(--fx-demo-font-size-base) * 0.85);
+  background-color: var(--fx-background-color);
+  color: var(--fx-text-color);
 }
 
-.fx-demo-doc-search-input:focus {
-  outline: none;
+.fx-demo-list-head {
+  background-color: color-mix(in oklab, var(--fx-info) 10%, var(--fx-background-color) 90%);
+  border-bottom: none !important;
 }
 
-.fx-demo-doc-sample-box {
+.fx-demo-list-row.fx-demo-list-head~.fx-demo-list-row:nth-child(even) {
+  background-color: color-mix(in oklab, var(--fx-background-muted-color) 55%, var(--fx-background-color) 45%);
+}
+
+.fx-demo-list-row.fx-demo-list-head+.fx-demo-list-row {
+  border-top: 1px solid var(--fx-border-color) !important;
+}
+
+/* -----------------------------------------------------------------------------
+   Documentation helpers
+   ----------------------------------------------------------------------------- */
+.fx-demo-null-box {
   min-width: 4rem;
   min-height: 2.5rem;
   padding: 0.5rem 0.6rem;
-  background-color: var(--fx-demo-surface);
-  border: 1px solid var(--fx-demo-border);
+  background-color: var(--fx-background-color);
 }
 
+.fx-demo-callout {
+  padding: 0.9rem;
+  border: 1px solid color-mix(in oklab, var(--fx-border-info) 10%, var(--fx-border-info) 90%);
+  border-inline-start: 0.25rem solid var(--fx-background-info);
+  border-radius: var(--fx-control-border-radius);
+  background: color-mix(in oklab, var(--fx-background-info) 10%, var(--fx-background-color) 90%);
+  color: var(--fx-text-color);
+}
+
+.fx-demo-keyboard {
+  background-color: color-mix(in oklab, var(--fx-background-muted-color) 55%, var(--fx-background-color) 45%);
+  border: 1px solid var(--fx-border-color);
+  border-radius: 0.25rem;
+  padding: 0 0.25rem;
+}
+
+/* -----------------------------------------------------------------------------
+   Responsive
+   ----------------------------------------------------------------------------- */
 @media (max-width: 768px) {
-  .fx-demo-header {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .fx-flexa-framework-info {
-    flex-direction: row;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .fx-demo-list-item {
+  .fx-demo-list-row {
     grid-template-columns: 1fr;
-    gap: 0rem
   }
 
-  .fx-demo-content {
-    padding: 1rem;
-  }
-
-  .fx-demo-doc-toolbar {
+  .fx-demo-list-toolbar {
     flex-direction: column;
-  }
-
-  .fx-demo-doc-reference-list .fx-demo-list-item {
-    grid-template-columns: 1fr;
   }
 }

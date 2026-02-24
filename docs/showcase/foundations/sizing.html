@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flexa - Sizing</title>
+    <link rel="stylesheet" href="../../../dist/css/flexa.css" />
+    <link rel="stylesheet" href="../../../dist/css/themes/flexa-theme-default.css" />
+    <link rel="stylesheet" href="../../assets/css/docs.css" />
+  </head>
+  <body class="fx-d-flex fx-flex-dir-col fx-h-vh-100 fx-m-0">
+    <include src="../_header.html"></include>
+
+    <main class="fx-overflow-y-auto fx-px-5 fx-py-3">
+      <h3 >Sizing</h3>
+      <p class="fx-text-muted">Control width and height with percentage, fit-content, viewport, and min/max utility classes.</p>
+
+      <div class="fx-demo-section">
+        <h5 >Width and max-width</h5>
+        <div class="fx-demo-panel">
+          <div class="fx-row fx-gap-3 fx-p-3">
+            <div class="fx-demo-null-box fx-border fx-w-25">fx-w-25</div>
+            <div class="fx-demo-null-box fx-border fx-w-50">fx-w-50</div>
+            <div class="fx-demo-null-box fx-border fx-w-75">fx-w-75</div>
+            <div class="fx-demo-null-box fx-border fx-max-w-50">fx-max-w-50</div>
+            <div class="fx-demo-null-box fx-border fx-min-w-100">fx-min-w-100</div>
+          </div>
+          <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-row"&gt;
+  &lt;div class="fx-demo-null-box fx-border fx-w-25"&gt;fx-w-25&lt;/div&gt;
+  &lt;div class="fx-demo-null-box fx-border fx-w-50"&gt;fx-w-50&lt;/div&gt;
+  &lt;div class="fx-demo-null-box fx-border fx-w-75"&gt;fx-w-75&lt;/div&gt;
+  &lt;div class="fx-demo-null-box fx-border fx-max-w-50"&gt;fx-max-w-50&lt;/div&gt;
+  &lt;div class="fx-demo-null-box fx-border fx-min-w-100"&gt;fx-min-w-100&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="fx-demo-section">
+        <h5 >Height and min/max height</h5>
+        <div class="fx-demo-panel">
+          <div class="fx-row fx-gap-3 fx-p-3">
+            <div class="fx-col-12 fx-col-md-6">
+              <div style="height: 5rem;">
+                <div class="fx-demo-null-box fx-border fx-h-100">fx-h-100 (100% of parent)</div>
+              </div>
+            </div>
+            <div class="fx-col-12 fx-col-md-6">
+              <div style="height:5rem;">
+                <div class="fx-demo-null-box fx-border fx-min-h-100">fx-min-h-100</div>
+              </div>
+            </div>
+          </div>
+          <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-row"&gt;
+  &lt;div class="fx-col-12 fx-col-md-6"&gt;
+    &lt;div style="height: 5rem;"&gt;
+      &lt;div class="fx-demo-null-box fx-border fx-rounded fx-h-100"&gt;fx-h-100 (100% of parent)&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="fx-col-12 fx-col-md-6"&gt;
+    &lt;div style="height:5rem;"&gt;
+      &lt;div class="fx-demo-null-box fx-border fx-rounded fx-min-h-100"&gt;fx-min-h-100&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+    </main>
+    <script src="../../../dist/js/flexa.js"></script>
+    <script src="../../assets/js/docs.js"></script>
+  </body>
+</html>

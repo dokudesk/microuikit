@@ -11,19 +11,19 @@
 
 </head>
 
-<body class="fx-demo fx-demo--fullscreen">
+<body class="fx-d-flex fx-flex-dir-col fx-h-vh-100 fx-m-0">
   <include src="../_header.html"></include>
 
-  <main class="fx-demo-content">
-    <h3>Radio Component</h3>
+  <main class="fx-overflow-y-auto fx-px-5 fx-py-3">
+    <h3 >Radio Component</h3>
     <p class="fx-text-muted">
       The Radio component styles a native radio input with a custom circle and inner dot.
     </p>
 
     <div class="fx-demo-section">
-      <h5>Base usage</h5>
+      <h5 >Base usage</h5>
       <div class="fx-demo-panel">
-        <div class="fx-demo-showcase">
+        <div class="fx-demo-preview">
           <div class="fx-radio-frame">
             <input id="r-base-a" type="radio" class="fx-radio" name="base" />
             <label for="r-base-a">Option A</label>
@@ -33,7 +33,7 @@
             <label for="r-base-b">Option B</label>
           </div>
         </div>
-        <pre><code>&lt;div class="fx-radio-frame"&gt;
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-radio-frame"&gt;
   &lt;input id="r-a" type="radio" class="fx-radio" name="group" /&gt;
   &lt;label for="r-a"&gt;Option A&lt;/label&gt;
 &lt;/div&gt;
@@ -41,16 +41,16 @@
   &lt;input id="r-b" type="radio" class="fx-radio" name="group" checked /&gt;
   &lt;label for="r-b"&gt;Option B&lt;/label&gt;
 &lt;/div&gt;</code></pre>
-        <ul>
+        <ul >
           <li>Use the same <code>name</code> on all radios in a group so only one radio can be selected.</li>
         </ul>
       </div>
     </div>
 
     <div class="fx-demo-section">
-      <h5>Disabled state</h5>
+      <h5 >Disabled state</h5>
       <div class="fx-demo-panel">
-        <div class="fx-demo-showcase">
+        <div class="fx-demo-preview">
           <div class="fx-radio-frame">
             <input id="r-disabled" type="radio" class="fx-radio" name="disabled-demo" disabled />
             <label for="r-disabled">Disabled unchecked</label>
@@ -60,7 +60,7 @@
             <label for="r-disabled-checked">Disabled checked</label>
           </div>
         </div>
-        <pre><code>&lt;div class="fx-radio-frame"&gt;
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-radio-frame"&gt;
     &lt;input id="..." type="radio" class="fx-radio" name="group" disabled /&gt;
     &lt;label for="..."&gt;Disabled unchecked&lt;/label&gt;
 &lt;/div&gt;
@@ -68,7 +68,7 @@
   &lt;input id="..." type="radio" class="fx-radio" name="group" disabled checked /&gt;
   &lt;label for="..."&gt;Disabled checked&lt;/label&gt;
 &lt;/div&gt;</code></pre>
-        <ul>
+        <ul >
           <li><code>--fx-disabled-control-opacity</code> sets the opacity of the radio when it is disabled.</li>
           <li><code>--fx-text-muted-color</code> sets the color of the radio when it is disabled.</li>
         </ul>
@@ -76,19 +76,19 @@
     </div>
 
     <div class="fx-demo-section">
-      <h5>Readonly state</h5>
+      <h5 >Readonly state</h5>
       <div class="fx-demo-panel">
-        <div class="fx-demo-showcase">
+        <div class="fx-demo-preview">
           <div class="fx-radio-frame">
             <input id="r-readonly" type="radio" class="fx-radio" name="readonly-demo" readonly checked />
             <label for="r-readonly">Readonly (no pointer events)</label>
           </div>
         </div>
-        <pre><code>&lt;div class="fx-radio-frame"&gt;
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-radio-frame"&gt;
   &lt;input id="..." type="radio" class="fx-radio" name="group" readonly checked /&gt;
   &lt;label for="..."&gt;Readonly (no pointer events)&lt;/label&gt;
 &lt;/div&gt;</code></pre>
-        <ul>
+        <ul >
           <li><code>readonly</code> disables pointer events so the value cannot be changed by click; use when the value
             is display-only or controlled elsewhere.</li>
         </ul>
@@ -96,9 +96,9 @@
     </div>
 
     <div class="fx-demo-section">
-      <h5>Validation states (invalid / valid)</h5>
+      <h5 >Validation states (invalid / valid)</h5>
       <div class="fx-demo-panel">
-        <div class="fx-demo-showcase">
+        <div class="fx-demo-preview">
           <div class="fx-radio-frame">
             <input id="r-invalid" type="radio" class="fx-radio" name="group-invalid" invalid />
             <label for="r-invalid">Invalid</label>
@@ -112,7 +112,7 @@
             <label for="r-valid">Valid</label>
           </div>
         </div>
-        <div class="fx-demo-showcase">
+        <div class="fx-demo-preview">
           <div class="fx-radio-frame">
             <input id="r-aria-invalid-true" type="radio" class="fx-radio" name="group-aria-invalid" aria-invalid="true"
               checked />
@@ -124,7 +124,7 @@
             <label for="r-aria-invalid-false">ARIA invalid=false</label>
           </div>
         </div>
-        <div class="fx-demo-showcase">
+        <div class="fx-demo-preview">
           <div class="fx-radio-frame">
             <input id="r-invalid-disabled" type="radio" class="fx-radio" name="group-invalid-disabled" invalid
               disabled />
@@ -136,7 +136,7 @@
             <label for="r-invalid-disabled-checked">Invalid + disabled (checked)</label>
           </div>
         </div>
-        <pre><code>&lt;div class="fx-radio-frame"&gt;
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-radio-frame"&gt;
   &lt;input id="..." type="radio" class="fx-radio" name="group-invalid" invalid /&gt;
   &lt;label for="..."&gt;Invalid&lt;/label&gt;
 &lt;/div&gt;
@@ -172,7 +172,7 @@
 &lt;/div&gt;
 
 </code></pre>
-        <ul>
+        <ul >
           <li>Use <code>invalid</code>/<code>valid</code> for state-driven validation styling; these states apply
             semantic border/text colors via <code>--fx-invalid-border-color</code>, <code>--fx-invalid-color</code>,
             <code>--fx-valid-border-color</code>, and <code>--fx-valid-color</code>.
@@ -189,9 +189,9 @@
     </div>
 
     <div class="fx-demo-section">
-      <h5>Quick customization</h5>
+      <h5 >Quick customization</h5>
       <div class="fx-demo-panel">
-        <div class="fx-demo-showcase">
+        <div class="fx-demo-preview">
           <div class="fx-radio-frame" style="--fx-radio-size: 1.25rem;">
             <input id="r-small" type="radio" class="fx-radio" name="group-customization" />
             <label for="r-small">Smaller circle</label>
@@ -213,7 +213,7 @@
             <label for="r-danger-color">Danger checked color</label>
           </div>
         </div>
-        <pre><code>&lt;div class="fx-radio-frame" style="--fx-radio-size: 1.25rem;"&gt;
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-radio-frame" style="--fx-radio-size: 1.25rem;"&gt;
   &lt;input id="..." type="radio" class="fx-radio" name="group-customization" /&gt;
   &lt;label for="..."&gt;Smaller circle&lt;/label&gt;
 &lt;/div&gt;
@@ -236,7 +236,7 @@
   &lt;input id="..." type="radio" class="fx-radio" name="group-customization" /&gt;
   &lt;label for="..."&gt;Danger checked color&lt;/label&gt;
 &lt;/div&gt;</code></pre>
-        <ul>
+        <ul >
           <li><code>--fx-radio-size</code> sets the size of the circle.</li>
           <li><code>--fx-radio-dot-space</code> sets the gap between ring and inner dot.</li>
           <li><code>--fx-radio-checked-color</code> sets the color of the checked ring and inner dot.</li>
@@ -254,49 +254,48 @@
     </div>
 
     <div class="fx-demo-section">
-      <h5>What the CSS package covers</h5>
+      <h5 >What the CSS package covers</h5>
       <div class="fx-demo-panel">
-        <ul>
-          <li><strong>Base field:</strong> <code>.fx-radio-frame</code> provides the wrapper layout for the native input
-            and its label.</li>
-          <li><strong>Native input:</strong> <code>input[type="radio"].fx-radio</code> remains accessible/focusable,
-            while being visually hidden using clipping and opacity.</li>
-          <li><strong>Custom circle:</strong> <code>::before</code> renders the radio ring and <code>::after</code>
-            renders the inner dot.</li>
-          <li><strong>Checked:</strong> <code>:checked + label::before</code> updates ring color, and
-            <code>:checked + label::after</code> reveals the dot with opacity/scale transition.
-          </li>
-          <li><strong>Focus:</strong> <code>:focus-visible:not(:disabled) + label::before</code> sets the outline and
-            offset.</li>
-          <li><strong>Disabled:</strong> <code>[disabled]</code> sets the muted color, reduced opacity, and
-            non-interactive cursor/pointer events on the label visuals.</li>
-          <li><strong>Readonly:</strong> <code>[readonly]</code> disables pointer interaction on both input and label
-            while preserving the visual state.</li>
-          <li><strong>Validation:</strong> <code>[invalid]</code>/<code>[aria-invalid="true"]</code> and
-            <code>[valid]</code>/<code>[aria-invalid="false"]</code> sets the label color, ring border color, and
-            checked-dot color.
-          </li>
+        <ul >
+          <li><strong>Base.</strong> <code>.fx-radio-frame</code> provides the wrapper layout for the native input and
+            its label.</li>
+          <li><strong>Native input.</strong> <code>input[type="radio"].fx-radio</code> is visually hidden (clip and opacity)
+            and sized via <code>--fx-radio-size</code> while remaining focusable and announced by assistive technologies.</li>
+          <li><strong>Custom ring and dot.</strong> <code>label[for]::before</code> is the ring (size
+            <code>--fx-radio-size</code>, border, background, <code>border-radius: 50%</code>). <code>::after</code> is the
+            inner dot (size from <code>--fx-radio-size</code> and <code>--fx-radio-dot-space</code>, color
+            <code>--fx-radio-checked-color</code>), revealed when checked via opacity and scale transition.</li>
+          <li><strong>Checked state.</strong> <code>:checked + label::before</code> updates the ring border color;
+            <code>:checked + label::after</code> reveals the dot with opacity and scale.</li>
+          <li><strong>Focus.</strong> <code>:focus-visible:not(:disabled) + label::before</code> applies the global focus
+            ring (outline and offset from focus-ring tokens).</li>
+          <li><strong>Disabled state.</strong> <code>[disabled] + label</code> receives muted color, reduced opacity,
+            cursor <code>not-allowed</code>, and <code>pointer-events: none</code>; the ring and dot use muted colors and
+            opacity.</li>
+          <li><strong>Readonly state.</strong> <code>[readonly]</code> and <code>[readonly] + label</code> receive
+            <code>pointer-events: none</code> so the control is non-interactive while the visual state is unchanged.</li>
+          <li><strong>Validation.</strong> <code>[invalid]</code> and <code>[aria-invalid="true"]</code> apply invalid
+            label color, ring border color, and checked-dot color via <code>--fx-invalid-*</code>. <code>[valid]</code> and
+            <code>[aria-invalid="false"]</code> apply valid colors via <code>--fx-valid-*</code>.</li>
         </ul>
       </div>
     </div>
 
     <div class="fx-demo-section">
-      <h5>Accessibility notes</h5>
-      <div class="fx-demo-panel fx-border fx-rounded">
-        <ul>
-          <li>Always use a <code>label[for]</code> that matches the input <code>id</code> so the radio is properly
-            associated and clickable.</li>
+      <h5 >Accessibility notes</h5>
+      <div class="fx-demo-panel">
+        <ul >
+          <li>Associate a <code>label</code> with each radio via <code>for</code> and matching <code>id</code> so the
+            control is announced and the label click area selects the option.</li>
           <li>Use the same <code>name</code> for all options in a group so the selection is mutually exclusive and
-            keyboard navigation works.</li>
-          <li>The native input is visually hidden but remains focusable and announced by screen readers; the custom
-            circle is purely visual.</li>
-          <li>For validation, use <code>invalid (or aria-invalid="true")</code> /
-            <code>valid (or aria-invalid="false")</code> attributes to control the label color, ring border color, and
-            checked-dot color.
-          </li>
+            keyboard navigation (arrow keys) works correctly.</li>
+          <li>The native input is visually hidden but remains in the tab order and is announced by screen readers; the
+            custom circle is decorative only.</li>
+          <li>Expose validation state to assistive technologies and drive styling by using the <code>invalid</code> and
+            <code>valid</code> attributes, or <code>aria-invalid="true"</code> and <code>aria-invalid="false"</code>.</li>
         </ul>
       </div>
-      </section>
+    </div>
   </main>
 
   <script src="../../../dist/js/flexa.js"></script>

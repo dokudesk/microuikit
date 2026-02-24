@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flexa - Scrollbar</title>
+  <link rel="stylesheet" href="../../../dist/css/flexa.css" />
+  <link rel="stylesheet" href="../../../dist/css/themes/flexa-theme-default.css" />
+  <link rel="stylesheet" href="../../assets/css/docs.css" />
+</head>
+
+<body class="fx-d-flex fx-flex-dir-col fx-h-vh-100 fx-m-0">
+  <include src="../_header.html"></include>
+
+  <main class="fx-overflow-y-auto fx-px-5 fx-py-3">
+    <h3 >Scrollbar</h3>
+    <p class="fx-text-muted">Scrollbar styling is applied to any scrollable area (e.g. <code>fx-overflow-auto</code> with a max height) using the global scrollbar styles. Scroll to see the thumb and track.</p>
+    <div class="fx-demo-section">
+      <h5 >Global scrollbar styles</h5>
+      <div class="fx-demo-panel">
+
+        <div class="fx-border fx-p-2 fx-overflow-auto" style="max-height: 10rem;">
+          <p class="fx-mb-2">Line 1 – Scroll to inspect thumb and track styling.</p>
+          <p class="fx-mb-2">Line 2 – Theme-aware scrollbar colors.</p>
+          <p class="fx-mb-2">Line 3 – Token-based width and hover behavior.</p>
+          <p class="fx-mb-2">Line 4 – Works with global utility classes.</p>
+          <p class="fx-mb-2">Line 5 – Contrast suitable for light and dark mode.</p>
+          <p class="fx-mb-2">Line 6 – Subtle customization.</p>
+          <p class="fx-mb-2">Line 7 – Respects platform familiarity.</p>
+          <p class="fx-mb-2">Line 8 – Override tokens on a wrapper to style one container differently.</p>
+        </div>
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-overflow-auto" style="max-height: 10rem;"&gt;
+  &lt;!-- content --&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </div>
+
+    <div class="fx-demo-section">
+      <h5 >Custom scrollbar styling</h5>
+      <div class="fx-demo-panel">
+        <div
+          style="--fx-scrollbar-color: var(--fx-primary); --fx-scrollbar-hover-color: var(--fx-primary-dark); --fx-edge-scrollbar-width: 10px; --fx-edge-scrollbar-height: 10px;">
+          <div class="fx-border fx-p-2 fx-overflow-auto" style="max-height: 10rem;">
+            <p class="fx-mb-2">Line 1 – Scroll to inspect thumb and track styling.</p>
+            <p class="fx-mb-2">Line 2 – Theme-aware scrollbar colors.</p>
+            <p class="fx-mb-2">Line 3 – Token-based width and hover behavior.</p>
+            <p class="fx-mb-2">Line 4 – Works with global utility classes.</p>
+            <p class="fx-mb-2">Line 5 – Contrast suitable for light and dark mode.</p>
+            <p class="fx-mb-2">Line 6 – Subtle customization.</p>
+            <p class="fx-mb-2">Line 7 – Respects platform familiarity.</p>
+            <p class="fx-mb-2">Line 8 – Override tokens on a wrapper to style one container differently.</p>
+          </div>
+        </div>
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div style="--fx-scrollbar-color: var(--fx-primary); 
+  --fx-scrollbar-hover-color: var(--fx-primary-dark); 
+  --fx-edge-scrollbar-width: 10px; 
+  --fx-edge-scrollbar-height: 10px;"&gt;
+  &lt;div class="fx-overflow-auto" style="max-height: 10rem;"&gt;
+  &lt;!-- content --&gt;
+&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </div>
+
+    <div class="fx-demo-section">
+      <h5 >How it works</h5>
+      <div class="fx-demo-panel">
+        <ul >
+          <li><strong>Standard (Firefox, etc.)</strong> <code>*</code> gets
+            <code>scrollbar-width: var(--fx-scrollbar-width)</code>
+            and <code>scrollbar-color: var(--fx-scrollbar-color) var(--fx-background-color)</code> (thumb and track).
+          </li>
+          <li><strong>WebKit (Chrome, Edge, Safari)</strong> <code>*::-webkit-scrollbar</code> uses
+            <code>--fx-edge-scrollbar-width</code> and <code>--fx-edge-scrollbar-height</code> for bar size;
+            <code>*::-webkit-scrollbar-track</code> uses <code>--fx-background-color</code> and
+            <code>--fx-border-radius</code>; <code>*::-webkit-scrollbar-thumb</code> uses
+            <code>--fx-scrollbar-color</code> and <code>--fx-border-radius</code>; thumb hover uses
+            <code>--fx-scrollbar-hover-color</code>; <code>*::-webkit-scrollbar-corner</code> uses
+            <code>--fx-background-color</code>.
+          </li>
+          <li>Theme files override <code>--fx-scrollbar-color</code> and <code>--fx-scrollbar-hover-color</code> for
+            dark mode so scrollbars stay readable on dark backgrounds.</li>
+        </ul>
+      </div>
+    </div>
+
+  </main>
+  <script src="../../../dist/js/flexa.js"></script>
+  <script src="../../assets/js/docs.js"></script>
+</body>
+
+</html>

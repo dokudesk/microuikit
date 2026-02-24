@@ -1,63 +1,101 @@
 <!doctype html>
 <html lang="en" dir="ltr" data-theme="light">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Flexa - Design Tokens</title>
-    <link rel="stylesheet" href="../../../dist/css/flexa.css" />
-    <link rel="stylesheet" href="../../../dist/css/themes/flexa-theme-default.css" />
-    <link rel="stylesheet" href="../../assets/css/docs.css" />
-  </head>
-  <body class="fx-demo fx-demo--fullscreen">
-    <header class="fx-demo-header">
-      <div><p class="fx-demo-header-title">Flexa CSS Framework</p><p class="fx-demo-header-subtitle">Core Documentation</p></div>
-      <div class="fx-demo-header-controls">
-        <label>Color mode<select id="fx-theme-select"><option value="light">Light</option><option value="dark">Dark</option><option value="auto">Auto (System)</option></select></label>
-        <label>Text direction<select id="fx-dir-select"><option value="ltr">LTR</option><option value="rtl">RTL</option></select></label>
-      </div>
-      <a class="fx-demo-link" href="../../index.html">Back</a>
-    </header>
-    <main class="fx-demo-content">
-      <h1 class="fx-demo-hero-title">Design Tokens (CSS Variables)</h1>
-      <p class="fx-demo-hero-description fx-text-muted">Flexa exposes a structured token system through CSS custom properties under <code>:root</code> and theme/data-direction scopes.</p>
-      <section class="fx-demo-section fx-mt-4">
-        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Live token overrides</h2>
-        <div class="fx-demo-panel fx-border fx-rounded">
-          <div class="fx-demo-row fx-d-flex fx-flex-wrap-wrap fx-items-center fx-gap-3">
-            <div class="fx-demo-doc-sample-box fx-border fx-rounded" style="--fx-control-border-radius: 1rem; --fx-border-color: #0d6efd;">Border radius token override</div>
-            <div class="fx-demo-doc-sample-box fx-border fx-rounded" style="--fx-border-color: #198754; --fx-background-color: #f5fff8;">Color token override</div>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flexa - Design tokens</title>
+  <link rel="stylesheet" href="../../../dist/css/flexa.css" />
+  <link rel="stylesheet" href="../../../dist/css/themes/flexa-theme-default.css" />
+  <link rel="stylesheet" href="../../assets/css/docs.css" />
+</head>
+
+<body class="fx-d-flex fx-flex-dir-col fx-h-vh-100 fx-m-0">
+  <include src="../_header.html"></include>
+
+  <main class="fx-overflow-y-auto fx-px-5 fx-py-3">
+    <h3 >Design tokens</h3>
+    <p class="fx-text-muted">
+      Flexa’s look and behavior are driven by design tokens: CSS custom properties (variables) that you can override
+      globally, per theme, or per component. Tokens live on <code>:root</code> and in theme files; light, dark, and
+      auto modes (and RTL/LTR) are supported via scoped overrides.
+    </p>
+
+    <div class="fx-demo-section">
+      <h5 >Where tokens are defined</h5>
+      <ul >
+        <li><strong>Core.</strong> The base set of tokens is defined in <code>flexa.css</code> under <code>:root</code>
+          (SVG assets, typography, palette, and fallbacks for semantic and control tokens).</li>
+        <li><strong>Themes.</strong> Theme files such as <code>flexa-theme-default.css</code> define the default
+          light values (colors, spacing, radius, focus ring, etc.) and override them for <code>data-theme="dark"</code>
+          and, inside <code>@media (prefers-color-scheme: dark)</code>, for <code>data-theme="auto"</code>.</li>
+        <li><strong>Custom themes.</strong> You can add your own <code>flexa-theme-*.css</code> files that redefine
+          the same token names so one codebase supports multiple brands or locales without changing the core CSS.</li>
+      </ul>
+    </div>
+
+    <div class="fx-demo-section">
+      <h5 >Token categories</h5>
+      <p >
+        Tokens are grouped by purpose. Override only what you need; components and utilities reference these variables
+        so a single change applies everywhere.
+      </p>
+      <ul >
+        <li><strong>Assets.</strong> SVG masks for icons (spinner, eye open/off, arrow down, checkbox tick). Names:
+          <code>--fx-spinner-svg</code>, <code>--fx-eye-open-svg</code>, <code>--fx-eye-off-svg</code>,
+          <code>--fx-arrow-down-svg</code>, <code>--fx-checkbox-tick-svg</code>.
+        </li>
+        <li><strong>Typography.</strong> Font family (with separate LTR/RTL tokens and a resolved
+          <code>--fx-font-family-base</code>), base size and weight, line height. Direction-aware themes can set
+          <code>--fx-font-family-rtl</code> and related variables for RTL locales.
+        </li>
+        <li><strong>Color palette.</strong> Raw hues (e.g. <code>--fx-primary</code>, <code>--fx-success</code>,
+          grays) and semantic tokens: <code>--fx-text-color</code>, <code>--fx-background-color</code>,
+          <code>--fx-border-color</code>, <code>--fx-valid-color</code>, <code>--fx-invalid-color</code>,
+          <code>--fx-focus-ring-color</code>, and link, placeholder, muted, and control-specific colors.
+        </li>
+        <li><strong>Component sizing and spacing.</strong> Control height, padding, border radius, card padding;
+          checkbox and radio size; select option height; gutter; border width; transition; focus ring width/offset;
+          disabled opacity; scrollbar dimensions.</li>
+        <li><strong>Direction.</strong> <code>--fx-direction</code>, <code>--fx-text-start</code>,
+          <code>--fx-text-end</code>
+          for RTL/LTR-aware layout and alignment (typically set by the theme or direction utilities).</li>
+      </ul>
+    </div>
+
+    <div class="fx-demo-section">
+      <h5 >Overriding tokens</h5>
+      <p >
+        You can override any token at a higher scope (e.g. <code>:root</code>, <code>html[data-theme="dark"]</code>,
+        or a wrapper class) or inline on a single element. Inline overrides are useful for one-off styling or demos.
+      </p>
+      <div class="fx-demo-panel">
+        <div class="fx-demo-preview">
+          <div class="fx-demo-null-box fx-border" style="--fx-border-color: #0d6efd;">Border color override
           </div>
-          <pre><code>&lt;div class="fx-border fx-rounded"
-  style="--fx-control-border-radius: 1rem; --fx-border-color: #0d6efd;"&gt;
-  ...
+          <div class="fx-demo-null-box fx-border" style="--fx-border-color: #198754;">Border color override
+          </div>
+        </div>
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-border" style="--fx-border-color: #0d6efd;"&gt;
+  Border color override
+&lt;/div&gt;
+&lt;div class="fx-border" style="--fx-border-color: #198754;"&gt;
+  Border color override
 &lt;/div&gt;</code></pre>
-        </div>
-      </section>
-      <section class="fx-demo-section fx-mt-4">
-        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Primary token groups</h2>
-        <div class="fx-demo-panel fx-border fx-rounded">
-          <div class="fx-demo-list fx-border fx-rounded">
-            <div class="fx-demo-list-item">
-              <div class="fx-demo-list-label">Color</div>
-              <div class="fx-demo-list-description fx-text-muted"><code>--fx-text-color</code>, <code>--fx-background-color</code> - Semantic system colors and UI state colors</div>
-            </div>
-            <div class="fx-demo-list-item">
-              <div class="fx-demo-list-label">Typography</div>
-              <div class="fx-demo-list-description fx-text-muted"><code>--fx-font-size-base</code>, <code>--fx-line-height-base</code> - Readable text scale and rhythm</div>
-            </div>
-            <div class="fx-demo-list-item">
-              <div class="fx-demo-list-label">Spacing</div>
-              <div class="fx-demo-list-description fx-text-muted"><code>--fx-gutter-width</code>, <code>--fx-control-padding-x</code> - Consistent spacing across utilities and controls</div>
-            </div>
-            <div class="fx-demo-list-item">
-              <div class="fx-demo-list-label">Shape</div>
-              <div class="fx-demo-list-description fx-text-muted"><code>--fx-control-border-radius</code>, <code>--fx-border-width</code> - Rounded corners, borders, and visual density</div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-    <script src="../../../dist/js/flexa.js"></script>
-    <script src="../../assets/js/docs.js"></script>
-  </body>
+      </div>
+
+      <div class="fx-demo-section fx-demo-callout ">
+        <span>
+          For site-wide or theme-wide changes, override tokens in your own stylesheet (loaded after the theme) or in a
+          custom <code>flexa-theme-*.css</code> file. That keeps the core package untouched and makes it easy to
+          maintain
+          multiple themes or locales.
+        </span>
+      </div>
+    </div>
+  </main>
+  <script src="../../../dist/js/flexa.js"></script>
+  <script src="../../assets/js/docs.js"></script>
+</body>
+
 </html>

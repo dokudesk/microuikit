@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flexa - Direction</title>
+  <link rel="stylesheet" href="../../../dist/css/flexa.css" />
+  <link rel="stylesheet" href="../../../dist/css/themes/flexa-theme-default.css" />
+  <link rel="stylesheet" href="../../assets/css/docs.css" />
+</head>
+
+<body class="fx-d-flex fx-flex-dir-col fx-h-vh-100 fx-m-0">
+  <include src="../_header.html"></include>
+
+  <main class="fx-overflow-y-auto fx-px-5 fx-py-3">
+    <h3 >Direction</h3>
+    <p class="fx-text-muted">
+      Direction supports left-to-right (LTR) and right-to-left (RTL) layouts with the same markup. Direction is set on the
+      document root; CSS logical properties and direction-aware tokens ensure components and utilities flip correctly
+      for RTL locales or mixed-direction content.
+    </p>
+
+    <div class="fx-demo-section">
+      <h5 >Setting direction</h5>
+      <p >
+        Set the page or app direction on <code>&lt;html&gt;</code>. Flexa respects the standard <code>dir</code>
+        attribute and also <code>data-dir</code>, <code>direction</code>, and <code>data-direction</code> so you can
+        integrate with existing backends or URL-based locale switching.
+      </p>
+      <div class="fx-demo-panel">
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;html dir="ltr"&gt;...&lt;/html&gt;
+&lt;html dir="rtl"&gt;...&lt;/html&gt;
+&lt;!-- Also: data-dir, direction, data-direction --&gt;</code></pre>
+        <p class="fx-left-to-right">
+          With <code>flexa.js</code> loaded, the <code>Flexa.Direction</code> helper lets you switch direction from
+          JavaScript and listen for changes:
+        </p>
+        <pre class="fx-left-to-right"><code>// Switch direction
+Flexa.Direction.set('ltr');
+Flexa.Direction.set('rtl');
+
+// Read current direction
+const dir = Flexa.Direction.get(); // 'ltr' or 'rtl'
+
+// React to direction changes
+document.documentElement.addEventListener('flexa:direction-change', (event) =&gt; {
+  console.log('Direction changed to', event.detail.direction);
+});</code></pre>
+      </div>
+    </div>
+
+    <div class="fx-demo-section">
+      <h5 >Direction tokens</h5>
+      <p >
+        Theme and core CSS define three tokens that switch when the root direction is RTL:
+      </p>
+      <ul >
+        <li><code>--fx-direction</code> is <code>ltr</code> or <code>rtl</code>; <code>html</code> uses
+          <code>direction: var(--fx-direction)</code> so the whole document follows.
+        </li>
+        <li><code>--fx-text-start</code> and <code>--fx-text-end</code> are <code>left</code> / <code>right</code> in
+          LTR and <code>right</code> / <code>left</code> in RTL. Utilities like <code>fx-float-start</code> and
+          <code>fx-float-end</code> use these so “start” and “end” flip with direction.
+        </li>
+      </ul>
+      <p >
+        Components use logical properties (e.g. <code>inset-inline-start</code>, <code>padding-inline-end</code>) and
+        direction-aware values so labels, icons, and spacing align correctly in both directions without extra classes.
+      </p>
+      <div class="fx-demo-panel">
+        <div class="fx-p-3">
+          <div class="fx-float-start">Start</div>
+          <div class="fx-float-end">End</div>
+        </div>
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-float-start"&gt;Start&lt;/div&gt;
+&lt;div class="fx-float-end"&gt;End&lt;/div&gt;</code></pre>
+      </div>
+    </div>
+
+    <div class="fx-demo-section">
+      <h5 >Typography and locale</h5>
+      <p >
+        Theme files can define separate font stacks for LTR and RTL so you can pick script-appropriate fonts (e.g. for
+        Arabic or Hebrew). <code>--fx-font-family-base</code> resolves to <code>--fx-font-family-ltr</code> or
+        <code>--fx-font-family-rtl</code> depending on the root direction; <code>--fx-font-size-base</code> and
+        <code>--fx-font-weight-base</code> use the same pattern. Set these in your theme or a custom
+        <code>flexa-theme-*.css</code> for each locale if needed.
+      </p>
+    </div>
+
+    <div class="fx-demo-section">
+      <h5 >Direction override classes</h5>
+      <p >
+        For mixed-direction layouts (e.g. an RTL page with an LTR quote or code block), use <code>fx-ltr</code> or
+        <code>fx-rtl</code> on a wrapper. They set <code>direction: ltr</code> or <code>direction: rtl</code> with
+        <code>!important</code> so that subtree uses the chosen direction regardless of the parent.
+      </p>
+      <div class="fx-demo-panel">
+        <div class="fx-p-3">
+          <div class="fx-ltr fx-text-start">Forced LTR (Right-to-left): text starts from left</div>
+          <div class="fx-rtl fx-text-start">Forced RTL (Left-to-right): text starts from right</div>
+        </div>
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-ltr fx-text-start"&gt;Forced LTR (Right-to-left): text starts from left&lt;/div&gt;
+&lt;div class="fx-rtl fx-text-start"&gt;Forced RTL (Left-to-right): text starts from right&lt;/div&gt;</code></pre>
+      </div>
+    </div>
+
+    <div class="fx-demo-section">
+      <h5 >Text alignment and float utilities</h5>
+      <p >
+        <code>fx-text-start</code> and <code>fx-text-end</code> set <code>text-align: start</code> and
+        <code>text-align: end</code> so alignment follows direction. <code>fx-float-start</code> and
+        <code>fx-float-end</code> use <code>--fx-text-start</code> and <code>--fx-text-end</code> so floated content
+        appears on the correct side in both LTR and RTL. Prefer these over hard-coded
+        <code>left</code>/<code>right</code>
+        so the same layout works in all locales.
+      </p>
+    </div>
+
+  </main>
+  <script src="../../../dist/js/flexa.js"></script>
+  <script src="../../assets/js/docs.js"></script>
+</body>
+
+</html>

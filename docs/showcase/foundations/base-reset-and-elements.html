@@ -1,48 +1,172 @@
 <!doctype html>
 <html lang="en" dir="ltr" data-theme="light">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Flexa - Base Reset and Elements</title>
-    <link rel="stylesheet" href="../../../dist/css/flexa.css" />
-    <link rel="stylesheet" href="../../../dist/css/themes/flexa-theme-default.css" />
-    <link rel="stylesheet" href="../../assets/css/docs.css" />
-  </head>
-  <body class="fx-demo fx-demo--fullscreen">
-    <header class="fx-demo-header">
-      <div><p class="fx-demo-header-title">Flexa CSS Framework</p><p class="fx-demo-header-subtitle">Core Documentation</p></div>
-      <div class="fx-demo-header-controls">
-        <label>Color mode<select id="fx-theme-select"><option value="light">Light</option><option value="dark">Dark</option><option value="auto">Auto (System)</option></select></label>
-        <label>Text direction<select id="fx-dir-select"><option value="ltr">LTR</option><option value="rtl">RTL</option></select></label>
-      </div>
-      <a class="fx-demo-link" href="../../index.html">Back</a>
-    </header>
-    <main class="fx-demo-content">
-      <h1 class="fx-demo-hero-title">Base Reset and Elements</h1>
-      <p class="fx-demo-hero-description fx-text-muted">Core resets normalize browser defaults and establish a predictable baseline for typography, links, headings, and media elements.</p>
-      <section class="fx-demo-section fx-mt-4">
-        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Element baseline demo</h2>
-        <div class="fx-demo-panel fx-border fx-rounded">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flexa - Base reset and headings</title>
+  <link rel="stylesheet" href="../../../dist/css/flexa.css" />
+  <link rel="stylesheet" href="../../../dist/css/themes/flexa-theme-default.css" />
+  <link rel="stylesheet" href="../../assets/css/docs.css" />
+</head>
+
+<body class="fx-d-flex fx-flex-dir-col fx-h-vh-100 fx-m-0">
+  <include src="../_header.html"></include>
+
+  <main class="fx-overflow-y-auto fx-px-5 fx-py-3">
+    <h3 >Base reset and headings</h3>
+    <p class="fx-text-muted">Core resets normalize browser defaults and establish a predictable
+      baseline for typography, links, headings, and media elements.</p>
+
+    <div class="fx-demo-section">
+      <h5 >Element baseline demo</h5>
+      <div class="fx-demo-panel">
+        <div class="fx-p-3">
           <h3>Heading level 3</h3>
           <p>Paragraph text with an <a href="#">inline link</a> and <mark>highlighted text</mark>.</p>
+          <p>Text with <strong>strong emphasis</strong> and <b>bold text</b>.</p>
           <small>Small helper text</small>
           <hr />
           <p class="fx-m-0">The baseline keeps spacing and rendering consistent across pages.</p>
         </div>
-      </section>
-      <section class="fx-demo-section fx-mt-4">
-        <h2 class="fx-demo-section-title fx-fs-lg fx-fw-semibold fx-mb-3">Included behaviors</h2>
-        <div class="fx-demo-panel fx-border fx-rounded">
-          <ul>
-            <li>Global <code>box-sizing: border-box</code> on all elements and pseudo-elements.</li>
-            <li>Root/body text, background, and transitions driven by tokens.</li>
-            <li>Default heading scales (<code>h1</code> ... <code>h6</code>) and helper counterparts (<code>.fx-h*</code>).</li>
-            <li>Safe default treatment for hidden, link, and form-adjacent base elements.</li>
-          </ul>
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;h3&gt;Heading level 3&lt;/h3&gt;
+&lt;p&gt;Paragraph text with an &lt;a href="#"&gt;inline link&lt;/a&gt; and &lt;mark&gt;highlighted text&lt;/mark&gt;.&lt;/p&gt;
+&lt;p&gt;Text with &lt;strong&gt;strong emphasis&lt;/strong&gt; and &lt;b&gt;bold text&lt;/b&gt;.&lt;/p&gt;
+&lt;small&gt;Small helper text&lt;/small&gt;
+&lt;hr /&gt; 
+&lt;p class="fx-m-0"&gt;The baseline keeps spacing and rendering consistent across pages.&lt;/p&gt;</code></pre>
+      </div>
+    </div>
+
+    <div class="fx-demo-section">
+      <h5 >Heading scales (h1–h6)</h5>
+      <div class="fx-demo-panel">
+        <div class="fx-p-3">
+          <h1>Heading 1 (2.5rem)</h1>
+          <h2>Heading 2 (2rem)</h2>
+          <h3>Heading 3 (1.75rem)</h3>
+          <h4>Heading 4 (1.5rem)</h4>
+          <h5>Heading 5 (1.25rem)</h5>
+          <h6>Heading 6 (1rem)</h6>
         </div>
-      </section>
-    </main>
-    <script src="../../../dist/js/flexa.js"></script>
-    <script src="../../assets/js/docs.js"></script>
-  </body>
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;h1&gt;Heading 1&lt;/h1&gt;
+&lt;h2&gt;Heading 2&lt;/h2&gt;
+&lt;h3&gt;Heading 3&lt;/h3&gt;
+&lt;h4&gt;Heading 4&lt;/h4&gt;
+&lt;h5&gt;Heading 5&lt;/h5&gt;
+&lt;h6&gt;Heading 6&lt;/h6&gt;</code></pre>
+        <ul >
+          <li>All headings use <code>font-weight: 500</code>, <code>line-height: 1.2</code>, and
+            <code>color: var(--fx-heading-color)</code>.</li>
+          <li>Bottom margin is <code>0.5rem</code> for consistent spacing.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="fx-demo-section">
+      <h5 >Heading helper classes</h5>
+      <div class="fx-demo-panel">
+        <div class="fx-p-3">
+          <div class="fx-h1">fx-h1 (2.5rem)</div>
+          <div class="fx-h2">fx-h2 (2rem)</div>
+          <div class="fx-h3">fx-h3 (1.75rem)</div>
+          <div class="fx-h4">fx-h4 (1.5rem)</div>
+          <div class="fx-h5">fx-h5 (1.25rem)</div>
+          <div class="fx-h6">fx-h6 (1rem)</div>
+        </div>
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-h1"&gt;fx-h1 (2.5rem)&lt;/div&gt;
+&lt;div class="fx-h2"&gt;fx-h2 (2rem)&lt;/div&gt;
+&lt;div class="fx-h3"&gt;fx-h3 (1.75rem)&lt;/div&gt;
+&lt;div class="fx-h4"&gt;fx-h4 (1.5rem)&lt;/div&gt;
+&lt;div class="fx-h5"&gt;fx-h5 (1.25rem)&lt;/div&gt;
+&lt;div class="fx-h6"&gt;fx-h6 (1rem)&lt;/div&gt;</code></pre>
+        <ul >
+          <li>Use <code>.fx-h1</code> through <code>.fx-h6</code> to apply heading styles without semantic HTML.</li>
+          <li>Useful for styling non-heading elements or when semantic structure differs from visual hierarchy.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="fx-demo-section">
+      <h5 >Links</h5>
+      <div class="fx-demo-panel">
+        <div class="fx-p-3">
+          <p><a href="#">standard link</a> with default styling.</p>
+          <p><a href="#" style="color: var(--fx-danger);">custom colored link</a> using CSS variables.</p>
+          <p><a href="#" style="--fx-link-hover-color: var(--fx-danger);">custom link hover color</a> using CSS custom properties.</p>
+          <p><a>non-interactive link</a> (no underline, inherits color).</p>
+        </div>
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;a href="#"&gt;standard link&lt;/a&gt;
+&lt;a href="#" style="color: var(--fx-danger);"&gt;custom colored link&lt;/a&gt;
+&lt;a href="#" style="--fx-link-hover-color: var(--fx-danger);"&gt;custom link hover color&lt;/a&gt;
+&lt;a&gt;non-interactive link&lt;/a&gt;</code></pre>
+        <ul >
+          <li>Links use <code>--fx-link-color</code> and <code>--fx-link-hover-color</code> for states.</li>
+          <li>Links without <code>href</code> inherit color and have no underline.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="fx-demo-section">
+      <h5 >Media elements</h5>
+      <div class="fx-demo-panel">
+        <div class="fx-p-3">
+          <p>Image with <code>.fx-img</code> class: <img class="fx-img"
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='46' height='46'%3E%3Crect width='46' height='46' fill='%2393c5fd'/%3E%3Ccircle cx='23' cy='23' r='12' fill='%231e3a5f'/%3E%3C/svg%3E"
+              alt="Sample" style="width: 46px; height: 46px;" /> vertical alignment.</p>
+          <p>SVG with <code>.fx-svg</code> class: <svg class="fx-svg" width="46" height="46"
+              xmlns="http://www.w3.org/2000/svg">
+              <rect width="46" height="46" fill="#93c5fd" />
+              <circle cx="23" cy="23" r="12" fill="#1e3a5f" />
+            </svg> vertical alignment.</p>
+        </div>
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;img class="fx-img" src="..." alt="..." /&gt;
+&lt;svg class="fx-svg"&gt;...&lt;/svg&gt;</code></pre>
+        <ul >
+          <li><code>&lt;img&gt;</code>, <code>&lt;svg&gt;</code>, <code>.fx-img</code>, and <code>.fx-svg</code> use
+            <code>vertical-align: middle</code>.</li>
+          <li>Ensures proper alignment with inline text content.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="fx-demo-section">
+      <h5 >Visibility utilities</h5>
+      <div class="fx-demo-panel">
+        <div class="fx-p-3">
+          <div class="fx-visible fx-mb-2">Visible (fx-visible)</div>
+          <div class="fx-invisible fx-mb-2">Invisible (fx-invisible - keeps layout space)</div>
+          <div class="fx-hidden fx-p-2">hidden (fx-hidden - removed from layout)</div>
+          <div hidden class="fx-p-2">hidden attribute (removed from layout)</div>
+        </div>
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-visible fx-mb-2"&gt;visible&lt;/div&gt;
+&lt;div class="fx-invisible fx-mb-2"&gt;invisible&lt;/div&gt;
+&lt;div class="fx-hidden fx-p-2"&gt;hidden&lt;/div&gt;
+&lt;div hidden class="fx-p-2"&gt;hidden attribute&lt;/div&gt;</code></pre>
+        <ul >
+          <li><code>.fx-visible</code> sets <code>visibility: visible</code>.</li>
+          <li><code>.fx-invisible</code> sets <code>visibility: hidden</code> (keeps layout space).</li>
+          <li><code>.fx-hidden</code> and <code>[hidden]</code> set <code>display: none</code> (removes from layout).
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="fx-demo-section">
+      <h5 >Horizontal rule (hr)</h5>
+      <div class="fx-demo-panel">
+        <div class="fx-p-3">
+          <p>Content above the rule.</p>
+          <hr />
+          <p>Content below the rule.</p>
+        </div>
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;hr /&gt;</code></pre>
+      </div>
+    </div>
+
+  </main>
+  <script src="../../../dist/js/flexa.js"></script>
+  <script src="../../assets/js/docs.js"></script>
+</body>
+
 </html>

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flexa - Spacing</title>
+  <link rel="stylesheet" href="../../../dist/css/flexa.css" />
+  <link rel="stylesheet" href="../../../dist/css/themes/flexa-theme-default.css" />
+  <link rel="stylesheet" href="../../assets/css/docs.css" />
+</head>
+
+<body class="fx-d-flex fx-flex-dir-col fx-h-vh-100 fx-m-0">
+  <include src="../_header.html"></include>
+
+  <main class="fx-overflow-y-auto fx-px-5 fx-py-3">
+    <h3 >Spacing</h3>
+    <p class="fx-text-muted">
+      Margin and padding use a shared scale: <code>0</code>, <code>1</code> (0.25rem), <code>2</code> (0.5rem),
+      <code>3</code> (1rem), <code>4</code> (1.5rem), <code>5</code> (3rem). Sides: <code>t</code>, <code>b</code>,
+      <code>l</code>, <code>r</code>, <code>x</code> (left+right), <code>y</code> (top+bottom), or logical
+      <code>s</code>/<code>e</code> (start/end) for RTL-friendly spacing. Gap utilities use the same scale for
+      flex/grid.
+    </p>
+
+    <div class="fx-demo-section">
+      <h5 >Margin and padding scale</h5>
+      <div class="fx-demo-panel">
+        <div class="fx-p-3">
+          <div class="fx-demo-null-box fx-border fx-mb-1">fx-mb-1</div>
+          <div class="fx-demo-null-box fx-border fx-mb-3">fx-mb-3</div>
+          <div class="fx-demo-null-box fx-border fx-mb-5">fx-mb-5</div>
+
+          <div class="fx-demo-null-box fx-border fx-p-1">fx-p-1</div>
+          <div class="fx-demo-null-box fx-border fx-p-3">fx-p-3</div>
+          <div class="fx-demo-null-box fx-border fx-p-5">fx-p-5</div>
+        </div>
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div&gt;
+  &lt;div class="fx-demo-null-box fx-border fx-mb-1"&gt;fx-mb-1&lt;/div&gt;
+  &lt;div class="fx-demo-null-box fx-border fx-mb-3"&gt;fx-mb-3&lt;/div&gt;
+  &lt;div class="fx-demo-null-box fx-border fx-mb-5"&gt;fx-mb-5&lt;/div&gt;
+  &lt;div class="fx-demo-null-box fx-border fx-p-1"&gt;fx-p-1&lt;/div&gt;
+  &lt;div class="fx-demo-null-box fx-border fx-p-3"&gt;fx-p-3&lt;/div&gt;
+  &lt;div class="fx-demo-null-box fx-border fx-p-5"&gt;fx-p-5&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </div>
+
+    <div class="fx-demo-section">
+      <h5 >Logical spacing</h5>
+      <div class="fx-demo-panel">
+        <div class="fx-p-3 fx-border">
+          <div class="fx-demo-null-box fx-border-w-1 fx-border-s-dashed fx-ms-3 fx-me-1">Logical spacing (start/end)</div>
+        </div>
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-border fx-ms-3 fx-me-1"&gt;
+  &lt;div class="fx-border"&gt;Logical spacing (start/end)&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </div>
+
+    <div class="fx-demo-section">
+      <h5 >Gap (flex and grid)</h5>
+      <div class="fx-demo-panel">
+        <div class="fx-d-flex fx-flex-wrap-wrap fx-gap-3">
+          <div class="fx-demo-null-box fx-border">gap-3</div>
+          <div class="fx-demo-null-box fx-border">gap-3</div>
+        </div>
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-d-flex fx-flex-wrap-wrap fx-gap-3"&gt;
+  &lt;div class="fx-demo-null-box fx-border"&gt;gap-3&lt;/div&gt;
+  &lt;div class="fx-demo-null-box fx-border"&gt;gap-3&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </div>
+  </main>
+  <script src="../../../dist/js/flexa.js"></script>
+  <script src="../../assets/js/docs.js"></script>
+</body>
+
+</html>

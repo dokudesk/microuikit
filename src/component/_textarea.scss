@@ -20,14 +20,12 @@
       border-color: var(--#{$prefix}border-color);
     }
 
-    &[invalid],
-    &[aria-invalid="true"] {
+    &[invalid], &[aria-invalid="true"] {
       border-color: var(--#{$prefix}invalid-border-color);
       color: var(--#{$prefix}invalid-color);
     }
 
-    &[valid],
-    &[aria-invalid="false"] {
+    &[valid], &[aria-invalid="false"] {
       border-color: var(--#{$prefix}valid-border-color);
       color: var(--#{$prefix}valid-color);
     }
@@ -49,6 +47,7 @@
     border: var(--#{$prefix}border-width, 0) solid var(--#{$prefix}border-color);
     border-radius: var(--#{$prefix}control-border-radius);
     padding: calc(var(--#{$prefix}control-border-radius) * 0.25);
+    transition: var(--#{$prefix}transition);
 
     .#{$prefix}textarea {
       display: block;
@@ -76,12 +75,12 @@
     }
 
     // Floating label: moves up on focus or when textarea has value
+
     .#{$prefix}textarea:focus + label[for],
     .#{$prefix}textarea:not(:placeholder-shown) + label[for] {
-      top: calc(var(--#{$prefix}border-width, 0) * -1);
+      top: calc((var(--#{$prefix}border-width, 0) + ( var(--#{$prefix}focus-ring-outline-width) - var(--#{$prefix}border-width, 0px))) * -1);
       transform: translateY(-50%);
       background-color: var(--#{$prefix}control-background-color);
-      color: var(--#{$prefix}focus-ring-color, var(--#{$prefix}border-color));
       font-size: calc(var(--#{$prefix}font-size-base) * 0.75);
     }
 
@@ -99,10 +98,22 @@
       color: var(--#{$prefix}valid-color);
     }
 
+    .#{$prefix}textarea:not(:placeholder-shown) + label[for] {
+      color: var(--#{$prefix}placeholder-color);
+    }
+
+    .#{$prefix}textarea:focus + label[for] {
+      color: var(--#{$prefix}focus-ring-color);
+    }
+
     // Frame border by state (focus / invalid / valid)
-    &:has(.#{$prefix}textarea:focus),
+
     &:has(.#{$prefix}textarea:not(:placeholder-shown)) {
-      border-color: var(--#{$prefix}focus-ring-color, var(--#{$prefix}border-color)) ;
+      border-color: var(--#{$prefix}border-color) ;
+    }
+
+    &:has(.#{$prefix}textarea:focus) {
+      border-color: var(--#{$prefix}focus-ring-color) ;
     }
 
     &:has(.#{$prefix}textarea[invalid]:focus),
@@ -117,6 +128,21 @@
     &:has(.#{$prefix}textarea[aria-invalid="false"]:focus),
     &:has(.#{$prefix}textarea[aria-invalid="false"]:not(:placeholder-shown)) {
       border-color: var(--#{$prefix}valid-border-color);
+    }
+
+    &:has(.#{$prefix}textarea:focus) {
+      outline: var(--#{$prefix}focus-ring-color) solid calc(var(--#{$prefix}focus-ring-outline-width) - var(--#{$prefix}border-width, 0px));
+      outline-offset: 0;
+    }
+    &:has(.#{$prefix}textarea[invalid]:focus),
+    &:has(.#{$prefix}textarea[aria-invalid="true"]:focus) {
+      outline: var(--#{$prefix}invalid-border-color) solid calc(var(--#{$prefix}focus-ring-outline-width) - var(--#{$prefix}border-width, 0px));
+      outline-offset: 0;
+    }
+    &:has(.#{$prefix}textarea[valid]:focus),
+    &:has(.#{$prefix}textarea[aria-invalid="false"]:focus) {
+      outline: var(--#{$prefix}valid-border-color) solid calc(var(--#{$prefix}focus-ring-outline-width) - var(--#{$prefix}border-width, 0px));
+      outline-offset: 0;
     }
 
     .#{$prefix}textarea[disabled]:placeholder-shown + label[for] {

@@ -11,28 +11,28 @@
 
 </head>
 
-<body class="fx-demo fx-demo--fullscreen">
+<body class="fx-d-flex fx-flex-dir-col fx-h-vh-100 fx-m-0">
   <include src="../_header.html"></include>
 
-  <main class="fx-demo-content">
-    <h3>Button Component</h3>
+  <main class="fx-overflow-y-auto fx-px-5 fx-py-3">
+    <h3 >Button Component</h3>
     <p class="fx-text-muted">
       The Button component is used to create interactive buttons.
     </p>
 
     <div class="fx-demo-section">
-      <h5>Base usage</h5>
+      <h5 >Base usage</h5>
       <div class="fx-demo-panel">
-        <div class="fx-demo-showcase">
+        <div class="fx-demo-preview">
           <button type="button" style="width: 150px;" class="fx-btn">Base button</button>
         </div>
-        <pre><code>&lt;button type="button" style="width: 150px;" class="fx-btn"&gt;Base button&lt;/button&gt;</code></pre>
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;button type="button" style="width: 150px;" class="fx-btn"&gt;Base button&lt;/button&gt;</code></pre>
       </div>
     </div>
     <div class="fx-demo-section">
-      <h5>Theme colors</h5>
+      <h5 >Theme colors</h5>
       <div class="fx-demo-panel">
-        <div class="fx-demo-showcase">
+        <div class="fx-demo-preview">
           <button type="button" style="width: 150px;" class="fx-btn fx-btn-primary">Primary</button>
           <button type="button" style="width: 150px;" class="fx-btn fx-btn-secondary">Secondary</button>
           <button type="button" style="width: 150px;" class="fx-btn fx-btn-success">Success</button>
@@ -42,7 +42,7 @@
           <button type="button" style="width: 150px;" class="fx-btn fx-btn-light">Light</button>
           <button type="button" style="width: 150px;" class="fx-btn fx-btn-dark">Dark</button>
         </div>
-        <pre><code>&lt;button type="button" style="width: 150px;" class="fx-btn fx-btn-primary"&gt;Primary&lt;/button&gt;
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;button type="button" style="width: 150px;" class="fx-btn fx-btn-primary"&gt;Primary&lt;/button&gt;
 &lt;button type="button" style="width: 150px;" class="fx-btn fx-btn-secondary"&gt;Secondary&lt;/button&gt;
 &lt;button type="button" style="width: 150px;" class="fx-btn fx-btn-success"&gt;Success&lt;/button&gt;
 &lt;button type="button" style="width: 150px;" class="fx-btn fx-btn-info"&gt;Info&lt;/button&gt;
@@ -54,16 +54,16 @@
     </div>
 
     <div class="fx-demo-section">
-      <h5>Disabled and loading states</h5>
+      <h5 >Disabled and loading states</h5>
       <div class="fx-demo-panel">
-        <div class="fx-demo-showcase">
+        <div class="fx-demo-preview">
           <button type="button" style="width: 150px;" class="fx-btn fx-btn-secondary" disabled>Disabled</button>
           <button type="button" style="width: 150px;" class="fx-btn fx-btn-primary" aria-busy="true"
             aria-label="Submitting">
             Submitting
           </button>
         </div>
-        <pre><code>&lt;button type="button" style="width: 150px;" class="fx-btn fx-btn-secondary" disabled&gt;Disabled&lt;/button&gt;
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;button type="button" style="width: 150px;" class="fx-btn fx-btn-secondary" disabled&gt;Disabled&lt;/button&gt;
 &lt;button type="button" style="width: 150px;" class="fx-btn fx-btn-primary" aria-busy="true" aria-label="Submitting"&gt;
   Submitting
 &lt;/button&gt;</code></pre>
@@ -71,17 +71,17 @@
     </div>
 
     <div class="fx-demo-section">
-      <h5>Form actions (button type)</h5>
+      <h5 >Form actions (button type)</h5>
       <div class="fx-demo-panel">
-        <div class="fx-demo-showcase">
+        <div class="fx-demo-preview">
           <button type="button" style="width: 150px;" class="fx-btn fx-btn-primary">Action</button>
           <button type="submit" style="width: 150px;" class="fx-btn fx-btn-success">Submit</button>
           <button type="reset" style="width: 150px;" class="fx-btn fx-btn-warning">Reset</button>
         </div>
-        <pre><code>&lt;button type="button" style="width: 150px;" class="fx-btn fx-btn-primary"&gt;Action&lt;/button&gt;
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;button type="button" style="width: 150px;" class="fx-btn fx-btn-primary"&gt;Action&lt;/button&gt;
 &lt;button type="submit" style="width: 150px;" class="fx-btn fx-btn-success"&gt;Submit&lt;/button&gt;
 &lt;button type="reset" style="width: 150px;" class="fx-btn fx-btn-warning"&gt;Reset&lt;/button&gt;</code></pre>
-        <ul>
+        <ul >
           <li>Always set <code>type</code> explicitly to avoid accidental submits.</li>
           <li>Use <code>submit</code> and <code>reset</code> only inside forms.</li>
         </ul>
@@ -89,16 +89,16 @@
     </div>
 
     <div class="fx-demo-section">
-      <h5>JavaScript helper (busy state)</h5>
+      <h5 >JavaScript helper (busy state)</h5>
       <div class="fx-demo-panel">
-        <div class="fx-demo-showcase">
+        <div class="fx-demo-preview">
           <button id="save-btn" type="button" style="width: 150px;" class="fx-btn fx-btn-info">Save</button>
         </div>
-        <pre><code>// Ensure flexa.js is loaded
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>// Ensure flexa.js is loaded
 const btn = document.getElementById("save-btn");
 Flexa.ButtonBusy.enableBusy(btn, "Saving");
 setTimeout(() =&gt; Flexa.ButtonBusy.disableBusy(btn), 1200);</code></pre>
-        <ul>
+        <ul >
           <li>Dispatches <code>flexa:button-busy</code> on the button element.</li>
           <li>Provide a readable label for assistive technologies.</li>
         </ul>
@@ -106,9 +106,9 @@ setTimeout(() =&gt; Flexa.ButtonBusy.disableBusy(btn), 1200);</code></pre>
     </div>
 
     <div class="fx-demo-section">
-      <h5>Quick customization</h5>
+      <h5 >Quick customization</h5>
       <div class="fx-demo-panel">
-        <div class="fx-demo-showcase">
+        <div class="fx-demo-preview">
           <button type="button" class="fx-btn fx-btn-success"
             style="--fx-control-height: 3.5rem; --fx-control-border-radius: 999px; width: auto;">
             Compact & round
@@ -117,7 +117,7 @@ setTimeout(() =&gt; Flexa.ButtonBusy.disableBusy(btn), 1200);</code></pre>
             Extra horizontal padding
           </button>
         </div>
-        <pre><code>&lt;button class="fx-btn fx-btn-success"
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;button class="fx-btn fx-btn-success"
   style="--fx-control-height: 3.5rem; --fx-control-border-radius: 999px;"&gt;
   Compact &amp; round
 &lt;/button&gt;
@@ -127,7 +127,7 @@ setTimeout(() =&gt; Flexa.ButtonBusy.disableBusy(btn), 1200);</code></pre>
   Extra horizontal padding
 &lt;/button&gt;
 </code></pre>
-        <ul>
+        <ul >
           <li><code>--fx-control-height</code> button height</li>
           <li><code>--fx-control-padding-x</code> horizontal padding</li>
           <li><code>--fx-control-padding-y</code> vertical padding</li>
@@ -140,14 +140,43 @@ setTimeout(() =&gt; Flexa.ButtonBusy.disableBusy(btn), 1200);</code></pre>
         </ul>
       </div>
     </div>
+    <div class="fx-demo-section">
+      <h5 >What the CSS package covers</h5>
+      <div class="fx-demo-panel">
+        <ul >
+          <li><strong>Base.</strong> <code>.fx-btn</code> applies flex layout, height (<code>--fx-control-height</code>),
+            padding (<code>--fx-control-padding-x</code>, <code>--fx-control-padding-y</code>), typography, color and
+            background from tokens, border and border-radius (<code>--fx-control-border-radius</code>), and transition
+            (<code>--fx-transition</code>). Cursor and user-select are set for button behavior.</li>
+          <li><strong>Disabled state.</strong> The <code>[disabled]</code> selector applies muted text color, opacity
+            (<code>--fx-disabled-control-opacity</code>), cursor <code>not-allowed</code>, and
+            <code>pointer-events: none</code> so the control is non-interactive.</li>
+          <li><strong>Loading state.</strong> For <code>[aria-busy="true"]</code>, visible text is hidden and a spinner
+            is shown via <code>::before</code> using the <code>--fx-spinner-svg</code> mask; the accessible label is
+            exposed via <code>::after</code> from <code>attr(aria-label)</code>. Opacity and pointer-events match the
+            disabled state; cursor is <code>wait</code>. RTL reverses the spinner animation direction.</li>
+          <li><strong>Theme variants.</strong> Modifier classes <code>.fx-btn-primary</code>, <code>.fx-btn-secondary</code>,
+            <code>.fx-btn-success</code>, <code>.fx-btn-info</code>, <code>.fx-btn-warning</code>, <code>.fx-btn-danger</code>,
+            <code>.fx-btn-light</code>, and <code>.fx-btn-dark</code> set background, border, and text colors from
+            semantic tokens; <code>:hover</code> and loading-state spinner/label colors are included.</li>
+          <li><strong>Focus.</strong> Focus styling uses the global focus ring tokens
+            (<code>--fx-focus-ring-outline-width</code>, <code>--fx-focus-ring-outline-offset</code>,
+            <code>--fx-focus-ring-color</code>) unless overridden.</li>
+          <li><strong>Customization tokens.</strong> Height, padding, border radius, border width/color, background,
+            text color, disabled opacity, spinner asset, and transition are controlled by the corresponding
+            <code>--fx-*</code> variables documented for the control.</li>
+        </ul>
+      </div>
+    </div>
 
     <div class="fx-demo-section">
-      <h5>Accessibility notes</h5>
+      <h5 >Accessibility notes</h5>
       <div class="fx-demo-panel">
-        <ul>
-          <li>For loading, always set <code>aria-busy</code> and a clear <code>aria-label</code> (e.g. "Submitting"
-            / "Saving").</li>
-          <li>Use <code>disabled</code> to make the button non-interactive.</li>
+        <ul >
+          <li>When the button is in a loading state, set <code>aria-busy="true"</code> and provide a clear
+            <code>aria-label</code> that describes the action in progress (e.g. "Submitting", "Saving").</li>
+          <li>Use the <code>disabled</code> attribute to make the button non-interactive and to prevent submission or
+            activation.</li>
         </ul>
       </div>
     </div>

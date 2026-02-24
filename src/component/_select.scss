@@ -35,14 +35,12 @@
       border-color: var(--#{$prefix}border-color);
     }
 
-    &[invalid],
-    &[aria-invalid="true"] {
+    &[invalid], &[aria-invalid="true"] {
       border-color: var(--#{$prefix}invalid-border-color) ;
       color: var(--#{$prefix}invalid-color) ;
     }
 
-    &[valid],
-    &[aria-invalid="false"] {
+    &[valid], &[aria-invalid="false"] {
       border-color: var(--#{$prefix}valid-border-color);
       color: var(--#{$prefix}valid-color);
     }
@@ -63,32 +61,35 @@
   .#{$prefix}select-frame {
     position: relative;
     display: inline-block;
+    transition: var(--#{$prefix}transition);
     margin: 0;
 
-    .#{$prefix}select {
-      outline: none;
-    }
-
     .#{$prefix}select:focus {
-      border-color: var(--#{$prefix}focus-ring-color, var(--#{$prefix}border-color));
+      border-color: var(--#{$prefix}focus-ring-color);
+      outline-offset: 0;
+      outline-color: var(--#{$prefix}focus-ring-color);
+      outline-width: calc(var(--#{$prefix}focus-ring-outline-width) - var(--#{$prefix}border-width, 0px));
     }
 
     .#{$prefix}select[invalid],
     .#{$prefix}select[aria-invalid="true"] {
       border-color: var(--#{$prefix}invalid-border-color);
       color: var(--#{$prefix}invalid-color);
+      outline-color: var(--#{$prefix}invalid-border-color);
     }
 
     .#{$prefix}select[valid],
     .#{$prefix}select[aria-invalid="false"] {
       border-color: var(--#{$prefix}valid-border-color);
       color: var(--#{$prefix}valid-color);
+      outline-color: var(--#{$prefix}valid-border-color);
     }
 
     .#{$prefix}select[disabled] {
       color: var(--#{$prefix}text-muted-color);
       border-color: var(--#{$prefix}border-color);
       opacity: var(--#{$prefix}disabled-control-opacity);
+      outline: none !important;
     }
 
     // Only when frame contains .fx-select-arrow: reserve space for the arrow
@@ -100,6 +101,7 @@
     .#{$prefix}select[multiple] {
       padding: var(--#{$prefix}control-padding-y) var(--#{$prefix}control-padding-x);
       border-color: transparent;
+      outline: none !important;
     }
 
     // When frame contains select[multiple]: border on frame (select has none), color by state
@@ -111,20 +113,25 @@
 
     &:has(.#{$prefix}select[multiple]:focus) {
       border-color: var(--#{$prefix}focus-ring-color, var(--#{$prefix}border-color)) ;
+      outline: var(--#{$prefix}focus-ring-color) solid calc(var(--#{$prefix}focus-ring-outline-width) - var(--#{$prefix}border-width, 0px));
+      outline-offset: 0;
     }
 
     &:has(.#{$prefix}select[multiple][invalid]),
     &:has(.#{$prefix}select[multiple][aria-invalid="true"]) {
       border-color: var(--#{$prefix}invalid-border-color) ;
+      outline-color: var(--#{$prefix}invalid-border-color);
     }
 
     &:has(.#{$prefix}select[multiple][valid]),
     &:has(.#{$prefix}select[multiple][aria-invalid="false"]) {
       border-color: var(--#{$prefix}valid-border-color) ;
+      outline-color: var(--#{$prefix}valid-border-color);
     }
 
     &:has(.#{$prefix}select[multiple][disabled]) {
       border-color: var(--#{$prefix}border-color) ;
+      outline: none !important;
     }
 
     // Decorative arrow: SVG via mask, color via --fx-select-arrow-color; hidden when select[multiple]

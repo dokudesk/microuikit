@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flexa - Visibility and interaction</title>
+  <link rel="stylesheet" href="../../../dist/css/flexa.css" />
+  <link rel="stylesheet" href="../../../dist/css/themes/flexa-theme-default.css" />
+  <link rel="stylesheet" href="../../assets/css/docs.css" />
+</head>
+
+<body class="fx-d-flex fx-flex-dir-col fx-h-vh-100 fx-m-0">
+  <include src="../_header.html"></include>
+
+  <main class="fx-overflow-y-auto fx-px-5 fx-py-3">
+    <h3 >Visibility and interaction</h3>
+    <p class="fx-text-muted">
+      Visibility utilities control whether content is shown, hidden but still in layout, or removed from layout and the
+      accessibility tree.
+    </p>
+
+    <div class="fx-demo-section">
+      <h5 >Visibility states</h5>
+      <div class="fx-demo-panel">
+        <div class="fx-demo-preview">
+          <div class="fx-visible fx-p-2 fx-border">Visible</div>
+          <div class="fx-invisible fx-p-2 fx-border">Invisible (keeps layout space)</div>
+          <div class="fx-hidden fx-p-2 fx-border">Hidden (removed from layout)</div>
+        </div>
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-visible fx-p-2 fx-border"&gt;Visible&lt;/div&gt;
+&lt;div class="fx-invisible fx-p-2 fx-border"&gt;Invisible (keeps layout space)&lt;/div&gt;
+&lt;div class="fx-hidden fx-p-2 fx-border"&gt;Hidden (removed from layout)&lt;/div&gt;</code></pre>
+      </div>
+    </div>
+
+    <div class="fx-demo-section">
+      <h5 >User selection</h5>
+      <div class="fx-demo-panel">
+        <div class="fx-p-3">
+          <p class="fx-user-select-none fx-p-2">You cannot select this sentence.</p>
+          <p class="fx-user-select-all fx-p-2">Click once to select this full sentence.</p>
+          <p class="fx-user-select-text fx-p-2">Normal selectable text.</p>
+        </div>
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;p class="fx-user-select-none"&gt;...&lt;/p&gt;
+&lt;p class="fx-user-select-all"&gt;...&lt;/p&gt;
+&lt;p class="fx-user-select-text"&gt;...&lt;/p&gt;</code></pre>
+      </div>
+    </div>
+  </main>
+  <script src="../../../dist/js/flexa.js"></script>
+  <script src="../../assets/js/docs.js"></script>
+</body>
+
+</html>

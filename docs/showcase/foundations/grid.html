@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flexa - Grid</title>
+  <link rel="stylesheet" href="../../../dist/css/flexa.css" />
+  <link rel="stylesheet" href="../../../dist/css/themes/flexa-theme-default.css" />
+  <link rel="stylesheet" href="../../assets/css/docs.css" />
+</head>
+
+<body class="fx-d-flex fx-flex-dir-col fx-h-vh-100 fx-m-0">
+  <include src="../_header.html"></include>
+
+  <main class="fx-overflow-y-auto fx-px-5 fx-py-3">
+    <h3 >Grid</h3>
+    <p class="fx-text-muted">Grid provides a responsive, 12-column flex-based layout with container,
+      row, column, and offset utilities.</p>
+
+    <div class="fx-demo-section">
+      <h5 >Row + columns</h5>
+      <div class="fx-demo-panel">
+        <div class="fx-row fx-demo-preview">
+          <div class="fx-col-12 fx-col-md-6 fx-border">
+            <div class="fx-demo-null-box">col-6</div>
+          </div>
+          <div class="fx-col-12 fx-col-md-6 fx-border">
+            <div class="fx-demo-null-box">col-6</div>
+          </div>
+          <div class="fx-col-12 fx-col-md-4 fx-border">
+            <div class="fx-demo-null-box">col-4</div>
+          </div>
+          <div class="fx-col-12 fx-col-md-8 fx-border">
+            <div class="fx-demo-null-box">col-8</div>
+          </div>
+        </div>
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-row"&gt;
+  &lt;div class="fx-col-12 fx-col-md-6 fx-border"&gt;col-6&lt;/div&gt;
+  &lt;div class="fx-col-12 fx-col-md-6 fx-border"&gt;col-6&lt;/div&gt;
+  &lt;div class="fx-col-12 fx-col-md-4 fx-border"&gt;col-4&lt;/div&gt;
+  &lt;div class="fx-col-12 fx-col-md-8 fx-border"&gt;col-8&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </div>
+    <div class="fx-demo-section">
+      <h5 >Offsets</h5>
+      <div class="fx-demo-panel">
+        <div class="fx-row fx-demo-preview">
+          <div class="fx-col-6 fx-offset-3 fx-border">
+            <div class="fx-demo-null-box">Centered with offset-3</div>
+          </div>
+          <div class="fx-col-8 fx-offset-md-2 fx-border">
+            <div class="fx-demo-null-box">offset-md-2</div>
+          </div>
+        </div>
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-row"&gt;
+  &lt;div class="fx-col-6 fx-offset-3 fx-border"&gt;Centered with offset-3&lt;/div&gt;
+  &lt;div class="fx-col-8 fx-offset-md-2 fx-border"&gt;offset-md-2&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </div>
+  </main>
+  <script src="../../../dist/js/flexa.js"></script>
+  <script src="../../assets/js/docs.js"></script>
+</body>
+
+</html>

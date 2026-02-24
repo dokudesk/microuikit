@@ -11,11 +11,11 @@
 
 </head>
 
-<body class="fx-demo fx-demo--fullscreen">
+<body class="fx-d-flex fx-flex-dir-col fx-h-vh-100 fx-m-0">
   <include src="../_header.html"></include>
 
-  <main class="fx-demo-content">
-    <h3>Textarea Component</h3>
+  <main class="fx-overflow-y-auto fx-px-5 fx-py-3">
+    <h3 >Textarea Component</h3>
     <p class="fx-text-muted">
       The Textarea component styles multi-line text fields with support for placeholder, focus, validation
       (invalid/valid), disabled state,
@@ -23,29 +23,29 @@
     </p>
 
     <div class="fx-demo-section">
-      <h5>Base usage</h5>
+      <h5 >Base usage</h5>
       <div class="fx-demo-panel">
-        <div class="fx-demo-showcase">
+        <div class="fx-demo-preview">
           <textarea class="fx-textarea" rows="3" placeholder="Enter text..."></textarea>
         </div>
-        <pre><code>&lt;textarea class="fx-textarea" rows="3" placeholder="Enter text..."&gt;&lt;/textarea&gt;</code></pre>
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;textarea class="fx-textarea" rows="3" placeholder="Enter text..."&gt;&lt;/textarea&gt;</code></pre>
       </div>
     </div>
 
     <div class="fx-demo-section">
-      <h5>Placeholder and focus</h5>
+      <h5 >Placeholder and focus</h5>
       <div class="fx-demo-panel">
-        <div class="fx-demo-showcase">
+        <div class="fx-demo-preview">
           <textarea class="fx-textarea" rows="3" placeholder="Default focus border"></textarea>
           <textarea class="fx-textarea" rows="3" placeholder="Custom focus border"
             style="--fx-border-color: var(--fx-danger);"></textarea>
         </div>
-        <pre><code>&lt;textarea class="fx-textarea" rows="3" placeholder="Default focus border"&gt;&lt;/textarea&gt;
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;textarea class="fx-textarea" rows="3" placeholder="Default focus border"&gt;&lt;/textarea&gt;
 
 &lt;textarea class="fx-textarea" rows="3" placeholder="Custom focus border"
   style="--fx-border-color: var(--fx-danger);"&gt;
 &lt;/textarea&gt;</code></pre>
-        <ul>
+        <ul >
           <li><code>--fx-placeholder-color</code> sets the color of the placeholder text.</li>
           <li><code>--fx-border-color</code> sets the color of the border when the textarea is focused.</li>
           <li><code>--fx-focus-ring-color</code> sets the color of the focus ring when the textarea is focused.</li>
@@ -54,25 +54,25 @@
     </div>
 
     <div class="fx-demo-section">
-      <h5>Validation states (invalid / valid)</h5>
+      <h5 >Validation states (invalid / valid)</h5>
       <div class="fx-demo-panel">
-        <div class="fx-demo-showcase">
+        <div class="fx-demo-preview">
           <textarea class="fx-textarea" rows="2" invalid placeholder="Invalid">Error text</textarea>
           <textarea class="fx-textarea" rows="2" valid placeholder="Valid">Valid text</textarea>
         </div>
-        <div class="fx-demo-showcase">
+        <div class="fx-demo-preview">
           <textarea class="fx-textarea" rows="2" aria-invalid="true"
             placeholder="ARIA invalid=true">Error text (aria)</textarea>
           <textarea class="fx-textarea" rows="2" aria-invalid="false"
             placeholder="ARIA invalid=false">Valid text (aria)</textarea>
         </div>
-        <div class="fx-demo-showcase">
+        <div class="fx-demo-preview">
           <textarea class="fx-textarea" rows="2" invalid disabled
             placeholder="Invalid + disabled">Error text (disabled)</textarea>
           <textarea class="fx-textarea" rows="2" valid disabled
             placeholder="Valid + disabled">Valid text (disabled)</textarea>
         </div>
-        <pre><code>&lt;textarea class="fx-textarea" rows="2" invalid placeholder="Invalid"&gt;&lt;/textarea&gt;
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;textarea class="fx-textarea" rows="2" invalid placeholder="Invalid"&gt;&lt;/textarea&gt;
 &lt;textarea class="fx-textarea" rows="2" valid placeholder="Valid"&gt;&lt;/textarea&gt;
 
 &lt;textarea class="fx-textarea" rows="2" aria-invalid="true" placeholder="ARIA invalid=true"&gt;&lt;/textarea&gt;
@@ -81,7 +81,7 @@
 &lt;textarea class="fx-textarea" rows="2" invalid disabled placeholder="Invalid + disabled"&gt;&lt;/textarea&gt;
 &lt;textarea class="fx-textarea" rows="2" valid disabled placeholder="Valid + disabled"&gt;&lt;/textarea&gt;
 </code></pre>
-        <ul>
+        <ul >
           <li>Use <code>invalid</code>/<code>valid</code> for state-driven validation styling; these states apply
             semantic border/text colors via <code>--fx-invalid-border-color</code>, <code>--fx-invalid-color</code>,
             <code>--fx-valid-border-color</code>, and <code>--fx-valid-color</code>.
@@ -98,22 +98,22 @@
     </div>
 
     <div class="fx-demo-section">
-      <h5>Disabled state</h5>
+      <h5 >Disabled state</h5>
       <div class="fx-demo-panel">
-        <div class="fx-demo-showcase">
+        <div class="fx-demo-preview">
           <textarea class="fx-textarea" rows="2" disabled placeholder="Disabled">Disabled text</textarea>
         </div>
-        <pre><code>&lt;textarea class="fx-textarea" rows="2" disabled placeholder="Disabled"&gt;&lt;/textarea&gt;</code></pre>
-        <ul>
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;textarea class="fx-textarea" rows="2" disabled placeholder="Disabled"&gt;&lt;/textarea&gt;</code></pre>
+        <ul >
           <li><code>--fx-disabled-control-opacity</code> sets the opacity of the textarea when it is disabled.</li>
         </ul>
       </div>
     </div>
 
     <div class="fx-demo-section">
-      <h5>Floating label</h5>
+      <h5 >Floating label</h5>
       <div class="fx-demo-panel">
-        <div class="fx-demo-showcase">
+        <div class="fx-demo-preview">
           <div class="fx-textarea-frame" style="min-width: 16rem;">
             <textarea id="ta-float-1" class="fx-textarea" rows="3" placeholder=""></textarea>
             <label for="ta-float-1">Label</label>
@@ -123,7 +123,7 @@
             <label for="ta-float-2">Invalid with label</label>
           </div>
         </div>
-        <div class="fx-demo-row fx-demo-showcase">
+        <div class="fx-demo-row fx-demo-preview">
           <div class="fx-textarea-frame" style="min-width: 16rem;">
             <textarea id="ta-float-3" class="fx-textarea" rows="3" valid placeholder="Valid">Valid text</textarea>
             <label for="ta-float-3">Valid with label</label>
@@ -139,7 +139,7 @@
             <label for="ta-float-5">Valid + Disabled with label</label>
           </div>
         </div>
-        <pre><code>&lt;div class="fx-textarea-frame"&gt;
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-textarea-frame"&gt;
   &lt;textarea id="..." class="fx-textarea" rows="3" placeholder="Placeholder"&gt;&lt;/textarea&gt;
   &lt;label for="..."&gt;Label&lt;/label&gt;
 &lt;/div&gt;
@@ -164,7 +164,7 @@
   &lt;label for="..."&gt;Valid + Disabled with label&lt;/label&gt;
 &lt;/div&gt;
 </code></pre>
-        <ul>
+        <ul >
           <li>Use a <code>placeholder</code> so the label can float when the textarea has value or is focused.</li>
           <li>The label moves up when focused or when textarea is not placeholder-shown.</li>
         </ul>
@@ -172,9 +172,9 @@
     </div>
 
     <div class="fx-demo-section">
-      <h5>Quick customization</h5>
+      <h5 >Quick customization</h5>
       <div class="fx-demo-panel">
-        <div class="fx-demo-showcase">
+        <div class="fx-demo-preview">
           <textarea class="fx-textarea" rows="2" placeholder="Extra padding"
             style="--fx-control-padding-x: 2rem; width: 100%; max-width: 20rem;"></textarea>
           <textarea class="fx-textarea" rows="3" placeholder="Rounded + subtle background color"
@@ -182,7 +182,7 @@
           <textarea class="fx-textarea" rows="3" placeholder="Custom colors"
             style="--fx-focus-ring-color: var(--fx-warning); --fx-text-color: var(--fx-warning); --fx-placeholder-color: var(--fx-text-muted-color); width: 100%; max-width: 20rem;"></textarea>
         </div>
-        <pre><code>&lt;textarea class="fx-textarea"
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;textarea class="fx-textarea"
   rows="2" placeholder="Extra padding"
   style="--fx-control-padding-x: 2rem;"&gt;&lt;/textarea&gt;
 
@@ -198,7 +198,7 @@
          --fx-text-color: var(--fx-warning);
          --fx-placeholder-color: var(--fx-text-muted-color);"&gt;&lt;/textarea&gt;
 &lt;/textarea&gt;</code></pre>
-        <ul>
+        <ul >
           <li><code>--fx-control-padding-x</code> sets the horizontal padding.</li>
           <li><code>--fx-control-padding-y</code> sets the vertical padding.</li>
           <li><code>--fx-control-border-radius</code> sets the corner roundness.</li>
@@ -218,36 +218,43 @@
     </div>
 
     <div class="fx-demo-section">
-      <h5>What the CSS package covers</h5>
+      <h5 >What the CSS package covers</h5>
       <div class="fx-demo-panel">
-        <ul>
-          <li><strong>Base field:</strong> <code>.fx-textarea</code> sets the spacing, font, colors, background, border,
-            radius, and transition.</li>
-          <li><strong>Placeholder:</strong> <code>::placeholder</code> sets the placeholder color.</li>
-          <li><strong>State styling:</strong> <code>[invalid]</code>/<code>[aria-invalid="true"]</code>,
-            <code>[valid]</code>/<code>[aria-invalid="false"]</code>, and <code>[disabled]</code> update
-            border/text/opacity with semantic tokens.
-          </li>
-          <li><strong>Floating label:</strong> the label animates on <code>:focus</code> and
-            <code>:not(:placeholder-shown)</code>, with state-aware colors for invalid/valid/disabled.
-          </li>
+        <ul >
+          <li><strong>Base.</strong> <code>.fx-textarea</code> applies padding, font, line-height, color, background,
+            border, border-radius, and transition via <code>--fx-control-padding-x</code>/<code>--fx-control-padding-y</code>,
+            <code>--fx-font-*</code>, <code>--fx-text-color</code>, <code>--fx-control-background-color</code>,
+            <code>--fx-border-width</code>, <code>--fx-border-color</code>, <code>--fx-control-border-radius</code>, and
+            <code>--fx-transition</code>.</li>
+          <li><strong>Placeholder and focus.</strong> <code>::placeholder</code> uses <code>--fx-placeholder-color</code>.
+            Inside <code>.fx-textarea-frame</code>, placeholder is transparent so the floating label is visible. Focus
+            updates the border color; the framed textarea has <code>outline: none</code> so the frame reflects focus.</li>
+          <li><strong>Validation and disabled state.</strong> <code>[invalid]</code> and <code>[aria-invalid="true"]</code>
+            apply invalid border and text colors via <code>--fx-invalid-*</code> tokens; <code>[valid]</code> and
+            <code>[aria-invalid="false"]</code> apply valid colors via <code>--fx-valid-*</code>. <code>[disabled]</code>
+            applies <code>--fx-text-muted-color</code> and <code>--fx-disabled-control-opacity</code>.</li>
+          <li><strong>Floating-label frame.</strong> <code>.fx-textarea-frame</code> provides a bordered container; the
+            inner <code>.fx-textarea</code> is full-width with transparent background and no border. The label is
+            absolutely positioned and animates on <code>:focus</code> and <code>:not(:placeholder-shown)</code> (reduced
+            font size and background patch). Frame border color is driven by <code>:has()</code> selectors for focus,
+            value, invalid, valid, and disabled using the same semantic tokens.</li>
         </ul>
       </div>
     </div>
 
     <div class="fx-demo-section">
-      <h5>Accessibility notes</h5>
+      <h5 >Accessibility notes</h5>
       <div class="fx-demo-panel">
-        <ul>
-          <li>Always associate a label with the textarea (e.g. <code>label[for]</code>).</li>
-          <li>Set a suitable <code>rows</code> value and keep resize behavior unless your layout has a strict reason to
-            lock it.</li>
-          <li>For validation, you can use either <code>invalid</code>/<code>valid</code> or
-            <code>aria-invalid="true"</code>/<code>aria-invalid="false"</code>; keep error/success text announced for
-            screen readers.
-          </li>
-          <li>Use helper text with <code>aria-describedby</code> when users need format, length, or content guidance.
-          </li>
+        <ul >
+          <li>Associate a visible or off-screen <code>label</code> with the textarea via <code>for</code> and matching
+            <code>id</code> so the control is announced and the label click area activates the field.</li>
+          <li>Set a suitable <code>rows</code> value and retain resize behavior unless layout requirements require it to
+            be disabled.</li>
+          <li>Expose validation state by using the <code>invalid</code> and <code>valid</code> attributes, or
+            <code>aria-invalid="true"</code> and <code>aria-invalid="false"</code>, and ensure error or success text is
+            announced to screen readers (e.g. via live regions or <code>aria-describedby</code>).</li>
+          <li>Use <code>aria-describedby</code> to reference helper or hint text when users need format, length, or
+            content guidance.</li>
         </ul>
       </div>
     </div>

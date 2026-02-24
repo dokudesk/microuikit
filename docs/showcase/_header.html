@@ -1,24 +1,33 @@
-<header class="fx-demo-header">
-    <div class="fx-flexa-framework-info">
-      <h5>Flexa CSS Framework</h5>
-      <span class="fx-text-muted"><include src="_version.html"></include></span>
-    </div>
-    <div class="fx-demo-header-controls">
-      <label class="fx-text-muted">
-        Color mode
-        <select id="fx-theme-select">
+<header
+  class="fx-ltr fx-d-flex fx-justify-between fx-position-relative fx-flex-wrap-wrap fx-items-center fx-p-3 fx-gap-3 fx-border-bottom fx-shadow-sm">
+  <div>
+    <h5 aria-label="Flexa CSS Framework">Flexa CSS Framework</h5>
+    <p class="fx-fs-sm fx-text-muted" aria-label="Version">
+      <include src="_version.html"></include>
+    </p>
+  </div>
+  <div class="fx-d-flex fx-flex-wrap-wrap fx-gap-3 fx-justify-evenly">
+    <label class="fx-d-flex fx-flex-dir-col fx-gap-1 fx-text-muted">
+      Color mode
+      <div class="fx-select-frame">
+        <select class="fx-select fx-w-fit" id="fx-theme-select" aria-label="Color mode">
           <option value="light">Light</option>
           <option value="dark">Dark</option>
           <option value="auto">Auto (System)</option>
         </select>
-      </label>
-      <label class="fx-text-muted">
-        Text direction
-        <select id="fx-dir-select">
+        <span class="fx-select-arrow" aria-hidden="true"></span>
+      </div>
+    </label>
+    <label class="fx-d-flex fx-flex-dir-col fx-gap-1 fx-text-muted">
+      Text direction
+      <div class="fx-select-frame">
+        <select class="fx-select fx-w-fit" id="fx-dir-select" aria-label="Text direction">
           <option value="rtl">Right to Left</option>
           <option value="ltr">Left to Right</option>
         </select>
-      </label>
-    </div>
-    <a class="fx-demo-link" href="../../index.html">Back</a>
-  </header>
+        <span class="fx-select-arrow" aria-hidden="true"></span>
+      </div>
+    </label>
+  </div>
+  <a href="../../index.html" aria-label="Back to home">Back</a>
+</header>

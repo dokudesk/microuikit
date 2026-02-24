@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flexa - Accessibility</title>
+  <link rel="stylesheet" href="../../../dist/css/flexa.css" />
+  <link rel="stylesheet" href="../../../dist/css/themes/flexa-theme-default.css" />
+  <link rel="stylesheet" href="../../assets/css/docs.css" />
+</head>
+
+<body class="fx-d-flex fx-flex-dir-col fx-h-vh-100 fx-m-0">
+  <include src="../_header.html"></include>
+
+  <main class="fx-overflow-y-auto fx-px-5 fx-py-3">
+    <h3 >Accessibility</h3>
+    <p class="fx-text-muted">
+      Flexa provides a consistent baseline for accessible UIs: global focus styles driven by tokens, optional
+      reduced-motion behavior, and visibility utilities that work with layout and screen readers. Components use
+      focus-visible where appropriate so keyboard users get clear feedback without forcing focus rings on mouse click.
+    </p>
+
+    <div class="fx-demo-section">
+      <h5 >Focus ring</h5>
+      <div class="fx-demo-panel">
+        <div class="fx-demo-preview">
+          <a href="#">Focusable link</a>
+          <button type="button" class="fx-btn fx-btn-warning">Focusable button</button>
+          <input type="text" class="fx-input" value="Focusable input" style="width: auto;" />
+          <button type="button" class="fx-btn fx-btn-primary">Another button</button>
+          <select class="fx-select" style="width: auto;">
+            <option>Select</option>
+          </select>
+        </div>
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div&gt;
+  &lt;a href="#"&gt;Focusable link&lt;/a&gt;
+  &lt;button type="button" class="fx-btn fx-btn-warning"&gt;Focusable button&lt;/button&gt;
+  &lt;input type="text" class="fx-input" value="Focusable input" style="width: auto;" /&gt;
+  &lt;button type="button" class="fx-btn fx-btn-primary"&gt;Another button&lt;/button&gt;
+  &lt;select class="fx-select" style="width: auto;"&gt;
+    &lt;option&gt;Select&lt;/option&gt;
+  &lt;/select&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        <ul >
+          <li>Use <span class="fx-demo-keyboard">Tab</span> or <span class="fx-demo-keyboard">Shift+Tab</span> to move
+            focus; the ring appears on the focused element.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="fx-demo-section">
+      <h5 >Custom focus ring</h5>
+      <div class="fx-demo-panel">
+        <div class="fx-demo-preview"
+          style="--fx-focus-ring-color: var(--fx-danger); --fx-focus-ring-outline-width: 3px; --fx-focus-ring-outline-offset: 4px;">
+          <button type="button" class="fx-btn fx-btn-secondary">Button with custom focus</button>
+          <input type="text" class="fx-input" value="Input with custom focus" />
+        </div>
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div style="--fx-focus-ring-color: var(--fx-danger); 
+  --fx-focus-ring-outline-width: 3px; 
+  --fx-focus-ring-outline-offset: 4px;"&gt;
+  &lt;button type="button" class="fx-btn fx-btn-secondary"&gt;Button with custom focus&lt;/button&gt;
+  &lt;input type="text" class="fx-input" value="Input with custom focus" style="width: auto;" /&gt;
+&lt;/div&gt;</code></pre>
+        <ul >
+          <li>Override focus ring appearance by setting the focus tokens on a parent.</li>
+          <li>Focus ring uses <code>outline</code> with <code>--fx-focus-ring-outline-width</code>,
+            <code>--fx-focus-ring-outline-offset</code>, and <code>--fx-focus-ring-color</code>.
+          </li>
+          <li>Components can override focus (e.g. checkbox and radio show the ring on the custom box; framed inputs show
+            focus via border).</li>
+
+        </ul>
+      </div>
+    </div>
+
+  </main>
+  <script src="../../../dist/js/flexa.js"></script>
+  <script src="../../assets/js/docs.js"></script>
+</body>
+
+</html>
