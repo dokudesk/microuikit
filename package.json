@@ -1,9 +1,9 @@
 {
   "name": "Flexa",
   "version": "1.0.0",
-  "description": "Compact CSS package for developing web UI. Responsive-ready and easy to use.",
+  "description": "Compact CSS for web and micro UIs. Responsive ready and easy to use.",
   "license": "MIT",
-  "author": "DokuDesk",
+  "author": "Mahdi Atashin - DokuDesk",
   "type": "module",
   "main": "dist/js/flexa.js",
   "style": "dist/css/flexa.css",

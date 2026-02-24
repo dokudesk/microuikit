@@ -1,6 +1,6 @@
 # Flexa
 
-Compact CSS package for developing web UI. Responsive-ready and easy to use.
+Compact CSS for web and micro UIs. Responsive ready and easy to use.
 
 ## Features
 
@@ -11,6 +11,7 @@ Compact CSS package for developing web UI. Responsive-ready and easy to use.
 - **Utility-first** — Utility classes generated from design tokens
 - **Theme support** — Dark/light themes and `prefers-color-scheme`
 - **RTL / LTR** — Full direction support via selectors
+- **Responsive-ready** — Utilities and layout that adapt to all screen sizes  
 - **Design tokens** — Colors, spacing, typography, borders, shadows, transitions, flexbox, and more
 
 ## Installation
@@ -40,10 +41,10 @@ npm install
 <!-- jsDelivr -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flexa@1/dist/css/flexa.min.css" />
 
-<!-- Optional: default theme -->
+<!-- default theme -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flexa@1/dist/css/themes/flexa-theme-default.min.css" />
 
-<!-- Optional: JavaScript (theme, direction, button busy, password toggle) -->
+<!-- JavaScript (theme, direction, button busy, password toggle) -->
 <script src="https://cdn.jsdelivr.net/npm/flexa@1/dist/js/flexa.min.js"></script>
 ```
 
@@ -84,6 +85,7 @@ npm run build
 
 **Individual steps:**
 
+- `npm run build` — Full build (clean + CSS + themes + JS + minify)
 - `npm run build:css` — Build `dist/css/flexa.css`
 - `npm run build:themes` — Build theme CSS
 - `npm run build:js` — Copy `src/js/flexa.js` to `dist/js/flexa.js`
@@ -101,59 +103,7 @@ npm run test:run      # single run (runs build:js first)
 npm run test:coverage # single run + coverage report (text, HTML, lcov)
 ```
 
-Reports are written to `coverage/` (see `.gitignore`). To enforce coverage thresholds, set `thresholds` in `vitest.config.mjs`.
-
-## Project structure
-
-```
-flexa/
-├── src/
-│   ├── flexa.scss                    # Main SCSS entry
-│   ├── abstracts/
-│   │   ├── _functions.scss
-│   │   ├── variables/                # Design tokens
-│   │   │   ├── _index.scss
-│   │   │   ├── _global.scss
-│   │   │   ├── _colors.scss
-│   │   │   ├── _typography.scss
-│   │   │   ├── _spacing.scss
-│   │   │   ├── _borders.scss
-│   │   │   ├── _shadows.scss
-│   │   │   ├── _flexbox.scss
-│   │   │   ├── _utilities.scss
-│   │   │   └── ...
-│   │   └── mixins/
-│   │       ├── _index.scss
-│   │       ├── _theme.scss
-│   │       ├── _utilities.scss
-│   │       └── ...
-│   ├── foundation/
-│   │   ├── _index.scss
-│   │   ├── _base.scss
-│   │   └── _headings.scss
-│   ├── component/
-│   │   ├── _index.scss
-│   │   ├── _button.scss
-│   │   ├── _input.scss
-│   │   ├── _select.scss
-│   │   ├── _card.scss
-│   │   └── ...
-│   ├── js/
-│   │   └── flexa.js                  # UMD bundle (Theme, Direction, ButtonBusy, PasswordToggle)
-│   └── themes/
-│       └── flexa-theme-default.scss
-├── dist/                             # Build output (generated)
-├── docs/                             # Documentation and showcase
-│   ├── assets/
-│   └── showcase/
-├── tests/
-│   ├── js/flexa.test.js              # JS API tests
-│   └── package-build.test.js         # Build output smoke tests
-├── stylelint.config.mjs
-├── postcss.config.cjs
-├── vitest.config.mjs
-└── package.json
-```
+Reports are written to `coverage/`. To enforce coverage thresholds, set `thresholds` in `vitest.config.mjs`.
 
 ## JavaScript API
 
@@ -214,7 +164,8 @@ Flexa.init(); // Theme.init(), Direction.init(), PasswordToggle.init()
 | `npm run test` | Vitest watch |
 | `npm run test:run` | Vitest single run |
 | `npm run test:coverage` | Vitest run + coverage report |
-| `npm run prepublishOnly` | Runs `npm run build` before publish |
+| `npm run clean:build` | Remove `build/` directory |
+| `npm run clean:dist` | Remove `dist/` directory (run automatically before full build) |
 
 ## Development
 
@@ -223,6 +174,54 @@ Flexa.init(); // Theme.init(), Direction.init(), PasswordToggle.init()
 - **Prefix:** Default class/variable prefix is `fx-` (see `src/abstracts/variables/_global.scss`).
 - **Browsers:** `browserslist` in `package.json` (e.g. `>0.5%`, last 2 versions).
 
-## License
+## Project structure
 
-MIT
+```
+flexa/
+├── src/
+│   ├── flexa.scss                    # Main SCSS entry
+│   ├── abstracts/
+│   │   ├── _functions.scss
+│   │   ├── variables/                # Design tokens
+│   │   │   ├── _index.scss
+│   │   │   ├── _global.scss
+│   │   │   ├── _colors.scss
+│   │   │   ├── _typography.scss
+│   │   │   ├── _spacing.scss
+│   │   │   ├── _borders.scss
+│   │   │   ├── _shadows.scss
+│   │   │   ├── _flexbox.scss
+│   │   │   ├── _utilities.scss
+│   │   │   └── ...
+│   │   └── mixins/
+│   │       ├── _index.scss
+│   │       ├── _theme.scss
+│   │       ├── _utilities.scss
+│   │       └── ...
+│   ├── foundation/
+│   │   ├── _index.scss
+│   │   ├── _base.scss
+│   │   └── _headings.scss
+│   ├── component/
+│   │   ├── _index.scss
+│   │   ├── _button.scss
+│   │   ├── _input.scss
+│   │   ├── _select.scss
+│   │   ├── _card.scss
+│   │   └── ...
+│   ├── js/
+│   │   └── flexa.js                  # UMD bundle
+│   └── themes/
+│       └── flexa-theme-default.scss
+├── dist/                             # Build output (generated)
+├── docs/                             # Documentation and showcase
+│   ├── assets/
+│   └── showcase/
+├── tests/
+│   ├── js/flexa.test.js              # JS API tests
+│   └── package-build.test.js         # Build output smoke tests
+├── stylelint.config.mjs
+├── postcss.config.cjs
+├── vitest.config.mjs
+└── package.json
+```
