@@ -1,9 +1,9 @@
 {
   "name": "Flexa",
   "version": "1.0.0",
-  "description": "Compact CSS for web and micro UIs. Responsive ready and easy to use.",
+  "description": "Compact front-end framework for micro UIs. Fully responsive, WCAG 2.1 compliant, with built-in RTL/LTR support, flexible theming, and an easy to use.",
   "license": "MIT",
-  "author": "Mahdi Atashin - DokuDesk",
+  "author": "Mahdi Atashin | DokuDesk",
   "type": "module",
   "main": "dist/js/flexa.js",
   "style": "dist/css/flexa.css",
@@ -51,11 +51,16 @@
     "utility-classes",
     "responsive",
     "rtl",
+    "ltr",
     "theme",
     "dark-mode",
+    "light-mode",
+    "auto-mode",
     "ui",
     "flexbox",
-    "frontend"
+    "frontend",
+    "microsystems",
+    "micro-ui"
   ],
   "repository": {
     "type": "git",

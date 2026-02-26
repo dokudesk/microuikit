@@ -39,6 +39,9 @@ export default {
       }
     ],
 
+    // Allow original value keyword casing
+    "value-keyword-case": null,
+
     // Colors & numbers
     "color-hex-length": "short",
     "length-zero-no-unit": true,

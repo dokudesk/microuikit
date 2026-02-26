@@ -1,6 +1,11 @@
 node_modules/
 build/
+.env
+.env.*
+!.env.example
+dist/
 .sass-cache/
 *.log
 .DS_Store
 coverage/
+.cursor/

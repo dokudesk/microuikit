@@ -1,6 +1,6 @@
 # Flexa
 
-Compact CSS for web and micro UIs. Responsive ready and easy to use.
+Compact front-end framework for micro UIs. Fully responsive, WCAG 2.1 compliant, with built-in RTL/LTR support, flexible theming, and an easy to use.
 
 ## Features
 
@@ -103,7 +103,19 @@ npm run test:run      # single run (runs build:js first)
 npm run test:coverage # single run + coverage report (text, HTML, lcov)
 ```
 
+A CI/CD pipeline is configured via GitLab CI to run linting and tests on every push and merge request to `master` and `develop` branches.
+
 Reports are written to `coverage/`. To enforce coverage thresholds, set `thresholds` in `vitest.config.mjs`.
+
+## Releases
+
+We use GitFlow: develop on `develop`, release to `master` with squash merge. See **[WORKFLOW.md](WORKFLOW.md)** for the full step-by-step guide.
+
+**Quick release steps:**
+1. Update version in `package.json`.
+2. Squash merge `develop` → `master` (via Merge Request).
+3. Create and push tag: `git tag v1.1.0 && git push origin v1.1.0`.
+4. CI automatically creates a GitLab Release with `flexa-v1.1.0.zip`.
 
 ## JavaScript API
 
@@ -169,6 +181,7 @@ Flexa.init(); // Theme.init(), Direction.init(), PasswordToggle.init()
 
 ## Development
 
+- **Workflow:** Develop on `develop`, release to `master` via squash merge. See [WORKFLOW.md](WORKFLOW.md).
 - **Node:** `engines.node` >= 18 (see `package.json`).
 - **Linting:** Stylelint 17 with `stylelint-config-standard-scss` and `@stylistic/stylelint-plugin`.
 - **Prefix:** Default class/variable prefix is `fx-` (see `src/abstracts/variables/_global.scss`).
@@ -220,8 +233,11 @@ flexa/
 ├── tests/
 │   ├── js/flexa.test.js              # JS API tests
 │   └── package-build.test.js         # Build output smoke tests
+├── .gitlab-ci.yml                   # GitLab CI/CD pipeline
 ├── stylelint.config.mjs
 ├── postcss.config.cjs
 ├── vitest.config.mjs
+├── WORKFLOW.md                       # Development & release guide
+├── CONTRIBUTING.md
 └── package.json
 ```

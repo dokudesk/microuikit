@@ -1,6 +1,6 @@
-﻿# Contributing to FLEXA
+﻿# Contributing to Flexa
 
-Thank you for considering contributing to FLEXA! 
+Thank you for considering contributing to Flexa! 
 By following these guidelines, you help keep the project organized, readable, and easy to maintain.
 
 ---
@@ -14,6 +14,8 @@ We use **GitFlow** for branch management:
 - `feature/*` → feature branches (branch off `develop`)
 - `hotfix/*` → urgent fixes (branch off `master`)
 - `release/*` → prepare releases
+
+For the full step-by-step workflow (development, release, CI), see **[WORKFLOW.md](WORKFLOW.md)**.
 
 ---
 
