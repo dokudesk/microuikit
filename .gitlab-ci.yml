@@ -1,5 +1,6 @@
 # Flexa — GitLab CI/CD Pipeline
 # Lint, test, and release on tags
+# Requires: Runner with Docker executor
 
 variables:
   NODE_VERSION: "20"
@@ -12,6 +13,8 @@ stages:
 # Block merge to master unless package.json version is bumped
 check-version-bump:
   stage: validate
+  tags:
+    - flexa
   image: alpine/git
   script:
     - |
@@ -47,6 +50,8 @@ check-version-bump:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
 
 .test_template: &test_template
+  tags:
+    - flexa
   image: node:${NODE_VERSION}-alpine
   cache:
     key: ${CI_COMMIT_REF_SLUG}
