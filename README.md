@@ -83,15 +83,9 @@ npm run build
 | `js/flexa.min.js` | JavaScript minified for CDN |
 | `js/flexa.min.js.map` | Source map for minified JS |
 
-**Individual steps:**
+**Build script:**
 
 - `npm run build` — Full build (clean + CSS + themes + JS + minify)
-- `npm run build:css` — Build `dist/css/flexa.css`
-- `npm run build:themes` — Build theme CSS
-- `npm run build:js` — Copy `src/js/flexa.js` to `dist/js/flexa.js`
-- `npm run build:cdn` — Minify main CSS → `flexa.min.css`
-- `npm run build:themes:cdn` — Minify theme CSS
-- `npm run build:js:cdn` — Minify JS → `flexa.min.js`
 
 ## Testing
 
@@ -99,23 +93,23 @@ Tests use [Vitest](https://vitest.dev/) and [jsdom](https://github.com/jsdom/jsd
 
 ```bash
 npm run test          # watch mode
-npm run test:run      # single run (runs build:js first)
+npm run test:run      # single run
 npm run test:coverage # single run + coverage report (text, HTML, lcov)
 ```
 
-A CI/CD pipeline is configured via GitLab CI to run linting and tests on every push and merge request to `master` and `develop` branches.
+A CI/CD pipeline is configured via GitLab CI to run linting, testing, and build checks on pushes to `develop`, `feature/*`, `hotfix/*`, `release/*`, and on merge requests.
 
 Reports are written to `coverage/`. To enforce coverage thresholds, set `thresholds` in `vitest.config.mjs`.
 
-## Releases
+## Workflow
 
-We use GitFlow: develop on `develop`, release to `master` with squash merge. See **[WORKFLOW.md](WORKFLOW.md)** for the full step-by-step guide.
+We use GitFlow with protected `master`.
 
-**Quick release steps:**
-1. Update version in `package.json`.
-2. Squash merge `develop` → `master` (via Merge Request).
-3. Create and push tag: `git tag v1.1.0 && git push origin v1.1.0`.
-4. CI automatically creates a GitLab Release with `flexa-v1.1.0.zip`.
+- Work happens on `feature/*`, `hotfix/*`, or `release/*` branches.
+- These branches are merged into `develop`.
+- `master` is updated only via Merge Request from `develop` with a passing pipeline.
+
+See **[WORKFLOW.md](WORKFLOW.md)** for the full step-by-step process.
 
 ## JavaScript API
 
@@ -163,25 +157,16 @@ Flexa.init(); // Theme.init(), Direction.init(), PasswordToggle.init()
 | Script | Description |
 |--------|-------------|
 | `npm run build` | Full build (clean + CSS + themes + JS + minify) |
-| `npm run build:css` | Build `dist/css/flexa.css` |
-| `npm run build:themes` | Build theme CSS |
-| `npm run build:js` | Copy JS to `dist/js/flexa.js` |
-| `npm run build:cdn` | Minify main CSS |
-| `npm run build:themes:cdn` | Minify theme CSS |
-| `npm run build:js:cdn` | Minify JS |
 | `npm run lint` | Lint SCSS (`stylelint:scss`) |
 | `npm run lint:fix` | Lint and fix SCSS |
-| `npm run stylelint:scss` | Lint `src/**/*.scss` |
-| `npm run stylelint:css` | Lint `dist/css` and `docs/assets/css` |
 | `npm run test` | Vitest watch |
 | `npm run test:run` | Vitest single run |
 | `npm run test:coverage` | Vitest run + coverage report |
-| `npm run clean:build` | Remove `build/` directory |
-| `npm run clean:dist` | Remove `dist/` directory (run automatically before full build) |
+| `npm run clean` | Remove `dist/` directory (run automatically before full build) |
 
 ## Development
 
-- **Workflow:** Develop on `develop`, release to `master` via squash merge. See [WORKFLOW.md](WORKFLOW.md).
+- **Workflow:** GitFlow (`feature/*`, `hotfix/*`, `release/*` -> `develop` -> MR to `master`). See [WORKFLOW.md](WORKFLOW.md).
 - **Node:** `engines.node` >= 18 (see `package.json`).
 - **Linting:** Stylelint 17 with `stylelint-config-standard-scss` and `@stylistic/stylelint-plugin`.
 - **Prefix:** Default class/variable prefix is `fx-` (see `src/abstracts/variables/_global.scss`).
@@ -237,7 +222,7 @@ flexa/
 ├── stylelint.config.mjs
 ├── postcss.config.cjs
 ├── vitest.config.mjs
-├── WORKFLOW.md                       # Development & release guide
+├── WORKFLOW.md                       # Development guide
 ├── CONTRIBUTING.md
 └── package.json
 ```

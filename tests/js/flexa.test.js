@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 import fs from 'node:fs';
 import { describe, it, expect, beforeEach, afterEach, vi, beforeAll } from 'vitest';
 
+const PREFIX = 'fx-';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const flexaPath = path.resolve(__dirname, '../../dist/js/flexa.js');
 
@@ -19,7 +20,7 @@ beforeAll(() => {
 
 describe('Flexa API', () => {
   it('exposes PREFIX and all public modules', () => {
-    expect(Flexa.PREFIX).toBe('fx-');
+    expect(Flexa.PREFIX).toBe(PREFIX);
     expect(Flexa.Theme).toBeDefined();
     expect(Flexa.Direction).toBeDefined();
     expect(Flexa.ButtonBusy).toBeDefined();
@@ -129,12 +130,12 @@ describe('ButtonBusy', () => {
   });
 
   it('set(element, false) sets aria-busy="false"', () => {
-    Flexa.ButtonBusy.set(button, true);
     Flexa.ButtonBusy.set(button, false);
     expect(button.getAttribute('aria-busy')).toBe('false');
   });
 
   it('get(element) returns busy state', () => {
+    Flexa.ButtonBusy.set(button, false);
     expect(Flexa.ButtonBusy.get(button)).toBe(false);
     Flexa.ButtonBusy.set(button, true);
     expect(Flexa.ButtonBusy.get(button)).toBe(true);
@@ -170,6 +171,7 @@ describe('ButtonBusy', () => {
     Flexa.ButtonBusy.set(button, false);
     expect(spy).toHaveBeenCalledWith(expect.objectContaining({ detail: { busy: false } }));
     expect(spy).toHaveBeenCalledTimes(2);
+    button.removeEventListener('flexa:button-busy', spy);
   });
 });
 

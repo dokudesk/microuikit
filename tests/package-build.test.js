@@ -9,105 +9,143 @@ import { fileURLToPath } from 'node:url';
 import { execSync } from 'node:child_process';
 import { describe, it, expect, beforeAll } from 'vitest';
 
+const PREFIX = 'fx-';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, '..');
-const distCss = path.join(projectRoot, 'dist', 'css');
+const distRoot = path.join(projectRoot, 'dist');
+const distCss = path.join( distRoot, 'css');
+const distJs = path.join(distRoot, 'js');
 const distThemes = path.join(distCss, 'themes');
-const distJs = path.join(projectRoot, 'dist', 'js');
-
-function runBuild(script) {
-  try {
-    execSync(`npm run ${script}`, { cwd: projectRoot, stdio: 'pipe' });
-  } catch {
-    // may already exist from full build
-  }
-}
+const mainCss = path.join(distCss, 'flexa.css');
+const mainMinCss = path.join(distCss, 'flexa.min.css');
+const mainJs = path.join(distJs, 'flexa.js');
+const mainMinJs = path.join(distJs, 'flexa.min.js');
+const themeCss = path.join(distThemes, 'flexa-theme-default.css');
+const themeMinCss = path.join(distThemes, 'flexa-theme-default.min.css');
 
 beforeAll(() => {
-  runBuild('build:css');
-  runBuild('build:themes');
-  runBuild('build:cdn');
-  runBuild('build:themes:cdn');
-  runBuild('build:js:cdn');
+  // If build artifacts don't exist (e.g. running vitest directly),
+  // run a full build once for all tests.
+  if (!fs.existsSync(mainCss) || !fs.existsSync(mainMinCss) || 
+      !fs.existsSync(themeCss) || !fs.existsSync(themeMinCss) ||
+      !fs.existsSync(mainJs) || !fs.existsSync(mainMinJs)) 
+  {
+    execSync('npm run build', { cwd: projectRoot, stdio: 'inherit' });
+  }
 });
 
 describe('Package build output', () => {
 
   it('dist/css/flexa.css exists after build', () => {
-    expect(fs.existsSync(path.join(distCss, 'flexa.css'))).toBe(true);
+    expect(fs.existsSync(mainCss)).toBe(true);
+    expect(fs.statSync(mainCss).size).toBeGreaterThan(0);
   });
 
   it('main CSS contains :root design tokens', () => {
-    const mainCss = path.join(distCss, 'flexa.css');
     if (!fs.existsSync(mainCss)) return;
     const content = fs.readFileSync(mainCss, 'utf8');
-    expect(content).toMatch(/:root\s*\{/);
-    expect(content).toMatch(/--fx-/);
+    expect(content).toMatch(/:root/);
+    expect(content).toMatch(/\[data-theme/);
+    expect(content).toMatch(new RegExp(`--${PREFIX}`));
+    expect(content).toMatch(new RegExp(`\\.${PREFIX}`));
   });
 
-  it('main CSS contains core utility/component selectors', () => {
-    const mainCss = path.join(distCss, 'flexa.css');
+  it('main CSS contains core components', () => {
     if (!fs.existsSync(mainCss)) return;
     const content = fs.readFileSync(mainCss, 'utf8');
-    expect(content).toMatch(/\.fx-btn/);
-    expect(content).toMatch(/\.fx-select/);
-    expect(content).toMatch(/\.fx-input/);
+    expect(content).toMatch(new RegExp(`\\.${PREFIX}btn`));
+    expect(content).toMatch(new RegExp(`\\.${PREFIX}input`));
+    expect(content).toMatch(new RegExp(`\\.${PREFIX}input-frame`));
+    expect(content).toMatch(new RegExp(`\\.${PREFIX}textarea`));
+    expect(content).toMatch(new RegExp(`\\.${PREFIX}textarea-frame`));
+    expect(content).toMatch(new RegExp(`\\.${PREFIX}checkbox`));
+    expect(content).toMatch(new RegExp(`\\.${PREFIX}checkbox-frame`));
+    expect(content).toMatch(new RegExp(`\\.${PREFIX}radio`));
+    expect(content).toMatch(new RegExp(`\\.${PREFIX}radio-frame`));
+    expect(content).toMatch(new RegExp(`\\.${PREFIX}select`));
+    expect(content).toMatch(new RegExp(`\\.${PREFIX}select-frame`));
+    expect(content).toMatch(new RegExp(`\\.${PREFIX}card`));
+    expect(content).toMatch(new RegExp(`\\.${PREFIX}card-header`));
+    expect(content).toMatch(new RegExp(`\\.${PREFIX}card-body`));
+    expect(content).toMatch(new RegExp(`\\.${PREFIX}card-footer`));
   });
 
-  it('dist/js/flexa.js exists (from pretest build:js)', () => {
-    expect(fs.existsSync(path.join(distJs, 'flexa.js'))).toBe(true);
+  it('dist/js/flexa.js exists after build', () => {
+    expect(fs.existsSync(mainJs)).toBe(true);
+    expect(fs.statSync(mainJs).size).toBeGreaterThan(0);
   });
 
-  it('main JS bundle exposes Theme and Direction (UMD shape)', () => {
-    const mainJs = path.join(distJs, 'flexa.js');
+  it('main JS bundle exposes API', () => {
     if (!fs.existsSync(mainJs)) return;
     const content = fs.readFileSync(mainJs, 'utf8');
     expect(content).toMatch(/Theme/);
     expect(content).toMatch(/Direction/);
     expect(content).toMatch(/ButtonBusy/);
+    expect(content).toMatch(/PasswordToggle/);
     expect(content).toMatch(/PREFIX/);
   });
 });
 
 describe('Theme build output', () => {
+
   it('dist/css/themes/flexa-theme-default.css exists', () => {
-    const themeCss = path.join(distThemes, 'flexa-theme-default.css');
     expect(fs.existsSync(themeCss)).toBe(true);
+    expect(fs.statSync(themeCss).size).toBeGreaterThan(0);
   });
 
   it('theme CSS contains theme-related selectors or variables', () => {
-    const themeCss = path.join(distThemes, 'flexa-theme-default.css');
     if (!fs.existsSync(themeCss)) return;
     const content = fs.readFileSync(themeCss, 'utf8');
-    expect(content.length).toBeGreaterThan(0);
-    expect(content).toMatch(/\[data-theme|:root|--fx-|\.fx-/);
+    expect(content).toMatch(/:root/);
+    expect(content).toMatch(/\[data-theme/);
+    expect(content).toMatch(new RegExp(`--${PREFIX}`));
+    /* There is no .${PREFIX} in the theme CSS file */
   });
 });
 
 describe('Minified (CDN) build output', () => {
-  it('dist/css/flexa.min.css exists and has content', () => {
+  it('dist/css/flexa.min.css exists and has content (minified)', () => {
     const minified = path.join(distCss, 'flexa.min.css');
     expect(fs.existsSync(minified)).toBe(true);
     expect(fs.statSync(minified).size).toBeGreaterThan(0);
   });
 
-  it('flexa.min.css contains core tokens or selectors', () => {
-    const minCss = path.join(distCss, 'flexa.min.css');
-    if (!fs.existsSync(minCss)) return;
-    const content = fs.readFileSync(minCss, 'utf8');
-    expect(content).toMatch(/--fx-|\.fx-btn|\.fx-select/);
+  it('flexa.min.css contains core tokens or selectors (minified)', () => {
+    if (!fs.existsSync(mainMinCss)) return;
+    const content = fs.readFileSync(mainMinCss, 'utf8');
+    expect(content).toMatch(/:root/);
+    expect(content).toMatch(/\[data-theme/);
+    expect(content).toMatch(new RegExp(`--${PREFIX}`));
+    expect(content).toMatch(new RegExp(`\\.${PREFIX}`));
   });
 
   it('dist/css/themes/flexa-theme-default.min.css exists', () => {
     const themeMin = path.join(distThemes, 'flexa-theme-default.min.css');
     expect(fs.existsSync(themeMin)).toBe(true);
+    expect(fs.statSync(themeMin).size).toBeGreaterThan(0);
+  });
+
+  it('flexa-theme-default.min.css contains theme-related selectors or variables  (minified)', () => {
+    if (!fs.existsSync(themeMinCss)) return;
+    const content = fs.readFileSync(themeMinCss, 'utf8');
+    expect(content).toMatch(/:root/);
+    expect(content).toMatch(/\[data-theme/);
+    expect(content).toMatch(new RegExp(`--${PREFIX}`));
+    /* There is no .${PREFIX} in the theme minified CSS file */
   });
 
   it('dist/js/flexa.min.js exists and exposes API (minified)', () => {
-    const minJs = path.join(distJs, 'flexa.min.js');
-    expect(fs.existsSync(minJs)).toBe(true);
-    const content = fs.readFileSync(minJs, 'utf8');
-    expect(content.length).toBeGreaterThan(0);
-    expect(content).toMatch(/Theme|Direction|ButtonBusy|data-theme|aria-busy/);
+    expect(fs.existsSync(mainMinJs)).toBe(true);
+    expect(fs.statSync(mainMinJs).size).toBeGreaterThan(0);
+  });
+
+  it('flexa.min.js exposes API (minified)', () => {
+    if (!fs.existsSync(mainMinJs)) return;
+    const content = fs.readFileSync(mainMinJs, 'utf8');
+    expect(content).toMatch(/Theme/);
+    expect(content).toMatch(/Direction/);
+    expect(content).toMatch(/ButtonBusy/);
+    expect(content).toMatch(/PasswordToggle/);
+    expect(content).toMatch(/PREFIX/);
   });
 });

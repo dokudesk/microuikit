@@ -5,44 +5,44 @@
   "license": "MIT",
   "author": "Mahdi Atashin | DokuDesk",
   "type": "module",
-  "main": "dist/js/flexa.js",
-  "style": "dist/css/flexa.css",
-  "unpkg": "dist/css/flexa.min.css",
-  "jsdelivr": "dist/css/flexa.min.css",
+  "main": "./dist/js/flexa.js",
+  "style": "./dist/css/flexa.css",
+  "unpkg": "./dist/css/flexa.min.css",
+  "jsdelivr": "./dist/css/flexa.min.css",
   "files": [
     "dist"
   ],
   "sideEffects": [
-    "**/*.css"
+    "**/*.css",
+    "**/*.js"
   ],
   "exports": {
     ".": {
       "import": "./dist/js/flexa.js",
-      "require": "./dist/js/flexa.js",
       "default": "./dist/js/flexa.js"
-    }
+    },
+    "./css": "./dist/css/flexa.css",
+    "./css/min": "./dist/css/flexa.min.css",
+    "./theme/default": "./dist/css/themes/flexa-theme-default.css",
+    "./theme/default/min": "./dist/css/themes/flexa-theme-default.min.css"
   },
   "scripts": {
-    "build": "npm run clean:dist && npm run build:css && npm run build:themes && npm run build:js && npm run build:cdn && npm run build:themes:cdn && npm run build:js:cdn",
+    "clean": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\"",
     "build:css": "node -e \"require('fs').mkdirSync('dist/css', { recursive: true })\" && sass --no-error-css --style=expanded --source-map --embed-sources src/flexa.scss dist/css/flexa.css",
     "build:themes": "node -e \"require('fs').mkdirSync('dist/css/themes', { recursive: true })\" && sass --no-error-css --style=expanded --source-map --embed-sources src/themes/flexa-theme-default.scss dist/css/themes/flexa-theme-default.css",
     "build:js": "node -e \"require('fs').mkdirSync('dist/js', { recursive: true })\" && node -e \"require('fs').copyFileSync('src/js/flexa.js', 'dist/js/flexa.js')\"",
     "build:cdn": "postcss dist/css/flexa.css --map --output dist/css/flexa.min.css",
     "build:themes:cdn": "postcss dist/css/themes/flexa-theme-default.css --map --output dist/css/themes/flexa-theme-default.min.css",
     "build:js:cdn": "npx terser dist/js/flexa.js --compress --mangle --output dist/js/flexa.min.js --source-map \"url='flexa.min.js.map'\"",
-    "clean:build": "node -e \"require('fs').rmSync('build', { recursive: true, force: true })\"",
-    "clean:dist": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\"",
-    "lint": "npm run stylelint:scss",
-    "lint:fix": "npm run stylelint:scss:fix",
+    "build": "npm run clean && npm-run-all build:css build:themes build:js build:cdn build:themes:cdn build:js:cdn",
+    "lint": "stylelint \"src/**/*.scss\"",
+    "lint:fix": "stylelint \"src/**/*.scss\" --fix",
     "test": "vitest",
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",
-    "pretest": "npm run build:js",
-    "pretest:run": "npm run build:js",
-    "pretest:coverage": "npm run build:js",
-    "stylelint:scss": "stylelint \"src/**/*.scss\"",
-    "stylelint:css": "stylelint \"dist/css/**/*.css\" \"docs/assets/css/**/*.css\"",
-    "stylelint:scss:fix": "stylelint \"src/**/*.scss\" --fix"
+    "pretest": "npm run build",
+    "pretest:run": "npm run build",
+    "pretest:coverage": "npm run build"
   },
   "keywords": [
     "css",
