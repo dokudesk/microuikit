@@ -25,16 +25,19 @@ cache:
   paths:
     - node_modules/
 
+# Stage 1: lint
 lint:
   stage: lint
   script:
     - npm run lint
 
+# Stage 2: test
 test:
   stage: test
   script:
     - npm run test:run
 
+# Stage 3: build
 build:
   stage: build
   script:
