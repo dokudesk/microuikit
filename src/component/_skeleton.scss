@@ -29,8 +29,11 @@
     background-size: 200% 100%;
     border-color: transparent !important;
     box-shadow: none !important;
+    outline: none !important;
+    caret-color: transparent !important;
     user-select: none;
     pointer-events: none;
+    cursor: not-allowed;
     animation: skeleton-shimmer 1.5s ease-in-out infinite;
 
     &::placeholder {

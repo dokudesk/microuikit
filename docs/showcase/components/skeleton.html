@@ -84,7 +84,10 @@
             <input id="skeleton-input" type="text" class="fx-input fx-skeleton" value="Project name" />
             <label for="skeleton-input">Project name</label>
           </div>
-          <textarea class="fx-textarea fx-skeleton" rows="3" placeholder="Project description"></textarea>
+          <div class="fx-textarea-frame fx-skeleton">
+            <textarea class="fx-textarea" rows="3" placeholder="Project description">Project description</textarea>
+            <label for="skeleton-textarea">Project description</label>
+          </div>
           <select class="fx-select fx-skeleton" style="width: 12rem;">
             <option value="1">Option 1</option>
             <option value="2">Option 2</option>
@@ -97,7 +100,10 @@
   &lt;input id="skeleton-input" type="text" class="fx-input fx-skeleton" value="Project name"/&gt;
   &lt;label for="skeleton-input"&gt;Project name&lt;/label&gt;
 &lt;/div&gt;
-&lt;textarea class="fx-textarea fx-skeleton" rows="3" placeholder="Project description"&gt;&lt;/textarea&gt;
+&lt;div class="fx-textarea-frame fx-skeleton"&gt;
+  &lt;textarea class="fx-textarea" rows="3" placeholder="Project description"&gt;Project description&lt;/textarea&gt;
+  &lt;label for="skeleton-textarea"&gt;Project description&lt;/label&gt;
+&lt;/div&gt;
 &lt;select class="fx-select fx-skeleton"&gt;
   &lt;option value="1"&gt;Option 1&lt;/option&gt;
   &lt;option value="2"&gt;Option 2&lt;/option&gt;
@@ -125,7 +131,7 @@
             Sharper corners
           </div>
         </div>
-        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-skeleton"
+        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-skeleton fx-rounded-pill"
   style="--fx-skeleton-background-color: var(--fx-background-info);"&gt;
   Info tone
 &lt;/div&gt;

@@ -159,6 +159,11 @@
       pointer-events: none;
     }
 
+    .#{$prefix}textarea.#{$prefix}skeleton + label[for],
+    .#{$prefix}textarea.#{$prefix}Skeleton + label[for] {
+      visibility: hidden;
+    }
+
     // When disabled, frame border always uses border-color (overrides valid/invalid)
     &:has(.#{$prefix}textarea[disabled]:placeholder-shown),
     &:has(.#{$prefix}textarea[disabled]:not(:placeholder-shown)) {
