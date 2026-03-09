@@ -4,6 +4,14 @@
     transform: rotate(360deg);
   }
 }
+@keyframes skeleton-shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
 /*!
  * Flexa v1.0.0
  * © 2025–2026 DokuDesk — https://dokudesk.com
@@ -79,6 +87,7 @@
   --fx-select-arrow-color: #ced4da;
   --fx-select-selected-option-text-color: #030613;
   --fx-select-selected-option-background-color: #0d6efd;
+  --fx-skeleton-background-color: #ced4da;
   --fx-text-primary: #094db1;
   --fx-text-secondary: #4c5258;
   --fx-text-success: #125f3b;
@@ -164,6 +173,7 @@ html[theme=dark], html[data-theme=dark] {
   --fx-select-arrow-color: #6c757d;
   --fx-select-selected-option-text-color: #e9ecef;
   --fx-select-selected-option-background-color: #0d6efd;
+  --fx-skeleton-background-color: #6c757d;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -195,6 +205,7 @@ html[theme=dark], html[data-theme=dark] {
     --fx-select-arrow-color: #6c757d;
     --fx-select-selected-option-text-color: #e9ecef;
     --fx-select-selected-option-background-color: #0d6efd;
+    --fx-skeleton-background-color: #6c757d;
   }
 }
 html[dir=rtl], html[direction=rtl], html[data-dir=rtl], html[data-direction=rtl] {
@@ -3616,6 +3627,10 @@ html[dir=rtl] .fx-btn[aria-busy=true]::before, html[direction=rtl] .fx-btn[aria-
   cursor: not-allowed;
   pointer-events: none;
 }
+.fx-input-frame .fx-input.fx-skeleton + label[for],
+.fx-input-frame .fx-input.fx-Skeleton + label[for] {
+  visibility: hidden;
+}
 .fx-input-frame .fx-toggle-password {
   display: flex;
   align-items: center;
@@ -4174,6 +4189,44 @@ html[dir=rtl] .fx-btn[aria-busy=true]::before, html[direction=rtl] .fx-btn[aria-
 
 .fx-card-footer {
   padding: 0 var(--fx-card-padding-x) var(--fx-card-padding-y) var(--fx-card-padding-x);
+}
+
+.fx-skeleton,
+.fx-Skeleton {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  color: transparent !important;
+  background-color: var(--fx-skeleton-background-color) !important;
+  background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.45) 50%, rgba(255, 255, 255, 0) 100%);
+  background-repeat: no-repeat;
+  background-size: 200% 100%;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  user-select: none;
+  pointer-events: none;
+  animation: skeleton-shimmer 1.5s ease-in-out infinite;
+}
+.fx-skeleton::placeholder,
+.fx-Skeleton::placeholder {
+  color: transparent;
+}
+.fx-skeleton::selection,
+.fx-Skeleton::selection {
+  background-color: transparent;
+  color: transparent;
+}
+.fx-skeleton > *,
+.fx-Skeleton > * {
+  visibility: hidden !important;
+}
+
+html[dir=rtl] .fx-skeleton,
+html[dir=rtl] .fx-Skeleton, html[direction=rtl] .fx-skeleton,
+html[direction=rtl] .fx-Skeleton, html[data-dir=rtl] .fx-skeleton,
+html[data-dir=rtl] .fx-Skeleton, html[data-direction=rtl] .fx-skeleton,
+html[data-direction=rtl] .fx-Skeleton {
+  animation-direction: reverse;
 }
 
 /*# sourceMappingURL=flexa.css.map */

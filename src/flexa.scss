@@ -66,3 +66,4 @@
 @include component.textarea(vars.$prefix);
 @include component.select(vars.$prefix);
 @include component.card(vars.$prefix);
+@include component.skeleton(vars.$prefix);

@@ -79,6 +79,7 @@
   --fx-select-arrow-color: #ced4da;
   --fx-select-selected-option-text-color: #030613;
   --fx-select-selected-option-background-color: #0d6efd;
+  --fx-skeleton-background-color: #ced4da;
   --fx-text-primary: #094db1;
   --fx-text-secondary: #4c5258;
   --fx-text-success: #125f3b;
@@ -164,6 +165,7 @@ html[theme=dark], html[data-theme=dark] {
   --fx-select-arrow-color: #6c757d;
   --fx-select-selected-option-text-color: #e9ecef;
   --fx-select-selected-option-background-color: #0d6efd;
+  --fx-skeleton-background-color: #6c757d;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -195,6 +197,7 @@ html[theme=dark], html[data-theme=dark] {
     --fx-select-arrow-color: #6c757d;
     --fx-select-selected-option-text-color: #e9ecef;
     --fx-select-selected-option-background-color: #0d6efd;
+    --fx-skeleton-background-color: #6c757d;
   }
 }
 

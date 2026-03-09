@@ -181,6 +181,39 @@ pre code {
   padding: 0 0.25rem;
 }
 
+.fx-demo-skeleton-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.fx-demo-skeleton-line {
+  display: block;
+  min-height: 1rem;
+  border-radius: 999px;
+}
+
+.fx-demo-skeleton-line-sm {
+  min-height: 0.75rem;
+}
+
+.fx-demo-skeleton-line-lg {
+  min-height: 1.5rem;
+}
+
+.fx-demo-skeleton-avatar {
+  width: 4rem;
+  min-width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+
+.fx-demo-skeleton-card {
+  width: 100%;
+  max-width: 24rem;
+}
+
 /* -----------------------------------------------------------------------------
    Responsive
    ----------------------------------------------------------------------------- */

@@ -84,6 +84,8 @@ $select-selected-option-text-color: $text-color !default;
 $select-selected-option-text-color-dark: $text-color-dark !default;
 $select-selected-option-background-color: $primary !default;
 $select-selected-option-background-color-dark: $primary !default;
+$skeleton-background-color: map.get($grays, 400) !default;
+$skeleton-background-color-dark: map.get($grays, 600) !default;
 
 // ===============================
 // Validation Colors
@@ -209,6 +211,7 @@ $theme-light-colors: (
   select-arrow-color: $select-arrow-color,
   select-selected-option-text-color: $select-selected-option-text-color,
   select-selected-option-background-color: $select-selected-option-background-color,
+  skeleton-background-color: $skeleton-background-color,
 ) !default;
 $theme-dark-colors: (
   text-color: $text-color-dark,
@@ -238,4 +241,5 @@ $theme-dark-colors: (
   select-arrow-color: $select-arrow-color-dark,
   select-selected-option-text-color: $select-selected-option-text-color-dark,
   select-selected-option-background-color: $select-selected-option-background-color-dark,
+  skeleton-background-color: $skeleton-background-color-dark,
 ) !default;

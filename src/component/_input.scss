@@ -136,6 +136,11 @@
       pointer-events: none;
     }
 
+    .#{$prefix}input.#{$prefix}skeleton + label[for],
+    .#{$prefix}input.#{$prefix}Skeleton + label[for] {
+      visibility: hidden;
+    }
+
     // Password visibility toggle (mask-based icon)
     .#{$prefix}toggle-password {
       display: flex;
