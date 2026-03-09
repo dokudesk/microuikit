@@ -66,23 +66,60 @@
     <div class="fx-demo-section">
       <h5 >How it works</h5>
       <div class="fx-demo-panel">
-        <ul >
-          <li><strong>Standard (Firefox, etc.)</strong> <code>*</code> gets
-            <code>scrollbar-width: var(--fx-scrollbar-width)</code>
-            and <code>scrollbar-color: var(--fx-scrollbar-color) var(--fx-background-color)</code> (thumb and track).
+        <ul>
+          <li>
+            <strong>Standard browsers (e.g., Firefox)</strong><br>
+            The following settings apply to all elements (<code>*</code>):
+            <ul>
+              <li>
+                <code>scrollbar-width</code> is set using the variable 
+                <code>--fx-scrollbar-width</code>.
+              </li>
+              <li>
+                <code>scrollbar-color</code> defines the scrollbar colors using 
+                <code>--fx-scrollbar-color</code> for the thumb and 
+                <code>--fx-background-color</code> for the track.
+              </li>
+            </ul>
           </li>
-          <li><strong>WebKit (Chrome, Edge, Safari)</strong> <code>*::-webkit-scrollbar</code> uses
-            <code>--fx-edge-scrollbar-width</code> and <code>--fx-edge-scrollbar-height</code> for bar size;
-            <code>*::-webkit-scrollbar-track</code> uses <code>--fx-background-color</code> and
-            <code>--fx-border-radius</code>; <code>*::-webkit-scrollbar-thumb</code> uses
-            <code>--fx-scrollbar-color</code> and <code>--fx-border-radius</code>; thumb hover uses
-            <code>--fx-scrollbar-hover-color</code>; <code>*::-webkit-scrollbar-corner</code> uses
-            <code>--fx-background-color</code>.
+        
+          <li>
+            <strong>WebKit browsers (Chrome, Edge, Safari)</strong><br>
+            Scrollbars are customized using WebKit pseudo-elements:
+            <ul>
+              <li>
+                <code>*::-webkit-scrollbar</code> sets the scrollbar size using 
+                <code>--fx-edge-scrollbar-width</code> and 
+                <code>--fx-edge-scrollbar-height</code>.
+              </li>
+              <li>
+                <code>*::-webkit-scrollbar-track</code> defines the track background and 
+                border radius using <code>--fx-background-color</code> and 
+                <code>--fx-border-radius</code>.
+              </li>
+              <li>
+                <code>*::-webkit-scrollbar-thumb</code> sets the thumb color and 
+                border radius using <code>--fx-scrollbar-color</code> and 
+                <code>--fx-border-radius</code>.
+              </li>
+              <li>
+                When hovering over the thumb, its color changes to 
+                <code>--fx-scrollbar-hover-color</code>.
+              </li>
+              <li>
+                <code>*::-webkit-scrollbar-corner</code> uses 
+                <code>--fx-background-color</code> for the corner area.
+              </li>
+            </ul>
           </li>
-          <li>Theme files override <code>--fx-scrollbar-color</code> and <code>--fx-scrollbar-hover-color</code> for
-            dark mode so scrollbars stay readable on dark backgrounds.</li>
-        </ul>
-      </div>
+        
+          <li>
+            <strong>Dark mode support</strong><br>
+            Theme files override <code>--fx-scrollbar-color</code> and 
+            <code>--fx-scrollbar-hover-color</code> in dark mode so the scrollbar 
+            remains visible and readable on dark backgrounds.
+          </li>
+        </ul>      </div>
     </div>
 
   </main>
