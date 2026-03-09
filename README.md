@@ -48,7 +48,7 @@ npm install
 
 ### npm / Local build
 
-After `npm run build`, use the built files:
+After `npm run build:dev` or `npm run build:prod`, use the built files:
 
 ```html
 <link rel="stylesheet" href="path/to/node_modules/flexa/dist/css/flexa.css" />
@@ -70,7 +70,7 @@ For detailed usage and component examples, see the local docs in `docs/`:
 ## Build
 
 ```bash
-npm run build
+npm run build:dev
 ```
 
 **Outputs in `dist/`:**
@@ -78,18 +78,19 @@ npm run build
 
 | File                                     | Description                                 |
 | ---------------------------------------- | ------------------------------------------- |
-| `css/flexa.css`                          | Main stylesheet (expanded, with source map) |
-| `css/flexa.min.css`                      | Minified for CDN                            |
-| `css/themes/flexa-theme-default.css`     | Default theme (expanded, with source map)   |
-| `css/themes/flexa-theme-default.min.css` | Theme minified for CDN                      |
-| `js/flexa.js`                            | JavaScript library (UMD)                    |
-| `js/flexa.min.js`                        | JavaScript minified for CDN                 |
-| `js/flexa.min.js.map`                    | Source map for minified JS                  |
+| `css/flexa.css`                          | Main stylesheet (expanded)                                      |
+| `css/flexa.min.css`                      | Minified for CDN                                                |
+| `css/themes/flexa-theme-default.css`     | Default theme (expanded)                                        |
+| `css/themes/flexa-theme-default.min.css` | Theme minified for CDN                                          |
+| `js/flexa.js`                            | JavaScript library (UMD)                                        |
+| `js/flexa.min.js`                        | JavaScript minified for CDN                                     |
+| `*.map`                                  | Generated only by `build:dev`; omitted by `build:prod`          |
 
 
 **Build script:**
 
-- `npm run build` — Full build (clean + CSS + themes + JS + minify)
+- `npm run build:dev` — Development build with source maps 
+- `npm run build:prod` — Production build optimized without source maps
 
 ## Testing
 
@@ -166,10 +167,11 @@ Flexa.init(); // Theme.init(), Direction.init(), PasswordToggle.init()
 
 | Script                  | Description                                                    |
 | ----------------------- | -------------------------------------------------------------- |
-| `npm run build`         | Full build (clean + CSS + themes + JS + minify)                |
+| `npm run build:dev`     | Development build with source maps                             |
+| `npm run build:prod`    | Production build optimized without source maps                 |
 | `npm run lint`          | Lint SCSS (`stylelint:scss`)                                   |
 | `npm run lint:fix`      | Lint and fix SCSS                                              |
 | `npm run test`          | Vitest watch                                                   |
 | `npm run test:run`      | Vitest single run                                              |
 | `npm run test:coverage` | Vitest run + coverage report                                   |
-| `npm run clean`         | Remove `dist/` directory (run automatically before full build) |
+| `npm run clean`         | Remove `dist/` directory (run automatically before build)      |

@@ -41,7 +41,12 @@ test:
 build:
   stage: build
   script:
-    - npm run build
+    - |
+      if [ "$CI_COMMIT_BRANCH" = "master" ]; then
+        npm run build:prod
+      else
+        npm run build:dev
+      fi
   artifacts:
     paths:
       - dist/

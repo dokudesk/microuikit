@@ -95,7 +95,13 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build
+        run: |
+          BRANCH_NAME="${GITHUB_HEAD_REF:-$GITHUB_REF_NAME}"
+          if [ "$BRANCH_NAME" = "master" ]; then
+            npm run build:prod
+          else
+            npm run build:dev
+          fi
 
       # Equivalent to GitLab build artifacts (dist/)
       - name: Upload dist artifact

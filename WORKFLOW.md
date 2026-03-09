@@ -71,8 +71,11 @@ git checkout -b release/x.y.z
 ```bash
 npm run lint
 npm run test:run
-npm run build
+npm run build:dev
 ```
+
+Use `build:dev` during normal development work. It generates development artifacts, including source maps.
+Use `build:prod` when you need a production-ready package without source maps.
 
 ### 1.5 Commit and push branch
 
@@ -114,7 +117,7 @@ git push origin release/x.y.z
 3. **Target branch:** `develop`
 4. Create the MR and wait for pipeline success
 
-**CI Pipeline:** On pushes and Merge Requests in GitLab, CI runs lint, test, and build.
+**CI Pipeline:** On pushes and Merge Requests in GitLab, CI runs lint, test, and the appropriate build target.
 
 ---
 
@@ -157,7 +160,6 @@ git checkout -b hotfix/my-fix
 ### 2.3 Pipeline must pass
 
 - Pipeline runs lint, build, and test on the Merge Request.
-- Merge is blocked until pipeline is successful.
 
 ### 2.4 Merge policy for `master`
 
@@ -171,11 +173,11 @@ git checkout -b hotfix/my-fix
 
 | Trigger | Action |
 | ------- | ------ |
-| Push to `develop` | Lint -> Test -> Build |
-| Push to `feature/*` | Lint -> Test -> Build |
-| Push to `hotfix/*` | Lint -> Test -> Build |
-| Push to `release/*` | Lint -> Test -> Build |
-| Merge request (GitLab) | Lint -> Test -> Build |
+| Push to `develop` | Lint -> Test -> `build` |
+| Push to `feature/*` | Lint -> Test -> `build` |
+| Push to `hotfix/*` | Lint -> Test -> `build` |
+| Push to `release/*` | Lint -> Test -> `build` |
+| Merge request (GitLab) | Lint -> Test -> Build target based on branch purpose |
 | Push to GitHub mirror | No development workflow; distribution only |
 
 
