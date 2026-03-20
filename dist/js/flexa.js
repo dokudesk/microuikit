@@ -183,12 +183,150 @@
   };
 
   /**
+   * Collapse Manager
+   */
+  const Collapse = {
+
+    _isTransitioning: false,
+  
+    _getDimension(element) {
+      return element.classList.contains(PREFIX + 'collapse-horizontal')
+        ? 'width'
+        : 'height';
+    },
+  
+    _getScrollSize(element, dimension) {
+      return dimension === 'width' ? element.scrollWidth : element.scrollHeight;
+    },
+  
+    _show(element) {
+  
+      if (!element || element.classList.contains('show') || this._isTransitioning) return;
+  
+      const dimension = this._getDimension(element);
+      const collapsingClass = PREFIX + 'collapsing';
+  
+      this._isTransitioning = true;
+  
+      element.classList.remove(PREFIX + 'collapse');
+      element.classList.add(collapsingClass);
+      element.style[dimension] = '0px';
+  
+      void element.offsetHeight;
+  
+      const size = this._getScrollSize(element, dimension);
+      element.style[dimension] = size + 'px';
+  
+      this._waitTransitionEnd(element, () => {
+  
+        element.classList.remove(collapsingClass);
+        element.classList.add(PREFIX + 'collapse', 'show');
+  
+        element.style[dimension] = '';
+        this._isTransitioning = false;
+  
+      });
+  
+    },
+  
+    _hide(element) {
+  
+      if (!element || !element.classList.contains('show') || this._isTransitioning) return;
+  
+      const dimension = this._getDimension(element);
+      const collapsingClass = PREFIX + 'collapsing';
+  
+      this._isTransitioning = true;
+  
+      const rect = element.getBoundingClientRect();
+  
+      element.style[dimension] = rect[dimension] + 'px';
+  
+      void element.offsetHeight;
+  
+      element.classList.remove('show');
+      element.classList.remove(PREFIX + 'collapse');
+      element.classList.add(collapsingClass);
+  
+      element.style[dimension] = '0px';
+  
+      this._waitTransitionEnd(element, () => {
+  
+        element.classList.remove(collapsingClass);
+        element.classList.add(PREFIX + 'collapse');
+  
+        element.style[dimension] = '';
+        this._isTransitioning = false;
+  
+      });
+  
+    },
+  
+    _waitTransitionEnd(element, callback) {
+  
+      const duration = parseFloat(getComputedStyle(element).transitionDuration) * 1000;
+  
+      let called = false;
+  
+      const handler = () => {
+        if (called) return;
+        called = true;
+  
+        element.removeEventListener('transitionend', handler);
+        callback();
+      };
+  
+      element.addEventListener('transitionend', handler);
+  
+      setTimeout(handler, duration + 50);
+    },
+  
+    _toggle(element) {
+      if (!element) return;
+  
+      if (element.classList.contains('show')) {
+        this._hide(element);
+      } else {
+        this._show(element);
+      }
+    },
+  
+    init() {
+  
+      document.addEventListener('click', (e) => {
+  
+        const trigger = e.target.closest("[data-toggle='collapse']");
+        if (!trigger) return;
+  
+        e.preventDefault();
+  
+        const selector = trigger.getAttribute('data-target');
+        if (!selector) return;
+  
+        const target = document.querySelector(selector);
+        if (!target) return;
+  
+        const expanded = target.classList.contains('show');
+  
+        this._toggle(target);
+  
+        if (trigger.hasAttribute('aria-expanded')) {
+          trigger.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+        }
+  
+      });
+  
+    }
+  
+  };
+  /**
    * Initialize all Flexa components
    */
   function init() {
     Theme.init();
     Direction.init();
     PasswordToggle.init();
+    Collapse.init();
   }
 
   // Auto-initialize on DOM ready
@@ -205,6 +343,7 @@
     Direction: Direction,
     ButtonBusy: ButtonBusy,
     PasswordToggle: PasswordToggle,
+    Collapse: Collapse,
     init: init
   };
 }));

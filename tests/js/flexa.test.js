@@ -1,5 +1,5 @@
 /**
- * Unit tests for Flexa JS API (Theme, Direction, ButtonBusy, PasswordToggle, init).
+ * Unit tests for Flexa JS API (Theme, Direction, ButtonBusy, PasswordToggle, Collapse, init).
  * Loads the UMD bundle by reading and running in global scope so it attaches to window/global.
  */
 import path from 'node:path';
@@ -25,6 +25,7 @@ describe('Flexa API', () => {
     expect(Flexa.Direction).toBeDefined();
     expect(Flexa.ButtonBusy).toBeDefined();
     expect(Flexa.PasswordToggle).toBeDefined();
+    expect(Flexa.Collapse).toBeDefined();
     expect(typeof Flexa.init).toBe('function');
   });
 });
@@ -204,17 +205,87 @@ describe('PasswordToggle', () => {
   });
 });
 
+describe('Collapse', () => {
+  let trigger;
+  let target;
+
+  const nextTick = () => new Promise((resolve) => setTimeout(resolve, 0));
+
+  afterEach(() => {
+    if (trigger && trigger.parentNode) trigger.parentNode.removeChild(trigger);
+    if (target && target.parentNode) target.parentNode.removeChild(target);
+    trigger = null;
+    target = null;
+  });
+
+  it('init() toggles vertical collapse target via trigger', async () => {
+    trigger = document.createElement('button');
+    trigger.type = 'button';
+    trigger.setAttribute('data-toggle', 'collapse');
+    trigger.setAttribute('data-target', '#collapse-target-vertical');
+    trigger.setAttribute('aria-expanded', 'false');
+
+    target = document.createElement('div');
+    target.id = 'collapse-target-vertical';
+    target.className = 'fx-collapse';
+    target.textContent = 'Vertical body';
+
+    document.body.appendChild(trigger);
+    document.body.appendChild(target);
+
+    Flexa.Collapse.init();
+
+    trigger.click();
+    await nextTick();
+    expect(target.classList.contains('show')).toBe(true);
+
+    trigger.click();
+    await nextTick();
+    expect(target.classList.contains('show')).toBe(false);
+  });
+
+  it('init() toggles horizontal collapse target via trigger', async () => {
+    trigger = document.createElement('a');
+    trigger.href = '#collapse-target-horizontal';
+    trigger.setAttribute('role', 'button');
+    trigger.setAttribute('data-toggle', 'collapse');
+    trigger.setAttribute('data-target', '#collapse-target-horizontal');
+    trigger.setAttribute('aria-expanded', 'false');
+
+    target = document.createElement('div');
+    target.id = 'collapse-target-horizontal';
+    target.className = 'fx-collapse fx-collapse-horizontal';
+    target.innerHTML = '<div style="width: 12rem;">Horizontal body</div>';
+
+    document.body.appendChild(trigger);
+    document.body.appendChild(target);
+
+    Flexa.Collapse.init();
+
+    trigger.click();
+    await nextTick();
+    expect(target.classList.contains('show')).toBe(true);
+
+    trigger.click();
+    await nextTick();
+    expect(target.classList.contains('show')).toBe(false);
+  });
+});
+
 describe('init', () => {
-  it('init() runs Theme.init, Direction.init, PasswordToggle.init', () => {
+  it('init() runs Theme.init, Direction.init, PasswordToggle.init, Collapse.init', () => {
     const themeInit = vi.spyOn(Flexa.Theme, 'init');
     const dirInit = vi.spyOn(Flexa.Direction, 'init');
     const pwdInit = vi.spyOn(Flexa.PasswordToggle, 'init');
+    const collapseInit = vi.spyOn(Flexa.Collapse, 'init');
     Flexa.init();
     expect(themeInit).toHaveBeenCalled();
     expect(dirInit).toHaveBeenCalled();
     expect(pwdInit).toHaveBeenCalled();
+    expect(collapseInit).toHaveBeenCalled();
     themeInit.mockRestore();
     dirInit.mockRestore();
     pwdInit.mockRestore();
+    collapseInit.mockRestore();
   });
 });

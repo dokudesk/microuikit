@@ -11,7 +11,7 @@ Security fixes are provided for actively maintained stable releases.
 
 If you discover a security issue, please report it privately.
 Please include the word `SECURITY` in the report title/subject.
-Send your report to: [security@dokudesk.com](mailto:security@dokudesk.com)
+Send your report to: [support@dokudesk.com](mailto:support@dokudesk.com)
 
 - Do not open a public issue with exploit details.
 - Do not open a public Request with an unpatched vulnerability.
