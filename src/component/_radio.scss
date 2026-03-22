@@ -30,8 +30,7 @@
       }
 
       &:focus-visible:not(:disabled) + label[for]::before {
-        outline: var(--#{$prefix}focus-ring-outline-width)
-          solid var(--#{$prefix}focus-ring-color);
+        outline: var(--#{$prefix}focus-ring-outline-width) solid var(--#{$prefix}focus-ring-color);
         outline-offset: var(--#{$prefix}focus-ring-outline-offset);
       }
 
@@ -97,9 +96,7 @@
       cursor: pointer;
       font: var(--#{$prefix}font-weight-base) var(--#{$prefix}font-size-base) / var(--#{$prefix}line-height-base) var(--#{$prefix}font-family-base);
       color: var(--#{$prefix}text-color);
-      padding-inline-start: calc(
-        var(--#{$prefix}radio-size) + var(--#{$prefix}control-padding-x)
-      );
+      padding-inline-start: calc(var(--#{$prefix}radio-size) + var(--#{$prefix}control-padding-x));
       user-select: none;
       transition: color var(--#{$prefix}transition) ease;
     }
@@ -113,7 +110,7 @@
       transform: translateY(-50%);
       width: var(--#{$prefix}radio-size, 1.5rem);
       height: var(--#{$prefix}radio-size, 1.5rem);
-      border: var(--#{$prefix}border-width, 1px) solid var(--#{$prefix}border-color);
+      border: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
       border-radius: 50%;
       background-color: var(--#{$prefix}control-background-color);
       background-clip: padding-box;

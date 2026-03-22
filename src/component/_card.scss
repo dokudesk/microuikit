@@ -6,7 +6,7 @@
     width: 100%;
     background-color: var(--#{$prefix}control-background-color);
     background-clip: padding-box;
-    border: var(--#{$prefix}border-width, 0) solid var(--#{$prefix}border-color);
+    border: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
     border-radius: var(--#{$prefix}control-border-radius);
     transition: background-color var(--#{$prefix}transition) ease;
     box-shadow: var(--#{$prefix}box-shadow);

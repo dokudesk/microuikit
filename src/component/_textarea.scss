@@ -2,13 +2,14 @@
 @mixin textarea($prefix) {
   // Base textarea
   .#{$prefix}textarea {
+    min-height: var(--#{$prefix}control-height);
     padding: var(--#{$prefix}control-padding-y) var(--#{$prefix}control-padding-x);
     font: var(--#{$prefix}font-weight-base) var(--#{$prefix}font-size-base) var(--#{$prefix}font-family-base);
     line-height: var(--#{$prefix}line-height-base);
     color: var(--#{$prefix}text-color);
     background-color: var(--#{$prefix}control-background-color);
     background-clip: padding-box;
-    border: var(--#{$prefix}border-width, 0) solid var(--#{$prefix}border-color);
+    border: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
     border-radius: var(--#{$prefix}control-border-radius);
     transition: color var(--#{$prefix}transition) ease, background-color var(--#{$prefix}transition) ease, border-color var(--#{$prefix}transition) ease;
 
@@ -40,7 +41,7 @@
     margin: 0;
     background-color: var(--#{$prefix}control-background-color);
     background-clip: padding-box;
-    border: var(--#{$prefix}border-width, 0) solid var(--#{$prefix}border-color);
+    border: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
     border-radius: var(--#{$prefix}control-border-radius);
     padding: calc(var(--#{$prefix}control-border-radius) * 0.25);
     transition: background-color var(--#{$prefix}transition) ease, border-color var(--#{$prefix}transition) ease;
@@ -56,14 +57,19 @@
 
     label[for] {
       position: absolute;
-      inset-inline-start: calc(var(--#{$prefix}control-padding-x) + var(--#{$prefix}border-width));
-      top: calc(var(--#{$prefix}control-padding-y) + var(--#{$prefix}border-width, 0px));
+      padding: 0 2px;
+      max-width: calc(100% - var(--fx-control-padding-x) * 2);
+      inset-inline-start: var(--#{$prefix}control-padding-x);
+      top: var(--#{$prefix}control-padding-y);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
       transform: none;
       pointer-events: none;
       background-color: transparent;
       color: var(--#{$prefix}placeholder-color);
       font: var(--#{$prefix}font-weight-base) var(--#{$prefix}font-size-base) / var(--#{$prefix}line-height-base) var(--#{$prefix}font-family-base);
-      transition: color var(--#{$prefix}transition) ease, background-color var(--#{$prefix}transition) ease, font var(--#{$prefix}transition) ease, top var(--#{$prefix}transition) ease;
+      transition: color var(--#{$prefix}transition) ease, font var(--#{$prefix}transition) ease, top var(--#{$prefix}transition) ease;
     }
 
     .#{$prefix}textarea::placeholder {
@@ -74,7 +80,7 @@
 
     .#{$prefix}textarea:focus + label[for],
     .#{$prefix}textarea:not(:placeholder-shown) + label[for] {
-      top: calc((var(--#{$prefix}border-width, 0) + ( var(--#{$prefix}focus-ring-outline-width) - var(--#{$prefix}border-width, 0px))) * -1);
+      top: calc(var(--#{$prefix}focus-ring-outline-width) * -1);
       transform: translateY(-50%);
       background-color: var(--#{$prefix}control-background-color);
       font-size: calc(var(--#{$prefix}font-size-base) * 0.75);
@@ -123,17 +129,17 @@
     }
 
     &:has(.#{$prefix}textarea:focus) {
-      outline: var(--#{$prefix}focus-ring-color) solid calc(var(--#{$prefix}focus-ring-outline-width) - var(--#{$prefix}border-width, 0px));
+      outline: var(--#{$prefix}focus-ring-color) solid calc(var(--#{$prefix}focus-ring-outline-width) - var(--#{$prefix}border-width));
       outline-offset: 0;
     }
     &:has(.#{$prefix}textarea[invalid]:focus),
     &:has(.#{$prefix}textarea[aria-invalid="true"]:focus) {
-      outline: var(--#{$prefix}invalid-border-color) solid calc(var(--#{$prefix}focus-ring-outline-width) - var(--#{$prefix}border-width, 0px));
+      outline: var(--#{$prefix}invalid-border-color) solid calc(var(--#{$prefix}focus-ring-outline-width) - var(--#{$prefix}border-width));
       outline-offset: 0;
     }
     &:has(.#{$prefix}textarea[valid]:focus),
     &:has(.#{$prefix}textarea[aria-invalid="false"]:focus) {
-      outline: var(--#{$prefix}valid-border-color) solid calc(var(--#{$prefix}focus-ring-outline-width) - var(--#{$prefix}border-width, 0px));
+      outline: var(--#{$prefix}valid-border-color) solid calc(var(--#{$prefix}focus-ring-outline-width) - var(--#{$prefix}border-width));
       outline-offset: 0;
     }
 
@@ -146,7 +152,6 @@
 
     .#{$prefix}textarea[disabled]:not(:placeholder-shown) + label[for] {
       color: var(--#{$prefix}text-muted-color);
-      opacity: var(--#{$prefix}disabled-control-opacity);
       cursor: not-allowed;
       pointer-events: none;
     }

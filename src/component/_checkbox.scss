@@ -112,7 +112,7 @@
       transform: translateY(-50%);
       width: var(--#{$prefix}checkbox-size, 1.5rem);
       height: var(--#{$prefix}checkbox-size, 1.5rem);
-      border: var(--#{$prefix}border-width, 1px) solid var(--#{$prefix}border-color);
+      border: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
       border-radius: var(--#{$prefix}checkbox-border-radius);
       background-color: var(--#{$prefix}control-background-color);
       background-clip: padding-box;

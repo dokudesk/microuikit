@@ -11,7 +11,7 @@
     color: var(--#{$prefix}text-color);
     background-color: var(--#{$prefix}control-background-color);
     background-clip: padding-box;
-    border: var(--#{$prefix}border-width, 0) solid var(--#{$prefix}border-color);
+    border: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
     border-radius: var(--#{$prefix}control-border-radius);
     transition: color var(--#{$prefix}transition) ease, background-color var(--#{$prefix}transition) ease, border-color var(--#{$prefix}transition) ease;
 
@@ -44,14 +44,20 @@
 
     label[for] {
       position: absolute;
-      inset-inline-start: calc(var(--#{$prefix}control-padding-x) + var(--#{$prefix}border-width));
+      padding: 0 2px;
+      margin: 0 var(--fx-control-padding-x);
+      max-width: calc(100% - var(--fx-control-padding-x) * 2);
+      inset-inline-start: 0;
       top: 50%;
       transform: translateY(-50%);
       pointer-events: none;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
       background-color: transparent;
       color: var(--#{$prefix}placeholder-color);
       font: var(--#{$prefix}font-weight-base) var(--#{$prefix}font-size-base) / var(--#{$prefix}line-height-base) var(--#{$prefix}font-family-base);
-      transition: color var(--#{$prefix}transition) ease, background-color var(--#{$prefix}transition) ease, font var(--#{$prefix}transition) ease, top var(--#{$prefix}transition) ease;
+      transition: color var(--#{$prefix}transition) ease, font var(--#{$prefix}transition) ease, top var(--#{$prefix}transition) ease;
     }
 
     .#{$prefix}input {
@@ -86,7 +92,7 @@
 
     .#{$prefix}input:focus {
       outline-offset: 0;
-      outline-width: calc(var(--#{$prefix}focus-ring-outline-width) - var(--#{$prefix}border-width, 0px));
+      outline-width: calc(var(--#{$prefix}focus-ring-outline-width) - var(--#{$prefix}border-width));
     }
 
     // Floating label: moves up on focus or when input has value
@@ -97,7 +103,7 @@
 
     .#{$prefix}input:focus + label[for],
     .#{$prefix}input:not(:placeholder-shown) + label[for] {
-      top: min(0px , calc(0px - calc(var(--#{$prefix}focus-ring-outline-width) - var(--#{$prefix}border-width, 0px))));
+      top: 0;
       background-color: var(--#{$prefix}control-background-color);
       font-size: calc(var(--#{$prefix}font-size-base) * 0.75);
     }
@@ -128,10 +134,8 @@
     }
 
     .#{$prefix}input[disabled]:not(:placeholder-shown) + label[for] {
-      top: min(0px , calc(0px - calc(var(--#{$prefix}focus-ring-outline-width) - var(--#{$prefix}border-width, 0px))));
       background-color: var(--#{$prefix}control-background-color);
       color: var(--#{$prefix}text-muted-color);
-      opacity: var(--#{$prefix}disabled-control-opacity);
       cursor: not-allowed;
       pointer-events: none;
     }
@@ -149,13 +153,13 @@
       position: absolute;
       inset-block-start: + 2px;
       inset-inline-end: + 2px;
-      width: calc(var(--#{$prefix}control-height) - calc(var(--#{$prefix}border-width) * 2) - 4px);
-      height: calc(100% - calc(var(--#{$prefix}border-width) * 2) - 4px);
+      width: calc(var(--#{$prefix}control-height) - 4px);
+      height: calc(var(--#{$prefix}control-height) - 4px);
       border: none;
       margin: var(--#{$prefix}border-width);
       border-start-end-radius: calc(var(--#{$prefix}control-border-radius) - 2px);
       border-end-end-radius: calc(var(--#{$prefix}control-border-radius) - 2px);
-      background-color: transparent;
+      background-color: var(--#{$prefix}control-background-color);
       cursor: pointer;
       outline: none;
       transition: color var(--#{$prefix}transition) ease, background-color var(--#{$prefix}transition) ease;
@@ -185,6 +189,11 @@
       &[aria-pressed="true"]::before {
         mask: var(--#{$prefix}eye-off-svg) no-repeat center / contain;
       }
+    }
+
+    // When frame has toggle: reserve space so label text does not overlap the icon
+    &:has(.#{$prefix}toggle-password) label[for] {
+      max-width: calc(100% - var(--#{$prefix}control-height) - var(--#{$prefix}control-padding-x) - 8px);
     }
 
     // When frame has toggle: reserve space so text does not overlap arrow

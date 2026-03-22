@@ -286,7 +286,7 @@ hr {
   margin: var(--fx-gutter-width) 0;
   color: inherit;
   border: 0;
-  border-top: var(--fx-border-width, 1px) solid var(--fx-border-color);
+  border-top: var(--fx-border-width) solid var(--fx-border-color);
   opacity: 0.5;
 }
 
@@ -3384,7 +3384,7 @@ h6, .fx-h6 {
   color: var(--fx-text-color);
   background-color: var(--fx-control-background-color);
   background-clip: padding-box;
-  border: var(--fx-border-width, 0) solid var(--fx-border-color);
+  border: var(--fx-border-width) solid var(--fx-border-color);
   border-radius: var(--fx-control-border-radius);
   white-space: nowrap;
   cursor: pointer;
@@ -3524,7 +3524,7 @@ html[dir=rtl] .fx-btn[aria-busy=true]::before, html[direction=rtl] .fx-btn[aria-
   color: var(--fx-text-color);
   background-color: var(--fx-control-background-color);
   background-clip: padding-box;
-  border: var(--fx-border-width, 0) solid var(--fx-border-color);
+  border: var(--fx-border-width) solid var(--fx-border-color);
   border-radius: var(--fx-control-border-radius);
   transition: color var(--fx-transition) ease, background-color var(--fx-transition) ease, border-color var(--fx-transition) ease;
 }
@@ -3552,14 +3552,20 @@ html[dir=rtl] .fx-btn[aria-busy=true]::before, html[direction=rtl] .fx-btn[aria-
 }
 .fx-input-frame label[for] {
   position: absolute;
-  inset-inline-start: calc(var(--fx-control-padding-x) + var(--fx-border-width));
+  padding: 0 2px;
+  margin: 0 var(--fx-control-padding-x);
+  max-width: calc(100% - var(--fx-control-padding-x) * 2);
+  inset-inline-start: 0;
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   background-color: transparent;
   color: var(--fx-placeholder-color);
   font: var(--fx-font-weight-base) var(--fx-font-size-base)/var(--fx-line-height-base) var(--fx-font-family-base);
-  transition: color var(--fx-transition) ease, background-color var(--fx-transition) ease, font var(--fx-transition) ease, top var(--fx-transition) ease;
+  transition: color var(--fx-transition) ease, font var(--fx-transition) ease, top var(--fx-transition) ease;
 }
 .fx-input-frame .fx-input {
   outline-color: var(--fx-focus-ring-color);
@@ -3587,14 +3593,14 @@ html[dir=rtl] .fx-btn[aria-busy=true]::before, html[direction=rtl] .fx-btn[aria-
 }
 .fx-input-frame .fx-input:focus {
   outline-offset: 0;
-  outline-width: calc(var(--fx-focus-ring-outline-width) - var(--fx-border-width, 0px));
+  outline-width: calc(var(--fx-focus-ring-outline-width) - var(--fx-border-width));
 }
 .fx-input-frame .fx-input:not(:placeholder-shown) + label[for] {
   color: var(--fx-placeholder-color);
 }
 .fx-input-frame .fx-input:focus + label[for],
 .fx-input-frame .fx-input:not(:placeholder-shown) + label[for] {
-  top: min(0px, 0px - (var(--fx-focus-ring-outline-width) - var(--fx-border-width, 0px)));
+  top: 0;
   background-color: var(--fx-control-background-color);
   font-size: calc(var(--fx-font-size-base) * 0.75);
 }
@@ -3620,10 +3626,8 @@ html[dir=rtl] .fx-btn[aria-busy=true]::before, html[direction=rtl] .fx-btn[aria-
   pointer-events: none;
 }
 .fx-input-frame .fx-input[disabled]:not(:placeholder-shown) + label[for] {
-  top: min(0px, 0px - (var(--fx-focus-ring-outline-width) - var(--fx-border-width, 0px)));
   background-color: var(--fx-control-background-color);
   color: var(--fx-text-muted-color);
-  opacity: var(--fx-disabled-control-opacity);
   cursor: not-allowed;
   pointer-events: none;
 }
@@ -3638,13 +3642,13 @@ html[dir=rtl] .fx-btn[aria-busy=true]::before, html[direction=rtl] .fx-btn[aria-
   position: absolute;
   inset-block-start: 2px;
   inset-inline-end: 2px;
-  width: calc(var(--fx-control-height) - var(--fx-border-width) * 2 - 4px);
-  height: calc(100% - var(--fx-border-width) * 2 - 4px);
+  width: calc(var(--fx-control-height) - 4px);
+  height: calc(var(--fx-control-height) - 4px);
   border: none;
   margin: var(--fx-border-width);
   border-start-end-radius: calc(var(--fx-control-border-radius) - 2px);
   border-end-end-radius: calc(var(--fx-control-border-radius) - 2px);
-  background-color: transparent;
+  background-color: var(--fx-control-background-color);
   cursor: pointer;
   outline: none;
   transition: color var(--fx-transition) ease, background-color var(--fx-transition) ease;
@@ -3669,6 +3673,9 @@ html[dir=rtl] .fx-btn[aria-busy=true]::before, html[direction=rtl] .fx-btn[aria-
 }
 .fx-input-frame .fx-toggle-password[aria-pressed=true]::before {
   mask: var(--fx-eye-off-svg) no-repeat center/contain;
+}
+.fx-input-frame:has(.fx-toggle-password) label[for] {
+  max-width: calc(100% - var(--fx-control-height) - var(--fx-control-padding-x) - 8px);
 }
 .fx-input-frame:has(.fx-toggle-password) .fx-input {
   padding-inline-end: calc(var(--fx-control-height) + var(--fx-control-padding-x) - 8px);
@@ -3771,7 +3778,7 @@ html[dir=rtl] .fx-btn[aria-busy=true]::before, html[direction=rtl] .fx-btn[aria-
   transform: translateY(-50%);
   width: var(--fx-checkbox-size, 1.5rem);
   height: var(--fx-checkbox-size, 1.5rem);
-  border: var(--fx-border-width, 1px) solid var(--fx-border-color);
+  border: var(--fx-border-width) solid var(--fx-border-color);
   border-radius: var(--fx-checkbox-border-radius);
   background-color: var(--fx-control-background-color);
   background-clip: padding-box;
@@ -3884,7 +3891,7 @@ html[dir=rtl] .fx-btn[aria-busy=true]::before, html[direction=rtl] .fx-btn[aria-
   transform: translateY(-50%);
   width: var(--fx-radio-size, 1.5rem);
   height: var(--fx-radio-size, 1.5rem);
-  border: var(--fx-border-width, 1px) solid var(--fx-border-color);
+  border: var(--fx-border-width) solid var(--fx-border-color);
   border-radius: 50%;
   background-color: var(--fx-control-background-color);
   background-clip: padding-box;
@@ -3906,13 +3913,14 @@ html[dir=rtl] .fx-btn[aria-busy=true]::before, html[direction=rtl] .fx-btn[aria-
 }
 
 .fx-textarea {
+  min-height: var(--fx-control-height);
   padding: var(--fx-control-padding-y) var(--fx-control-padding-x);
   font: var(--fx-font-weight-base) var(--fx-font-size-base) var(--fx-font-family-base);
   line-height: var(--fx-line-height-base);
   color: var(--fx-text-color);
   background-color: var(--fx-control-background-color);
   background-clip: padding-box;
-  border: var(--fx-border-width, 0) solid var(--fx-border-color);
+  border: var(--fx-border-width) solid var(--fx-border-color);
   border-radius: var(--fx-control-border-radius);
   transition: color var(--fx-transition) ease, background-color var(--fx-transition) ease, border-color var(--fx-transition) ease;
 }
@@ -3939,7 +3947,7 @@ html[dir=rtl] .fx-btn[aria-busy=true]::before, html[direction=rtl] .fx-btn[aria-
   margin: 0;
   background-color: var(--fx-control-background-color);
   background-clip: padding-box;
-  border: var(--fx-border-width, 0) solid var(--fx-border-color);
+  border: var(--fx-border-width) solid var(--fx-border-color);
   border-radius: var(--fx-control-border-radius);
   padding: calc(var(--fx-control-border-radius) * 0.25);
   transition: background-color var(--fx-transition) ease, border-color var(--fx-transition) ease;
@@ -3954,21 +3962,26 @@ html[dir=rtl] .fx-btn[aria-busy=true]::before, html[direction=rtl] .fx-btn[aria-
 }
 .fx-textarea-frame label[for] {
   position: absolute;
-  inset-inline-start: calc(var(--fx-control-padding-x) + var(--fx-border-width));
-  top: calc(var(--fx-control-padding-y) + var(--fx-border-width, 0px));
+  padding: 0 2px;
+  max-width: calc(100% - var(--fx-control-padding-x) * 2);
+  inset-inline-start: var(--fx-control-padding-x);
+  top: var(--fx-control-padding-y);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   transform: none;
   pointer-events: none;
   background-color: transparent;
   color: var(--fx-placeholder-color);
   font: var(--fx-font-weight-base) var(--fx-font-size-base)/var(--fx-line-height-base) var(--fx-font-family-base);
-  transition: color var(--fx-transition) ease, background-color var(--fx-transition) ease, font var(--fx-transition) ease, top var(--fx-transition) ease;
+  transition: color var(--fx-transition) ease, font var(--fx-transition) ease, top var(--fx-transition) ease;
 }
 .fx-textarea-frame .fx-textarea::placeholder {
   color: transparent;
 }
 .fx-textarea-frame .fx-textarea:focus + label[for],
 .fx-textarea-frame .fx-textarea:not(:placeholder-shown) + label[for] {
-  top: calc((var(--fx-border-width, 0) + var(--fx-focus-ring-outline-width) - var(--fx-border-width, 0px)) * -1);
+  top: calc(var(--fx-focus-ring-outline-width) * -1);
   transform: translateY(-50%);
   background-color: var(--fx-control-background-color);
   font-size: calc(var(--fx-font-size-base) * 0.75);
@@ -4004,15 +4017,15 @@ html[dir=rtl] .fx-btn[aria-busy=true]::before, html[direction=rtl] .fx-btn[aria-
   border-color: var(--fx-valid-border-color);
 }
 .fx-textarea-frame:has(.fx-textarea:focus) {
-  outline: var(--fx-focus-ring-color) solid calc(var(--fx-focus-ring-outline-width) - var(--fx-border-width, 0px));
+  outline: var(--fx-focus-ring-color) solid calc(var(--fx-focus-ring-outline-width) - var(--fx-border-width));
   outline-offset: 0;
 }
 .fx-textarea-frame:has(.fx-textarea[invalid]:focus), .fx-textarea-frame:has(.fx-textarea[aria-invalid=true]:focus) {
-  outline: var(--fx-invalid-border-color) solid calc(var(--fx-focus-ring-outline-width) - var(--fx-border-width, 0px));
+  outline: var(--fx-invalid-border-color) solid calc(var(--fx-focus-ring-outline-width) - var(--fx-border-width));
   outline-offset: 0;
 }
 .fx-textarea-frame:has(.fx-textarea[valid]:focus), .fx-textarea-frame:has(.fx-textarea[aria-invalid=false]:focus) {
-  outline: var(--fx-valid-border-color) solid calc(var(--fx-focus-ring-outline-width) - var(--fx-border-width, 0px));
+  outline: var(--fx-valid-border-color) solid calc(var(--fx-focus-ring-outline-width) - var(--fx-border-width));
   outline-offset: 0;
 }
 .fx-textarea-frame .fx-textarea[disabled]:placeholder-shown + label[for] {
@@ -4023,7 +4036,6 @@ html[dir=rtl] .fx-btn[aria-busy=true]::before, html[direction=rtl] .fx-btn[aria-
 }
 .fx-textarea-frame .fx-textarea[disabled]:not(:placeholder-shown) + label[for] {
   color: var(--fx-text-muted-color);
-  opacity: var(--fx-disabled-control-opacity);
   cursor: not-allowed;
   pointer-events: none;
 }
@@ -4046,7 +4058,7 @@ html[dir=rtl] .fx-btn[aria-busy=true]::before, html[direction=rtl] .fx-btn[aria-
   color: var(--fx-text-color);
   background-color: var(--fx-control-background-color);
   background-clip: padding-box;
-  border: var(--fx-border-width, 0) solid var(--fx-border-color);
+  border: var(--fx-border-width) solid var(--fx-border-color);
   border-radius: var(--fx-control-border-radius);
   transition: color var(--fx-transition) ease, background-color var(--fx-transition) ease;
 }
@@ -4093,7 +4105,7 @@ html[dir=rtl] .fx-btn[aria-busy=true]::before, html[direction=rtl] .fx-btn[aria-
   border-color: var(--fx-focus-ring-color);
   outline-offset: 0;
   outline-color: var(--fx-focus-ring-color);
-  outline-width: calc(var(--fx-focus-ring-outline-width) - var(--fx-border-width, 0px));
+  outline-width: calc(var(--fx-focus-ring-outline-width) - var(--fx-border-width));
 }
 .fx-select-frame .fx-select[invalid],
 .fx-select-frame .fx-select[aria-invalid=true] {
@@ -4114,8 +4126,9 @@ html[dir=rtl] .fx-btn[aria-busy=true]::before, html[direction=rtl] .fx-btn[aria-
   outline: none !important;
 }
 .fx-select-frame:has(.fx-select-arrow) .fx-select {
-  padding-inline-end: calc(var(--fx-control-height) - var(--fx-border-width) * 2 - 4px);
+  padding-inline-end: var(--fx-control-height);
   appearance: none;
+  transition: background-color var(--fx-transition) ease, border-color var(--fx-transition) ease;
 }
 .fx-select-frame .fx-select[multiple] {
   padding: var(--fx-control-padding-y) var(--fx-control-padding-x);
@@ -4123,13 +4136,13 @@ html[dir=rtl] .fx-btn[aria-busy=true]::before, html[direction=rtl] .fx-btn[aria-
   outline: none !important;
 }
 .fx-select-frame:has(.fx-select[multiple]) {
-  border: var(--fx-border-width, 1px) solid var(--fx-border-color);
+  border: var(--fx-border-width) solid var(--fx-border-color);
   border-radius: var(--fx-control-border-radius);
   padding: calc(var(--fx-control-border-radius) * 0.25);
 }
 .fx-select-frame:has(.fx-select[multiple]:focus) {
   border-color: var(--fx-focus-ring-color, var(--fx-border-color));
-  outline: var(--fx-focus-ring-color) solid calc(var(--fx-focus-ring-outline-width) - var(--fx-border-width, 0px));
+  outline: var(--fx-focus-ring-color) solid calc(var(--fx-focus-ring-outline-width) - var(--fx-border-width));
   outline-offset: 0;
 }
 .fx-select-frame:has(.fx-select[multiple][invalid]), .fx-select-frame:has(.fx-select[multiple][aria-invalid=true]) {
@@ -4159,8 +4172,8 @@ html[dir=rtl] .fx-btn[aria-busy=true]::before, html[direction=rtl] .fx-btn[aria-
 }
 .fx-select-frame .fx-select-arrow::before {
   content: "";
-  width: calc(var(--fx-control-height) * 0.25);
-  height: calc(var(--fx-control-height) * 0.25);
+  width: calc(var(--fx-control-height) * 0.28);
+  height: calc(var(--fx-control-height) * 0.28);
   background-color: var(--fx-select-arrow-color, var(--fx-control-icon-color));
   mask: var(--fx-arrow-down-svg) no-repeat center/contain;
 }
@@ -4174,7 +4187,7 @@ html[dir=rtl] .fx-btn[aria-busy=true]::before, html[direction=rtl] .fx-btn[aria-
   width: 100%;
   background-color: var(--fx-control-background-color);
   background-clip: padding-box;
-  border: var(--fx-border-width, 0) solid var(--fx-border-color);
+  border: var(--fx-border-width) solid var(--fx-border-color);
   border-radius: var(--fx-control-border-radius);
   transition: background-color var(--fx-transition) ease;
   box-shadow: var(--fx-box-shadow);

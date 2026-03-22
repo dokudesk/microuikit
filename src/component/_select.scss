@@ -13,7 +13,7 @@
     color: var(--#{$prefix}text-color);
     background-color: var(--#{$prefix}control-background-color);
     background-clip: padding-box;
-    border: var(--#{$prefix}border-width, 0) solid var(--#{$prefix}border-color);
+    border: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
     border-radius: var(--#{$prefix}control-border-radius);
     transition: color var(--#{$prefix}transition) ease, background-color var(--#{$prefix}transition) ease;
 
@@ -68,7 +68,7 @@
       border-color: var(--#{$prefix}focus-ring-color);
       outline-offset: 0;
       outline-color: var(--#{$prefix}focus-ring-color);
-      outline-width: calc(var(--#{$prefix}focus-ring-outline-width) - var(--#{$prefix}border-width, 0px));
+      outline-width: calc(var(--#{$prefix}focus-ring-outline-width) - var(--#{$prefix}border-width));
     }
 
     .#{$prefix}select[invalid],
@@ -94,8 +94,9 @@
 
     // Only when frame contains .fx-select-arrow: reserve space for the arrow
     &:has(.#{$prefix}select-arrow) .#{$prefix}select {
-      padding-inline-end: calc(var(--#{$prefix}control-height) - calc(var(--#{$prefix}border-width) * 2) - 4px);
+      padding-inline-end: var(--#{$prefix}control-height);
       appearance: none;
+      transition: background-color var(--#{$prefix}transition) ease, border-color var(--#{$prefix}transition) ease;
     }
 
     .#{$prefix}select[multiple] {
@@ -106,14 +107,14 @@
 
     // When frame contains select[multiple]: border on frame (select has none), color by state
     &:has(.#{$prefix}select[multiple]) {
-      border: var(--#{$prefix}border-width, 1px) solid  var(--#{$prefix}border-color);
+      border: var(--#{$prefix}border-width) solid  var(--#{$prefix}border-color);
       border-radius: var(--#{$prefix}control-border-radius);
       padding: calc(var(--#{$prefix}control-border-radius) * 0.25);
     }
 
     &:has(.#{$prefix}select[multiple]:focus) {
       border-color: var(--#{$prefix}focus-ring-color, var(--#{$prefix}border-color)) ;
-      outline: var(--#{$prefix}focus-ring-color) solid calc(var(--#{$prefix}focus-ring-outline-width) - var(--#{$prefix}border-width, 0px));
+      outline: var(--#{$prefix}focus-ring-color) solid calc(var(--#{$prefix}focus-ring-outline-width) - var(--#{$prefix}border-width));
       outline-offset: 0;
     }
 
@@ -150,8 +151,8 @@
 
       &::before {
         content: "";
-        width: calc(var(--#{$prefix}control-height) * 0.25);
-        height: calc(var(--#{$prefix}control-height) * 0.25);
+        width: calc(var(--#{$prefix}control-height) * 0.28);
+        height: calc(var(--#{$prefix}control-height) * 0.28);
         background-color: var(--#{$prefix}select-arrow-color, var(--#{$prefix}control-icon-color));
         mask: var(--#{$prefix}arrow-down-svg) no-repeat center / contain;
       }

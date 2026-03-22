@@ -101,7 +101,7 @@
     margin: var(--#{$prefix}gutter-width) 0;
     color: inherit;
     border: 0;
-    border-top: var(--#{$prefix}border-width , 1px) solid var(--#{$prefix}border-color);
+    border-top: var(--#{$prefix}border-width ) solid var(--#{$prefix}border-color);
     opacity: 0.5;
   }
 
