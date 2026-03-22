@@ -8,7 +8,7 @@
     background-clip: padding-box;
     border: var(--#{$prefix}border-width, 0) solid var(--#{$prefix}border-color);
     border-radius: var(--#{$prefix}control-border-radius);
-    transition: var(--#{$prefix}transition);
+    transition: background-color var(--#{$prefix}transition) ease;
     box-shadow: var(--#{$prefix}box-shadow);
     overflow: hidden;
   }

@@ -15,7 +15,7 @@
     background-clip: padding-box;
     border: var(--#{$prefix}border-width, 0) solid var(--#{$prefix}border-color);
     border-radius: var(--#{$prefix}control-border-radius);
-    transition: var(--#{$prefix}transition);
+    transition: color var(--#{$prefix}transition) ease, background-color var(--#{$prefix}transition) ease;
 
     option {
       display: flex;
@@ -61,8 +61,8 @@
   .#{$prefix}select-frame {
     position: relative;
     display: inline-block;
-    transition: var(--#{$prefix}transition);
     margin: 0;
+    transition: background-color var(--#{$prefix}transition) ease, border-color var(--#{$prefix}transition) ease;
 
     .#{$prefix}select:focus {
       border-color: var(--#{$prefix}focus-ring-color);

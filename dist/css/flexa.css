@@ -122,7 +122,7 @@
   --fx-border-dark: #373b3e;
   --fx-border-width: 1px;
   --fx-gutter-width: 1rem;
-  --fx-transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, font-size 0.2s ease, top 0.2s ease, bottom 0.2s ease, left 0.2s ease, right 0.2s ease, width 0.2s ease, height 0.2s ease;
+  --fx-transition: 0.2s;
   --fx-focus-ring-outline-width: 2px;
   --fx-focus-ring-outline-offset: 2px;
   --fx-control-border-radius: 0.625rem;
@@ -242,7 +242,7 @@ html, body {
   font-size: var(--fx-font-size-base);
   font-weight: var(--fx-font-weight-base);
   line-height: var(--fx-line-height-base);
-  transition: var(--fx-transition);
+  transition: color var(--fx-transition) ease, background-color var(--fx-transition) ease;
 }
 
 * {
@@ -319,7 +319,7 @@ svg,
 a {
   color: var(--fx-link-color);
   text-decoration: underline;
-  transition: var(--fx-transition);
+  transition: color var(--fx-transition) ease, text-decoration var(--fx-transition) ease;
 }
 a:hover {
   color: var(--fx-link-hover-color);
@@ -3389,7 +3389,7 @@ h6, .fx-h6 {
   white-space: nowrap;
   cursor: pointer;
   user-select: none;
-  transition: var(--fx-transition);
+  transition: color var(--fx-transition) ease, background-color var(--fx-transition) ease, border-color var(--fx-transition) ease;
 }
 .fx-btn:disabled {
   opacity: var(--fx-disabled-control-opacity);
@@ -3526,7 +3526,7 @@ html[dir=rtl] .fx-btn[aria-busy=true]::before, html[direction=rtl] .fx-btn[aria-
   background-clip: padding-box;
   border: var(--fx-border-width, 0) solid var(--fx-border-color);
   border-radius: var(--fx-control-border-radius);
-  transition: var(--fx-transition);
+  transition: color var(--fx-transition) ease, background-color var(--fx-transition) ease, border-color var(--fx-transition) ease;
 }
 .fx-input::placeholder {
   color: var(--fx-placeholder-color);
@@ -3553,13 +3553,13 @@ html[dir=rtl] .fx-btn[aria-busy=true]::before, html[direction=rtl] .fx-btn[aria-
 .fx-input-frame label[for] {
   position: absolute;
   inset-inline-start: calc(var(--fx-control-padding-x) + var(--fx-border-width));
-  inset-block-start: 50%;
+  top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
   background-color: transparent;
   color: var(--fx-placeholder-color);
   font: var(--fx-font-weight-base) var(--fx-font-size-base)/var(--fx-line-height-base) var(--fx-font-family-base);
-  transition: var(--fx-transition);
+  transition: color var(--fx-transition) ease, background-color var(--fx-transition) ease, font var(--fx-transition) ease, top var(--fx-transition) ease;
 }
 .fx-input-frame .fx-input {
   outline-color: var(--fx-focus-ring-color);
@@ -3647,7 +3647,7 @@ html[dir=rtl] .fx-btn[aria-busy=true]::before, html[direction=rtl] .fx-btn[aria-
   background-color: transparent;
   cursor: pointer;
   outline: none;
-  transition: var(--fx-transition);
+  transition: color var(--fx-transition) ease, background-color var(--fx-transition) ease;
 }
 .fx-input-frame .fx-toggle-password[disabled] {
   opacity: var(--fx-disabled-control-opacity);
@@ -3761,7 +3761,7 @@ html[dir=rtl] .fx-btn[aria-busy=true]::before, html[direction=rtl] .fx-btn[aria-
   color: var(--fx-text-color);
   padding-inline-start: calc(var(--fx-checkbox-size) + var(--fx-control-padding-x));
   user-select: none;
-  transition: var(--fx-transition);
+  transition: color var(--fx-transition) ease;
 }
 .fx-checkbox-frame input[type=checkbox].fx-checkbox + label[for]::before {
   content: "";
@@ -3786,7 +3786,7 @@ html[dir=rtl] .fx-btn[aria-busy=true]::before, html[direction=rtl] .fx-btn[aria-
   height: calc(var(--fx-checkbox-size, 1.5rem) * 0.5);
   transform: translateY(-50%);
   opacity: 0;
-  transition: var(--fx-transition);
+  transition: transform var(--fx-transition) ease, opacity var(--fx-transition) ease;
   background-color: var(--fx-checkbox-tick-color);
   mask-image: var(--fx-checkbox-tick-svg);
   mask-repeat: no-repeat;
@@ -3874,7 +3874,7 @@ html[dir=rtl] .fx-btn[aria-busy=true]::before, html[direction=rtl] .fx-btn[aria-
   color: var(--fx-text-color);
   padding-inline-start: calc(var(--fx-radio-size) + var(--fx-control-padding-x));
   user-select: none;
-  transition: var(--fx-transition);
+  transition: color var(--fx-transition) ease;
 }
 .fx-radio-frame input[type=radio].fx-radio + label[for]::before {
   content: "";
@@ -3902,6 +3902,7 @@ html[dir=rtl] .fx-btn[aria-busy=true]::before, html[direction=rtl] .fx-btn[aria-
   transform: translateY(-50%) scale(0.6);
   opacity: 0;
   box-sizing: border-box;
+  transition: transform var(--fx-transition) ease;
 }
 
 .fx-textarea {
@@ -3913,13 +3914,10 @@ html[dir=rtl] .fx-btn[aria-busy=true]::before, html[direction=rtl] .fx-btn[aria-
   background-clip: padding-box;
   border: var(--fx-border-width, 0) solid var(--fx-border-color);
   border-radius: var(--fx-control-border-radius);
-  transition: var(--fx-transition);
+  transition: color var(--fx-transition) ease, background-color var(--fx-transition) ease, border-color var(--fx-transition) ease;
 }
 .fx-textarea::placeholder {
   color: var(--fx-placeholder-color);
-}
-.fx-textarea:focus {
-  border-color: var(--fx-border-color);
 }
 .fx-textarea[invalid], .fx-textarea[aria-invalid=true] {
   border-color: var(--fx-invalid-border-color);
@@ -3944,7 +3942,7 @@ html[dir=rtl] .fx-btn[aria-busy=true]::before, html[direction=rtl] .fx-btn[aria-
   border: var(--fx-border-width, 0) solid var(--fx-border-color);
   border-radius: var(--fx-control-border-radius);
   padding: calc(var(--fx-control-border-radius) * 0.25);
-  transition: var(--fx-transition);
+  transition: background-color var(--fx-transition) ease, border-color var(--fx-transition) ease;
 }
 .fx-textarea-frame .fx-textarea {
   display: block;
@@ -3963,7 +3961,7 @@ html[dir=rtl] .fx-btn[aria-busy=true]::before, html[direction=rtl] .fx-btn[aria-
   background-color: transparent;
   color: var(--fx-placeholder-color);
   font: var(--fx-font-weight-base) var(--fx-font-size-base)/var(--fx-line-height-base) var(--fx-font-family-base);
-  transition: var(--fx-transition);
+  transition: color var(--fx-transition) ease, background-color var(--fx-transition) ease, font var(--fx-transition) ease, top var(--fx-transition) ease;
 }
 .fx-textarea-frame .fx-textarea::placeholder {
   color: transparent;
@@ -3999,10 +3997,10 @@ html[dir=rtl] .fx-btn[aria-busy=true]::before, html[direction=rtl] .fx-btn[aria-
 .fx-textarea-frame:has(.fx-textarea:focus) {
   border-color: var(--fx-focus-ring-color);
 }
-.fx-textarea-frame:has(.fx-textarea[invalid]:focus), .fx-textarea-frame:has(.fx-textarea[invalid]:not(:placeholder-shown)), .fx-textarea-frame:has(.fx-textarea[aria-invalid=true]:focus), .fx-textarea-frame:has(.fx-textarea[aria-invalid=true]:not(:placeholder-shown)) {
+.fx-textarea-frame:has(.fx-textarea[invalid]), .fx-textarea-frame:has(.fx-textarea[aria-invalid=true]) {
   border-color: var(--fx-invalid-border-color);
 }
-.fx-textarea-frame:has(.fx-textarea[valid]:focus), .fx-textarea-frame:has(.fx-textarea[valid]:not(:placeholder-shown)), .fx-textarea-frame:has(.fx-textarea[aria-invalid=false]:focus), .fx-textarea-frame:has(.fx-textarea[aria-invalid=false]:not(:placeholder-shown)) {
+.fx-textarea-frame:has(.fx-textarea[valid]), .fx-textarea-frame:has(.fx-textarea[aria-invalid=false]) {
   border-color: var(--fx-valid-border-color);
 }
 .fx-textarea-frame:has(.fx-textarea:focus) {
@@ -4050,7 +4048,7 @@ html[dir=rtl] .fx-btn[aria-busy=true]::before, html[direction=rtl] .fx-btn[aria-
   background-clip: padding-box;
   border: var(--fx-border-width, 0) solid var(--fx-border-color);
   border-radius: var(--fx-control-border-radius);
-  transition: var(--fx-transition);
+  transition: color var(--fx-transition) ease, background-color var(--fx-transition) ease;
 }
 .fx-select option {
   display: flex;
@@ -4088,8 +4086,8 @@ html[dir=rtl] .fx-btn[aria-busy=true]::before, html[direction=rtl] .fx-btn[aria-
 .fx-select-frame {
   position: relative;
   display: inline-block;
-  transition: var(--fx-transition);
   margin: 0;
+  transition: background-color var(--fx-transition) ease, border-color var(--fx-transition) ease;
 }
 .fx-select-frame .fx-select:focus {
   border-color: var(--fx-focus-ring-color);
@@ -4178,7 +4176,7 @@ html[dir=rtl] .fx-btn[aria-busy=true]::before, html[direction=rtl] .fx-btn[aria-
   background-clip: padding-box;
   border: var(--fx-border-width, 0) solid var(--fx-border-color);
   border-radius: var(--fx-control-border-radius);
-  transition: var(--fx-transition);
+  transition: background-color var(--fx-transition) ease;
   box-shadow: var(--fx-box-shadow);
   overflow: hidden;
 }
@@ -4252,7 +4250,7 @@ html[data-direction=rtl] .fx-Skeleton {
 .fx-collapsing:not(.collapse-horizontal) {
   height: 0;
   overflow: hidden;
-  transition: var(--fx-transition);
+  transition: height var(--fx-transition) ease;
 }
 
 /* Collapsing animation (horizontal) */
@@ -4260,7 +4258,7 @@ html[data-direction=rtl] .fx-Skeleton {
   width: 0;
   height: auto;
   overflow: hidden;
-  transition: var(--fx-transition);
+  transition: width var(--fx-transition) ease;
 }
 
 /* Show horizontal */

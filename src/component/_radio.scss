@@ -101,7 +101,7 @@
         var(--#{$prefix}radio-size) + var(--#{$prefix}control-padding-x)
       );
       user-select: none;
-      transition: var(--#{$prefix}transition);
+      transition: color var(--#{$prefix}transition) ease;
     }
 
     // Custom circle appearance
@@ -133,6 +133,7 @@
       transform: translateY(-50%) scale(0.6);
       opacity: 0;
       box-sizing: border-box;
+      transition: transform var(--#{$prefix}transition) ease;
     }
   }
 }

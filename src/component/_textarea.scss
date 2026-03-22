@@ -10,14 +10,10 @@
     background-clip: padding-box;
     border: var(--#{$prefix}border-width, 0) solid var(--#{$prefix}border-color);
     border-radius: var(--#{$prefix}control-border-radius);
-    transition: var(--#{$prefix}transition);
+    transition: color var(--#{$prefix}transition) ease, background-color var(--#{$prefix}transition) ease, border-color var(--#{$prefix}transition) ease;
 
     &::placeholder {
       color: var(--#{$prefix}placeholder-color);
-    }
-
-    &:focus {
-      border-color: var(--#{$prefix}border-color);
     }
 
     &[invalid], &[aria-invalid="true"] {
@@ -47,7 +43,7 @@
     border: var(--#{$prefix}border-width, 0) solid var(--#{$prefix}border-color);
     border-radius: var(--#{$prefix}control-border-radius);
     padding: calc(var(--#{$prefix}control-border-radius) * 0.25);
-    transition: var(--#{$prefix}transition);
+    transition: background-color var(--#{$prefix}transition) ease, border-color var(--#{$prefix}transition) ease;
 
     .#{$prefix}textarea {
       display: block;
@@ -67,7 +63,7 @@
       background-color: transparent;
       color: var(--#{$prefix}placeholder-color);
       font: var(--#{$prefix}font-weight-base) var(--#{$prefix}font-size-base) / var(--#{$prefix}line-height-base) var(--#{$prefix}font-family-base);
-      transition: var(--#{$prefix}transition);
+      transition: color var(--#{$prefix}transition) ease, background-color var(--#{$prefix}transition) ease, font var(--#{$prefix}transition) ease, top var(--#{$prefix}transition) ease;
     }
 
     .#{$prefix}textarea::placeholder {
@@ -116,17 +112,13 @@
       border-color: var(--#{$prefix}focus-ring-color) ;
     }
 
-    &:has(.#{$prefix}textarea[invalid]:focus),
-    &:has(.#{$prefix}textarea[invalid]:not(:placeholder-shown)),
-    &:has(.#{$prefix}textarea[aria-invalid="true"]:focus),
-    &:has(.#{$prefix}textarea[aria-invalid="true"]:not(:placeholder-shown)) {
+    &:has(.#{$prefix}textarea[invalid]),
+    &:has(.#{$prefix}textarea[aria-invalid="true"]) {
       border-color: var(--#{$prefix}invalid-border-color);
     }
 
-    &:has(.#{$prefix}textarea[valid]:focus),
-    &:has(.#{$prefix}textarea[valid]:not(:placeholder-shown)),
-    &:has(.#{$prefix}textarea[aria-invalid="false"]:focus),
-    &:has(.#{$prefix}textarea[aria-invalid="false"]:not(:placeholder-shown)) {
+    &:has(.#{$prefix}textarea[valid]),
+    &:has(.#{$prefix}textarea[aria-invalid="false"]) {
       border-color: var(--#{$prefix}valid-border-color);
     }
 

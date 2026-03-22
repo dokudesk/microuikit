@@ -100,7 +100,7 @@
       color: var(--#{$prefix}text-color);
       padding-inline-start: calc(var(--#{$prefix}checkbox-size) + var(--#{$prefix}control-padding-x));
       user-select: none;
-      transition: var(--#{$prefix}transition);
+      transition: color var(--#{$prefix}transition) ease;
     }
 
     // Custom box appearance
@@ -129,7 +129,7 @@
       height: calc(var(--#{$prefix}checkbox-size, 1.5rem) * 0.50);
       transform: translateY(-50%);
       opacity: 0;
-      transition: var(--#{$prefix}transition);
+      transition: transform var(--#{$prefix}transition) ease, opacity var(--#{$prefix}transition) ease;
       background-color: var(--#{$prefix}checkbox-tick-color);
       mask-image: var(--#{$prefix}checkbox-tick-svg);
       mask-repeat: no-repeat;

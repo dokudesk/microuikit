@@ -41,7 +41,7 @@
     font-size: var(--#{$prefix}font-size-base);
     font-weight: var(--#{$prefix}font-weight-base);
     line-height: var(--#{$prefix}line-height-base);
-    transition: var(--#{$prefix}transition);
+    transition: color var(--#{$prefix}transition) ease, background-color var(--#{$prefix}transition) ease;
   }
 }
 
@@ -140,7 +140,7 @@
   a {
     color: var(--#{$prefix}link-color);
     text-decoration: vars.$link-decoration;
-    transition: var(--#{$prefix}transition);
+    transition: color var(--#{$prefix}transition) ease, text-decoration var(--#{$prefix}transition) ease;
 
     &:hover {
       color: var(--#{$prefix}link-hover-color);

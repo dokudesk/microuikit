@@ -13,7 +13,7 @@
     background-clip: padding-box;
     border: var(--#{$prefix}border-width, 0) solid var(--#{$prefix}border-color);
     border-radius: var(--#{$prefix}control-border-radius);
-    transition: var(--#{$prefix}transition);
+    transition: color var(--#{$prefix}transition) ease, background-color var(--#{$prefix}transition) ease, border-color var(--#{$prefix}transition) ease;
 
     &::placeholder {
       color: var(--#{$prefix}placeholder-color);
@@ -45,13 +45,13 @@
     label[for] {
       position: absolute;
       inset-inline-start: calc(var(--#{$prefix}control-padding-x) + var(--#{$prefix}border-width));
-      inset-block-start: 50%;
+      top: 50%;
       transform: translateY(-50%);
       pointer-events: none;
       background-color: transparent;
       color: var(--#{$prefix}placeholder-color);
       font: var(--#{$prefix}font-weight-base) var(--#{$prefix}font-size-base) / var(--#{$prefix}line-height-base) var(--#{$prefix}font-family-base);
-      transition: var(--#{$prefix}transition);
+      transition: color var(--#{$prefix}transition) ease, background-color var(--#{$prefix}transition) ease, font var(--#{$prefix}transition) ease, top var(--#{$prefix}transition) ease;
     }
 
     .#{$prefix}input {
@@ -158,7 +158,7 @@
       background-color: transparent;
       cursor: pointer;
       outline: none;
-      transition: var(--#{$prefix}transition);
+      transition: color var(--#{$prefix}transition) ease, background-color var(--#{$prefix}transition) ease;
 
       &[disabled] {
         opacity: var(--#{$prefix}disabled-control-opacity);

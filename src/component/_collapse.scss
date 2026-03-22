@@ -15,7 +15,7 @@
   .#{$prefix}collapsing:not(.collapse-horizontal) {
     height: 0;
     overflow: hidden;
-    transition: var(--#{$prefix}transition);
+    transition: height var(--#{$prefix}transition) ease;
   }
 
   /* Collapsing animation (horizontal) */
@@ -23,7 +23,7 @@
     width: 0;
     height: auto;
     overflow: hidden;
-    transition: var(--#{$prefix}transition);
+    transition: width var(--#{$prefix}transition) ease;
   }
 
   /* Show horizontal */

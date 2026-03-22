@@ -27,7 +27,7 @@
     white-space: nowrap;
     cursor: pointer;
     user-select: none;
-    transition: var(--#{$prefix}transition);
+    transition: color var(--#{$prefix}transition) ease, background-color var(--#{$prefix}transition) ease, border-color var(--#{$prefix}transition) ease;
 
     &:disabled {
       opacity: var(--#{$prefix}disabled-control-opacity);
