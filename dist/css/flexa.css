@@ -34,16 +34,16 @@
   --fx-font-family-base: var(--fx-font-family-ltr);
   --fx-font-size-base: var(--fx-font-size-base-ltr);
   --fx-font-weight-base: var(--fx-font-weight-base-ltr);
-  --fx-blue: #0d6efd;
-  --fx-indigo: #6610f2;
-  --fx-purple: #6f42c1;
-  --fx-pink: #d63384;
-  --fx-red: #dc3545;
-  --fx-orange: #fd7e14;
-  --fx-yellow: #ffc107;
-  --fx-green: #198754;
-  --fx-teal: #20c997;
-  --fx-cyan: #0dcaf0;
+  --fx-blue: #0060aa;
+  --fx-indigo: #4b3399;
+  --fx-purple: #6a2e99;
+  --fx-pink: #D52E66;
+  --fx-red: #CE2029;
+  --fx-orange: #ff8400;
+  --fx-yellow: #ffc300;
+  --fx-green: #006466;
+  --fx-teal: #009696;
+  --fx-cyan: #44bec7;
   --fx-black: #000;
   --fx-white: #fff;
   --fx-gray-lightest: #f8f9fa;
@@ -52,12 +52,12 @@
   --fx-gray-dark: #495057;
   --fx-gray-darkest: #212529;
   --fx-transparent: transparent;
-  --fx-primary: #0d6efd;
+  --fx-primary: #0060aa;
   --fx-secondary: #6c757d;
-  --fx-success: #198754;
-  --fx-info: #0dcaf0;
-  --fx-warning: #ffc107;
-  --fx-danger: #dc3545;
+  --fx-success: #006466;
+  --fx-info: #44bec7;
+  --fx-warning: #ffc300;
+  --fx-danger: #CE2029;
   --fx-light: #f8f9fa;
   --fx-dark: #212529;
   --fx-text-color: #030613;
@@ -65,59 +65,61 @@
   --fx-placeholder-color: #6c757d;
   --fx-heading-color: #030613;
   --fx-background-color: #f8f9fa;
+  --fx-background-color-alpha: 35%;
   --fx-background-muted-color: #ced4da;
   --fx-control-icon-color: #6c757d;
   --fx-control-background-color: #f8f9fa;
   --fx-border-color: #ced4da;
+  --fx-border-color-alpha: 15%;
   --fx-box-shadow-color: rgba(0, 0, 0, 0.15);
-  --fx-link-color: #0d6efd;
-  --fx-link-hover-color: #0a53be;
-  --fx-highlight-background-color: #ffd145;
-  --fx-valid-color: #198754;
-  --fx-invalid-color: #dc3545;
-  --fx-valid-border-color: #198754;
-  --fx-invalid-border-color: #dc3545;
-  --fx-focus-ring-color: #0d6efd;
+  --fx-link-color: #0060aa;
+  --fx-link-hover-color: #004880;
+  --fx-highlight-background-color: #ffd240;
+  --fx-valid-color: #006466;
+  --fx-invalid-color: #CE2029;
+  --fx-valid-border-color: #006466;
+  --fx-invalid-border-color: #CE2029;
+  --fx-focus-ring-color: #0060aa;
   --fx-scrollbar-color: #6c757d;
   --fx-scrollbar-hover-color: #adb5bd;
   --fx-password-toggle-background-hover-color: #dee2e6;
-  --fx-checkbox-checked-background-color: #0d6efd;
+  --fx-checkbox-checked-background-color: #0060aa;
   --fx-checkbox-tick-color: #fff;
-  --fx-radio-checked-color: #0d6efd;
+  --fx-radio-checked-color: #0060aa;
   --fx-select-arrow-color: #ced4da;
   --fx-select-selected-option-text-color: #030613;
-  --fx-select-selected-option-background-color: #0d6efd;
+  --fx-select-selected-option-background-color: #0060aa;
   --fx-skeleton-background-color: #ced4da;
-  --fx-text-primary: #094db1;
+  --fx-text-primary: #004377;
   --fx-text-secondary: #4c5258;
-  --fx-text-success: #125f3b;
-  --fx-text-info: #098da8;
-  --fx-text-warning: #b38705;
-  --fx-text-danger: #9a2530;
+  --fx-text-success: #004647;
+  --fx-text-info: #30858b;
+  --fx-text-warning: #b38900;
+  --fx-text-danger: #90161d;
   --fx-text-light: #aeaeaf;
   --fx-text-dark: #171a1d;
-  --fx-background-primary: #6ea8fe;
+  --fx-background-primary: #66a0cc;
   --fx-background-secondary: #a7acb1;
-  --fx-background-success: #75b798;
-  --fx-background-info: #6edff6;
-  --fx-background-warning: #ffda6a;
-  --fx-background-danger: #ea868f;
+  --fx-background-success: #66a2a3;
+  --fx-background-info: #8fd8dd;
+  --fx-background-warning: #ffdb66;
+  --fx-background-danger: #e2797f;
   --fx-background-light: #fbfbfc;
   --fx-background-dark: #7a7c7f;
-  --fx-hover-background-primary: #3d8bfd;
+  --fx-hover-background-primary: #3380bb;
   --fx-hover-background-secondary: #899197;
-  --fx-hover-background-success: #479f76;
-  --fx-hover-background-info: #3dd5f3;
-  --fx-hover-background-warning: #ffcd39;
-  --fx-hover-background-danger: #e35d6a;
+  --fx-hover-background-success: #338385;
+  --fx-hover-background-info: #69cbd2;
+  --fx-hover-background-warning: #ffcf33;
+  --fx-hover-background-danger: #d84d54;
   --fx-hover-background-light: #f9fafb;
   --fx-hover-background-dark: #4d5154;
-  --fx-border-primary: #257dfd;
+  --fx-border-primary: #1970b3;
   --fx-border-secondary: #7b838a;
-  --fx-border-success: #309365;
-  --fx-border-info: #25cff2;
-  --fx-border-warning: #ffc720;
-  --fx-border-danger: #e04958;
+  --fx-border-success: #197475;
+  --fx-border-info: #57c5cd;
+  --fx-border-warning: #ffc919;
+  --fx-border-danger: #d3363e;
   --fx-border-light: #f9fafb;
   --fx-border-dark: #373b3e;
   --fx-border-width: 1px;
@@ -151,28 +153,30 @@ html[theme=dark], html[data-theme=dark] {
   --fx-placeholder-color: #6c757d;
   --fx-heading-color: #e9ecef;
   --fx-background-color: #212529;
+  --fx-background-color-alpha: 35%;
   --fx-background-muted-color: #6c757d;
   --fx-control-background-color: #212529;
   --fx-control-icon-color: #6c757d;
   --fx-border-color: #6c757d;
+  --fx-border-color-alpha: 15%;
   --fx-box-shadow-color: rgba(255, 255, 255, 0.15);
-  --fx-link-color: #4a92fe;
-  --fx-link-hover-color: #376ebe;
-  --fx-highlight-background-color: #bf9105;
-  --fx-valid-color: #198754;
-  --fx-invalid-color: #dc3545;
-  --fx-valid-border-color: #198754;
-  --fx-invalid-border-color: #dc3545;
+  --fx-link-color: #4088bf;
+  --fx-link-hover-color: #30668f;
+  --fx-highlight-background-color: #bf9200;
+  --fx-valid-color: #006466;
+  --fx-invalid-color: #CE2029;
+  --fx-valid-border-color: #006466;
+  --fx-invalid-border-color: #CE2029;
   --fx-focus-ring-color: #adb5bd;
   --fx-scrollbar-color: #ced4da;
   --fx-scrollbar-hover-color: #6c757d;
   --fx-password-toggle-background-hover-color: #dee2e6;
-  --fx-checkbox-checked-background-color: #0d6efd;
+  --fx-checkbox-checked-background-color: #0060aa;
   --fx-checkbox-tick-color: #fff;
-  --fx-radio-checked-color: #0d6efd;
+  --fx-radio-checked-color: #0060aa;
   --fx-select-arrow-color: #6c757d;
   --fx-select-selected-option-text-color: #e9ecef;
-  --fx-select-selected-option-background-color: #0d6efd;
+  --fx-select-selected-option-background-color: #0060aa;
   --fx-skeleton-background-color: #6c757d;
 }
 
@@ -183,28 +187,30 @@ html[theme=dark], html[data-theme=dark] {
     --fx-placeholder-color: #6c757d;
     --fx-heading-color: #e9ecef;
     --fx-background-color: #212529;
+    --fx-background-color-alpha: 35%;
     --fx-background-muted-color: #6c757d;
     --fx-control-background-color: #212529;
     --fx-control-icon-color: #6c757d;
     --fx-border-color: #6c757d;
+    --fx-border-color-alpha: 15%;
     --fx-box-shadow-color: rgba(255, 255, 255, 0.15);
-    --fx-link-color: #4a92fe;
-    --fx-link-hover-color: #376ebe;
-    --fx-highlight-background-color: #bf9105;
-    --fx-valid-color: #198754;
-    --fx-invalid-color: #dc3545;
-    --fx-valid-border-color: #198754;
-    --fx-invalid-border-color: #dc3545;
+    --fx-link-color: #4088bf;
+    --fx-link-hover-color: #30668f;
+    --fx-highlight-background-color: #bf9200;
+    --fx-valid-color: #006466;
+    --fx-invalid-color: #CE2029;
+    --fx-valid-border-color: #006466;
+    --fx-invalid-border-color: #CE2029;
     --fx-focus-ring-color: #adb5bd;
     --fx-scrollbar-color: #ced4da;
     --fx-scrollbar-hover-color: #6c757d;
     --fx-password-toggle-background-hover-color: #dee2e6;
-    --fx-checkbox-checked-background-color: #0d6efd;
+    --fx-checkbox-checked-background-color: #0060aa;
     --fx-checkbox-tick-color: #fff;
-    --fx-radio-checked-color: #0d6efd;
+    --fx-radio-checked-color: #0060aa;
     --fx-select-arrow-color: #6c757d;
     --fx-select-selected-option-text-color: #e9ecef;
-    --fx-select-selected-option-background-color: #0d6efd;
+    --fx-select-selected-option-background-color: #0060aa;
     --fx-skeleton-background-color: #6c757d;
   }
 }
@@ -3603,6 +3609,7 @@ html[dir=rtl] .fx-btn[aria-busy=true]::before, html[direction=rtl] .fx-btn[aria-
   top: 0;
   background-color: var(--fx-control-background-color);
   font-size: calc(var(--fx-font-size-base) * 0.75);
+  border-radius: 2px;
 }
 .fx-input-frame .fx-input[invalid]:focus + label[for],
 .fx-input-frame .fx-input[invalid]:not(:placeholder-shown) + label[for],
@@ -3640,14 +3647,14 @@ html[dir=rtl] .fx-btn[aria-busy=true]::before, html[direction=rtl] .fx-btn[aria-
   align-items: center;
   justify-content: center;
   position: absolute;
-  inset-block-start: 2px;
-  inset-inline-end: 2px;
+  inset-block-start: 1px;
+  inset-inline-end: 1px;
   width: calc(var(--fx-control-height) - 4px);
   height: calc(var(--fx-control-height) - 4px);
   border: none;
   margin: var(--fx-border-width);
-  border-start-end-radius: calc(var(--fx-control-border-radius) - 2px);
-  border-end-end-radius: calc(var(--fx-control-border-radius) - 2px);
+  border-start-end-radius: calc(var(--fx-control-border-radius) - 1px);
+  border-end-end-radius: calc(var(--fx-control-border-radius) - 1px);
   background-color: var(--fx-control-background-color);
   cursor: pointer;
   outline: none;
@@ -3985,6 +3992,7 @@ html[dir=rtl] .fx-btn[aria-busy=true]::before, html[direction=rtl] .fx-btn[aria-
   transform: translateY(-50%);
   background-color: var(--fx-control-background-color);
   font-size: calc(var(--fx-font-size-base) * 0.75);
+  border-radius: 2px;
 }
 .fx-textarea-frame .fx-textarea[invalid]:focus + label[for],
 .fx-textarea-frame .fx-textarea[invalid]:not(:placeholder-shown) + label[for],
@@ -4213,7 +4221,7 @@ html[dir=rtl] .fx-btn[aria-busy=true]::before, html[direction=rtl] .fx-btn[aria-
   isolation: isolate;
   color: transparent !important;
   background-color: var(--fx-skeleton-background-color) !important;
-  background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.45) 50%, rgba(255, 255, 255, 0) 100%);
+  background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.14) 32%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.14) 68%, rgba(255, 255, 255, 0) 100%);
   background-repeat: no-repeat;
   background-size: 200% 100%;
   border-color: transparent !important;
@@ -4277,6 +4285,12 @@ html[data-direction=rtl] .fx-Skeleton {
 /* Show horizontal */
 .fx-collapse.fx-collapse-horizontal.show {
   width: auto;
+}
+
+.fx-glass {
+  background-color: color-mix(in srgb, var(--fx-background-color) var(--fx-background-color-alpha), transparent) !important;
+  backdrop-filter: blur(20px) !important;
+  border-color: color-mix(in srgb, var(--fx-border-color) var(--fx-border-color-alpha), transparent) !important;
 }
 
 /*# sourceMappingURL=flexa.css.map */

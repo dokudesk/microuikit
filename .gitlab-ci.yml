@@ -1,4 +1,4 @@
-# Flexa — GitLab CI/CD Pipeline
+# Flexa CSS — GitLab CI/CD Pipeline
 # Purpose: run lint, test, and build for branch/MR validation.
 # Runtime: Docker jobs on Node 22 Alpine.
 # Runner requirement: at least one online runner with tag "flexa".
@@ -17,6 +17,7 @@ stages:
   - lint
   - test
   - build
+  - publish
 
 cache:
   key:
@@ -47,6 +48,34 @@ build:
       else
         npm run build:dev
       fi
+  artifacts:
+    paths:
+      - dist/
+    expire_in: never
+
+# Stage 4: publish
+# GitFlow rule: release/* and hotfix/* prepare a version, but npm publish
+# happens only after that version is merged into master.
+publish:
+  stage: publish
+  needs:
+    - build
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "master"'
+      when: on_success
+    - when: never
+  script:
+    - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+    - export PACKAGE_NAME=$(node -p "require('./package.json').name")
+    - export PACKAGE_VERSION=$(node -p "require('./package.json').version")
+    - |
+      if npm view "${PACKAGE_NAME}@${PACKAGE_VERSION}" version >/dev/null 2>&1; then
+        echo "npm package ${PACKAGE_NAME}@${PACKAGE_VERSION} is already published; skipping."
+        exit 0
+      fi
+    - npm publish
+  variables:
+    NODE_AUTH_TOKEN: $NPM_TOKEN
   artifacts:
     paths:
       - dist/

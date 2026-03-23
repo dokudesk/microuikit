@@ -1,0 +1,9 @@
+@use "../abstracts/functions" as fn;
+
+@mixin glass($prefix) {
+  .#{$prefix}glass {
+    background-color: color-mix(in srgb, var(--#{$prefix}background-color) var(--#{$prefix}background-color-alpha), transparent) !important;
+    backdrop-filter: blur(20px) !important;
+    border-color: color-mix(in srgb, var(--#{$prefix}border-color) var(--#{$prefix}border-color-alpha), transparent) !important;
+  }
+}

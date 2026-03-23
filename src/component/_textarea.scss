@@ -84,6 +84,7 @@
       transform: translateY(-50%);
       background-color: var(--#{$prefix}control-background-color);
       font-size: calc(var(--#{$prefix}font-size-base) * 0.75);
+      border-radius: 2px;
     }
 
     .#{$prefix}textarea[invalid]:focus + label[for],

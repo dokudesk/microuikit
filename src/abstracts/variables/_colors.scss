@@ -17,19 +17,19 @@ $grays: (
   700: #495057,
   800: #343a40,
   900: #212529,
-) !default;
+  ) !default;
 $palette: (
-  blue: #0d6efd,
-  indigo: #6610f2,
-  purple: #6f42c1,
-  pink: #d63384,
-  red: #dc3545,
-  orange: #fd7e14,
-  yellow: #ffc107,
-  green: #198754,
-  teal: #20c997,
-  cyan: #0dcaf0,
-) !default;
+  blue: #0060aa,
+  indigo: #4b3399,
+  purple: #6a2e99,
+  pink: #D52E66,
+  red: #CE2029,
+  orange: #ff8400,
+  yellow: #ffc300,
+  green: #006466,
+  teal: #009696,
+  cyan: #44bec7,
+  ) !default;
 
 // ===============================
 // Semantic Colors
@@ -66,7 +66,7 @@ $control-background-color: map.get($grays, 100) !default;
 $control-background-color-dark: map.get($grays, 900) !default;
 $box-shadow-color: rgb(0 0 0 / 15%) !default;
 $box-shadow-color-dark: rgb(255 255 255 / 15%) !default;
-$scrollbar-color: map.get($grays, 600)  !default;
+$scrollbar-color: map.get($grays, 600) !default;
 $scrollbar-color-dark: map.get($grays, 400) !default;
 $scrollbar-hover-color: map.get($grays, 500) !default;
 $scrollbar-hover-color-dark: map.get($grays, 600) !default;
@@ -116,19 +116,17 @@ $focus-ring-color-dark: map.get($grays, 500) !default;
 // ===============================
 // Public Color Maps
 // ===============================
-$colors: map.merge(
-  $palette,
-  (
-    black: $black,
-    white: $white,
-    gray-lightest: map.get($grays, 100),
-    gray-light: map.get($grays, 300),
-    gray: map.get($grays, 500),
-    gray-dark: map.get($grays, 700),
-    gray-darkest: map.get($grays, 900),
-    transparent: transparent,
-  ),
-) !default;
+$colors: map.merge($palette,
+    (black: $black,
+      white: $white,
+      gray-lightest: map.get($grays, 100),
+      gray-light: map.get($grays, 300),
+      gray: map.get($grays, 500),
+      gray-dark: map.get($grays, 700),
+      gray-darkest: map.get($grays, 900),
+      transparent: transparent,
+    ),
+  ) !default;
 $theme-colors: (
   primary: $primary,
   secondary: $secondary,
@@ -138,7 +136,7 @@ $theme-colors: (
   danger: $danger,
   light: $light,
   dark: $dark,
-) !default;
+  ) !default;
 
 // ===============================
 // Theme Colors Text, Background, Border (Light & Dark)
@@ -152,7 +150,7 @@ $theme-text-colors: (
   text-danger: fn.round-color(color.mix($black, $danger, 30%)),
   text-light: fn.round-color(color.mix($black, $light, 30%)),
   text-dark: fn.round-color(color.mix($black, $dark, 30%)),
-) !default;
+  ) !default;
 $theme-background-colors: (
   background-primary: fn.round-color(color.mix($white, $primary, 40%)),
   background-secondary: fn.round-color(color.mix($white, $secondary, 40%)),
@@ -162,7 +160,7 @@ $theme-background-colors: (
   background-danger: fn.round-color(color.mix($white, $danger, 40%)),
   background-light: fn.round-color(color.mix($white, $light, 40%)),
   background-dark: fn.round-color(color.mix($white, $dark, 40%)),
-) !default;
+  ) !default;
 $theme-hover-background-colors: (
   hover-background-primary: fn.round-color(color.mix($white, $primary, 20%)),
   hover-background-secondary: fn.round-color(color.mix($white, $secondary, 20%)),
@@ -172,7 +170,7 @@ $theme-hover-background-colors: (
   hover-background-danger: fn.round-color(color.mix($white, $danger, 20%)),
   hover-background-light: fn.round-color(color.mix($white, $light, 20%)),
   hover-background-dark: fn.round-color(color.mix($white, $dark, 20%)),
-) !default;
+  ) !default;
 $theme-border-colors: (
   border-primary: fn.round-color(color.mix($white, $primary, 10%)),
   border-secondary: fn.round-color(color.mix($white, $secondary, 10%)),
@@ -182,17 +180,19 @@ $theme-border-colors: (
   border-danger: fn.round-color(color.mix($white, $danger, 10%)),
   border-light: fn.round-color(color.mix($white, $light, 10%)),
   border-dark: fn.round-color(color.mix($white, $dark, 10%)),
-) !default;
+  ) !default;
 $theme-light-colors: (
   text-color: $text-color,
   text-muted-color: $text-muted-color,
   placeholder-color: $placeholder-color,
   heading-color: $heading-color,
   background-color: $background-color,
+  background-color-alpha: 35%,
   background-muted-color: $background-muted-color,
   control-icon-color: $control-icon-color,
   control-background-color: $control-background-color,
   border-color: $border-color,
+  border-color-alpha: 15%,
   box-shadow-color: $box-shadow-color,
   link-color: $link-color,
   link-hover-color: $link-hover-color,
@@ -212,17 +212,19 @@ $theme-light-colors: (
   select-selected-option-text-color: $select-selected-option-text-color,
   select-selected-option-background-color: $select-selected-option-background-color,
   skeleton-background-color: $skeleton-background-color,
-) !default;
+  ) !default;
 $theme-dark-colors: (
   text-color: $text-color-dark,
   text-muted-color: $text-muted-color-dark,
   placeholder-color: $placeholder-color-dark,
   heading-color: $heading-color-dark,
   background-color: $background-color-dark,
+  background-color-alpha: 35%,
   background-muted-color: $background-muted-color-dark,
   control-background-color: $control-background-color-dark,
   control-icon-color: $control-icon-color-dark,
   border-color: $border-color-dark,
+  border-color-alpha: 15%,
   box-shadow-color: $box-shadow-color-dark,
   link-color: $link-color-dark,
   link-hover-color: $link-hover-color-dark,
@@ -242,4 +244,4 @@ $theme-dark-colors: (
   select-selected-option-text-color: $select-selected-option-text-color-dark,
   select-selected-option-background-color: $select-selected-option-background-color-dark,
   skeleton-background-color: $skeleton-background-color-dark,
-) !default;
+  ) !default;

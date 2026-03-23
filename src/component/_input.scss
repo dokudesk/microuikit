@@ -106,6 +106,7 @@
       top: 0;
       background-color: var(--#{$prefix}control-background-color);
       font-size: calc(var(--#{$prefix}font-size-base) * 0.75);
+      border-radius: 2px;
     }
 
     .#{$prefix}input[invalid]:focus + label[for],
@@ -151,14 +152,14 @@
       align-items: center;
       justify-content: center;
       position: absolute;
-      inset-block-start: + 2px;
-      inset-inline-end: + 2px;
+      inset-block-start: 1px;
+      inset-inline-end: 1px;
       width: calc(var(--#{$prefix}control-height) - 4px);
       height: calc(var(--#{$prefix}control-height) - 4px);
       border: none;
       margin: var(--#{$prefix}border-width);
-      border-start-end-radius: calc(var(--#{$prefix}control-border-radius) - 2px);
-      border-end-end-radius: calc(var(--#{$prefix}control-border-radius) - 2px);
+      border-start-end-radius: calc(var(--#{$prefix}control-border-radius) - 1px);
+      border-end-end-radius: calc(var(--#{$prefix}control-border-radius) - 1px);
       background-color: var(--#{$prefix}control-background-color);
       cursor: pointer;
       outline: none;
