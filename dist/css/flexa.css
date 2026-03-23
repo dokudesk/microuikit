@@ -37,8 +37,8 @@
   --fx-blue: #0060aa;
   --fx-indigo: #4b3399;
   --fx-purple: #6a2e99;
-  --fx-pink: #D52E66;
-  --fx-red: #CE2029;
+  --fx-pink: #d52e66;
+  --fx-red: #c01e26;
   --fx-orange: #ff8400;
   --fx-yellow: #ffc300;
   --fx-green: #006466;
@@ -57,7 +57,7 @@
   --fx-success: #006466;
   --fx-info: #44bec7;
   --fx-warning: #ffc300;
-  --fx-danger: #CE2029;
+  --fx-danger: #c01e26;
   --fx-light: #f8f9fa;
   --fx-dark: #212529;
   --fx-text-color: #030613;
@@ -76,9 +76,9 @@
   --fx-link-hover-color: #004880;
   --fx-highlight-background-color: #ffd240;
   --fx-valid-color: #006466;
-  --fx-invalid-color: #CE2029;
+  --fx-invalid-color: #c01e26;
   --fx-valid-border-color: #006466;
-  --fx-invalid-border-color: #CE2029;
+  --fx-invalid-border-color: #c01e26;
   --fx-focus-ring-color: #0060aa;
   --fx-scrollbar-color: #6c757d;
   --fx-scrollbar-hover-color: #adb5bd;
@@ -95,7 +95,7 @@
   --fx-text-success: #004647;
   --fx-text-info: #30858b;
   --fx-text-warning: #b38900;
-  --fx-text-danger: #90161d;
+  --fx-text-danger: #86151b;
   --fx-text-light: #aeaeaf;
   --fx-text-dark: #171a1d;
   --fx-background-primary: #66a0cc;
@@ -103,7 +103,7 @@
   --fx-background-success: #66a2a3;
   --fx-background-info: #8fd8dd;
   --fx-background-warning: #ffdb66;
-  --fx-background-danger: #e2797f;
+  --fx-background-danger: #d9787d;
   --fx-background-light: #fbfbfc;
   --fx-background-dark: #7a7c7f;
   --fx-hover-background-primary: #3380bb;
@@ -111,7 +111,7 @@
   --fx-hover-background-success: #338385;
   --fx-hover-background-info: #69cbd2;
   --fx-hover-background-warning: #ffcf33;
-  --fx-hover-background-danger: #d84d54;
+  --fx-hover-background-danger: #cd4b51;
   --fx-hover-background-light: #f9fafb;
   --fx-hover-background-dark: #4d5154;
   --fx-border-primary: #1970b3;
@@ -119,7 +119,7 @@
   --fx-border-success: #197475;
   --fx-border-info: #57c5cd;
   --fx-border-warning: #ffc919;
-  --fx-border-danger: #d3363e;
+  --fx-border-danger: #c6343c;
   --fx-border-light: #f9fafb;
   --fx-border-dark: #373b3e;
   --fx-border-width: 1px;
@@ -164,9 +164,9 @@ html[theme=dark], html[data-theme=dark] {
   --fx-link-hover-color: #30668f;
   --fx-highlight-background-color: #bf9200;
   --fx-valid-color: #006466;
-  --fx-invalid-color: #CE2029;
+  --fx-invalid-color: #c01e26;
   --fx-valid-border-color: #006466;
-  --fx-invalid-border-color: #CE2029;
+  --fx-invalid-border-color: #c01e26;
   --fx-focus-ring-color: #adb5bd;
   --fx-scrollbar-color: #ced4da;
   --fx-scrollbar-hover-color: #6c757d;
@@ -198,9 +198,9 @@ html[theme=dark], html[data-theme=dark] {
     --fx-link-hover-color: #30668f;
     --fx-highlight-background-color: #bf9200;
     --fx-valid-color: #006466;
-    --fx-invalid-color: #CE2029;
+    --fx-invalid-color: #c01e26;
     --fx-valid-border-color: #006466;
-    --fx-invalid-border-color: #CE2029;
+    --fx-invalid-border-color: #c01e26;
     --fx-focus-ring-color: #adb5bd;
     --fx-scrollbar-color: #ced4da;
     --fx-scrollbar-hover-color: #6c757d;
