@@ -1,6 +1,7 @@
 @use "sass:math";
 @use "sass:meta";
 @use "sass:color";
+@use "sass:map";
 @use "sass:string";
 
 // ===============================
@@ -69,6 +70,112 @@
   }
 
   @return $color;
+}
+
+// ===============================
+// Function: luminance
+// ===============================
+/// Calculates the relative luminance of a color
+/// @param {Color} $color - Color to calculate luminance for
+/// @return {Number} Relative luminance (0-1)
+/// @source https://www.w3.org/TR/WCAG20/#relativeluminancedef
+
+@function luminance($color) {
+  @if meta.type-of($color) != "color" {
+    @return null;
+  }
+
+  // Extract RGB channels in sRGB space (0–255 → normalize to 0–1)
+  $r: math.div(color.channel($color, "red", $space: rgb), 255);
+  $g: math.div(color.channel($color, "green", $space: rgb), 255);
+  $b: math.div(color.channel($color, "blue", $space: rgb), 255);
+
+  // Gamma correction (WCAG)
+  @if $r <= 0.0393 {
+    $r: math.div($r, 12.92);
+  } @else {
+    $r: math.pow(math.div($r + 0.055, 1.055), 2.4);
+  }
+
+  @if $g <= 0.0393 {
+    $g: math.div($g, 12.92);
+  } @else {
+    $g: math.pow(math.div($g + 0.055, 1.055), 2.4);
+  }
+
+  @if $b <= 0.0393 {
+    $b: math.div($b, 12.92);
+  } @else {
+    $b: math.pow(math.div($b + 0.055, 1.055), 2.4);
+  }
+
+  // Final luminance value
+  @return 0.2126 * $r + 0.7152 * $g + 0.0722 * $b;
+}
+
+// ===============================
+// Helper function for standard contrast
+// ===============================
+/// Mixes a color with a target color based on the luminance of the input color
+/// @param {Color} $color - Color to mix
+/// @param {Color} $target - Target color to mix with
+/// @param {String} $type - Type of mix (text, background, hover, border)
+/// @return {Color} Mixed color
+
+@function mix-contrast($color, $target: null, $type: text) {
+  $lum: luminance($color);
+
+  // Fallback: auto target based on luminance
+  @if not $target {
+    @if $lum > 0.5 {
+      $target: #000;
+    } @else {
+      $target: #fff;
+    }
+  }
+
+  // ---------------------------------
+  // Define mix strength based on type
+  // ---------------------------------
+  $amount: 0%;
+
+  @if $type == text {
+    // Strong contrast for readability
+    @if $lum < 0.5 {
+      $amount: 25%;
+    } @else {
+      $amount: 35%;
+    }
+  } @else if $type == background {
+    // Soft surfaces
+    @if $lum < 0.5 {
+      $amount: 40%;
+    } @else {
+      $amount: 30%;
+    }
+  } @else if $type == hover {
+    // Slightly stronger than background
+    @if $lum < 0.5 {
+      $amount: 25%;
+    } @else {
+      $amount: 15%;
+    }
+  } @else if $type == border {
+    // Subtle separation
+    @if $lum < 0.5 {
+      $amount: 15%;
+    } @else {
+      $amount: 10%;
+    }
+  } @else {
+    // Fallback behavior
+    @return $color;
+  }
+
+  // ---------------------------------
+  // Apply mix
+  // ---------------------------------
+  @return color.mix($target, $color, $amount);
 }
 
 // ===============================
