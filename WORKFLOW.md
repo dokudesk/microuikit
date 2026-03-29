@@ -28,8 +28,8 @@ Development is managed by the **DokuDesk team**.
 ### 1.1 Clone and setup
 
 ```bash
-git clone https://<source-repository>/dokudesk/flexa.git
-cd flexa
+git clone https://<source-repository>/dokudesk/microuikit.git
+cd microuikit
 npm install
 ```
 
@@ -71,11 +71,8 @@ git checkout -b release/x.y.z
 ```bash
 npm run lint
 npm run test:run
-npm run build:dev
+npm run build
 ```
-
-Use `build:dev` during normal development work. It generates development artifacts, including source maps.
-Use `build:prod` when you need a production-ready package without source maps.
 
 ### 1.5 Commit and push branch
 
@@ -159,7 +156,7 @@ git checkout -b hotfix/my-fix
 
 ### 2.3 Pipeline must pass
 
-- Pipeline runs lint, build, and test on the Merge Request.
+- Pipeline runs lint, test, buid and publish on the Merge Request.
 
 ### 2.4 Merge policy for `master`
 
@@ -177,7 +174,7 @@ git checkout -b hotfix/my-fix
 | Push to `feature/*` | Lint -> Test -> `build` |
 | Push to `hotfix/*` | Lint -> Test -> `build` |
 | Push to `release/*` | Lint -> Test -> `build` |
-| Merge request (GitLab) | Lint -> Test -> Build target based on branch purpose |
+| Merge request (GitLab) | Lint -> Test -> Build -> publish target based on branch purpose |
 | Push to GitHub mirror | No development workflow; distribution only |
 
 

@@ -1,5 +1,5 @@
 /**
- * Unit tests for Flexa JS API (Theme, Direction, ButtonBusy, PasswordToggle, Collapse, init).
+ * Unit tests for MicroUIKit JS API (Theme, Direction, ButtonBusy, PasswordToggle, Collapse, init).
  * Loads the UMD bundle by reading and running in global scope so it attaches to window/global.
  */
 import path from 'node:path';
@@ -7,26 +7,26 @@ import { fileURLToPath } from 'node:url';
 import fs from 'node:fs';
 import { describe, it, expect, beforeEach, afterEach, vi, beforeAll } from 'vitest';
 
-const PREFIX = 'fx-';
+const PREFIX = 'mk-';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const flexaPath = path.resolve(__dirname, '../../dist/js/flexa.js');
+const microuikitPath = path.resolve(__dirname, '../../dist/js/microuikit.js');
 
-let Flexa;
+let MicroUIKit;
 beforeAll(() => {
-  const umdCode = fs.readFileSync(flexaPath, 'utf8');
-  const run = new Function('window', 'document', 'globalThis', umdCode + '\nreturn globalThis.Flexa;');
-  Flexa = run(globalThis, typeof document !== 'undefined' ? document : undefined, globalThis);
+  const umdCode = fs.readFileSync(microuikitPath, 'utf8');
+  const run = new Function('window', 'document', 'globalThis', umdCode + '\nreturn globalThis.MicroUIKit;');
+  MicroUIKit = run(globalThis, typeof document !== 'undefined' ? document : undefined, globalThis);
 });
 
-describe('Flexa API', () => {
+describe('MicroUIKit API', () => {
   it('exposes PREFIX and all public modules', () => {
-    expect(Flexa.PREFIX).toBe(PREFIX);
-    expect(Flexa.Theme).toBeDefined();
-    expect(Flexa.Direction).toBeDefined();
-    expect(Flexa.ButtonBusy).toBeDefined();
-    expect(Flexa.PasswordToggle).toBeDefined();
-    expect(Flexa.Collapse).toBeDefined();
-    expect(typeof Flexa.init).toBe('function');
+    expect(MicroUIKit.PREFIX).toBe(PREFIX);
+    expect(MicroUIKit.Theme).toBeDefined();
+    expect(MicroUIKit.Direction).toBeDefined();
+    expect(MicroUIKit.ButtonBusy).toBeDefined();
+    expect(MicroUIKit.PasswordToggle).toBeDefined();
+    expect(MicroUIKit.Collapse).toBeDefined();
+    expect(typeof MicroUIKit.init).toBe('function');
   });
 });
 
@@ -36,30 +36,30 @@ describe('Theme', () => {
   });
 
   afterEach(() => {
-    Flexa.Theme.set('light');
+    MicroUIKit.Theme.set('light');
   });
 
   it('get() returns "light" when data-theme is not set', () => {
-    expect(Flexa.Theme.get()).toBe('light');
+    expect(MicroUIKit.Theme.get()).toBe('light');
   });
 
   it('set() applies data-theme and get() returns it', () => {
-    Flexa.Theme.set('dark');
+    MicroUIKit.Theme.set('dark');
     expect(document.documentElement.getAttribute('data-theme')).toBe('dark');
-    expect(Flexa.Theme.get()).toBe('dark');
+    expect(MicroUIKit.Theme.get()).toBe('dark');
 
-    Flexa.Theme.set('light');
+    MicroUIKit.Theme.set('light');
     expect(document.documentElement.getAttribute('data-theme')).toBe('light');
-    expect(Flexa.Theme.get()).toBe('light');
+    expect(MicroUIKit.Theme.get()).toBe('light');
   });
 
-  it('set() dispatches flexa:theme-change', () => {
+  it('set() dispatches microuikit:theme-change', () => {
     const spy = vi.fn();
-    document.documentElement.addEventListener('flexa:theme-change', spy);
-    Flexa.Theme.set('dark');
+    document.documentElement.addEventListener('microuikit:theme-change', spy);
+    MicroUIKit.Theme.set('dark');
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy.mock.calls[0][0].detail.theme).toBe('dark');
-    document.documentElement.removeEventListener('flexa:theme-change', spy);
+    document.documentElement.removeEventListener('microuikit:theme-change', spy);
   });
 
   it('set("auto") syncs data-theme with prefers-color-scheme', () => {
@@ -68,9 +68,9 @@ describe('Theme', () => {
       addEventListener: vi.fn(),
       removeEventListener: vi.fn()
     }));
-    Flexa.Theme.set('auto');
+    MicroUIKit.Theme.set('auto');
     expect(document.documentElement.getAttribute('data-theme')).toBe('dark');
-    expect(Flexa.Theme.get()).toBe('dark');
+    expect(MicroUIKit.Theme.get()).toBe('dark');
   });
 });
 
@@ -81,28 +81,28 @@ describe('Direction', () => {
   });
 
   it('get() returns current dir', () => {
-    expect(Flexa.Direction.get()).toBe('ltr');
+    expect(MicroUIKit.Direction.get()).toBe('ltr');
     document.documentElement.setAttribute('dir', 'rtl');
     document.documentElement.setAttribute('data-dir', 'rtl');
-    expect(Flexa.Direction.get()).toBe('rtl');
+    expect(MicroUIKit.Direction.get()).toBe('rtl');
   });
 
   it('set() updates dir and data-dir', () => {
-    Flexa.Direction.set('rtl');
+    MicroUIKit.Direction.set('rtl');
     expect(document.documentElement.getAttribute('dir')).toBe('rtl');
     expect(document.documentElement.getAttribute('data-dir')).toBe('rtl');
-    Flexa.Direction.set('ltr');
+    MicroUIKit.Direction.set('ltr');
     expect(document.documentElement.getAttribute('dir')).toBe('ltr');
     expect(document.documentElement.getAttribute('data-dir')).toBe('ltr');
   });
 
-  it('set() dispatches flexa:direction-change', () => {
+  it('set() dispatches microuikit:direction-change', () => {
     const spy = vi.fn();
-    document.documentElement.addEventListener('flexa:direction-change', spy);
-    Flexa.Direction.set('rtl');
+    document.documentElement.addEventListener('microuikit:direction-change', spy);
+    MicroUIKit.Direction.set('rtl');
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy.mock.calls[0][0].detail.direction).toBe('rtl');
-    document.documentElement.removeEventListener('flexa:direction-change', spy);
+    document.documentElement.removeEventListener('microuikit:direction-change', spy);
   });
 });
 
@@ -120,79 +120,79 @@ describe('ButtonBusy', () => {
   });
 
   it('set(element, true) sets aria-busy="true"', () => {
-    Flexa.ButtonBusy.set(button, true);
+    MicroUIKit.ButtonBusy.set(button, true);
     expect(button.getAttribute('aria-busy')).toBe('true');
   });
 
   it('set(element, true, label) sets aria-label', () => {
-    Flexa.ButtonBusy.set(button, true, 'Loading…');
+    MicroUIKit.ButtonBusy.set(button, true, 'Loading…');
     expect(button.getAttribute('aria-busy')).toBe('true');
     expect(button.getAttribute('aria-label')).toBe('Loading…');
   });
 
   it('set(element, false) sets aria-busy="false"', () => {
-    Flexa.ButtonBusy.set(button, false);
+    MicroUIKit.ButtonBusy.set(button, false);
     expect(button.getAttribute('aria-busy')).toBe('false');
   });
 
   it('get(element) returns busy state', () => {
-    Flexa.ButtonBusy.set(button, false);
-    expect(Flexa.ButtonBusy.get(button)).toBe(false);
-    Flexa.ButtonBusy.set(button, true);
-    expect(Flexa.ButtonBusy.get(button)).toBe(true);
+    MicroUIKit.ButtonBusy.set(button, false);
+    expect(MicroUIKit.ButtonBusy.get(button)).toBe(false);
+    MicroUIKit.ButtonBusy.set(button, true);
+    expect(MicroUIKit.ButtonBusy.get(button)).toBe(true);
   });
 
   it('set(selector, busy) works with CSS selector', () => {
     button.id = 'btn-busy';
-    Flexa.ButtonBusy.set('#btn-busy', true);
-    expect(Flexa.ButtonBusy.get(button)).toBe(true);
+    MicroUIKit.ButtonBusy.set('#btn-busy', true);
+    expect(MicroUIKit.ButtonBusy.get(button)).toBe(true);
   });
 
   it('get(missing) returns false', () => {
-    expect(Flexa.ButtonBusy.get('#nonexistent')).toBe(false);
+    expect(MicroUIKit.ButtonBusy.get('#nonexistent')).toBe(false);
   });
 
   it('set(missing, busy) does not throw', () => {
-    expect(() => Flexa.ButtonBusy.set('#nonexistent', true)).not.toThrow();
+    expect(() => MicroUIKit.ButtonBusy.set('#nonexistent', true)).not.toThrow();
   });
 
   it('enableBusy / disableBusy delegate to set', () => {
-    Flexa.ButtonBusy.enableBusy(button, 'Please wait');
+    MicroUIKit.ButtonBusy.enableBusy(button, 'Please wait');
     expect(button.getAttribute('aria-busy')).toBe('true');
     expect(button.getAttribute('aria-label')).toBe('Please wait');
-    Flexa.ButtonBusy.disableBusy(button);
+    MicroUIKit.ButtonBusy.disableBusy(button);
     expect(button.getAttribute('aria-busy')).toBe('false');
   });
 
-  it('set() dispatches flexa:button-busy', () => {
+  it('set() dispatches microuikit:button-busy', () => {
     const spy = vi.fn();
-    button.addEventListener('flexa:button-busy', spy);
-    Flexa.ButtonBusy.set(button, true);
+    button.addEventListener('microuikit:button-busy', spy);
+    MicroUIKit.ButtonBusy.set(button, true);
     expect(spy).toHaveBeenCalledWith(expect.objectContaining({ detail: { busy: true } }));
-    Flexa.ButtonBusy.set(button, false);
+    MicroUIKit.ButtonBusy.set(button, false);
     expect(spy).toHaveBeenCalledWith(expect.objectContaining({ detail: { busy: false } }));
     expect(spy).toHaveBeenCalledTimes(2);
-    button.removeEventListener('flexa:button-busy', spy);
+    button.removeEventListener('microuikit:button-busy', spy);
   });
 });
 
 describe('PasswordToggle', () => {
   it('init() does not throw when no toggle buttons exist', () => {
-    expect(() => Flexa.PasswordToggle.init()).not.toThrow();
+    expect(() => MicroUIKit.PasswordToggle.init()).not.toThrow();
   });
 
-  it('init() binds click on button.fx-toggle-password with linked input', () => {
+  it('init() binds click on button.mk-toggle-password with linked input', () => {
     const input = document.createElement('input');
     input.type = 'password';
     input.id = 'pwd';
     const button = document.createElement('button');
     button.type = 'button';
-    button.classList.add('fx-toggle-password');
+    button.classList.add('mk-toggle-password');
     button.setAttribute('aria-controls', 'pwd');
     document.body.appendChild(input);
     document.body.appendChild(button);
 
-    Flexa.PasswordToggle.init();
+    MicroUIKit.PasswordToggle.init();
 
     expect(input.type).toBe('password');
     button.click();
@@ -227,13 +227,13 @@ describe('Collapse', () => {
 
     target = document.createElement('div');
     target.id = 'collapse-target-vertical';
-    target.className = 'fx-collapse';
+    target.className = 'mk-collapse';
     target.textContent = 'Vertical body';
 
     document.body.appendChild(trigger);
     document.body.appendChild(target);
 
-    Flexa.Collapse.init();
+    MicroUIKit.Collapse.init();
 
     trigger.click();
     await nextTick();
@@ -254,13 +254,13 @@ describe('Collapse', () => {
 
     target = document.createElement('div');
     target.id = 'collapse-target-horizontal';
-    target.className = 'fx-collapse fx-collapse-horizontal';
+    target.className = 'mk-collapse mk-collapse-horizontal';
     target.innerHTML = '<div style="width: 12rem;">Horizontal body</div>';
 
     document.body.appendChild(trigger);
     document.body.appendChild(target);
 
-    Flexa.Collapse.init();
+    MicroUIKit.Collapse.init();
 
     trigger.click();
     await nextTick();
@@ -274,11 +274,11 @@ describe('Collapse', () => {
 
 describe('init', () => {
   it('init() runs Theme.init, Direction.init, PasswordToggle.init, Collapse.init', () => {
-    const themeInit = vi.spyOn(Flexa.Theme, 'init');
-    const dirInit = vi.spyOn(Flexa.Direction, 'init');
-    const pwdInit = vi.spyOn(Flexa.PasswordToggle, 'init');
-    const collapseInit = vi.spyOn(Flexa.Collapse, 'init');
-    Flexa.init();
+    const themeInit = vi.spyOn(MicroUIKit.Theme, 'init');
+    const dirInit = vi.spyOn(MicroUIKit.Direction, 'init');
+    const pwdInit = vi.spyOn(MicroUIKit.PasswordToggle, 'init');
+    const collapseInit = vi.spyOn(MicroUIKit.Collapse, 'init');
+    MicroUIKit.init();
     expect(themeInit).toHaveBeenCalled();
     expect(dirInit).toHaveBeenCalled();
     expect(pwdInit).toHaveBeenCalled();

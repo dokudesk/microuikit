@@ -1,6 +1,6 @@
 # Security Policy
 
-**DokuDesk** team and community take security issues in Flexa seriously.
+**DokuDesk** team and community take security issues in MicroUIKit seriously.
 We appreciate responsible disclosure and make every effort to acknowledge valid reports and contributions.
 
 ## Supported Versions

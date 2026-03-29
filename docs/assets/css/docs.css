@@ -1,14 +1,14 @@
 /**
- * Flexa documentation styles (production-ready).
+ * MicroUIKit documentation styles (production-ready).
  * Sections: base, demo panels, code blocks, class-reference list, helpers, responsive.
- * Depends on Flexa design tokens (--fx-*) from flexa.css.
+ * Depends on MicroUIKit design tokens (--mk-*) from microuikit.css.
  */
 
 /* -----------------------------------------------------------------------------
    Base & layout
    ----------------------------------------------------------------------------- */
 :root {
-  --fx-demo-copy-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='currentColor' d='M9 2h7v4h4v10h-3v1h4V4.6L17.4 1H8v5h1zm8 0h.31L20 4.69V5h-3zM5 19h7v1H5zm-2 4h13V10.6L12.4 7H3zm9-15h.31L15 10.69V11h-3zM4 8h7v4h4v10H4zm1 5h9v1H5zm4 3h5v1H5v-1z'/%3E%3C/svg%3E");
+  --mk-demo-copy-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='currentColor' d='M9 2h7v4h4v10h-3v1h4V4.6L17.4 1H8v5h1zm8 0h.31L20 4.69V5h-3zM5 19h7v1H5zm-2 4h13V10.6L12.4 7H3zm9-15h.31L15 10.69V11h-3zM4 8h7v4h4v10H4zm1 5h9v1H5zm4 3h5v1H5v-1z'/%3E%3C/svg%3E");
 }
 
 p, h1, h2, h3, h4, h5, h6 {
@@ -21,25 +21,25 @@ ul , ol {
 
 header,
 header * {
-  font-family: var(--fx-font-family-ltr) !important;
+  font-family: var(--mk-font-family-ltr) !important;
 }
 
-.fx-demo-section {
+.mk-demo-section {
   margin-top: 2rem;
 }
 
-.fx-demo-panel {
+.mk-demo-panel {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   margin-bottom: 0.5rem;
   padding: 0.75rem;
-  border: 1px solid var(--fx-border-color);
-  border-radius: var(--fx-control-border-radius);
-  background-color: var(--fx-background-color);
+  border: 1px solid var(--mk-border-color);
+  border-radius: var(--mk-control-border-radius);
+  background-color: var(--mk-background-color);
 }
 
-.fx-demo-preview {
+.mk-demo-preview {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -47,11 +47,11 @@ header * {
   padding-inline: calc(0.9rem + 1px);
 }
 
-.fx-demo-preview:first-of-type {
+.mk-demo-preview:first-of-type {
   padding-top: 0.9rem;
 }
 
-.fx-demo-preview:last-of-type {
+.mk-demo-preview:last-of-type {
   padding-bottom: 0.9rem;
 }
 
@@ -62,27 +62,27 @@ pre {
   position: relative;
   margin: 0;
   padding: 0.9rem;
-  border-radius: var(--fx-control-border-radius);
-  border: 1px solid var(--fx-border-color);
-  background-color: color-mix(in oklab, var(--fx-background-muted-color) 55%, var(--fx-background-color) 45%);
-  color: var(--fx-text-color);
+  border-radius: var(--mk-control-border-radius);
+  border: 1px solid var(--mk-border-color);
+  background-color: color-mix(in oklab, var(--mk-background-muted-color) 55%, var(--mk-background-color) 45%);
+  color: var(--mk-text-color);
 }
 
 code {
-  font-family: var(--fx-font-family-monospace);
-  color: var(--fx-pink);
+  font-family: var(--mk-font-family-monospace);
+  color: var(--mk-pink);
 }
 
 pre code {
   display: block;
   font-size: 0.9rem;
-  color: var(--fx-text-color);
+  color: var(--mk-text-color);
   overflow: auto;
   white-space: pre-wrap;
   word-break: break-all;
 }
 
-.fx-demo-code-copy {
+.mk-demo-code-copy {
   position: absolute;
   top: 0.9rem;
   inset-inline-end: 0.9rem;
@@ -91,11 +91,11 @@ pre code {
   padding: 0.9rem 0.5rem;
   border: 0;
   border-radius: 0.25rem;
-  background: color-mix(in oklab, var(--fx-background-muted-color) 55%, var(--fx-background-color) 45%);
+  background: color-mix(in oklab, var(--mk-background-muted-color) 55%, var(--mk-background-color) 45%);
   cursor: pointer;
 }
 
-.fx-demo-code-copy::after {
+.mk-demo-code-copy::after {
   content: "";
   position: absolute;
   left: 50%;
@@ -103,116 +103,116 @@ pre code {
   width: 1.5rem;
   height: 1.5rem;
   transform: translate(-50%, -50%);
-  mask-image: var(--fx-demo-copy-svg);
-  background: var(--fx-text-muted-color);
+  mask-image: var(--mk-demo-copy-svg);
+  background: var(--mk-text-muted-color);
 }
 
-.fx-demo-code-copy:hover {
-  background-color: var(--fx-background-muted-color);
+.mk-demo-code-copy:hover {
+  background-color: var(--mk-background-muted-color);
 }
 
 /* -----------------------------------------------------------------------------
    Class reference list (grid)
    ----------------------------------------------------------------------------- */
-.fx-demo-list {
-  border: 1px solid var(--fx-border-color);
-  border-radius: var(--fx-control-border-radius);
+.mk-demo-list {
+  border: 1px solid var(--mk-border-color);
+  border-radius: var(--mk-control-border-radius);
   overflow: hidden;
 }
 
-.fx-demo-list-row {
+.mk-demo-list-row {
   display: grid;
   grid-template-columns: 20% 1fr;
   align-items: center;
   gap: 1rem;
   padding: 0.25rem 1rem;
-  border-bottom: 1px solid var(--fx-border-color);
+  border-bottom: 1px solid var(--mk-border-color);
 }
 
-.fx-demo-list-row:last-child {
+.mk-demo-list-row:last-child {
   border-bottom: none !important;
 }
 
-.fx-demo-list-toolbar {
-  background-color: color-mix(in oklab, var(--fx-background-muted-color) 55%, var(--fx-background-color) 45%);
-  color: var(--fx-text-muted-color);
+.mk-demo-list-toolbar {
+  background-color: color-mix(in oklab, var(--mk-background-muted-color) 55%, var(--mk-background-color) 45%);
+  color: var(--mk-text-muted-color);
 }
 
 
-.fx-demo-list-toolbar .fx-demo-search-input {
+.mk-demo-list-toolbar .mk-demo-search-input {
   height: 2.5rem;
-  background-color: var(--fx-background-color);
-  color: var(--fx-text-color);
+  background-color: var(--mk-background-color);
+  color: var(--mk-text-color);
 }
 
-.fx-demo-list-head {
-  background-color: color-mix(in oklab, var(--fx-info) 10%, var(--fx-background-color) 90%);
+.mk-demo-list-head {
+  background-color: color-mix(in oklab, var(--mk-info) 10%, var(--mk-background-color) 90%);
   border-bottom: none !important;
 }
 
-.fx-demo-list-row.fx-demo-list-head~.fx-demo-list-row:nth-child(even) {
-  background-color: color-mix(in oklab, var(--fx-background-muted-color) 55%, var(--fx-background-color) 45%);
+.mk-demo-list-row.mk-demo-list-head~.mk-demo-list-row:nth-child(even) {
+  background-color: color-mix(in oklab, var(--mk-background-muted-color) 55%, var(--mk-background-color) 45%);
 }
 
-.fx-demo-list-row.fx-demo-list-head+.fx-demo-list-row {
-  border-top: 1px solid var(--fx-border-color) !important;
+.mk-demo-list-row.mk-demo-list-head+.mk-demo-list-row {
+  border-top: 1px solid var(--mk-border-color) !important;
 }
 
 /* -----------------------------------------------------------------------------
    Documentation helpers
    ----------------------------------------------------------------------------- */
-.fx-demo-null-box {
+.mk-demo-null-box {
   min-width: 4rem;
   min-height: 2.5rem;
   padding: 0.5rem 0.6rem;
-  background-color: var(--fx-background-color);
+  background-color: var(--mk-background-color);
 }
 
-.fx-demo-callout {
+.mk-demo-callout {
   padding: 0.9rem;
-  border: 1px solid color-mix(in oklab, var(--fx-border-info) 10%, var(--fx-border-info) 90%);
-  border-inline-start: 0.25rem solid var(--fx-background-info);
-  border-radius: var(--fx-control-border-radius);
-  background: color-mix(in oklab, var(--fx-background-info) 10%, var(--fx-background-color) 90%);
-  color: var(--fx-text-color);
+  border: 1px solid color-mix(in oklab, var(--mk-border-info) 10%, var(--mk-border-info) 90%);
+  border-inline-start: 0.25rem solid var(--mk-background-info);
+  border-radius: var(--mk-control-border-radius);
+  background: color-mix(in oklab, var(--mk-background-info) 10%, var(--mk-background-color) 90%);
+  color: var(--mk-text-color);
 }
 
-.fx-demo-keyboard {
-  background-color: color-mix(in oklab, var(--fx-background-muted-color) 55%, var(--fx-background-color) 45%);
-  border: 1px solid var(--fx-border-color);
+.mk-demo-keyboard {
+  background-color: color-mix(in oklab, var(--mk-background-muted-color) 55%, var(--mk-background-color) 45%);
+  border: 1px solid var(--mk-border-color);
   border-radius: 0.25rem;
   padding: 0 0.25rem;
 }
 
-.fx-demo-skeleton-stack {
+.mk-demo-skeleton-stack {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
   width: 100%;
 }
 
-.fx-demo-skeleton-line {
+.mk-demo-skeleton-line {
   display: block;
   min-height: 1rem;
   border-radius: 999px;
 }
 
-.fx-demo-skeleton-line-sm {
+.mk-demo-skeleton-line-sm {
   min-height: 0.75rem;
 }
 
-.fx-demo-skeleton-line-lg {
+.mk-demo-skeleton-line-lg {
   min-height: 1.5rem;
 }
 
-.fx-demo-skeleton-avatar {
+.mk-demo-skeleton-avatar {
   width: 4rem;
   min-width: 4rem;
   height: 4rem;
   border-radius: 50%;
 }
 
-.fx-demo-skeleton-card {
+.mk-demo-skeleton-card {
   width: 100%;
   max-width: 24rem;
 }
@@ -221,11 +221,11 @@ pre code {
    Responsive
    ----------------------------------------------------------------------------- */
 @media (max-width: 768px) {
-  .fx-demo-list-row {
+  .mk-demo-list-row {
     grid-template-columns: 1fr;
   }
 
-  .fx-demo-list-toolbar {
+  .mk-demo-list-toolbar {
     flex-direction: column;
   }
 }

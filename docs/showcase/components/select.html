@@ -4,175 +4,175 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Flexa - Select Component</title>
-  <link rel="stylesheet" href="../../../dist/css/flexa.css" />
-  <link rel="stylesheet" href="../../../dist/css/themes/flexa-theme-default.css" />
+  <title>MicroUIKit - Select Component</title>
+  <link rel="stylesheet" href="../../../dist/css/microuikit.css" />
+  <link rel="stylesheet" href="../../../dist/css/themes/microuikit-theme-default.css" />
   <link rel="stylesheet" href="../../assets/css/docs.css" />
 
 </head>
 
-<body class="fx-d-flex fx-flex-dir-col fx-h-vh-100 fx-m-0">
+<body class="mk-d-flex mk-flex-dir-col mk-h-vh-100 mk-m-0">
   <include src="../_header.html"></include>
 
-  <main class="fx-overflow-y-auto fx-px-5 fx-py-3">
+  <main class="mk-overflow-y-auto mk-px-5 mk-py-3">
     <h3 >Select Component</h3>
-    <p class="fx-text-muted">
+    <p class="mk-text-muted">
       The Select component styles a native select element with custom appearance, arrow icon, and support
       for focus, validation (invalid/valid), disabled state, and multiple selection.
     </p>
 
-    <div class="fx-demo-section">
+    <div class="mk-demo-section">
       <h5>Base usage</h5>
-      <div class="fx-demo-panel">
-        <div class="fx-demo-preview">
-          <select class="fx-select" style="max-width: 20rem;">
+      <div class="mk-demo-panel">
+        <div class="mk-demo-preview">
+          <select class="mk-select" style="max-width: 20rem;">
             <option>Option A</option>
             <option>Option B</option>
             <option>Option C</option>
           </select>
         </div>
-        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;select class="fx-select"&gt;
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;select class="mk-select"&gt;
   &lt;option&gt;Option A&lt;/option&gt;
   &lt;option&gt;Option B&lt;/option&gt;
   &lt;option&gt;Option C&lt;/option&gt;
 &lt;/select&gt;</code></pre>
         <ul >
-          <li>Without <code>fx-select-frame</code>, the select uses the browser's native appearance.</li>
+          <li>Without <code>mk-select-frame</code>, the select uses the browser's native appearance.</li>
         </ul>
       </div>
     </div>
 
-    <div class="fx-demo-section">
+    <div class="mk-demo-section">
       <h5>With frame and arrow (mask-based)</h5>
-      <div class="fx-demo-panel">
-        <div class="fx-demo-preview">
-          <div class="fx-select-frame" style="max-width: 20rem;">
-            <select id="sel-frame" class="fx-select">
+      <div class="mk-demo-panel">
+        <div class="mk-demo-preview">
+          <div class="mk-select-frame" style="max-width: 20rem;">
+            <select id="sel-frame" class="mk-select">
               <option value="">Choose...</option>
               <option>Apple</option>
               <option>Banana</option>
               <option>Cherry</option>
             </select>
-            <span class="fx-select-arrow" aria-hidden="true"></span>
+            <span class="mk-select-arrow" aria-hidden="true"></span>
           </div>
         </div>
-        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-select-frame"&gt;
-  &lt;select id="sel-frame" class="fx-select"&gt;
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="mk-select-frame"&gt;
+  &lt;select id="sel-frame" class="mk-select"&gt;
     &lt;option value=""&gt;Choose...&lt;/option&gt;
     &lt;option&gt;Apple&lt;/option&gt;
     &lt;option&gt;Banana&lt;/option&gt;
     &lt;option&gt;Cherry&lt;/option&gt;
   &lt;/select&gt;
-  &lt;span class="fx-select-arrow" aria-hidden="true"&gt;&lt;/span&gt;
+  &lt;span class="mk-select-arrow" aria-hidden="true"&gt;&lt;/span&gt;
 &lt;/div&gt;</code></pre>
         <ul >
-          <li>Arrow is rendered with <code>mask</code> + <code>--fx-select-arrow-color</code> so it follows the theme
+          <li>Arrow is rendered with <code>mask</code> + <code>--mk-select-arrow-color</code> so it follows the theme
             (e.g. dark mode).</li>
-          <li><code>fx-select-arrow</code> is decorative and has <code>pointer-events: none</code>; clicks go to the
+          <li><code>mk-select-arrow</code> is decorative and has <code>pointer-events: none</code>; clicks go to the
             select.</li>
         </ul>
       </div>
     </div>
 
-    <div class="fx-demo-section">
+    <div class="mk-demo-section">
       <h5>Validation states (invalid / valid)</h5>
-      <div class="fx-demo-panel">
-        <div class="fx-demo-preview">
-          <div class="fx-select-frame" style="max-width: 20rem;">
-            <select class="fx-select" invalid>
+      <div class="mk-demo-panel">
+        <div class="mk-demo-preview">
+          <div class="mk-select-frame" style="max-width: 20rem;">
+            <select class="mk-select" invalid>
               <option value="">Invalid (no selection)</option>
               <option>One</option>
             </select>
-            <span class="fx-select-arrow" aria-hidden="true"></span>
+            <span class="mk-select-arrow" aria-hidden="true"></span>
           </div>
-          <div class="fx-select-frame" style="max-width: 20rem;">
-            <select class="fx-select" valid>
+          <div class="mk-select-frame" style="max-width: 20rem;">
+            <select class="mk-select" valid>
               <option>Valid</option>
               <option>Two</option>
             </select>
-            <span class="fx-select-arrow" aria-hidden="true"></span>
+            <span class="mk-select-arrow" aria-hidden="true"></span>
           </div>
         </div>
-        <div class="fx-demo-preview">
-          <div class="fx-select-frame" style="max-width: 20rem;">
-            <select class="fx-select" aria-invalid="true">
+        <div class="mk-demo-preview">
+          <div class="mk-select-frame" style="max-width: 20rem;">
+            <select class="mk-select" aria-invalid="true">
               <option value="">ARIA invalid=true</option>
               <option>One</option>
             </select>
-            <span class="fx-select-arrow" aria-hidden="true"></span>
+            <span class="mk-select-arrow" aria-hidden="true"></span>
           </div>
-          <div class="fx-select-frame" style="max-width: 20rem;">
-            <select class="fx-select" aria-invalid="false">
+          <div class="mk-select-frame" style="max-width: 20rem;">
+            <select class="mk-select" aria-invalid="false">
               <option>ARIA invalid=false</option>
               <option>Two</option>
             </select>
-            <span class="fx-select-arrow" aria-hidden="true"></span>
+            <span class="mk-select-arrow" aria-hidden="true"></span>
           </div>
         </div>
-        <div class="fx-demo-preview">
-          <div class="fx-select-frame" style="max-width: 20rem;">
-            <select class="fx-select" invalid disabled>
+        <div class="mk-demo-preview">
+          <div class="mk-select-frame" style="max-width: 20rem;">
+            <select class="mk-select" invalid disabled>
               <option value="">Invalid + disabled</option>
             </select>
-            <span class="fx-select-arrow" aria-hidden="true"></span>
+            <span class="mk-select-arrow" aria-hidden="true"></span>
           </div>
-          <div class="fx-select-frame" style="max-width: 20rem;">
-            <select class="fx-select" valid disabled>
+          <div class="mk-select-frame" style="max-width: 20rem;">
+            <select class="mk-select" valid disabled>
               <option>Valid + disabled</option>
             </select>
-            <span class="fx-select-arrow" aria-hidden="true"></span>
+            <span class="mk-select-arrow" aria-hidden="true"></span>
           </div>
         </div>
 
-        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-select-frame"&gt;
-  &lt;select class="fx-select" invalid&gt;
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="mk-select-frame"&gt;
+  &lt;select class="mk-select" invalid&gt;
     &lt;option value=""&gt;Invalid (no selection)&lt;/option&gt;
     &lt;option&gt;One&lt;/option&gt;
   &lt;/select&gt;
-  &lt;span class="fx-select-arrow" aria-hidden="true"&gt;&lt;/span&gt;
+  &lt;span class="mk-select-arrow" aria-hidden="true"&gt;&lt;/span&gt;
 &lt;/div&gt;
 
-&lt;div class="fx-select-frame"&gt;
-  &lt;select class="fx-select" valid&gt;
+&lt;div class="mk-select-frame"&gt;
+  &lt;select class="mk-select" valid&gt;
     &lt;option&gt;Valid&lt;/option&gt;
     &lt;option&gt;Two&lt;/option&gt;
   &lt;/select&gt;
-  &lt;span class="fx-select-arrow" aria-hidden="true"&gt;&lt;/span&gt;
+  &lt;span class="mk-select-arrow" aria-hidden="true"&gt;&lt;/span&gt;
 &lt;/div&gt;
 
-&lt;div class="fx-select-frame"&gt;
-  &lt;select class="fx-select" aria-invalid="true"&gt;
+&lt;div class="mk-select-frame"&gt;
+  &lt;select class="mk-select" aria-invalid="true"&gt;
     &lt;option value=""&gt;ARIA invalid=true&lt;/option&gt;
     &lt;option&gt;One&lt;/option&gt;
   &lt;/select&gt;
-  &lt;span class="fx-select-arrow" aria-hidden="true"&gt;&lt;/span&gt;
+  &lt;span class="mk-select-arrow" aria-hidden="true"&gt;&lt;/span&gt;
 &lt;/div&gt;
 
-&lt;div class="fx-select-frame"&gt;
-  &lt;select class="fx-select" aria-invalid="false"&gt;
+&lt;div class="mk-select-frame"&gt;
+  &lt;select class="mk-select" aria-invalid="false"&gt;
     &lt;option&gt;ARIA invalid=false&lt;/option&gt;
     &lt;option&gt;Two&lt;/option&gt;
   &lt;/select&gt;
-  &lt;span class="fx-select-arrow" aria-hidden="true"&gt;&lt;/span&gt;
+  &lt;span class="mk-select-arrow" aria-hidden="true"&gt;&lt;/span&gt;
 &lt;/div&gt;
 
-&lt;div class="fx-select-frame"&gt;
-  &lt;select class="fx-select" invalid disabled&gt;
+&lt;div class="mk-select-frame"&gt;
+  &lt;select class="mk-select" invalid disabled&gt;
     &lt;option value=""&gt;Invalid + disabled&lt;/option&gt;
   &lt;/select&gt;
-  &lt;span class="fx-select-arrow" aria-hidden="true"&gt;&lt;/span&gt;
+  &lt;span class="mk-select-arrow" aria-hidden="true"&gt;&lt;/span&gt;
 &lt;/div&gt;
 
-&lt;div class="fx-select-frame"&gt;
-  &lt;select class="fx-select" valid disabled&gt;
+&lt;div class="mk-select-frame"&gt;
+  &lt;select class="mk-select" valid disabled&gt;
     &lt;option&gt;Valid + disabled&lt;/option&gt;
   &lt;/select&gt;
-  &lt;span class="fx-select-arrow" aria-hidden="true"&gt;&lt;/span&gt;
+  &lt;span class="mk-select-arrow" aria-hidden="true"&gt;&lt;/span&gt;
 &lt;/div&gt;</code></pre>
         <ul >
           <li>Use <code>invalid</code>/<code>valid</code> for state-driven validation styling; these states apply
-            semantic border/text colors via <code>--fx-invalid-border-color</code>, <code>--fx-invalid-color</code>,
-            <code>--fx-valid-border-color</code>, and <code>--fx-valid-color</code>.
+            semantic border/text colors via <code>--mk-invalid-border-color</code>, <code>--mk-invalid-color</code>,
+            <code>--mk-valid-border-color</code>, and <code>--mk-valid-color</code>.
           </li>
           <li>ARIA mapping is fully supported: <code>aria-invalid="true"</code> uses invalid styling, and
             <code>aria-invalid="false"</code> uses valid styling, matching the visual behavior of
@@ -184,44 +184,44 @@
       </div>
     </div>
 
-    <div class="fx-demo-section">
+    <div class="mk-demo-section">
       <h5>Disabled state</h5>
-      <div class="fx-demo-panel">
-        <div class="fx-demo-preview">
-          <div class="fx-select-frame" style="max-width: 20rem;">
-            <select class="fx-select" disabled>
+      <div class="mk-demo-panel">
+        <div class="mk-demo-preview">
+          <div class="mk-select-frame" style="max-width: 20rem;">
+            <select class="mk-select" disabled>
               <option>Disabled</option>
             </select>
-            <span class="fx-select-arrow" aria-hidden="true"></span>
+            <span class="mk-select-arrow" aria-hidden="true"></span>
           </div>
         </div>
-        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-select-frame"&gt;
-  &lt;select class="fx-select" disabled&gt; 
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="mk-select-frame"&gt;
+  &lt;select class="mk-select" disabled&gt; 
     &lt;option&gt;Disabled&lt;/option&gt; 
   &lt;/select&gt;
-  &lt;span class="fx-select-arrow" aria-hidden="true"&gt;&lt;/span&gt;
+  &lt;span class="mk-select-arrow" aria-hidden="true"&gt;&lt;/span&gt;
 &lt;/div&gt;</code></pre>
         <ul >
-          <li><code>--fx-text-muted-color</code> defines the disabled text tone for the field and selected options.</li>
-          <li><code>--fx-disabled-control-opacity</code> controls visual de-emphasis for disabled select states while
+          <li><code>--mk-text-muted-color</code> defines the disabled text tone for the field and selected options.</li>
+          <li><code>--mk-disabled-control-opacity</code> controls visual de-emphasis for disabled select states while
             preserving layout and readability.</li>
         </ul>
       </div>
     </div>
 
-    <div class="fx-demo-section">
+    <div class="mk-demo-section">
       <h5>Multiple selection</h5>
-      <div class="fx-demo-panel">
-        <div class="fx-demo-preview">
-          <select class="fx-select" multiple style="width: 20rem; height: 6rem;">
+      <div class="mk-demo-panel">
+        <div class="mk-demo-preview">
+          <select class="mk-select" multiple style="width: 20rem; height: 6rem;">
             <option>Option 1</option>
             <option selected>Option 2</option>
             <option>Option 3</option>
             <option selected>Option 4</option>
           </select>
         </div>
-        <div class="fx-demo-preview">
-          <select class="fx-select" multiple invalid style="width: 20rem; height: 6rem;">
+        <div class="mk-demo-preview">
+          <select class="mk-select" multiple invalid style="width: 20rem; height: 6rem;">
             <option>Option 1</option>
             <option selected>Option 2</option>
             <option>Option 3</option>
@@ -229,29 +229,29 @@
           </select>
         </div>
 
-        <div class="fx-demo-preview">
-          <select class="fx-select" multiple disabled style="width: 20rem; height: 6rem;">
+        <div class="mk-demo-preview">
+          <select class="mk-select" multiple disabled style="width: 20rem; height: 6rem;">
             <option>Option 1</option>
             <option selected>Option 2</option>
             <option>Option 3</option>
             <option selected>Option 4</option>
           </select>
         </div>
-        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;select class="fx-select" multiple&gt;
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;select class="mk-select" multiple&gt;
   &lt;option&gt;Option 1&lt;/option&gt;
   &lt;option selected&gt;Option 2&lt;/option&gt;
   &lt;option&gt;Option 3&lt;/option&gt;
   &lt;option selected&gt;Option 4&lt;/option&gt;
 &lt;/select&gt;
 
-&lt;select class="fx-select" multiple invalid&gt;
+&lt;select class="mk-select" multiple invalid&gt;
   &lt;option&gt;Option 1&lt;/option&gt;
   &lt;option selected&gt;Option 2&lt;/option&gt;
   &lt;option&gt;Option 3&lt;/option&gt;
   &lt;option selected&gt;Option 4&lt;/option&gt;
 &lt;/select&gt;
 
-&lt;select class="fx-select" multiple disabled&gt;
+&lt;select class="mk-select" multiple disabled&gt;
   &lt;option&gt;Option 1&lt;/option&gt;
   &lt;option selected&gt;Option 2&lt;/option&gt;
   &lt;option&gt;Option 3&lt;/option&gt;
@@ -260,80 +260,80 @@
 </code></pre>
         <ul >
           <li>No arrow is shown for <code>multiple</code>; selected options use
-            <code>--fx-select-selected-option-text-color</code> and
-            <code>--fx-select-selected-option-background-color</code>.
+            <code>--mk-select-selected-option-text-color</code> and
+            <code>--mk-select-selected-option-background-color</code>.
           </li>
-          <li>Inside <code>fx-select-frame</code>, the arrow element is hidden when the select has
+          <li>Inside <code>mk-select-frame</code>, the arrow element is hidden when the select has
             <code>multiple</code>.
           </li>
         </ul>
       </div>
     </div>
 
-    <div class="fx-demo-section">
+    <div class="mk-demo-section">
       <h5>Multiple selection in frame</h5>
-      <div class="fx-demo-panel">
-        <div class="fx-demo-preview">
-          <div class="fx-select-frame" style="width: 20rem;">
-            <select class="fx-select" multiple style="max-width: 20rem; height: 6rem;">
+      <div class="mk-demo-panel">
+        <div class="mk-demo-preview">
+          <div class="mk-select-frame" style="width: 20rem;">
+            <select class="mk-select" multiple style="max-width: 20rem; height: 6rem;">
               <option>Option 1</option>
               <option selected>Option 2</option>
               <option>Option 3</option>
               <option selected>Option 4</option>
             </select>
-            <span class="fx-select-arrow" aria-hidden="true"></span>
+            <span class="mk-select-arrow" aria-hidden="true"></span>
           </div>
         </div>
-        <div class="fx-demo-preview">
-          <div class="fx-select-frame" style="width: 20rem;">
-            <select class="fx-select" multiple invalid style="max-width: 20rem; height: 6rem;">
+        <div class="mk-demo-preview">
+          <div class="mk-select-frame" style="width: 20rem;">
+            <select class="mk-select" multiple invalid style="max-width: 20rem; height: 6rem;">
               <option>Option 1</option>
               <option selected>Option 2</option>
               <option>Option 3</option>
               <option selected>Option 4</option>
             </select>
-            <span class="fx-select-arrow" aria-hidden="true"></span>
+            <span class="mk-select-arrow" aria-hidden="true"></span>
           </div>
         </div>
-        <div class="fx-demo-row fx-demo-preview">
-          <div class="fx-select-frame" style="width: 20rem;">
-            <select class="fx-select" multiple invalid disabled style="max-width: 20rem; height: 6rem;">
+        <div class="mk-demo-row mk-demo-preview">
+          <div class="mk-select-frame" style="width: 20rem;">
+            <select class="mk-select" multiple invalid disabled style="max-width: 20rem; height: 6rem;">
               <option>Option 1</option>
               <option selected>Option 2</option>
               <option>Option 3</option>
               <option selected>Option 4</option>
             </select>
-            <span class="fx-select-arrow" aria-hidden="true"></span>
+            <span class="mk-select-arrow" aria-hidden="true"></span>
           </div>
         </div>
-        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-select-frame"&gt;
-  &lt;select class="fx-select" multiple&gt;
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="mk-select-frame"&gt;
+  &lt;select class="mk-select" multiple&gt;
     &lt;option&gt;Option 1&lt;/option&gt;
     &lt;option selected&gt;Option 2&lt;/option&gt;
     &lt;option&gt;Option 3&lt;/option&gt;
     &lt;option selected&gt;Option 4&lt;/option&gt;
   &lt;/select&gt;
-  &lt;span class="fx-select-arrow" aria-hidden="true"&gt;&lt;/span&gt;
+  &lt;span class="mk-select-arrow" aria-hidden="true"&gt;&lt;/span&gt;
 &lt;/div&gt;
 
-&lt;div class="fx-select-frame"&gt;
-  &lt;select class="fx-select" multiple invalid&gt;
+&lt;div class="mk-select-frame"&gt;
+  &lt;select class="mk-select" multiple invalid&gt;
     &lt;option&gt;Option 1&lt;/option&gt;
     &lt;option selected&gt;Option 2&lt;/option&gt;
     &lt;option&gt;Option 3&lt;/option&gt;
     &lt;option selected&gt;Option 4&lt;/option&gt;
   &lt;/select&gt;
-  &lt;span class="fx-select-arrow" aria-hidden="true"&gt;&lt;/span&gt;
+  &lt;span class="mk-select-arrow" aria-hidden="true"&gt;&lt;/span&gt;
 &lt;/div&gt;
 
-&lt;div class="fx-select-frame"&gt;
-  &lt;select class="fx-select" multiple invalid disabled&gt;
+&lt;div class="mk-select-frame"&gt;
+  &lt;select class="mk-select" multiple invalid disabled&gt;
     &lt;option&gt;Option 1&lt;/option&gt;
     &lt;option selected&gt;Option 2&lt;/option&gt;
     &lt;option&gt;Option 3&lt;/option&gt;
     &lt;option selected&gt;Option 4&lt;/option&gt;
   &lt;/select&gt;
-  &lt;span class="fx-select-arrow" aria-hidden="true"&gt;&lt;/span&gt;
+  &lt;span class="mk-select-arrow" aria-hidden="true"&gt;&lt;/span&gt;
 &lt;/div&gt;</code></pre>
         <ul >
           <li>The arrow element is hidden when the select has <code>multiple</code>.</li>
@@ -342,12 +342,12 @@
     </div>
 
 
-    <div class="fx-demo-section">
+    <div class="mk-demo-section">
       <h5>Optgroups</h5>
-      <div class="fx-demo-panel">
-        <div class="fx-demo-preview">
-          <div class="fx-select-frame" style="max-width: 20rem;">
-            <select class="fx-select">
+      <div class="mk-demo-panel">
+        <div class="mk-demo-preview">
+          <div class="mk-select-frame" style="max-width: 20rem;">
+            <select class="mk-select">
               <optgroup label="Fruits">
                 <option>Apple</option>
                 <option>Banana</option>
@@ -357,122 +357,122 @@
                 <option>Pea</option>
               </optgroup>
             </select>
-            <span class="fx-select-arrow" aria-hidden="true"></span>
+            <span class="mk-select-arrow" aria-hidden="true"></span>
           </div>
         </div>
-        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-select-frame"&gt;
-  &lt;select class="fx-select"&gt;
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="mk-select-frame"&gt;
+  &lt;select class="mk-select"&gt;
     &lt;optgroup label="Fruits"&gt;
       &lt;option&gt;Apple&lt;/option&gt;
       &lt;option&gt;Banana&lt;/option&gt;
     &lt;/optgroup&gt;
     &lt;optgroup label="Vegetables"&gt;...&lt;/optgroup&gt;
   &lt;/select&gt;
-  &lt;span class="fx-select-arrow" aria-hidden="true"&gt;&lt;/span&gt;
+  &lt;span class="mk-select-arrow" aria-hidden="true"&gt;&lt;/span&gt;
 &lt;/div&gt;</code></pre>
       </div>
     </div>
 
-    <div class="fx-demo-section">
+    <div class="mk-demo-section">
       <h5>Quick customization</h5>
-      <div class="fx-demo-panel">
-        <div class="fx-demo-preview">
-          <div class="fx-select-frame" style="max-width: 20rem;">
-            <select class="fx-select" style="--fx-control-height: 4rem; --fx-control-border-radius: 999px;">
+      <div class="mk-demo-panel">
+        <div class="mk-demo-preview">
+          <div class="mk-select-frame" style="max-width: 20rem;">
+            <select class="mk-select" style="--mk-control-height: 4rem; --mk-control-border-radius: 999px;">
               <option>Tall and rounded</option>
               <option>Option 2</option>
             </select>
-            <span class="fx-select-arrow" aria-hidden="true"></span>
+            <span class="mk-select-arrow" aria-hidden="true"></span>
           </div>
-          <div class="fx-select-frame" style="max-width: 20rem; --fx-select-arrow-color: var(--fx-primary);">
-            <select class="fx-select" style="--fx-control-padding-x: 1.25rem;">
+          <div class="mk-select-frame" style="max-width: 20rem; --mk-select-arrow-color: var(--mk-primary);">
+            <select class="mk-select" style="--mk-control-padding-x: 1.25rem;">
               <option>Custom padding and arrow</option>
               <option>Option 2</option>
             </select>
-            <span class="fx-select-arrow" aria-hidden="true"></span>
+            <span class="mk-select-arrow" aria-hidden="true"></span>
           </div>
-          <div class="fx-select-frame" style="max-width: 20rem; --fx-select-arrow-color: var(--fx-danger);">
-            <select class="fx-select"
-              style="--fx-control-background-color: var(--fx-background-muted-color); --fx-border-color: var(--fx-danger); --fx-text-color: var(--fx-danger);">
+          <div class="mk-select-frame" style="max-width: 20rem; --mk-select-arrow-color: var(--mk-danger);">
+            <select class="mk-select"
+              style="--mk-control-background-color: var(--mk-background-muted-color); --mk-border-color: var(--mk-danger); --mk-text-color: var(--mk-danger);">
               <option>Custom surface and border</option>
               <option>Option 2</option>
             </select>
-            <span class="fx-select-arrow" aria-hidden="true"></span>
+            <span class="mk-select-arrow" aria-hidden="true"></span>
           </div>
         </div>
-        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-select-frame"&gt;
-  &lt;select class="fx-select" style="--fx-control-height: 4rem; --fx-control-border-radius: 999px;"&gt;
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="mk-select-frame"&gt;
+  &lt;select class="mk-select" style="--mk-control-height: 4rem; --mk-control-border-radius: 999px;"&gt;
     &lt;option&gt;Tall and rounded&lt;/option&gt;
     &lt;option&gt;Option 2&lt;/option&gt;
   &lt;/select&gt;
-  &lt;span class="fx-select-arrow" aria-hidden="true"&gt;&lt;/span&gt;
+  &lt;span class="mk-select-arrow" aria-hidden="true"&gt;&lt;/span&gt;
 &lt;/div&gt;
 
-&lt;div class="fx-select-frame" style="--fx-select-arrow-color: var(--fx-primary);"&gt;
-  &lt;select class="fx-select" style="--fx-control-padding-x: 2rem;"&gt;
+&lt;div class="mk-select-frame" style="--mk-select-arrow-color: var(--mk-primary);"&gt;
+  &lt;select class="mk-select" style="--mk-control-padding-x: 2rem;"&gt;
     &lt;option&gt;Custom padding and arrow&lt;/option&gt;
     &lt;option&gt;Option 2&lt;/option&gt;
   &lt;/select&gt;
-  &lt;span class="fx-select-arrow" aria-hidden="true"&gt;&lt;/span&gt;
+  &lt;span class="mk-select-arrow" aria-hidden="true"&gt;&lt;/span&gt;
 &lt;/div&gt;
 
-&lt;div class="fx-select-frame" style="--fx-select-arrow-color: var(--fx-danger);"&gt;
-  &lt;select class="fx-select" 
-    style="--fx-control-background-color: var(--fx-background-muted-color);
-    --fx-border-color: var(--fx-danger); 
-    --fx-text-color: var(--fx-danger);"&gt;
+&lt;div class="mk-select-frame" style="--mk-select-arrow-color: var(--mk-danger);"&gt;
+  &lt;select class="mk-select" 
+    style="--mk-control-background-color: var(--mk-background-muted-color);
+    --mk-border-color: var(--mk-danger); 
+    --mk-text-color: var(--mk-danger);"&gt;
     &lt;option&gt;Custom surface and border&lt;/option&gt;
     &lt;option&gt;Option 2&lt;/option&gt;
   &lt;/select&gt;
-  &lt;span class="fx-select-arrow" aria-hidden="true"&gt;&lt;/span&gt;
+  &lt;span class="mk-select-arrow" aria-hidden="true"&gt;&lt;/span&gt;
 &lt;/div&gt;</code></pre>
         <ul >
-          <li><code>--fx-control-height</code>, <code>--fx-control-padding-x</code>,
-            <code>--fx-control-padding-y</code>, and <code>--fx-control-border-radius</code> control field sizing and
+          <li><code>--mk-control-height</code>, <code>--mk-control-padding-x</code>,
+            <code>--mk-control-padding-y</code>, and <code>--mk-control-border-radius</code> control field sizing and
             shape.
           </li>
-          <li><code>--fx-border-width</code>, <code>--fx-border-color</code>,
-            <code>--fx-control-background-color</code>, and <code>--fx-text-color</code> define base field appearance.
+          <li><code>--mk-border-width</code>, <code>--mk-border-color</code>,
+            <code>--mk-control-background-color</code>, and <code>--mk-text-color</code> define base field appearance.
           </li>
-          <li><code>--fx-focus-ring-color</code> controls focus border color inside <code>.fx-select-frame</code>.</li>
-          <li><code>--fx-select-arrow-color</code> controls the decorative arrow color in frame mode. Set it on
-            <code>.fx-select-frame</code> (or an ancestor), not on the <code>select</code>, so the arrow element can inherit it.</li>
-          <li><code>--fx-select-selected-option-text-color</code> and
-            <code>--fx-select-selected-option-background-color</code> style selected <code>option</code> rows.
+          <li><code>--mk-focus-ring-color</code> controls focus border color inside <code>.mk-select-frame</code>.</li>
+          <li><code>--mk-select-arrow-color</code> controls the decorative arrow color in frame mode. Set it on
+            <code>.mk-select-frame</code> (or an ancestor), not on the <code>select</code>, so the arrow element can inherit it.</li>
+          <li><code>--mk-select-selected-option-text-color</code> and
+            <code>--mk-select-selected-option-background-color</code> style selected <code>option</code> rows.
           </li>
-          <li><code>--fx-invalid-border-color</code>, <code>--fx-invalid-color</code>,
-            <code>--fx-valid-border-color</code>, <code>--fx-valid-color</code>, and
-            <code>--fx-disabled-control-opacity</code> control validation/disabled states.
+          <li><code>--mk-invalid-border-color</code>, <code>--mk-invalid-color</code>,
+            <code>--mk-valid-border-color</code>, <code>--mk-valid-color</code>, and
+            <code>--mk-disabled-control-opacity</code> control validation/disabled states.
           </li>
-          <li><code>--fx-transition</code> sets motion timing for interactive state changes.</li>
+          <li><code>--mk-transition</code> sets motion timing for interactive state changes.</li>
         </ul>
       </div>
     </div>
 
-    <div class="fx-demo-section">
+    <div class="mk-demo-section">
       <h5>What the CSS package covers</h5>
-      <div class="fx-demo-panel">
+      <div class="mk-demo-panel">
         <ul >
-          <li><strong>Base.</strong> <code>.fx-select</code> applies height, padding, typography, color, background,
-            border, border-radius, and transition via <code>--fx-control-height</code>,
-            <code>--fx-control-padding-x</code>/<code>--fx-control-padding-y</code>, <code>--fx-control-background-color</code>,
-            <code>--fx-border-width</code>, <code>--fx-border-color</code>, <code>--fx-control-border-radius</code>, and
-            <code>--fx-transition</code>.</li>
-          <li><strong>Options.</strong> <code>option</code> uses <code>--fx-select-option-height</code> and
-            <code>--fx-text-color</code>. <code>option:checked</code> uses <code>--fx-select-selected-option-text-color</code>
-            and <code>--fx-select-selected-option-background-color</code>. When the select is disabled, checked options
-            use <code>--fx-text-muted-color</code> and <code>--fx-background-muted-color</code>.</li>
+          <li><strong>Base.</strong> <code>.mk-select</code> applies height, padding, typography, color, background,
+            border, border-radius, and transition via <code>--mk-control-height</code>,
+            <code>--mk-control-padding-x</code>/<code>--mk-control-padding-y</code>, <code>--mk-control-background-color</code>,
+            <code>--mk-border-width</code>, <code>--mk-border-color</code>, <code>--mk-control-border-radius</code>, and
+            <code>--mk-transition</code>.</li>
+          <li><strong>Options.</strong> <code>option</code> uses <code>--mk-select-option-height</code> and
+            <code>--mk-text-color</code>. <code>option:checked</code> uses <code>--mk-select-selected-option-text-color</code>
+            and <code>--mk-select-selected-option-background-color</code>. When the select is disabled, checked options
+            use <code>--mk-text-muted-color</code> and <code>--mk-background-muted-color</code>.</li>
           <li><strong>Validation and disabled state.</strong> <code>[invalid]</code> and <code>[aria-invalid="true"]</code>
-            apply invalid border and text colors via <code>--fx-invalid-*</code>; <code>[valid]</code> and
-            <code>[aria-invalid="false"]</code> apply valid colors via <code>--fx-valid-*</code>. <code>[disabled]</code>
-            applies muted text and <code>--fx-disabled-control-opacity</code>.</li>
-          <li><strong>Frame.</strong> <code>.fx-select-frame</code> wraps the select. The select has <code>outline: none</code>;
-            focus border uses <code>--fx-focus-ring-color</code>. When <code>.fx-select-arrow</code> is present, the
+            apply invalid border and text colors via <code>--mk-invalid-*</code>; <code>[valid]</code> and
+            <code>[aria-invalid="false"]</code> apply valid colors via <code>--mk-valid-*</code>. <code>[disabled]</code>
+            applies muted text and <code>--mk-disabled-control-opacity</code>.</li>
+          <li><strong>Frame.</strong> <code>.mk-select-frame</code> wraps the select. The select has <code>outline: none</code>;
+            focus border uses <code>--mk-focus-ring-color</code>. When <code>.mk-select-arrow</code> is present, the
             select has <code>appearance: none</code> and extra end padding so the native dropdown arrow is replaced by
             the custom arrow.</li>
-          <li><strong>Select arrow.</strong> <code>.fx-select-arrow</code> is absolutely positioned at the block end. Its
-            <code>::before</code> pseudo-element shows the icon (mask <code>--fx-arrow-down-svg</code>, color
-            <code>--fx-select-arrow-color</code> or <code>--fx-control-icon-color</code>; the variable is read from the frame/ancestors, not from the select). The arrow is hidden when the
+          <li><strong>Select arrow.</strong> <code>.mk-select-arrow</code> is absolutely positioned at the block end. Its
+            <code>::before</code> pseudo-element shows the icon (mask <code>--mk-arrow-down-svg</code>, color
+            <code>--mk-select-arrow-color</code> or <code>--mk-control-icon-color</code>; the variable is read from the frame/ancestors, not from the select). The arrow is hidden when the
             select has the <code>multiple</code> attribute.</li>
           <li><strong>Multiple mode.</strong> When <code>multiple</code> is set, the select has transparent border and
             standard padding; the frame provides the visible border and padding. Frame border state for focus, invalid,
@@ -481,22 +481,22 @@
       </div>
     </div>
 
-    <div class="fx-demo-section">
+    <div class="mk-demo-section">
       <h5>Accessibility notes</h5>
-      <div class="fx-demo-panel">
+      <div class="mk-demo-panel">
         <ul >
           <li>Associate a visible or off-screen <code>label</code> with the select via <code>for</code> and matching
             <code>id</code> so the control is announced and the label click area activates the select.</li>
           <li>Expose validation state to assistive technologies and drive styling by using the <code>invalid</code> and
             <code>valid</code> attributes, or <code>aria-invalid="true"</code> and <code>aria-invalid="false"</code>.</li>
-          <li>Mark the custom dropdown arrow (e.g. <code>.fx-select-arrow</code>) with <code>aria-hidden="true"</code> so
+          <li>Mark the custom dropdown arrow (e.g. <code>.mk-select-arrow</code>) with <code>aria-hidden="true"</code> so
             it is ignored by assistive technologies.</li>
         </ul>
       </div>
     </div>
   </main>
 
-  <script src="../../../dist/js/flexa.js"></script>
+  <script src="../../../dist/js/microuikit.js"></script>
   <script src="../../assets/js/docs.js"></script>
 </body>
 

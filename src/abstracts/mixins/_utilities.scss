@@ -8,7 +8,7 @@
 // Mixin: generate-classes
 // ===============================
 /// Generates utility classes (non-media) and delegates media utilities to generate-media-queries
-/// @param {String} $prefix - CSS class prefix (e.g., "fx-")
+/// @param {String} $prefix - CSS class prefix (e.g., "mk-")
 /// @param {Map} $utilities - Map containing utility class configurations
 @mixin generate-classes($prefix, $utilities) {
   @each $utility-name, $utility in $utilities {
@@ -42,7 +42,7 @@
 // Mixin: generate-class
 // ===============================
 /// Generates utility classes for a single utility (no media wrapper)
-/// @param {String} $prefix - CSS class prefix (e.g., "fx-")
+/// @param {String} $prefix - CSS class prefix (e.g., "mk-")
 /// @param {Map} $utility - Single utility configuration map
 @mixin generate-class($prefix, $utility) {
   // Extract utility configuration from map
@@ -85,7 +85,7 @@
 
       // Build class name from list of classes
       // If $classes is a list: one full selector per item, joined by comma
-      // Otherwise: single selector with parts joined by hyphens (e.g., ".fx-namespace-class-key")
+      // Otherwise: single selector with parts joined by hyphens (e.g., ".mk-namespace-class-key")
       @if meta.type-of($classes) == "list" {
         $class-parts: ();
 
@@ -212,7 +212,7 @@
 // ===============================
 /// Converts a Sass map to CSS variable references
 /// @param {Map} $map - Map to convert (keys become variable names)
-/// @param {String} $prefix - CSS variable prefix (e.g., "fx-")
+/// @param {String} $prefix - CSS variable prefix (e.g., "mk-")
 /// @return {Map} Map with values converted to var(--prefix-key) format
 @function map-to-vars($map, $prefix) {
   $result: ();

@@ -199,9 +199,9 @@
 // Function: build-class
 // ===============================
 /// Builds a class name from a list of items
-/// @param {String} $prefix - CSS class prefix (e.g., "fx-")
+/// @param {String} $prefix - CSS class prefix (e.g., "mk-")
 /// @param {List} $items - List of items to build the class name from
-/// @return {String} Class name (e.g., ".fx-namespace-class-key")
+/// @return {String} Class name (e.g., ".mk-namespace-class-key")
 @function build-class($prefix, $items...) {
   $result: "";
 

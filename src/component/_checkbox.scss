@@ -1,4 +1,4 @@
-// Checkbox component: .fx-checkbox-frame, input + label, custom box (::before) and tick (::after). States: checked, focus-visible, disabled, readonly, invalid, valid.
+// Checkbox component: .mk-checkbox-frame, input + label, custom box (::before) and tick (::after). States: checked, focus-visible, disabled, readonly, invalid, valid.
 @mixin checkbox($prefix) {
   // Frame and visually hidden native checkbox
   .#{$prefix}checkbox-frame {

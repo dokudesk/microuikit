@@ -9,19 +9,19 @@ import { fileURLToPath } from 'node:url';
 import { execSync } from 'node:child_process';
 import { describe, it, expect, beforeAll } from 'vitest';
 
-const PREFIX = 'fx-';
+const PREFIX = 'mk-';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, '..');
 const distRoot = path.join(projectRoot, 'dist');
 const distCss = path.join( distRoot, 'css');
 const distJs = path.join(distRoot, 'js');
 const distThemes = path.join(distCss, 'themes');
-const mainCss = path.join(distCss, 'flexa.css');
-const mainMinCss = path.join(distCss, 'flexa.min.css');
-const mainJs = path.join(distJs, 'flexa.js');
-const mainMinJs = path.join(distJs, 'flexa.min.js');
-const themeCss = path.join(distThemes, 'flexa-theme-default.css');
-const themeMinCss = path.join(distThemes, 'flexa-theme-default.min.css');
+const mainCss = path.join(distCss, 'microuikit.css');
+const mainMinCss = path.join(distCss, 'microuikit.min.css');
+const mainJs = path.join(distJs, 'microuikit.js');
+const mainMinJs = path.join(distJs, 'microuikit.min.js');
+const themeCss = path.join(distThemes, 'microuikit-theme-default.css');
+const themeMinCss = path.join(distThemes, 'microuikit-theme-default.min.css');
 
 beforeAll(() => {
   // If build artifacts don't exist (e.g. running vitest directly),
@@ -36,7 +36,7 @@ beforeAll(() => {
 
 describe('Package build output', () => {
 
-  it('dist/css/flexa.css exists after build', () => {
+  it('dist/css/microuikit.css exists after build', () => {
     expect(fs.existsSync(mainCss)).toBe(true);
     expect(fs.statSync(mainCss).size).toBeGreaterThan(0);
   });
@@ -70,7 +70,7 @@ describe('Package build output', () => {
     expect(content).toMatch(new RegExp(`\\.${PREFIX}card-footer`));
   });
 
-  it('dist/js/flexa.js exists after build', () => {
+  it('dist/js/microuikit.js exists after build', () => {
     expect(fs.existsSync(mainJs)).toBe(true);
     expect(fs.statSync(mainJs).size).toBeGreaterThan(0);
   });
@@ -88,7 +88,7 @@ describe('Package build output', () => {
 
 describe('Theme build output', () => {
 
-  it('dist/css/themes/flexa-theme-default.css exists', () => {
+  it('dist/css/themes/microuikit-theme-default.css exists', () => {
     expect(fs.existsSync(themeCss)).toBe(true);
     expect(fs.statSync(themeCss).size).toBeGreaterThan(0);
   });
@@ -104,13 +104,13 @@ describe('Theme build output', () => {
 });
 
 describe('Minified (CDN) build output', () => {
-  it('dist/css/flexa.min.css exists and has content (minified)', () => {
-    const minified = path.join(distCss, 'flexa.min.css');
+  it('dist/css/microuikit.min.css exists and has content (minified)', () => {
+    const minified = path.join(distCss, 'microuikit.min.css');
     expect(fs.existsSync(minified)).toBe(true);
     expect(fs.statSync(minified).size).toBeGreaterThan(0);
   });
 
-  it('flexa.min.css contains core tokens or selectors (minified)', () => {
+  it('microuikit.min.css contains core tokens or selectors (minified)', () => {
     if (!fs.existsSync(mainMinCss)) return;
     const content = fs.readFileSync(mainMinCss, 'utf8');
     expect(content).toMatch(/:root/);
@@ -119,13 +119,13 @@ describe('Minified (CDN) build output', () => {
     expect(content).toMatch(new RegExp(`\\.${PREFIX}`));
   });
 
-  it('dist/css/themes/flexa-theme-default.min.css exists', () => {
-    const themeMin = path.join(distThemes, 'flexa-theme-default.min.css');
+  it('dist/css/themes/microuikit-theme-default.min.css exists', () => {
+    const themeMin = path.join(distThemes, 'microuikit-theme-default.min.css');
     expect(fs.existsSync(themeMin)).toBe(true);
     expect(fs.statSync(themeMin).size).toBeGreaterThan(0);
   });
 
-  it('flexa-theme-default.min.css contains theme-related selectors or variables  (minified)', () => {
+  it('microuikit-theme-default.min.css contains theme-related selectors or variables  (minified)', () => {
     if (!fs.existsSync(themeMinCss)) return;
     const content = fs.readFileSync(themeMinCss, 'utf8');
     expect(content).toMatch(/:root/);
@@ -134,12 +134,12 @@ describe('Minified (CDN) build output', () => {
     /* There is no .${PREFIX} in the theme minified CSS file */
   });
 
-  it('dist/js/flexa.min.js exists and exposes API (minified)', () => {
+  it('dist/js/microuikit.min.js exists and exposes API (minified)', () => {
     expect(fs.existsSync(mainMinJs)).toBe(true);
     expect(fs.statSync(mainMinJs).size).toBeGreaterThan(0);
   });
 
-  it('flexa.min.js exposes API (minified)', () => {
+  it('microuikit.min.js exposes API (minified)', () => {
     if (!fs.existsSync(mainMinJs)) return;
     const content = fs.readFileSync(mainMinJs, 'utf8');
     expect(content).toMatch(/Theme/);

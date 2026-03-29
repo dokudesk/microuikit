@@ -1,4 +1,4 @@
-// Select component: .fx-select, .fx-select-frame, .fx-select-arrow, option styling, select[multiple] in frame.
+// Select component: .mk-select, .mk-select-frame, .mk-select-arrow, option styling, select[multiple] in frame.
 @use "../abstracts/mixins/theme" as mixins;
 
 @mixin select($prefix) {
@@ -57,7 +57,7 @@
     }
   }
 
-  // Frame: optional .fx-select-arrow (mask-based); border for select[multiple]
+  // Frame: optional .mk-select-arrow (mask-based); border for select[multiple]
   .#{$prefix}select-frame {
     position: relative;
     display: inline-block;
@@ -92,7 +92,7 @@
       outline: none !important;
     }
 
-    // Only when frame contains .fx-select-arrow: reserve space for the arrow
+    // Only when frame contains .mk-select-arrow: reserve space for the arrow
     &:has(.#{$prefix}select-arrow) .#{$prefix}select {
       padding-inline-end: var(--#{$prefix}control-height);
       appearance: none;
@@ -135,7 +135,7 @@
       outline: none !important;
     }
 
-    // Decorative arrow: SVG via mask, color via --fx-select-arrow-color; hidden when select[multiple]
+    // Decorative arrow: SVG via mask, color via --mk-select-arrow-color; hidden when select[multiple]
     .#{$prefix}select-arrow {
       display: flex;
       align-items: center;

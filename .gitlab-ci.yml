@@ -1,7 +1,7 @@
-# Flexa CSS — GitLab CI/CD Pipeline
+# MicroUIKit CSS — GitLab CI/CD Pipeline
 # Purpose: run lint, test, and build for branch/MR validation.
 # Runtime: Docker jobs on Node 22 Alpine.
-# Runner requirement: at least one online runner with tag "flexa".
+# Runner requirement: at least one online runner with tag "microuikit".
 
 variables:
   NODE_VERSION: "22"
@@ -9,7 +9,7 @@ variables:
 default:
   image: node:${NODE_VERSION}-alpine
   tags:
-    - flexa
+    - microuikit
   before_script:
     - npm ci
 
@@ -42,32 +42,27 @@ test:
 build:
   stage: build
   script:
-    - |
-      if [ "$CI_COMMIT_BRANCH" = "master" ]; then
-        npm run build:prod
-      else
-        npm run build:dev
-      fi
-  artifacts:
-    paths:
-      - dist/
-    expire_in: never
+    - npm run build
 
 # Stage 4: publish
-# GitFlow rule: release/* and hotfix/* prepare a version, but npm publish
-# happens only after that version is merged into master.
+# Publish to npm only when a SemVer tag is pushed (e.g. v1.2.3 or 1.2.3).
 publish:
   stage: publish
   needs:
     - build
   rules:
-    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "master"'
+    - if: '$CI_COMMIT_TAG =~ /^v?[0-9]+\.[0-9]+\.[0-9]+(?:-[0-9A-Za-z.-]+)?$/'
       when: on_success
     - when: never
   script:
     - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
     - export PACKAGE_NAME=$(node -p "require('./package.json').name")
     - export PACKAGE_VERSION=$(node -p "require('./package.json').version")
+    - |
+      if [ "$CI_COMMIT_TAG" != "v${PACKAGE_VERSION}" ] && [ "$CI_COMMIT_TAG" != "${PACKAGE_VERSION}" ]; then
+        echo "Tag ${CI_COMMIT_TAG} does not match package.json version ${PACKAGE_VERSION}; skipping publish."
+        exit 0
+      fi
     - |
       if npm view "${PACKAGE_NAME}@${PACKAGE_VERSION}" version >/dev/null 2>&1; then
         echo "npm package ${PACKAGE_NAME}@${PACKAGE_VERSION} is already published; skipping."
@@ -76,7 +71,3 @@ publish:
     - npm publish
   variables:
     NODE_AUTH_TOKEN: $NPM_TOKEN
-  artifacts:
-    paths:
-      - dist/
-    expire_in: never

@@ -1,4 +1,4 @@
-# Flexa — GitHub Actions CI
+# MicroUIKit — GitHub Actions CI
 # Purpose: run lint, test, and build for branch/PR validation.
 # Runtime: GitHub-hosted runner on Node 22.
 # Output: upload dist/ as a workflow artifact from build job.

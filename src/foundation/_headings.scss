@@ -9,7 +9,7 @@
 // ===============================
 /// Applies consistent heading styles (h1-h6) using CSS variables
 /// Sets font sizes, margins, weights, and colors for all heading levels
-/// @param {String} $prefix - CSS class prefix (e.g., "fx-")
+/// @param {String} $prefix - CSS class prefix (e.g., "mk-")
 @mixin headings-foundation($prefix) {
   // Map of heading elements to their font sizes
   $headings: (
@@ -24,7 +24,7 @@
   // Extract heading element names (h1, h2, etc.)
   $heading-elements: map.keys($headings);
 
-  // Build list of heading class selectors (e.g., ".fx-h1", ".fx-h2")
+  // Build list of heading class selectors (e.g., ".mk-h1", ".mk-h2")
   $heading-classes: ();
 
   @each $h in $heading-elements {

@@ -1,4 +1,4 @@
-// Textarea component: .fx-textarea, .fx-textarea-frame (floating label). States: focus, invalid, valid, disabled.
+// Textarea component: .mk-textarea, .mk-textarea-frame (floating label). States: focus, invalid, valid, disabled.
 @mixin textarea($prefix) {
   // Base textarea
   .#{$prefix}textarea {
@@ -58,7 +58,7 @@
     label[for] {
       position: absolute;
       padding: 0 2px;
-      max-width: calc(100% - var(--fx-control-padding-x) * 2);
+      max-width: calc(100% - var(--mk-control-padding-x) * 2);
       inset-inline-start: var(--#{$prefix}control-padding-x);
       top: var(--#{$prefix}control-padding-y);
       white-space: nowrap;

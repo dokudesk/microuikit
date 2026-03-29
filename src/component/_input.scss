@@ -1,4 +1,4 @@
-// Input component: .fx-input, .fx-input-frame (floating label), .fx-toggle-password. States: focus, invalid, valid, disabled.
+// Input component: .mk-input, .mk-input-frame (floating label), .mk-toggle-password. States: focus, invalid, valid, disabled.
 @use "sass:map";
 @use "../abstracts/variables/svg" as svg;
 
@@ -45,8 +45,8 @@
     label[for] {
       position: absolute;
       padding: 0 2px;
-      margin: 0 var(--fx-control-padding-x);
-      max-width: calc(100% - var(--fx-control-padding-x) * 2);
+      margin: 0 var(--mk-control-padding-x);
+      max-width: calc(100% - var(--mk-control-padding-x) * 2);
       inset-inline-start: 0;
       top: 50%;
       transform: translateY(-50%);

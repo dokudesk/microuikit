@@ -4,24 +4,24 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Flexa - Theming</title>
-  <link rel="stylesheet" href="../../../dist/css/flexa.css" />
-  <link rel="stylesheet" href="../../../dist/css/themes/flexa-theme-default.css" />
+  <title>MicroUIKit - Theming</title>
+  <link rel="stylesheet" href="../../../dist/css/microuikit.css" />
+  <link rel="stylesheet" href="../../../dist/css/themes/microuikit-theme-default.css" />
   <link rel="stylesheet" href="../../assets/css/docs.css" />
 </head>
 
-<body class="fx-d-flex fx-flex-dir-col fx-h-vh-100 fx-m-0">
+<body class="mk-d-flex mk-flex-dir-col mk-h-vh-100 mk-m-0">
   <include src="../_header.html"></include>
 
-  <main class="fx-overflow-y-auto fx-px-5 fx-py-3">
+  <main class="mk-overflow-y-auto mk-px-5 mk-py-3">
     <h3 >Theming</h3>
-    <p class="fx-text-muted">
+    <p class="mk-text-muted">
       Theme lets you switch between light and dark appearance without changing component markup.
       Themes are applied by setting an attribute on the document root; token overrides in theme files handle colors
       and other semantic values so components and utilities stay consistent. Three modes are supported: light, dark, and auto (system preference).
     </p>
 
-    <div class="fx-demo-section">
+    <div class="mk-demo-section">
       <h5>Theme modes</h5>
       <p >
         Set the theme on <code>&lt;html&gt;</code> with <code>data-theme</code> (or <code>theme</code>). Three modes
@@ -37,17 +37,17 @@
           <code>prefers-color-scheme: dark</code> matches, the theme file applies the same dark overrides as
           <code>dark</code>; otherwise the light defaults are used.</li>
       </ul>
-      <div class="fx-demo-panel">
-        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;html data-theme="light"&gt;...&lt;/html&gt;
+      <div class="mk-demo-panel">
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;html data-theme="light"&gt;...&lt;/html&gt;
 &lt;html data-theme="dark"&gt;...&lt;/html&gt;
 &lt;html data-theme="auto"&gt;...&lt;/html&gt;</code></pre>
       </div>
     </div>
 
-    <div class="fx-demo-section">
+    <div class="mk-demo-section">
       <h5>How theme files work</h5>
       <p >
-        A theme file (e.g. <code>flexa-theme-default.css</code>) defines the default tokens in <code>:root</code>
+        A theme file (e.g. <code>microuikit-theme-default.css</code>) defines the default tokens in <code>:root</code>
         and then overrides a subset of tokens for dark mode. Dark overrides are applied in two places:
       </p>
       <ul >
@@ -64,45 +64,45 @@
       </p>
     </div>
 
-    <div class="fx-demo-section">
+    <div class="mk-demo-section">
       <h5>Custom themes</h5>
       <p >
-        You can ship your own theme by creating a <code>flexa-theme-*.css</code> file that defines the same token
+        You can ship your own theme by creating a <code>microuikit-theme-*.css</code> file that defines the same token
         names. Load it instead of (or after) the default theme so your brand or product colors apply across the
         app. For multi-brand or multilingual setups, load one theme per context or locale while keeping the same
-        core <code>flexa.css</code> and markup.
+        core <code>microuikit.css</code> and markup.
       </p>
     </div>
     
-    <div class="fx-demo-section">
+    <div class="mk-demo-section">
       <h5>Switching the theme at runtime</h5>
       <p >
         To let users change the theme (e.g. via a control in the UI), set <code>data-theme</code> (or
         <code>theme</code>) on <code>document.documentElement</code> to <code>light</code>, <code>dark</code>, or
-        <code>auto</code>. When you include <code>flexa.js</code>, the global <code>Flexa.Theme</code> helper exposes
+        <code>auto</code>. When you include <code>microuikit.js</code>, the global <code>MicroUIKit.Theme</code> helper exposes
         a small API so you don’t need to manage attributes manually.
       </p>
-      <div class="fx-demo-panel">
-        <p class="fx-left-to-right">
-          Use <code>Flexa.Theme.set()</code> to switch, <code>Flexa.Theme.get()</code> to read the current value, and
-          listen for the <code>flexa:theme-change</code> event to react in your own code:
+      <div class="mk-demo-panel">
+        <p class="mk-left-to-right">
+          Use <code>MicroUIKit.Theme.set()</code> to switch, <code>MicroUIKit.Theme.get()</code> to read the current value, and
+          listen for the <code>microuikit:theme-change</code> event to react in your own code:
         </p>
-        <pre class="fx-left-to-right"><code>// Switch theme
-Flexa.Theme.set('light');
-Flexa.Theme.set('dark');
-Flexa.Theme.set('auto'); // follow system preference
+        <pre class="mk-left-to-right"><code>// Switch theme
+MicroUIKit.Theme.set('light');
+MicroUIKit.Theme.set('dark');
+MicroUIKit.Theme.set('auto'); // follow system preference
 
 // Read current theme
-const current = Flexa.Theme.get(); // 'light', 'dark', or 'auto'
+const current = MicroUIKit.Theme.get(); // 'light', 'dark', or 'auto'
 
 // React to theme changes (e.g. update toggle UI)
-document.documentElement.addEventListener('flexa:theme-change', (event) =&gt; {
+document.documentElement.addEventListener('microuikit:theme-change', (event) =&gt; {
   console.log('Theme changed to', event.detail.theme);
 });</code></pre>
       </div>
     </div>
   </main>
-  <script src="../../../dist/js/flexa.js"></script>
+  <script src="../../../dist/js/microuikit.js"></script>
   <script src="../../assets/js/docs.js"></script>
 </body>
 

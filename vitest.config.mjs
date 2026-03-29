@@ -12,7 +12,7 @@ export default {
         'html',
         'lcov'
       ],
-      include: ['dist/js/flexa.js'],
+      include: ['dist/js/microuikit.js'],
       exclude: [
         'node_modules/',
         'dist/css/',

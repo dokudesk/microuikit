@@ -1,4 +1,4 @@
-// Card component: .fx-card. States: default, hover, active, disabled.
+// Card component: .mk-card. States: default, hover, active, disabled.
 @mixin card($prefix) {
   .#{$prefix}card {
     display: flex;

@@ -1,5 +1,5 @@
 /**
- * Flexa JavaScript Library (Browser Bundle)
+ * MicroUIKit JavaScript Library (Browser Bundle)
  * UMD version for direct browser usage
  */
 
@@ -12,7 +12,7 @@
     define(factory);
   } else {
     // Browser globals
-    global.Flexa = factory();
+    global.MicroUIKit = factory();
   }
 }(typeof window !== 'undefined' ? window : this, function () {
   'use strict';
@@ -20,9 +20,9 @@
   /**
    * Prefix configuration
    * Change this value to customize class prefixes
-   * Default prefix is 'fx-' (Flexa)
+   * Default prefix is 'mk-' (MicroUIKit)
    */
-  var PREFIX = 'fx-';
+  var PREFIX = 'mk-';
 
   /**
    * Theme Manager
@@ -53,7 +53,7 @@
         html.setAttribute('data-theme', theme);
       }
 
-      html.dispatchEvent(new CustomEvent('flexa:theme-change', { detail: { theme: theme } }));
+      html.dispatchEvent(new CustomEvent('microuikit:theme-change', { detail: { theme: theme } }));
     },
 
     get: function () {
@@ -77,7 +77,7 @@
         html.setAttribute('data-dir', direction);
       }
 
-      html.dispatchEvent(new CustomEvent('flexa:direction-change', { detail: { direction: direction } }));
+      html.dispatchEvent(new CustomEvent('microuikit:direction-change', { detail: { direction: direction } }));
     },
 
     get: function () {
@@ -112,10 +112,10 @@
         if (label) {
           btn.setAttribute('aria-label', label);
         }
-        btn.dispatchEvent(new CustomEvent('flexa:button-busy', { detail: { busy: true } }));
+        btn.dispatchEvent(new CustomEvent('microuikit:button-busy', { detail: { busy: true } }));
       } else {
         btn.setAttribute('aria-busy', 'false');
-        btn.dispatchEvent(new CustomEvent('flexa:button-busy', { detail: { busy: false } }));
+        btn.dispatchEvent(new CustomEvent('microuikit:button-busy', { detail: { busy: false } }));
       }
     },
 
@@ -328,7 +328,7 @@
 
   };
   /**
-   * Initialize all Flexa components
+   * Initialize all MicroUIKit components
    */
   function init() {
     Theme.init();

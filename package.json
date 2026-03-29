@@ -1,14 +1,14 @@
 {
-  "name": "Flexa",
+  "name": "microuikit",
   "version": "1.0.0",
   "description": "Compact front-end framework for micro UIs. Fully responsive, WCAG 2.1 compliant, with built-in RTL/LTR support, flexible theming, and an easy to use.",
   "license": "MIT",
   "author": "Mahdi Atashin | DokuDesk",
   "type": "module",
-  "main": "./dist/js/flexa.js",
-  "style": "./dist/css/flexa.css",
-  "unpkg": "./dist/css/flexa.min.css",
-  "jsdelivr": "./dist/css/flexa.min.css",
+  "main": "./dist/js/microuikit.js",
+  "style": "./dist/css/microuikit.css",
+  "unpkg": "./dist/css/microuikit.min.css",
+  "jsdelivr": "./dist/css/microuikit.min.css",
   "files": [
     "dist"
   ],
@@ -18,38 +18,31 @@
   ],
   "exports": {
     ".": {
-      "import": "./dist/js/flexa.js",
-      "default": "./dist/js/flexa.js"
+      "import": "./dist/js/microuikit.js",
+      "default": "./dist/js/microuikit.js"
     },
-    "./css": "./dist/css/flexa.css",
-    "./css/min": "./dist/css/flexa.min.css",
-    "./theme/default": "./dist/css/themes/flexa-theme-default.css",
-    "./theme/default/min": "./dist/css/themes/flexa-theme-default.min.css"
+    "./css": "./dist/css/microuikit.css",
+    "./css/min": "./dist/css/microuikit.min.css",
+    "./theme/default": "./dist/css/themes/microuikit-theme-default.css",
+    "./theme/default/min": "./dist/css/themes/microuikit-theme-default.min.css"
   },
   "scripts": {
     "clean": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\"",
-    "build:dev:css": "node -e \"require('fs').mkdirSync('dist/css', { recursive: true })\" && sass --no-error-css --style=expanded --source-map --embed-sources src/flexa.scss dist/css/flexa.css",
-    "build:prod:css": "node -e \"require('fs').mkdirSync('dist/css', { recursive: true })\" && sass --no-error-css --style=expanded --no-source-map src/flexa.scss dist/css/flexa.css",
-    "build:dev:themes": "node -e \"require('fs').mkdirSync('dist/css/themes', { recursive: true })\" && sass --no-error-css --style=expanded --source-map --embed-sources src/themes/flexa-theme-default.scss dist/css/themes/flexa-theme-default.css",
-    "build:prod:themes": "node -e \"require('fs').mkdirSync('dist/css/themes', { recursive: true })\" && sass --no-error-css --style=expanded --no-source-map src/themes/flexa-theme-default.scss dist/css/themes/flexa-theme-default.css",
-    "build:dev:js": "node -e \"require('fs').mkdirSync('dist/js', { recursive: true })\" && node -e \"require('fs').copyFileSync('src/js/flexa.js', 'dist/js/flexa.js')\"",
-    "build:prod:js": "node -e \"require('fs').mkdirSync('dist/js', { recursive: true })\" && node -e \"require('fs').copyFileSync('src/js/flexa.js', 'dist/js/flexa.js')\"",
-    "build:dev:cdn": "postcss dist/css/flexa.css --map --output dist/css/flexa.min.css",
-    "build:prod:cdn": "postcss dist/css/flexa.css --no-map --output dist/css/flexa.min.css",
-    "build:dev:themes:cdn": "postcss dist/css/themes/flexa-theme-default.css --map --output dist/css/themes/flexa-theme-default.min.css",
-    "build:prod:themes:cdn": "postcss dist/css/themes/flexa-theme-default.css --no-map --output dist/css/themes/flexa-theme-default.min.css",
-    "build:dev:js:cdn": "npx terser dist/js/flexa.js --compress --mangle --output dist/js/flexa.min.js --source-map \"url='flexa.min.js.map'\"",
-    "build:prod:js:cdn": "npx terser dist/js/flexa.js --compress --mangle --output dist/js/flexa.min.js",
-    "build:dev": "npm run clean && npm-run-all build:dev:css build:dev:themes build:dev:js build:dev:cdn build:dev:themes:cdn build:dev:js:cdn",
-    "build:prod": "npm run clean && npm-run-all build:prod:css build:prod:themes build:prod:js build:prod:cdn build:prod:themes:cdn build:prod:js:cdn",
+    "build:css": "node -e \"require('fs').mkdirSync('dist/css', { recursive: true })\" && sass --no-error-css --style=expanded --source-map --embed-sources src/microuikit.scss dist/css/microuikit.css",
+    "build:themes": "node -e \"require('fs').mkdirSync('dist/css/themes', { recursive: true })\" && sass --no-error-css --style=expanded --source-map --embed-sources src/themes/microuikit-theme-default.scss dist/css/themes/microuikit-theme-default.css",
+    "build:js": "node -e \"require('fs').mkdirSync('dist/js', { recursive: true })\" && node -e \"require('fs').copyFileSync('src/js/microuikit.js', 'dist/js/microuikit.js')\"",
+    "build:cdn": "postcss dist/css/microuikit.css --map --output dist/css/microuikit.min.css",
+    "build:themes:cdn": "postcss dist/css/themes/microuikit-theme-default.css --map --output dist/css/themes/microuikit-theme-default.min.css",
+    "build:js:cdn": "npx terser dist/js/microuikit.js --compress --mangle --output dist/js/microuikit.min.js --source-map \"url='microuikit.min.js.map'\"",
+    "build": "npm run clean && npm-run-all build:css build:themes build:js build:cdn build:themes:cdn build:js:cdn",
     "lint": "stylelint \"src/**/*.scss\"",
     "lint:fix": "stylelint \"src/**/*.scss\" --fix",
     "test": "vitest",
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",
-    "pretest": "npm run build:dev",
-    "pretest:run": "npm run build:dev",
-    "pretest:coverage": "npm run build:dev"
+    "pretest": "npm run build",
+    "pretest:run": "npm run build",
+    "pretest:coverage": "npm run build"
   },
   "keywords": [
     "css",
@@ -64,19 +57,31 @@
     "light-mode",
     "auto-mode",
     "ui",
-    "flexbox",
     "frontend",
     "microsystems",
-    "micro-ui"
+    "micro-ui",
+    "microuikit",
+    "micro-ui-css",
+    "micro-components",
+    "micro-framework",
+    "frontend-framework",
+    "lightweight-css",
+    "modular-css",
+    "atomic-css",
+    "micro-layout",
+    "responsive-ui",
+    "accessible-css",
+    "wcag-compliant",
+    "ui-library"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/DokuDesk/flexa.git"
+    "url": "https://github.com/DokuDesk/microuikit.git"
   },
   "bugs": {
-    "url": "https://github.com/DokuDesk/flexa/issues"
+    "url": "https://github.com/DokuDesk/microuikit/issues"
   },
-  "homepage": "https://github.com/DokuDesk/flexa#readme",
+  "homepage": "https://github.com/DokuDesk/microuikit#readme",
   "engines": {
     "node": ">=18.0.0"
   },

@@ -1,4 +1,4 @@
-// Radio component: .fx-radio-frame, input + label, custom circle (::before) and inner dot (::after). States: checked, focus-visible, disabled, readonly, invalid, valid.
+// Radio component: .mk-radio-frame, input + label, custom circle (::before) and inner dot (::after). States: checked, focus-visible, disabled, readonly, invalid, valid.
 @mixin radio($prefix) {
   // Frame and visually hidden native radio
   .#{$prefix}radio-frame {

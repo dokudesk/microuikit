@@ -4,263 +4,263 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Flexa - Card Component</title>
-  <link rel="stylesheet" href="../../../dist/css/flexa.css" />
-  <link rel="stylesheet" href="../../../dist/css/themes/flexa-theme-default.css" />
+  <title>MicroUIKit - Card Component</title>
+  <link rel="stylesheet" href="../../../dist/css/microuikit.css" />
+  <link rel="stylesheet" href="../../../dist/css/themes/microuikit-theme-default.css" />
   <link rel="stylesheet" href="../../assets/css/docs.css" />
 </head>
 
-<body class="fx-d-flex fx-flex-dir-col fx-h-vh-100 fx-m-0">
+<body class="mk-d-flex mk-flex-dir-col mk-h-vh-100 mk-m-0">
   <include src="../_header.html"></include>
 
-  <main class="fx-overflow-y-auto fx-px-5 fx-py-3">
+  <main class="mk-overflow-y-auto mk-px-5 mk-py-3">
     <h3 >Card Component</h3>
-    <p class="fx-text-muted">
+    <p class="mk-text-muted">
       The Card component provides a flexible content container with optional header, body, and footer regions. It is
       useful for summaries, content groups, and dashboard blocks while staying fully theme-aware.
     </p>
 
-    <div class="fx-demo-section">
+    <div class="mk-demo-section">
       <h5>Base usage (header + body + footer)</h5>
-      <div class="fx-demo-panel">
-        <div class="fx-demo-preview" style="max-width: 22rem;">
-          <div class="fx-card">
-            <div class="fx-card-header fx-border-bottom">
+      <div class="mk-demo-panel">
+        <div class="mk-demo-preview" style="max-width: 22rem;">
+          <div class="mk-card">
+            <div class="mk-card-header mk-border-bottom">
               <strong>Card title</strong>
             </div>
-            <div class="fx-card-body">
+            <div class="mk-card-body">
               <p style="margin: 0;">Some supporting text or content goes here. The card body can contain any HTML.</p>
             </div>
-            <div class="fx-card-footer fx-border-top">
+            <div class="mk-card-footer mk-border-top">
               <small>Footer text or actions</small>
             </div>
           </div>
         </div>
-        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-card"&gt;
-  &lt;div class="fx-card-header"&gt;
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="mk-card"&gt;
+  &lt;div class="mk-card-header"&gt;
     &lt;strong&gt;Card title&lt;/strong&gt;
   &lt;/div&gt;
-  &lt;div class="fx-card-body"&gt;
+  &lt;div class="mk-card-body"&gt;
     &lt;p&gt;Some supporting text...&lt;/p&gt;
   &lt;/div&gt;
-  &lt;div class="fx-card-footer"&gt;
+  &lt;div class="mk-card-footer"&gt;
     &lt;small&gt;Footer text or actions&lt;/small&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
         <ul >
-          <li><code>.fx-card</code> is a flex-column container and uses <code>width: 100%</code> by default; constrain
+          <li><code>.mk-card</code> is a flex-column container and uses <code>width: 100%</code> by default; constrain
             width via wrapper or <code>max-width</code>.</li>
           <li>Header/footer separators are optional and commonly added with utility classes like
-            <code>fx-border-bottom</code> and <code>fx-border-top</code>.</li>
+            <code>mk-border-bottom</code> and <code>mk-border-top</code>.</li>
         </ul>
       </div>
     </div>
 
-    <div class="fx-demo-section">
+    <div class="mk-demo-section">
       <h5>Body only</h5>
-      <div class="fx-demo-panel">
-        <div class="fx-demo-preview" style="max-width: 22rem;">
-          <div class="fx-card">
-            <div class="fx-card-body">
+      <div class="mk-demo-panel">
+        <div class="mk-demo-preview" style="max-width: 22rem;">
+          <div class="mk-card">
+            <div class="mk-card-body">
               <p style="margin: 0;">A simple card with only a body. No header or footer.</p>
             </div>
           </div>
         </div>
-        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-card"&gt;
-  &lt;div class="fx-card-body"&gt;
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="mk-card"&gt;
+  &lt;div class="mk-card-body"&gt;
     &lt;p&gt;A simple card with only a body.&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
       </div>
     </div>
 
-    <div class="fx-demo-section">
+    <div class="mk-demo-section">
       <h5>Header + body (no footer)</h5>
-      <div class="fx-demo-panel">
-        <div class="fx-demo-preview" style="max-width: 22rem;">
-          <div class="fx-card">
-            <div class="fx-card-header">
+      <div class="mk-demo-panel">
+        <div class="mk-demo-preview" style="max-width: 22rem;">
+          <div class="mk-card">
+            <div class="mk-card-header">
               <strong>Section title</strong>
             </div>
-            <div class="fx-card-body">
+            <div class="mk-card-body">
               <p style="margin: 0;">Content without a footer. Useful for info blocks or panels.</p>
             </div>
           </div>
         </div>
-        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-card"&gt;
-  &lt;div class="fx-card-header"&gt;&lt;strong&gt;Section title&lt;/strong&gt;&lt;/div&gt;
-  &lt;div class="fx-card-body"&gt;&lt;p&gt;Content...&lt;/p&gt;&lt;/div&gt;
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="mk-card"&gt;
+  &lt;div class="mk-card-header"&gt;&lt;strong&gt;Section title&lt;/strong&gt;&lt;/div&gt;
+  &lt;div class="mk-card-body"&gt;&lt;p&gt;Content...&lt;/p&gt;&lt;/div&gt;
 &lt;/div&gt;</code></pre>
       </div>
     </div>
 
-    <div class="fx-demo-section">
+    <div class="mk-demo-section">
       <h5>Body + footer (no header)</h5>
-      <div class="fx-demo-panel">
-        <div class="fx-demo-preview" style="max-width: 22rem;">
-          <div class="fx-card">
-            <div class="fx-card-body">
+      <div class="mk-demo-panel">
+        <div class="mk-demo-preview" style="max-width: 22rem;">
+          <div class="mk-card">
+            <div class="mk-card-body">
               <p style="margin: 0;">Content with a footer only. Good for call-to-action cards.</p>
             </div>
-            <div class="fx-card-footer fx-d-flex fx-justify-center">
-              <button type="button" class="fx-btn fx-btn-primary">Action</button>
+            <div class="mk-card-footer mk-d-flex mk-justify-center">
+              <button type="button" class="mk-btn mk-btn-primary">Action</button>
             </div>
           </div>
         </div>
-        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-card"&gt;
-  &lt;div class="fx-card-body"&gt;&lt;p&gt;Content...&lt;/p&gt;&lt;/div&gt;
-  &lt;div class="fx-card-footer fx-d-flex fx-justify-center"&gt;
-    &lt;button type="button" class="fx-btn fx-btn-primary"&gt;Action&lt;/button&gt;
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="mk-card"&gt;
+  &lt;div class="mk-card-body"&gt;&lt;p&gt;Content...&lt;/p&gt;&lt;/div&gt;
+  &lt;div class="mk-card-footer mk-d-flex mk-justify-center"&gt;
+    &lt;button type="button" class="mk-btn mk-btn-primary"&gt;Action&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
       </div>
     </div>
 
-    <div class="fx-demo-section">
+    <div class="mk-demo-section">
       <h5>Responsive card layout</h5>
-      <div class="fx-demo-panel">
-        <div class="fx-demo-preview">
-          <div class="fx-col-12 fx-col-md-3">
-            <div class="fx-card">
-              <div class="fx-card-header fx-border-bottom"><strong>One</strong></div>
-              <div class="fx-card-body">
+      <div class="mk-demo-panel">
+        <div class="mk-demo-preview">
+          <div class="mk-col-12 mk-col-md-3">
+            <div class="mk-card">
+              <div class="mk-card-header mk-border-bottom"><strong>One</strong></div>
+              <div class="mk-card-body">
                 <p style="margin: 0;">First card.</p>
               </div>
             </div>
           </div>
-          <div class="fx-col-12 fx-col-md-3">
-            <div class="fx-card">
-              <div class="fx-card-header fx-border-bottom"><strong>Two</strong></div>
-              <div class="fx-card-body">
+          <div class="mk-col-12 mk-col-md-3">
+            <div class="mk-card">
+              <div class="mk-card-header mk-border-bottom"><strong>Two</strong></div>
+              <div class="mk-card-body">
                 <p style="margin: 0;">Second card.</p>
               </div>
             </div>
           </div>
-          <div class="fx-col-12 fx-col-md-3">
-            <div class="fx-card">
-              <div class="fx-card-header fx-border-bottom"><strong>Three</strong></div>
-              <div class="fx-card-body">
+          <div class="mk-col-12 mk-col-md-3">
+            <div class="mk-card">
+              <div class="mk-card-header mk-border-bottom"><strong>Three</strong></div>
+              <div class="mk-card-body">
                 <p style="margin: 0;">Third card.</p>
               </div>
             </div>
           </div>
         </div>
-        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-row fx-gx-3 fx-gy-3"&gt;
-  &lt;div class="fx-col-12 fx-col-md-3"&gt;&lt;div class="fx-card"&gt;
-    &lt;div class="fx-card-header fx-border-bottom"&gt;&lt;strong&gt;One&lt;/strong&gt;&lt;/div&gt;
-    &lt;div class="fx-card-body"&gt;&lt;p style="margin: 0;"&gt;First card.&lt;/p&gt;&lt;/div&gt;
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="mk-row mk-gx-3 mk-gy-3"&gt;
+  &lt;div class="mk-col-12 mk-col-md-3"&gt;&lt;div class="mk-card"&gt;
+    &lt;div class="mk-card-header mk-border-bottom"&gt;&lt;strong&gt;One&lt;/strong&gt;&lt;/div&gt;
+    &lt;div class="mk-card-body"&gt;&lt;p style="margin: 0;"&gt;First card.&lt;/p&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/div&gt;
-  &lt;div class="fx-col-12 fx-col-md-3"&gt;&lt;div class="fx-card"&gt;
-    &lt;div class="fx-card-header fx-border-bottom"&gt;&lt;strong&gt;Two&lt;/strong&gt;&lt;/div&gt;
-    &lt;div class="fx-card-body"&gt;&lt;p style="margin: 0;"&gt;Second card.&lt;/p&gt;&lt;/div&gt;
+  &lt;div class="mk-col-12 mk-col-md-3"&gt;&lt;div class="mk-card"&gt;
+    &lt;div class="mk-card-header mk-border-bottom"&gt;&lt;strong&gt;Two&lt;/strong&gt;&lt;/div&gt;
+    &lt;div class="mk-card-body"&gt;&lt;p style="margin: 0;"&gt;Second card.&lt;/p&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/div&gt;
-  &lt;div class="fx-col-12 fx-col-md-3"&gt;&lt;div class="fx-card"&gt;
-    &lt;div class="fx-card-header fx-border-bottom"&gt;&lt;strong&gt;Three&lt;/strong&gt;&lt;/div&gt;
-    &lt;div class="fx-card-body"&gt;&lt;p style="margin: 0;"&gt;Third card.&lt;/p&gt;&lt;/div&gt;
+  &lt;div class="mk-col-12 mk-col-md-3"&gt;&lt;div class="mk-card"&gt;
+    &lt;div class="mk-card-header mk-border-bottom"&gt;&lt;strong&gt;Three&lt;/strong&gt;&lt;/div&gt;
+    &lt;div class="mk-card-body"&gt;&lt;p style="margin: 0;"&gt;Third card.&lt;/p&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/div&gt;
 &lt;/div&gt;</code></pre>
       </div>
     </div>
 
-    <div class="fx-demo-section">
+    <div class="mk-demo-section">
       <h5>Card with link in footer</h5>
-      <div class="fx-demo-panel">
-        <div class="fx-demo-preview" style="max-width: 22rem;">
-          <div class="fx-card">
-            <div class="fx-card-header fx-border-bottom">
+      <div class="mk-demo-panel">
+        <div class="mk-demo-preview" style="max-width: 22rem;">
+          <div class="mk-card">
+            <div class="mk-card-header mk-border-bottom">
               <strong>Article title</strong>
             </div>
-            <div class="fx-card-body">
+            <div class="mk-card-body">
               <p style="margin: 0;">A short excerpt or description. Use semantic HTML: if the whole card is a link, wrap
                 in <code>&lt;a&gt;</code> or use a link in the footer.</p>
             </div>
-            <div class="fx-card-footer fx-border-top">
-              <a class="fx-demo-link" href="#">Read more</a>
+            <div class="mk-card-footer mk-border-top">
+              <a class="mk-demo-link" href="#">Read more</a>
             </div>
           </div>
         </div>
-        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-card"&gt;
-  &lt;div class="fx-card-header"&gt;&lt;strong&gt;Article title&lt;/strong&gt;&lt;/div&gt;
-  &lt;div class="fx-card-body"&gt;&lt;p&gt;A shor Excerpt...&lt;/p&gt;&lt;/div&gt;
-  &lt;div class="fx-card-footer"&gt;
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="mk-card"&gt;
+  &lt;div class="mk-card-header"&gt;&lt;strong&gt;Article title&lt;/strong&gt;&lt;/div&gt;
+  &lt;div class="mk-card-body"&gt;&lt;p&gt;A shor Excerpt...&lt;/p&gt;&lt;/div&gt;
+  &lt;div class="mk-card-footer"&gt;
     &lt;a href="#"&gt;Read more&lt;/a&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
       </div>
     </div>
 
-    <div class="fx-demo-section">
+    <div class="mk-demo-section">
       <h5>Quick customization</h5>
-      <div class="fx-demo-panel">
-        <div class="fx-demo-preview">
-          <div class="fx-col-12 fx-col-md-4">
-            <div class="fx-card" style="--fx-control-border-radius: 1rem;">
-              <div class="fx-card-body">
-                <p style="margin: 0;">Rounded corners via <code>--fx-control-border-radius</code>.</p>
+      <div class="mk-demo-panel">
+        <div class="mk-demo-preview">
+          <div class="mk-col-12 mk-col-md-4">
+            <div class="mk-card" style="--mk-control-border-radius: 1rem;">
+              <div class="mk-card-body">
+                <p style="margin: 0;">Rounded corners via <code>--mk-control-border-radius</code>.</p>
               </div>
             </div>
           </div>
-          <div class="fx-col-12 fx-col-md-4">
-            <div class="fx-card fx-shadow-sm">
-              <div class="fx-card-body">
-                <p style="margin: 0;">Elevated appearance via <code>fx-shadow-sm</code>.</p>
+          <div class="mk-col-12 mk-col-md-4">
+            <div class="mk-card mk-shadow-sm">
+              <div class="mk-card-body">
+                <p style="margin: 0;">Elevated appearance via <code>mk-shadow-sm</code>.</p>
               </div>
             </div>
           </div>
-          <div class="fx-col-12 fx-col-md-4">
-            <div class="fx-card"
-              style="--fx-control-background-color: var(--fx-background-muted-color); --fx-card-padding-y: 2.5rem;">
-              <div class="fx-card-body">
+          <div class="mk-col-12 mk-col-md-4">
+            <div class="mk-card"
+              style="--mk-control-background-color: var(--mk-background-muted-color); --mk-card-padding-y: 2.5rem;">
+              <div class="mk-card-body">
                 <p style="margin: 0;">Custom surface and spacing tokens.</p>
               </div>
             </div>
           </div>
         </div>
-        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="fx-card" style="--fx-control-border-radius: 1rem;"&gt;
-  &lt;div class="fx-card-body"&gt;...&lt;/div&gt;
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="mk-card" style="--mk-control-border-radius: 1rem;"&gt;
+  &lt;div class="mk-card-body"&gt;...&lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div class="fx-card fx-shadow-sm"&gt;
-  &lt;div class="fx-card-body"&gt;...&lt;/div&gt;
+&lt;div class="mk-card mk-shadow-sm"&gt;
+  &lt;div class="mk-card-body"&gt;...&lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div class="fx-card" style="--fx-control-background-color: var(--fx-background-muted-color); --fx-card-padding-y: 2.5rem;"&gt;
-  &lt;div class="fx-card-body"&gt;...&lt;/div&gt;
+&lt;div class="mk-card" style="--mk-control-background-color: var(--mk-background-muted-color); --mk-card-padding-y: 2.5rem;"&gt;
+  &lt;div class="mk-card-body"&gt;...&lt;/div&gt;
 &lt;/div&gt;</code></pre>
         <ul >
-          <li><code>--fx-control-background-color</code> controls card surface color.</li>
-          <li><code>--fx-control-border-radius</code> controls card corner roundness.</li>
-          <li><code>fx-shadow-*</code> utilities control elevation depth.</li>
-          <li><code>--fx-card-padding-x</code> and <code>--fx-card-padding-y</code> control spacing for header, body,
+          <li><code>--mk-control-background-color</code> controls card surface color.</li>
+          <li><code>--mk-control-border-radius</code> controls card corner roundness.</li>
+          <li><code>mk-shadow-*</code> utilities control elevation depth.</li>
+          <li><code>--mk-card-padding-x</code> and <code>--mk-card-padding-y</code> control spacing for header, body,
             and footer slots.</li>
-          <li><code>--fx-border-color</code> and <code>--fx-border-width</code> control border appearance.</li>
+          <li><code>--mk-border-color</code> and <code>--mk-border-width</code> control border appearance.</li>
         </ul>
       </div>
     </div>
 
-    <div class="fx-demo-section">
+    <div class="mk-demo-section">
       <h5>What the CSS package covers</h5>
-      <div class="fx-demo-panel">
+      <div class="mk-demo-panel">
         <ul >
-          <li><strong>Base.</strong> <code>.fx-card</code> applies flex column layout, full width, background
-            (<code>--fx-control-background-color</code>), border (<code>--fx-border-width</code>,
-            <code>--fx-border-color</code>), border-radius (<code>--fx-control-border-radius</code>), transition
-            (<code>--fx-transition</code>), box-shadow (<code>--fx-box-shadow</code>), and <code>overflow: hidden</code>.</li>
-          <li><strong>Header slot.</strong> <code>.fx-card-header</code> uses <code>--fx-card-padding-y</code> and
-            <code>--fx-card-padding-x</code> with no bottom padding so content aligns to the top of the card.</li>
-          <li><strong>Body slot.</strong> <code>.fx-card-body</code> uses the same card padding on all sides for the
+          <li><strong>Base.</strong> <code>.mk-card</code> applies flex column layout, full width, background
+            (<code>--mk-control-background-color</code>), border (<code>--mk-border-width</code>,
+            <code>--mk-border-color</code>), border-radius (<code>--mk-control-border-radius</code>), transition
+            (<code>--mk-transition</code>), box-shadow (<code>--mk-box-shadow</code>), and <code>overflow: hidden</code>.</li>
+          <li><strong>Header slot.</strong> <code>.mk-card-header</code> uses <code>--mk-card-padding-y</code> and
+            <code>--mk-card-padding-x</code> with no bottom padding so content aligns to the top of the card.</li>
+          <li><strong>Body slot.</strong> <code>.mk-card-body</code> uses the same card padding on all sides for the
             main content area.</li>
-          <li><strong>Footer slot.</strong> <code>.fx-card-footer</code> uses card padding with no top padding so actions
+          <li><strong>Footer slot.</strong> <code>.mk-card-footer</code> uses card padding with no top padding so actions
             align to the bottom of the card.</li>
           <li><strong>Dividers.</strong> Header and footer separators are not included by default. Apply utility classes
-            such as <code>fx-border-bottom</code> or <code>fx-border-top</code> to the header or footer when visual
+            such as <code>mk-border-bottom</code> or <code>mk-border-top</code> to the header or footer when visual
             separation is required.</li>
         </ul>
       </div>
     </div>
   </main>
 
-  <script src="../../../dist/js/flexa.js"></script>
+  <script src="../../../dist/js/microuikit.js"></script>
   <script src="../../assets/js/docs.js"></script>
 </body>
 

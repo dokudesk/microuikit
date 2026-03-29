@@ -1,6 +1,6 @@
-# Contributing to Flexa
+# Contributing to MicroUIKit
 
-Thank you for considering contributing to Flexa! 
+Thank you for considering contributing to MicroUIKit! 
 By following these guidelines, you help keep the project organized, readable, and easy to maintain.
 
 ---

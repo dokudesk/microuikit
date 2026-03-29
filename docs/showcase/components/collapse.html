@@ -4,50 +4,50 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Flexa - Collapse Component</title>
-  <link rel="stylesheet" href="../../../dist/css/flexa.css" />
-  <link rel="stylesheet" href="../../../dist/css/themes/flexa-theme-default.css" />
+  <title>MicroUIKit - Collapse Component</title>
+  <link rel="stylesheet" href="../../../dist/css/microuikit.css" />
+  <link rel="stylesheet" href="../../../dist/css/themes/microuikit-theme-default.css" />
   <link rel="stylesheet" href="../../assets/css/docs.css" />
 </head>
 
-<body class="fx-d-flex fx-flex-dir-col fx-h-vh-100 fx-m-0">
+<body class="mk-d-flex mk-flex-dir-col mk-h-vh-100 mk-m-0">
   <include src="../_header.html"></include>
 
-  <main class="fx-overflow-y-auto fx-px-5 fx-py-3">
+  <main class="mk-overflow-y-auto mk-px-5 mk-py-3">
     <h3>Collapse Component</h3>
-    <p class="fx-text-muted">
+    <p class="mk-text-muted">
       The Collapse component toggles content visibility with vertical or horizontal transitions.
     </p>
 
-    <div class="fx-demo-section">
+    <div class="mk-demo-section">
       <h5>Vertical collapse</h5>
-      <div class="fx-demo-panel">
-        <div class="fx-demo-preview">
-          <button type="button" class="fx-btn fx-btn-primary" data-toggle="collapse"
+      <div class="mk-demo-panel">
+        <div class="mk-demo-preview">
+          <button type="button" class="mk-btn mk-btn-primary" data-toggle="collapse"
             data-target="#demo-collapse-vertical" aria-expanded="true" aria-controls="demo-collapse-vertical">
             Toggle panel
           </button>
 
-          <a href="#demo-collapse-vertical" class="fx-link fx-link-primary" role="button" data-toggle="collapse"
+          <a href="#demo-collapse-vertical" class="mk-link mk-link-primary" role="button" data-toggle="collapse"
             data-target="#demo-collapse-vertical" aria-expanded="true" aria-controls="demo-collapse-vertical">
             Toggle panel
           </a>
         </div>
-        <div class="fx-demo-preview">
-          <div id="demo-collapse-vertical" class="fx-collapse fx-w-100 show" style="max-width: 32rem;">
-            <div class="fx-card">
-              <div class="fx-card-header"><strong>Release notes</strong></div>
-              <div class="fx-card-body">
-                <p class="fx-m-0">
+        <div class="mk-demo-preview">
+          <div id="demo-collapse-vertical" class="mk-collapse mk-w-100 show" style="max-width: 32rem;">
+            <div class="mk-card">
+              <div class="mk-card-header"><strong>Release notes</strong></div>
+              <div class="mk-card-body">
+                <p class="mk-m-0">
                   This panel collapses vertically.
                 </p>
               </div>
             </div>
           </div>
         </div>
-        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;button
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;button
   type="button"
-  class="fx-btn fx-btn-primary"
+  class="mk-btn mk-btn-primary"
   data-toggle="collapse"
   data-target="#demo-collapse-vertical"
   aria-expanded="true"
@@ -56,7 +56,7 @@
 &lt;/button&gt;
 
 &lt;a href="#demo-collapse-vertical" 
-  class="fx-link fx-link-primary" 
+  class="mk-link mk-link-primary" 
   role="button" data-toggle="collapse" 
   data-target="#demo-collapse-vertical" 
   aria-expanded="true" 
@@ -64,42 +64,42 @@
   Toggle panel
 &lt;/a&gt;
 
-&lt;div id="demo-collapse-vertical" class="fx-collapse fx-w-100 show" style="max-width: 32rem;"&gt;
-  &lt;div class="fx-card"&gt;
-    &lt;div class="fx-card-header"&gt;&lt;strong&gt;Release notes&lt;/strong&gt;&lt;/div&gt;
-    &lt;div class="fx-card-body"&gt;
-      &lt;p class="fx-m-0"&gt;This panel collapses vertically.&lt;/p&gt;
+&lt;div id="demo-collapse-vertical" class="mk-collapse mk-w-100 show" style="max-width: 32rem;"&gt;
+  &lt;div class="mk-card"&gt;
+    &lt;div class="mk-card-header"&gt;&lt;strong&gt;Release notes&lt;/strong&gt;&lt;/div&gt;
+    &lt;div class="mk-card-body"&gt;
+      &lt;p class="mk-m-0"&gt;This panel collapses vertically.&lt;/p&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
         <ul>
-          <li>Use <code>.fx-collapse</code> to collapse the panel vertically.</li>
+          <li>Use <code>.mk-collapse</code> to collapse the panel vertically.</li>
           <li>Add <code>.show</code> to the target if the panel should start opened (default is collapsed).</li>
         </ul>
       </div>
     </div>
 
-    <div class="fx-demo-section">
+    <div class="mk-demo-section">
       <h5>Horizontal collapse</h5>
-      <div class="fx-demo-panel">
-        <div class="fx-demo-preview">
-          <button type="button" class="fx-btn fx-btn-primary" data-toggle="collapse"
+      <div class="mk-demo-panel">
+        <div class="mk-demo-preview">
+          <button type="button" class="mk-btn mk-btn-primary" data-toggle="collapse"
             data-target="#demo-collapse-horizontal" aria-expanded="true" aria-controls="demo-collapse-horizontal">
             Toggle panel
           </button>
 
-          <a href="#demo-collapse-horizontal" class="fx-link fx-link-primary" role="button" data-toggle="collapse"
+          <a href="#demo-collapse-horizontal" class="mk-link mk-link-primary" role="button" data-toggle="collapse"
             data-target="#demo-collapse-horizontal" aria-expanded="true" aria-controls="demo-collapse-horizontal">
             Toggle panel
           </a>
         </div>
-        <div class="fx-demo-preview">
-          <div class="fx-w-100" style="min-height: 7rem; overflow: hidden;">
-            <div id="demo-collapse-horizontal" class="fx-collapse fx-collapse-horizontal show">
-              <div class="fx-card" style="width: 18rem;">
-                <div class="fx-card-header"><strong>Release notes</strong></div>
-                <div class="fx-card-body">
-                  <p class="fx-m-0">
+        <div class="mk-demo-preview">
+          <div class="mk-w-100" style="min-height: 7rem; overflow: hidden;">
+            <div id="demo-collapse-horizontal" class="mk-collapse mk-collapse-horizontal show">
+              <div class="mk-card" style="width: 18rem;">
+                <div class="mk-card-header"><strong>Release notes</strong></div>
+                <div class="mk-card-body">
+                  <p class="mk-m-0">
                     This panel collapses horizontally.
                   </p>
                 </div>
@@ -107,9 +107,9 @@
             </div>
           </div>
         </div>
-        <pre><button type="button" class="fx-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;button
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;button
   type="button"
-  class="fx-btn fx-btn-primary"
+  class="mk-btn mk-btn-primary"
   data-toggle="collapse"
   data-target="#demo-collapse-horizontal"
   aria-expanded="true"
@@ -118,7 +118,7 @@
 &lt;/button&gt;
 
 &lt;a href="#demo-collapse-horizontal" 
-   class="fx-link fx-link-primary" 
+   class="mk-link mk-link-primary" 
    role="button" data-toggle="collapse" 
    data-target="#demo-collapse-horizontal" 
    aria-expanded="true" 
@@ -126,16 +126,16 @@
   Toggle panel
 &lt;/a&gt;
 
-&lt;div id="demo-collapse-horizontal" class="fx-collapse fx-collapse-horizontal show"&gt;
-  &lt;div class="fx-card" style="width: 18rem;"&gt;
-    &lt;div class="fx-card-header"&gt;&lt;strong&gt;Release notes&lt;/strong&gt;&lt;/div&gt;
-    &lt;div class="fx-card-body"&gt;
-      &lt;p class="fx-m-0"&gt;This panel collapses horizontally.&lt;/p&gt;
+&lt;div id="demo-collapse-horizontal" class="mk-collapse mk-collapse-horizontal show"&gt;
+  &lt;div class="mk-card" style="width: 18rem;"&gt;
+    &lt;div class="mk-card-header"&gt;&lt;strong&gt;Release notes&lt;/strong&gt;&lt;/div&gt;
+    &lt;div class="mk-card-body"&gt;
+      &lt;p class="mk-m-0"&gt;This panel collapses horizontally.&lt;/p&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
         <ul>
-          <li>Use <code>.fx-collapse-horizontal</code> to collapse the panel horizontally.
+          <li>Use <code>.mk-collapse-horizontal</code> to collapse the panel horizontally.
           </li>
           <li>Set a width on the immediate child (here: the card) so the expanded size is measurable.</li>
           <li>Add <code>.show</code> to the target if you want the horizontal panel to start opened.</li>
@@ -143,24 +143,24 @@
       </div>
     </div>
 
-    <div class="fx-demo-section">
+    <div class="mk-demo-section">
       <h5>What the CSS package covers</h5>
-      <div class="fx-demo-panel">
+      <div class="mk-demo-panel">
         <ul>
           <li><strong>Trigger API:</strong> Any element with <code>data-toggle="collapse"</code> and <code>data-target="#selector"</code>
             will toggle the target by adding or removing the <code>.show</code> class when clicked.</li>
-          <li><strong>Vertical collapse:</strong> Elements with the <code>.fx-collapse</code> class are hidden by default and expand when
+          <li><strong>Vertical collapse:</strong> Elements with the <code>.mk-collapse</code> class are hidden by default and expand when
             <code>.show</code> is applied.</li>
-          <li><strong>Horizontal collapse:</strong> Adding <code>.fx-collapse-horizontal</code> animates the panel&apos;s <code>width</code>
+          <li><strong>Horizontal collapse:</strong> Adding <code>.mk-collapse-horizontal</code> animates the panel&apos;s <code>width</code>
             instead of <code>height</code>, following the same collapse flow.</li>
-          <li><strong>Transition variable:</strong> The collapse animation uses the CSS variable <code>--fx-transition</code>
-            (applied via <code>.fx-collapsing</code>). Override it on a parent or wrapper element to customize animation duration and easing.</li>
+          <li><strong>Transition variable:</strong> The collapse animation uses the CSS variable <code>--mk-transition</code>
+            (applied via <code>.mk-collapsing</code>). Override it on a parent or wrapper element to customize animation duration and easing.</li>
         </ul>
       </div>
     </div>
   </main>
 
-  <script src="../../../dist/js/flexa.js"></script>
+  <script src="../../../dist/js/microuikit.js"></script>
   <script src="../../assets/js/docs.js"></script>
 </body>
 
