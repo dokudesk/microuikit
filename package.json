@@ -76,12 +76,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/DokuDesk/microuikit.git"
+    "url": "https://github.com/dokudesk/microuikit.git"
   },
   "bugs": {
-    "url": "https://github.com/DokuDesk/microuikit/issues"
+    "url": "https://github.com/dokudesk/microuikit/issues"
   },
-  "homepage": "https://github.com/DokuDesk/microuikit#readme",
+  "homepage": "https://github.com/dokudesk/microuikit#readme",
   "engines": {
     "node": ">=18.0.0"
   },
