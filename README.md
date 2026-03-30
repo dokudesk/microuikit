@@ -1,6 +1,18 @@
-# MicroUIKit
+<div style="text-align: center;">
+  <a href="https://dokudesk.com/microuikit" target="_blank" rel="noopener noreferrer">
+      <img src="./.github/microuikit.png" alt="MicroUIKit Logo" width="96" height="96" style="max-width: 100%; height: auto;">
+  </a>
 
-Compact front-end framework for micro UIs. Fully responsive, WCAG 2.1 compliant, with built-in RTL/LTR support, flexible theming, and an easy to use.
+  <h2>MicroUIKit</h2>
+
+  <p>Compact and powerful front-end framework for building micro UIs.</p>
+
+  <div>
+    <img src="https://img.shields.io/npm/v/microuikit" alt="Latest Release">
+    <img src="https://img.shields.io/npm/dt/microuikit" alt="Total Downloads">
+    <img src="https://img.shields.io/npm/l/microuikit" alt="License">
+  </div>
+</div>
 
 ## Features
 

@@ -1,4 +1,4 @@
-# MicroUIKit CSS — GitLab CI/CD Pipeline
+# MicroUIKit - GitLab CI/CD Pipeline
 # Purpose: run lint, test, and build for branch/MR validation.
 # Runtime: Docker jobs on Node 22 Alpine.
 # Runner requirement: at least one online runner with tag "microuikit".
@@ -17,7 +17,8 @@ stages:
   - lint
   - test
   - build
-  - publish
+  - publish-github
+  - publish-npm
 
 cache:
   key:
@@ -44,10 +45,31 @@ build:
   script:
     - npm run build
 
-# Stage 4: publish
+# Stage 4: publish-github
+# Mirror only GitLab master branch to GitHub master branch.
+publish-github:
+  stage: publish-github
+  needs:
+    - build
+  only:
+    - develop
+  script:
+    - apk add --no-cache git
+    - test -n "${GITHUB_REPO}" || (echo "GITHUB_REPO is not set. Example: dokudesk/microuikit" && exit 1)
+    - test -n "${GITHUB_TOKEN}" || (echo "GITHUB_TOKEN is not set." && exit 1)
+    - git checkout -B develop "$CI_COMMIT_SHA"
+    - git fetch --tags origin
+    - git remote remove github || true
+    - git remote add github "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPO}.git"
+    - git push --force github develop:develop
+    - git push --tags github --force
+  variables:
+    GITHUB_TOKEN: $GITHUB_TOKEN    
+
+# Stage 5: publish-npm
 # Publish to npm only when a SemVer tag is pushed (e.g. v1.2.3 or 1.2.3).
-publish:
-  stage: publish
+publish-npm:
+  stage: publish-npm
   needs:
     - build
   rules:

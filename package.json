@@ -1,7 +1,7 @@
 {
   "name": "microuikit",
   "version": "1.0.0",
-  "description": "Compact front-end framework for micro UIs. Fully responsive, WCAG 2.1 compliant, with built-in RTL/LTR support, flexible theming, and an easy to use.",
+  "description": "Compact and powerful front-end framework for building micro UIs. Fully responsive, WCAG 2.1 compliant, with built-in RTL/LTR support, flexible theming, and an easy to use.",
   "license": "MIT",
   "author": "Mahdi Atashin | DokuDesk",
   "type": "module",
@@ -47,8 +47,6 @@
   "keywords": [
     "css",
     "scss",
-    "design-tokens",
-    "utility-classes",
     "responsive",
     "rtl",
     "ltr",
@@ -57,31 +55,23 @@
     "light-mode",
     "auto-mode",
     "ui",
+    "ui-kit",
+    "ui-framework",
+    "ui-library",
     "frontend",
-    "microsystems",
-    "micro-ui",
-    "microuikit",
-    "micro-ui-css",
-    "micro-components",
-    "micro-framework",
     "frontend-framework",
-    "lightweight-css",
-    "modular-css",
-    "atomic-css",
-    "micro-layout",
-    "responsive-ui",
-    "accessible-css",
-    "wcag-compliant",
-    "ui-library"
+    "microsystems",
+    "micro",
+    "microui",
+    "microuikit",
+    "wcag",
+    "web"
   ],
   "repository": {
     "type": "git",
     "url": "https://github.com/dokudesk/microuikit.git"
   },
-  "bugs": {
-    "url": "https://github.com/dokudesk/microuikit/issues"
-  },
-  "homepage": "https://github.com/dokudesk/microuikit#readme",
+  "homepage": "https://dokudesk.com/microuikit",
   "engines": {
     "node": ">=18.0.0"
   },
