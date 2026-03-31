@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MicroUIKit - Glass Component</title>
+    <link rel="stylesheet" href="../../../dist/css/microuikit.css" />
+    <link rel="stylesheet" href="../../../dist/css/themes/microuikit-theme-default.css" />
+    <link rel="stylesheet" href="../../assets/css/docs.css" />
+</head>
+
+<body class="mk-d-flex mk-flex-dir-col mk-h-vh-100 mk-m-0">
+    <include src="../_header.html"></include>
+
+    <main class="mk-overflow-y-auto mk-px-5 mk-py-3">
+        <h3>Glass Component</h3>
+        <p class="mk-text-muted">
+            The Glass component provides a translucent background with blur and border effects.
+        </p>
+        <div class="mk-demo-section">
+            <h5>Base usage (blurred panel)</h5>
+            <div class="mk-demo-panel">
+                <div class="mk-demo-preview" style="max-width: 34rem;">
+                    <div class="mk-demo-null-box mk-rounded-lg mk-p-5" style="
+            background: radial-gradient(circle at 20% 20%, rgba(254, 132, 1, 0.35), transparent 45%),
+              radial-gradient(circle at 80% 30%, rgba(0, 100, 102, 0.35), transparent 50%),
+              linear-gradient(135deg, rgba(246, 247, 246, 0.15), rgba(0, 0, 0, 0.08));">
+                        <div class="mk-glass mk-card mk-shadow-xs">
+                            <div class="mk-card-header">
+                                <strong>Glass surface</strong>
+                            </div>
+                            <div class="mk-card-body">
+                                <p class="mk-text-muted">
+                                    Translucent background + blur + soft border & shadow.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="mk-glass mk-card mk-shadow-xs"&gt;
+  &lt;div class="mk-card-header"&gt;
+    &lt;strong&gt;Glass surface&lt;/strong&gt;
+  &lt;/div&gt;
+  &lt;div class="mk-card-body"&gt;
+    &lt;p class="mk-text-muted"&gt;
+      Translucent background + blur + soft border &amp; shadow.
+    &lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+        </div>
+        <div class="mk-demo-section">
+            <h5>What the CSS package covers</h5>
+            <div class="mk-demo-panel">
+                <ul>
+                    <li><code>.mk-glass</code> uses <code>background-color</code> with
+                        <code>color-mix(..., transparent)</code> for translucency, applies
+                        <code>backdrop-filter: blur(20px)</code> and semi-transparent border.</li>
+                    <li>For the blur effect to be visible, place <code>.mk-glass</code> above a background (gradient,
+                        image, or any content).</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <script src="../../../dist/js/microuikit.js"></script>
+    <script src="../../assets/js/docs.js"></script>
+</body>
+
+</html>

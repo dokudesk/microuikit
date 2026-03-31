@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MicroUIKit - Layout</title>
+  <link rel="stylesheet" href="../../../dist/css/microuikit.css" />
+  <link rel="stylesheet" href="../../../dist/css/themes/microuikit-theme-default.css" />
+  <link rel="stylesheet" href="../../assets/css/docs.css" />
+</head>
+
+<body class="mk-d-flex mk-flex-dir-col mk-h-vh-100 mk-m-0">
+  <include src="../_header.html"></include>
+
+  <main class="mk-overflow-y-auto mk-px-5 mk-py-3">
+    <h3 >Layout</h3>
+    <p class="mk-text-muted">
+      Low-level layout is handled by display, position, float, and vertical-align utilities. Use them to structure
+      blocks, inline content, flex/grid parents, or legacy table layouts. Floats use <code>--mk-text-start</code> and
+      <code>--mk-text-end</code> so they flip with RTL.
+    </p>
+
+    <div class="mk-demo-section">
+      <h5>Position</h5>
+      <div class="mk-demo-panel">
+        <div class="mk-position-relative mk-p-3">
+          <div class="mk-position-absolute mk-demo-null-box mk-border"
+            style="top: 0.5rem; inset-inline-start: 0.5rem;">Absolute</div>
+          <div class="mk-d-inline-block mk-demo-null-box mk-border">Inline block</div>
+        </div>
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="mk-position-relative"&gt;
+  &lt;div class="mk-position-absolute" style="top: 0.5rem; inset-inline-start: 0.5rem;"&gt;Absolute&lt;/div&gt;
+  &lt;div class="mk-d-inline-block"&gt;Inline block&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+      </div>
+    </div>
+
+    <div class="mk-demo-section">
+      <h5>Display</h5>
+      <div class="mk-demo-panel">
+        <ul >
+          <li> <strong>Block/inline:</strong> <code>mk-d-block</code>, <code>mk-d-inline</code>,
+            <code>mk-d-inline-block</code>,
+            <code>mk-d-none</code>.
+          </li>
+          <li><strong>Flex:</strong> <code>mk-d-flex</code>, <code>mk-d-inline-flex</code> (see Flex utilities for
+            alignment and wrap).</li>
+          <li><strong>Grid:</strong> <code>mk-d-grid</code>, <code>mk-d-inline-grid</code> (see Grid system for columns
+            and gutters).</li>
+          <li><strong>Table:</strong> <code>mk-d-table</code>, <code>mk-d-table-row</code>, <code>mk-d-table-cell</code>
+            for table-like layout without semantic table markup.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mk-demo-section">
+      <h5>Float and vertical alignment</h5>
+      <div class="mk-demo-panel">
+        <div class="mk-p-3">
+          <span class="mk-float-start">Start float</span>
+          <span class="mk-float-end">End float</span>
+          <p class="mk-mt-4">Valign in one line: <span class="mk-d-inline-block mk-valign-middle"
+              style="height: 3rem;"></span> <span class="mk-valign-top">top</span>
+            <span class="mk-valign-middle">mid</span> <span
+              class="mk-valign-bottom">bottom</span></p>
+        </div>
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;span class="mk-float-start"&gt;Start float&lt;/span&gt;
+&lt;span class="mk-float-end"&gt;End float&lt;/span&gt;
+
+&lt;p&gt;Valign in one line: 
+  &lt;span class="mk-valign-top"&gt;top&lt;/span&gt;
+  &lt;span class="mk-valign-middle"&gt;mid&lt;/span&gt;
+  &lt;span class="mk-valign-bottom"&gt;bottom&lt;/span&gt;
+&lt;/p&gt;</code>
+        </div>
+      </div>
+    </main>
+    <script src="../../../dist/js/microuikit.js"></script>
+    <script src="../../assets/js/docs.js"></script>
+  </body>
+</html>

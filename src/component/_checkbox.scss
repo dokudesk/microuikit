@@ -1,0 +1,140 @@
+// Checkbox component: .mk-checkbox-frame, input + label, custom box (::before) and tick (::after). States: checked, focus-visible, disabled, readonly, invalid, valid.
+@mixin checkbox($prefix) {
+  // Frame and visually hidden native checkbox
+  .#{$prefix}checkbox-frame {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+
+    input[type="checkbox"].#{$prefix}checkbox {
+      position: absolute;
+      inset-inline-start: 0;
+      inset-block-start: 50%;
+      transform: translateY(-50%);
+      width: var(--#{$prefix}checkbox-size, 1.5rem);
+      height: var(--#{$prefix}checkbox-size, 1.5rem);
+      margin: 0;
+      padding: 0;
+      border: 0;
+      opacity: 0;
+      clip-path: inset(50%);
+      overflow: hidden;
+
+      &:checked + label[for]::before {
+        background-color: var(--#{$prefix}checkbox-checked-background-color);
+        border-color: var(--#{$prefix}checkbox-checked-background-color);
+      }
+
+      &:checked + label[for]::after {
+        opacity: 1;
+      }
+
+      &:focus-visible:not(:disabled) + label[for]::before {
+        outline: var(--#{$prefix}focus-ring-outline-width) solid var(--#{$prefix}focus-ring-color);
+        outline-offset: var(--#{$prefix}focus-ring-outline-offset);
+      }
+
+      &:disabled + label[for] {
+        color: var(--#{$prefix}text-muted-color) !important;
+        opacity: var(--#{$prefix}disabled-control-opacity);
+        cursor: not-allowed;
+        pointer-events: none;
+      }
+
+      &:disabled + label[for]::before {
+        background-color: var(--#{$prefix}control-background-color) !important;
+        border-color: var(--#{$prefix}text-muted-color) !important;
+        opacity: var(--#{$prefix}disabled-control-opacity);
+      }
+
+      &:disabled:checked + label[for]::after {
+        background-color: var(--#{$prefix}text-muted-color) !important;
+        opacity: var(--#{$prefix}disabled-control-opacity);
+      }
+
+      &:disabled:not(:checked) + label[for]::after {
+        background-color: var(--#{$prefix}control-background-color);
+      }
+
+      &[readonly] {
+        pointer-events: none;
+      }
+
+      &[readonly] + label[for] {
+        cursor: default;
+        pointer-events: none;
+      }
+
+      &[invalid] + label[for], &[aria-invalid="true"] + label[for] {
+        color: var(--#{$prefix}invalid-border-color);
+      }
+
+      &[invalid] + label[for]::before, &[aria-invalid="true"] + label[for]::before {
+        border-color: var(--#{$prefix}invalid-border-color);
+      }
+
+      &[invalid]:checked + label[for]::before, &[aria-invalid="true"]:checked + label[for]::before {
+        background-color: var(--#{$prefix}invalid-color);
+        border-color: var(--#{$prefix}invalid-color);
+      }
+
+      &[valid] + label[for], &[aria-invalid="false"] + label[for] {
+        color: var(--#{$prefix}valid-border-color);
+      }
+
+      &[valid] + label[for]::before, &[aria-invalid="false"] + label[for]::before {
+        border-color: var(--#{$prefix}valid-border-color);
+      }
+
+      &[valid]:checked + label[for]::before, &[aria-invalid="false"]:checked + label[for]::before {
+        background-color: var(--#{$prefix}valid-color);
+        border-color: var(--#{$prefix}valid-color);
+      }
+    }
+
+    // Label and custom box (::before)
+    input[type="checkbox"].#{$prefix}checkbox + label[for] {
+      position: relative;
+      cursor: pointer;
+      font: var(--#{$prefix}font-weight-base) var(--#{$prefix}font-size-base) / var(--#{$prefix}line-height-base) var(--#{$prefix}font-family-base);
+      color: var(--#{$prefix}text-color);
+      padding-inline-start: calc(var(--#{$prefix}checkbox-size) + var(--#{$prefix}control-padding-x));
+      user-select: none;
+      transition: color var(--#{$prefix}transition) ease;
+    }
+
+    // Custom box appearance
+    input[type="checkbox"].#{$prefix}checkbox + label[for]::before {
+      content: "";
+      position: absolute;
+      inset-inline-start: 0;
+      inset-block-start: 50%;
+      transform: translateY(-50%);
+      width: var(--#{$prefix}checkbox-size, 1.5rem);
+      height: var(--#{$prefix}checkbox-size, 1.5rem);
+      border: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
+      border-radius: var(--#{$prefix}checkbox-border-radius);
+      background-color: var(--#{$prefix}control-background-color);
+      background-clip: padding-box;
+      box-sizing: border-box;
+    }
+
+    // Tick icon (::after), visible when :checked
+    input[type="checkbox"].#{$prefix}checkbox + label[for]::after {
+      content: "";
+      position: absolute;
+      inset-inline-start: calc((var(--#{$prefix}checkbox-size, 1.5rem) / 2) - (var(--#{$prefix}checkbox-size, 1.5rem) * 0.60 / 2));
+      inset-block-start: 50%;
+      width: calc(var(--#{$prefix}checkbox-size, 1.5rem) * 0.60);
+      height: calc(var(--#{$prefix}checkbox-size, 1.5rem) * 0.50);
+      transform: translateY(-50%);
+      opacity: 0;
+      transition: transform var(--#{$prefix}transition) ease, opacity var(--#{$prefix}transition) ease;
+      background-color: var(--#{$prefix}checkbox-tick-color);
+      mask-image: var(--#{$prefix}checkbox-tick-svg);
+      mask-repeat: no-repeat;
+      mask-position: center;
+      mask-size: contain;
+    }
+  }
+}

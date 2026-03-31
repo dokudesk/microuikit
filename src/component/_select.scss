@@ -1,0 +1,165 @@
+// Select component: .mk-select, .mk-select-frame, .mk-select-arrow, option styling, select[multiple] in frame.
+@use "../abstracts/mixins/theme" as mixins;
+
+@mixin select($prefix) {
+  // Base select and option styling
+  .#{$prefix}select {
+    display: block;
+    width: 100%;
+    overflow: auto;
+    height: var(--#{$prefix}control-height);
+    padding: var(--#{$prefix}control-padding-y) var(--#{$prefix}control-padding-x);
+    font: var(--#{$prefix}font-weight-base) var(--#{$prefix}font-size-base) / var(--#{$prefix}line-height-base) var(--#{$prefix}font-family-base);
+    color: var(--#{$prefix}text-color);
+    background-color: var(--#{$prefix}control-background-color);
+    background-clip: padding-box;
+    border: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
+    border-radius: var(--#{$prefix}control-border-radius);
+    transition: color var(--#{$prefix}transition) ease, background-color var(--#{$prefix}transition) ease;
+
+    option {
+      display: flex;
+      align-items: center;
+      color: var(--#{$prefix}text-color);
+      font-family: inherit;
+      font-size: inherit;
+      height: var(--#{$prefix}select-option-height);
+
+      &:checked {
+        color: var(--#{$prefix}select-selected-option-text-color);
+        background-color: var(--#{$prefix}select-selected-option-background-color);
+      }
+    }
+
+    &:focus {
+      border-color: var(--#{$prefix}border-color);
+    }
+
+    &[invalid], &[aria-invalid="true"] {
+      border-color: var(--#{$prefix}invalid-border-color) ;
+      color: var(--#{$prefix}invalid-color) ;
+    }
+
+    &[valid], &[aria-invalid="false"] {
+      border-color: var(--#{$prefix}valid-border-color);
+      color: var(--#{$prefix}valid-color);
+    }
+
+    &[disabled] {
+      color: var(--#{$prefix}text-muted-color);
+      border-color: var(--#{$prefix}border-color);
+      opacity: var(--#{$prefix}disabled-control-opacity);
+
+      option:checked {
+        color: var(--#{$prefix}text-muted-color);
+        background-color: var(--#{$prefix}background-muted-color);
+      }
+    }
+  }
+
+  // Frame: optional .mk-select-arrow (mask-based); border for select[multiple]
+  .#{$prefix}select-frame {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    transition: background-color var(--#{$prefix}transition) ease, border-color var(--#{$prefix}transition) ease;
+
+    .#{$prefix}select:focus {
+      border-color: var(--#{$prefix}focus-ring-color);
+      outline-offset: 0;
+      outline-color: var(--#{$prefix}focus-ring-color);
+      outline-width: calc(var(--#{$prefix}focus-ring-outline-width) - var(--#{$prefix}border-width));
+    }
+
+    .#{$prefix}select[invalid],
+    .#{$prefix}select[aria-invalid="true"] {
+      border-color: var(--#{$prefix}invalid-border-color);
+      color: var(--#{$prefix}invalid-color);
+      outline-color: var(--#{$prefix}invalid-border-color);
+    }
+
+    .#{$prefix}select[valid],
+    .#{$prefix}select[aria-invalid="false"] {
+      border-color: var(--#{$prefix}valid-border-color);
+      color: var(--#{$prefix}valid-color);
+      outline-color: var(--#{$prefix}valid-border-color);
+    }
+
+    .#{$prefix}select[disabled] {
+      color: var(--#{$prefix}text-muted-color);
+      border-color: var(--#{$prefix}border-color);
+      opacity: var(--#{$prefix}disabled-control-opacity);
+      outline: none !important;
+    }
+
+    // Only when frame contains .mk-select-arrow: reserve space for the arrow
+    &:has(.#{$prefix}select-arrow) .#{$prefix}select {
+      padding-inline-end: var(--#{$prefix}control-height);
+      appearance: none;
+      transition: background-color var(--#{$prefix}transition) ease, border-color var(--#{$prefix}transition) ease;
+    }
+
+    .#{$prefix}select[multiple] {
+      padding: var(--#{$prefix}control-padding-y) var(--#{$prefix}control-padding-x);
+      border-color: transparent;
+      outline: none !important;
+    }
+
+    // When frame contains select[multiple]: border on frame (select has none), color by state
+    &:has(.#{$prefix}select[multiple]) {
+      border: var(--#{$prefix}border-width) solid  var(--#{$prefix}border-color);
+      border-radius: var(--#{$prefix}control-border-radius);
+      padding: calc(var(--#{$prefix}control-border-radius) * 0.25);
+    }
+
+    &:has(.#{$prefix}select[multiple]:focus) {
+      border-color: var(--#{$prefix}focus-ring-color, var(--#{$prefix}border-color)) ;
+      outline: var(--#{$prefix}focus-ring-color) solid calc(var(--#{$prefix}focus-ring-outline-width) - var(--#{$prefix}border-width));
+      outline-offset: 0;
+    }
+
+    &:has(.#{$prefix}select[multiple][invalid]),
+    &:has(.#{$prefix}select[multiple][aria-invalid="true"]) {
+      border-color: var(--#{$prefix}invalid-border-color) ;
+      outline-color: var(--#{$prefix}invalid-border-color);
+    }
+
+    &:has(.#{$prefix}select[multiple][valid]),
+    &:has(.#{$prefix}select[multiple][aria-invalid="false"]) {
+      border-color: var(--#{$prefix}valid-border-color) ;
+      outline-color: var(--#{$prefix}valid-border-color);
+    }
+
+    &:has(.#{$prefix}select[multiple][disabled]) {
+      border-color: var(--#{$prefix}border-color) ;
+      outline: none !important;
+    }
+
+    // Decorative arrow: SVG via mask, color via --mk-select-arrow-color; hidden when select[multiple]
+    .#{$prefix}select-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      inset-block-start: 0;
+      inset-inline-end: 0;
+      width: var(--#{$prefix}control-height);
+      min-width: var(--#{$prefix}control-height);
+      height: 100%;
+      pointer-events: none;
+      box-sizing: border-box;
+
+      &::before {
+        content: "";
+        width: calc(var(--#{$prefix}control-height) * 0.28);
+        height: calc(var(--#{$prefix}control-height) * 0.28);
+        background-color: var(--#{$prefix}select-arrow-color, var(--#{$prefix}control-icon-color));
+        mask: var(--#{$prefix}arrow-down-svg) no-repeat center / contain;
+      }
+    }
+
+    &:has(.#{$prefix}select[multiple]) .#{$prefix}select-arrow {
+      display: none;
+    }
+  }
+}

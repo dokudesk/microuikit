@@ -1,0 +1,184 @@
+@use 'sass:map';
+@use '../abstracts/variables/index' as vars;
+
+// ===============================
+// Mixin: document-base
+// ===============================
+/// Applies base document styles using CSS variables
+/// Sets up box-sizing, typography, direction, and layout defaults
+/// @param {String} $prefix - CSS variable prefix (e.g., "mk-")
+@mixin document-base($prefix) {
+  // Global box-sizing reset
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  // Enable smooth scrolling if user allows motion
+  // Note: scroll-behavior is not supported in IE, but gracefully degrades
+  @media (prefers-reduced-motion: no-preference) {
+    :root {
+      scroll-behavior: smooth;
+    }
+  }
+
+  // Document root settings
+  html {
+    direction: var(--#{$prefix}direction);
+
+    // Fallback for dvh (IE and older Safari)
+    min-height: 100vh;
+    min-height: 100dvh;
+    text-size-adjust: 100%;
+  }
+
+  // Base typography & colors
+  html, body {
+    margin: 0;
+    padding: 0;
+    color: var(--#{$prefix}text-color);
+    background-color: var(--#{$prefix}background-color);
+    font-family: var(--#{$prefix}font-family-base);
+    font-size: var(--#{$prefix}font-size-base);
+    font-weight: var(--#{$prefix}font-weight-base);
+    line-height: var(--#{$prefix}line-height-base);
+    transition: color var(--#{$prefix}transition) ease, background-color var(--#{$prefix}transition) ease;
+  }
+}
+
+// ===============================
+// Mixin: base-elements
+// ===============================
+/// Applies base styles to common HTML elements using CSS variables
+/// Styles paragraphs, links, images, and other base elements
+/// @param {String} $prefix - CSS variable prefix (e.g., "mk-")
+@mixin base-elements($prefix) {
+  // Scrollbar styles
+  * {
+    scrollbar-width: var(--#{$prefix}scrollbar-width);
+    scrollbar-color: var(--#{$prefix}scrollbar-color) var(--#{$prefix}background-color);
+  }
+
+  // Edge scrollbar styles
+  *::-webkit-scrollbar {
+    width: var(--#{$prefix}edge-scrollbar-width);
+    height: var(--#{$prefix}edge-scrollbar-height);
+  }
+
+  // Edge scrollbar track styles
+  *::-webkit-scrollbar-track {
+    background-color: var(--#{$prefix}background-color);
+    border-radius: var(--#{$prefix}border-radius);
+  }
+
+  // Edge scrollbar thumb styles
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--#{$prefix}scrollbar-color);
+    border-radius: var(--#{$prefix}border-radius);
+    border: var(--#{$prefix}border-width) solid var(--#{$prefix}background-color);
+  }
+
+  // Edge scrollbar thumb hover styles
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: var(--#{$prefix}scrollbar-hover-color);
+  }
+
+  // Edge scrollbar corner styles
+  *::-webkit-scrollbar-corner {
+    background-color: var(--#{$prefix}background-color);
+  }
+
+  // Paragraph spacing
+  p {
+    margin: 0;
+  }
+
+  label {
+    display: inline-block;
+  }
+
+  // Horizontal rule
+  hr {
+    margin: var(--#{$prefix}gutter-width) 0;
+    color: inherit;
+    border: 0;
+    border-top: var(--#{$prefix}border-width ) solid var(--#{$prefix}border-color);
+    opacity: 0.5;
+  }
+
+  // Highlighted text
+  mark,
+  .#{$prefix}mark {
+    background-color: var(--#{$prefix}highlight-background-color);
+  }
+
+  // Emphasis
+  b,
+  .#{$prefix}strong {
+    font-weight: bolder;
+  }
+
+  // Textarea styles
+  textarea {
+    resize: vertical;
+  }
+
+  // Small text
+  small,
+  .#{$prefix}small {
+    font-size: map.get(vars.$font-sizes, "sm");
+  }
+
+  // Media alignment
+  img,
+  svg,
+  .#{$prefix}img,
+  .#{$prefix}svg {
+    vertical-align: middle;
+  }
+
+  // Link styles
+  a {
+    color: var(--#{$prefix}link-color);
+    text-decoration: vars.$link-decoration;
+    transition: color var(--#{$prefix}transition) ease, text-decoration var(--#{$prefix}transition) ease;
+
+    &:hover {
+      color: var(--#{$prefix}link-hover-color);
+      cursor: pointer;
+    }
+  }
+
+  // Reset link styles
+  a:not([href], [class]), a:not([href], [class]):hover {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  // Hidden
+  [hidden],
+  .#{$prefix}hidden {
+    display: none !important;
+  }
+
+  // Invisible
+  .#{$prefix}invisible {
+    visibility: hidden !important;
+  }
+
+  // Visible
+  .#{$prefix}visible {
+    visibility: visible !important;
+  }
+
+  // Reset Firefox focus styles
+  ::-moz-focus-inner {
+    padding: 0;
+    border-style: none;
+  }
+
+  // Focus styles
+  *:focus, *:focus-visible {
+    outline-offset: var(--#{$prefix}focus-ring-outline-offset);
+    outline: var(--#{$prefix}focus-ring-outline-width) solid var(--#{$prefix}focus-ring-color);
+  }
+}

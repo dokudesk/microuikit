@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MicroUIKit - Overflow and object</title>
+  <link rel="stylesheet" href="../../../dist/css/microuikit.css" />
+  <link rel="stylesheet" href="../../../dist/css/themes/microuikit-theme-default.css" />
+  <link rel="stylesheet" href="../../assets/css/docs.css" />
+</head>
+
+<body class="mk-d-flex mk-flex-dir-col mk-h-vh-100 mk-m-0">
+  <include src="../_header.html"></include>
+
+  <main class="mk-overflow-y-auto mk-px-5 mk-py-3">
+    <h3 >Overflow and object</h3>
+    <p class="mk-text-muted">
+      Overflow (clip/scroll) and object-fit/object-position for images and video; full class reference injected by the docs script.
+    </p>
+
+    <div class="mk-demo-section">
+      <h5>Overflow</h5>
+      <div class="mk-demo-panel">
+        <div class="mk-border mk-overflow-auto" style="max-height: 6rem;">
+          <p>Scrollable content line 1</p>
+          <p>Scrollable content line 2</p>
+          <p>Scrollable content line 3</p>
+          <p>Scrollable content line 4</p>
+          <p>Scrollable content line 5</p>
+          <p>Scrollable content line 6</p>
+          <p>Scrollable content line 7</p>
+          <p>Scrollable content line 8</p>
+        </div>
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="mk-overflow-auto" style="max-height: 6rem;"&gt;
+  &lt;!-- content --&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </div>
+
+    <div class="mk-demo-section">
+      <h5>Object fit and position</h5>
+      <div class="mk-demo-panel">
+        <img class="mk-w-100 mk-h-100 mk-object-cover"
+          style="max-width: 20rem; height: 9rem; display: block;"
+          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='300'%3E%3Crect width='100%25' height='100%25' fill='%23dbeafe'/%3E%3Ccircle cx='200' cy='150' r='90' fill='%2393c5fd'/%3E%3Crect x='320' y='55' width='240' height='190' fill='%2360a5fa'/%3E%3C/svg%3E"
+          alt="Object cover sample" />
+        <pre
+          ><code>&lt;img class="mk-w-100 mk-h-100 mk-object-cover" style="max-width: 20rem; height: 9rem; display: block;" src="..." alt="..." /&gt;</code></pre>
+      </div>
+    </div>
+  </main>
+  <script src="../../../dist/js/microuikit.js"></script>
+  <script src="../../assets/js/docs.js"></script>
+</body>
+
+</html>

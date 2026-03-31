@@ -1,0 +1,173 @@
+// Textarea component: .mk-textarea, .mk-textarea-frame (floating label). States: focus, invalid, valid, disabled.
+@mixin textarea($prefix) {
+  // Base textarea
+  .#{$prefix}textarea {
+    min-height: var(--#{$prefix}control-height);
+    padding: var(--#{$prefix}control-padding-y) var(--#{$prefix}control-padding-x);
+    font: var(--#{$prefix}font-weight-base) var(--#{$prefix}font-size-base) var(--#{$prefix}font-family-base);
+    line-height: var(--#{$prefix}line-height-base);
+    color: var(--#{$prefix}text-color);
+    background-color: var(--#{$prefix}control-background-color);
+    background-clip: padding-box;
+    border: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
+    border-radius: var(--#{$prefix}control-border-radius);
+    transition: color var(--#{$prefix}transition) ease, background-color var(--#{$prefix}transition) ease, border-color var(--#{$prefix}transition) ease;
+
+    &::placeholder {
+      color: var(--#{$prefix}placeholder-color);
+    }
+
+    &[invalid], &[aria-invalid="true"] {
+      border-color: var(--#{$prefix}invalid-border-color);
+      color: var(--#{$prefix}invalid-color);
+    }
+
+    &[valid], &[aria-invalid="false"] {
+      border-color: var(--#{$prefix}valid-border-color);
+      color: var(--#{$prefix}valid-color);
+    }
+
+    &[disabled] {
+      color: var(--#{$prefix}text-muted-color);
+      border-color: var(--#{$prefix}border-color);
+      opacity: var(--#{$prefix}disabled-control-opacity);
+    }
+  }
+
+  // Frame: wrapper with border and floating label; textarea inside is borderless
+  .#{$prefix}textarea-frame {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    background-color: var(--#{$prefix}control-background-color);
+    background-clip: padding-box;
+    border: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
+    border-radius: var(--#{$prefix}control-border-radius);
+    padding: calc(var(--#{$prefix}control-border-radius) * 0.25);
+    transition: background-color var(--#{$prefix}transition) ease, border-color var(--#{$prefix}transition) ease;
+
+    .#{$prefix}textarea {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      outline: none;
+      background-color: transparent;
+      border: none;
+    }
+
+    label[for] {
+      position: absolute;
+      padding: 0 2px;
+      max-width: calc(100% - var(--mk-control-padding-x) * 2);
+      inset-inline-start: var(--#{$prefix}control-padding-x);
+      top: var(--#{$prefix}control-padding-y);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transform: none;
+      pointer-events: none;
+      background-color: transparent;
+      color: var(--#{$prefix}placeholder-color);
+      font: var(--#{$prefix}font-weight-base) var(--#{$prefix}font-size-base) / var(--#{$prefix}line-height-base) var(--#{$prefix}font-family-base);
+      transition: color var(--#{$prefix}transition) ease, font var(--#{$prefix}transition) ease, top var(--#{$prefix}transition) ease;
+    }
+
+    .#{$prefix}textarea::placeholder {
+      color: transparent;
+    }
+
+    // Floating label: moves up on focus or when textarea has value
+
+    .#{$prefix}textarea:focus + label[for],
+    .#{$prefix}textarea:not(:placeholder-shown) + label[for] {
+      top: calc(var(--#{$prefix}focus-ring-outline-width) * -1);
+      transform: translateY(-50%);
+      background-color: var(--#{$prefix}control-background-color);
+      font-size: calc(var(--#{$prefix}font-size-base) * 0.75);
+      border-radius: 2px;
+    }
+
+    .#{$prefix}textarea[invalid]:focus + label[for],
+    .#{$prefix}textarea[invalid]:not(:placeholder-shown) + label[for],
+    .#{$prefix}textarea[aria-invalid="true"]:focus + label[for],
+    .#{$prefix}textarea[aria-invalid="true"]:not(:placeholder-shown) + label[for] {
+      color: var(--#{$prefix}invalid-color);
+    }
+
+    .#{$prefix}textarea[valid]:focus + label[for],
+    .#{$prefix}textarea[valid]:not(:placeholder-shown) + label[for],
+    .#{$prefix}textarea[aria-invalid="false"]:focus + label[for],
+    .#{$prefix}textarea[aria-invalid="false"]:not(:placeholder-shown) + label[for] {
+      color: var(--#{$prefix}valid-color);
+    }
+
+    .#{$prefix}textarea:not(:placeholder-shown) + label[for] {
+      color: var(--#{$prefix}placeholder-color);
+    }
+
+    .#{$prefix}textarea:focus + label[for] {
+      color: var(--#{$prefix}focus-ring-color);
+    }
+
+    // Frame border by state (focus / invalid / valid)
+
+    &:has(.#{$prefix}textarea:not(:placeholder-shown)) {
+      border-color: var(--#{$prefix}border-color) ;
+    }
+
+    &:has(.#{$prefix}textarea:focus) {
+      border-color: var(--#{$prefix}focus-ring-color) ;
+    }
+
+    &:has(.#{$prefix}textarea[invalid]),
+    &:has(.#{$prefix}textarea[aria-invalid="true"]) {
+      border-color: var(--#{$prefix}invalid-border-color);
+    }
+
+    &:has(.#{$prefix}textarea[valid]),
+    &:has(.#{$prefix}textarea[aria-invalid="false"]) {
+      border-color: var(--#{$prefix}valid-border-color);
+    }
+
+    &:has(.#{$prefix}textarea:focus) {
+      outline: var(--#{$prefix}focus-ring-color) solid calc(var(--#{$prefix}focus-ring-outline-width) - var(--#{$prefix}border-width));
+      outline-offset: 0;
+    }
+    &:has(.#{$prefix}textarea[invalid]:focus),
+    &:has(.#{$prefix}textarea[aria-invalid="true"]:focus) {
+      outline: var(--#{$prefix}invalid-border-color) solid calc(var(--#{$prefix}focus-ring-outline-width) - var(--#{$prefix}border-width));
+      outline-offset: 0;
+    }
+    &:has(.#{$prefix}textarea[valid]:focus),
+    &:has(.#{$prefix}textarea[aria-invalid="false"]:focus) {
+      outline: var(--#{$prefix}valid-border-color) solid calc(var(--#{$prefix}focus-ring-outline-width) - var(--#{$prefix}border-width));
+      outline-offset: 0;
+    }
+
+    .#{$prefix}textarea[disabled]:placeholder-shown + label[for] {
+      color: var(--#{$prefix}text-muted-color);
+      opacity: var(--#{$prefix}disabled-control-opacity);
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .#{$prefix}textarea[disabled]:not(:placeholder-shown) + label[for] {
+      color: var(--#{$prefix}text-muted-color);
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .#{$prefix}textarea.#{$prefix}skeleton + label[for],
+    .#{$prefix}textarea.#{$prefix}Skeleton + label[for] {
+      visibility: hidden;
+    }
+
+    // When disabled, frame border always uses border-color (overrides valid/invalid)
+    &:has(.#{$prefix}textarea[disabled]:placeholder-shown),
+    &:has(.#{$prefix}textarea[disabled]:not(:placeholder-shown)) {
+      border-color: var(--#{$prefix}border-color);
+      opacity: var(--#{$prefix}disabled-control-opacity);
+    }
+
+  }
+}

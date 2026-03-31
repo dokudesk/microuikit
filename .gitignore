@@ -1,0 +1,11 @@
+node_modules/
+build/
+.env
+.env.*
+!.env.example
+.sass-cache/
+*.log
+*.map
+.DS_Store
+coverage/
+.cursor/

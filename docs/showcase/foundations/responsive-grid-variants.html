@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MicroUIKit - Responsive grid variants</title>
+    <link rel="stylesheet" href="../../../dist/css/microuikit.css" />
+    <link rel="stylesheet" href="../../../dist/css/themes/microuikit-theme-default.css" />
+    <link rel="stylesheet" href="../../assets/css/docs.css" />
+  </head>
+  <body class="mk-d-flex mk-flex-dir-col mk-h-vh-100 mk-m-0">
+    <include src="../_header.html"></include>
+
+    <main class="mk-overflow-y-auto mk-px-5 mk-py-3">
+      <h3 >Responsive grid variants</h3>
+      <p class="mk-text-muted">Breakpoint-specific classes (<code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>xxl</code>) for column and offset utilities.</p>
+
+      <div class="mk-demo-section">
+        <h5>Adaptive columns</h5>
+        <div class="mk-demo-panel">
+          <div class="mk-row mk-demo-preview">
+            <div class="mk-col-12 mk-col-sm-6 mk-col-lg-4 mk-border"><div class="mk-demo-null-box">12 / 6 / 4</div></div>
+            <div class="mk-col-12 mk-col-sm-6 mk-col-lg-4 mk-border"><div class="mk-demo-null-box">12 / 6 / 4</div></div>
+            <div class="mk-col-12 mk-col-sm-12 mk-col-lg-4 mk-border"><div class="mk-demo-null-box">12 / 12 / 4</div></div>
+          </div>
+          <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="mk-row"&gt;
+  &lt;div class="mk-col-12 mk-col-sm-6 mk-col-lg-4 mk-border"&gt;12 / 6 / 4&lt;/div&gt;
+  &lt;div class="mk-col-12 mk-col-sm-6 mk-col-lg-4 mk-border"&gt;12 / 6 / 4&lt;/div&gt;
+  &lt;div class="mk-col-12 mk-col-sm-12 mk-col-lg-4 mk-border"&gt;12 / 12 / 4&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="mk-demo-section">
+        <h5>Offsets</h5>
+        <div class="mk-demo-panel">
+          <div class="mk-row mk-demo-preview">
+            <div class="mk-col-6 mk-offset-3 mk-border"><div class="mk-demo-null-box">Centered with offset-3</div></div>
+            <div class="mk-col-8 mk-offset-md-2 mk-border"><div class="mk-demo-null-box">offset-md-2</div></div>
+          </div>
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="mk-row"&gt;
+  &lt;div class="mk-col-6 mk-offset-3 mk-border"&gt;Centered with offset-3&lt;/div&gt;
+  &lt;div class="mk-col-8 mk-offset-md-2 mk-border"&gt;offset-md-2&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+    </main>
+    <script src="../../../dist/js/microuikit.js"></script>
+    <script src="../../assets/js/docs.js"></script>
+  </body>
+</html>

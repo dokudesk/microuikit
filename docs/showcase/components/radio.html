@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MicroUIKit - Radio Component</title>
+  <link rel="stylesheet" href="../../../dist/css/microuikit.css" />
+  <link rel="stylesheet" href="../../../dist/css/themes/microuikit-theme-default.css" />
+  <link rel="stylesheet" href="../../assets/css/docs.css" />
+
+</head>
+
+<body class="mk-d-flex mk-flex-dir-col mk-h-vh-100 mk-m-0">
+  <include src="../_header.html"></include>
+
+  <main class="mk-overflow-y-auto mk-px-5 mk-py-3">
+    <h3 >Radio Component</h3>
+    <p class="mk-text-muted">
+      The Radio component styles a native radio input with a custom circle and inner dot.
+    </p>
+
+    <div class="mk-demo-section">
+      <h5>Base usage</h5>
+      <div class="mk-demo-panel">
+        <div class="mk-demo-preview">
+          <div class="mk-radio-frame">
+            <input id="r-base-a" type="radio" class="mk-radio" name="base" />
+            <label for="r-base-a">Option A</label>
+          </div>
+          <div class="mk-radio-frame">
+            <input id="r-base-b" type="radio" class="mk-radio" name="base" checked />
+            <label for="r-base-b">Option B</label>
+          </div>
+        </div>
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="mk-radio-frame"&gt;
+  &lt;input id="r-a" type="radio" class="mk-radio" name="group" /&gt;
+  &lt;label for="r-a"&gt;Option A&lt;/label&gt;
+&lt;/div&gt;
+&lt;div class="mk-radio-frame"&gt;
+  &lt;input id="r-b" type="radio" class="mk-radio" name="group" checked /&gt;
+  &lt;label for="r-b"&gt;Option B&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+        <ul >
+          <li>Use the same <code>name</code> on all radios in a group so only one radio can be selected.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mk-demo-section">
+      <h5>Disabled state</h5>
+      <div class="mk-demo-panel">
+        <div class="mk-demo-preview">
+          <div class="mk-radio-frame">
+            <input id="r-disabled" type="radio" class="mk-radio" name="disabled-demo" disabled />
+            <label for="r-disabled">Disabled unchecked</label>
+          </div>
+          <div class="mk-radio-frame">
+            <input id="r-disabled-checked" type="radio" class="mk-radio" name="disabled-demo" disabled checked />
+            <label for="r-disabled-checked">Disabled checked</label>
+          </div>
+        </div>
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="mk-radio-frame"&gt;
+    &lt;input id="..." type="radio" class="mk-radio" name="group" disabled /&gt;
+    &lt;label for="..."&gt;Disabled unchecked&lt;/label&gt;
+&lt;/div&gt;
+&lt;div class="mk-radio-frame"&gt;
+  &lt;input id="..." type="radio" class="mk-radio" name="group" disabled checked /&gt;
+  &lt;label for="..."&gt;Disabled checked&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+        <ul >
+          <li><code>--mk-disabled-control-opacity</code> sets the opacity of the radio when it is disabled.</li>
+          <li><code>--mk-text-muted-color</code> sets the color of the radio when it is disabled.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mk-demo-section">
+      <h5>Readonly state</h5>
+      <div class="mk-demo-panel">
+        <div class="mk-demo-preview">
+          <div class="mk-radio-frame">
+            <input id="r-readonly" type="radio" class="mk-radio" name="readonly-demo" readonly checked />
+            <label for="r-readonly">Readonly (no pointer events)</label>
+          </div>
+        </div>
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="mk-radio-frame"&gt;
+  &lt;input id="..." type="radio" class="mk-radio" name="group" readonly checked /&gt;
+  &lt;label for="..."&gt;Readonly (no pointer events)&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+        <ul >
+          <li><code>readonly</code> disables pointer events so the value cannot be changed by click; use when the value
+            is display-only or controlled elsewhere.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mk-demo-section">
+      <h5>Validation states (invalid / valid)</h5>
+      <div class="mk-demo-panel">
+        <div class="mk-demo-preview">
+          <div class="mk-radio-frame">
+            <input id="r-invalid" type="radio" class="mk-radio" name="group-invalid" invalid />
+            <label for="r-invalid">Invalid</label>
+          </div>
+          <div class="mk-radio-frame">
+            <input id="r-invalid-checked" type="radio" class="mk-radio" name="group-invalid" invalid checked />
+            <label for="r-invalid-checked">Invalid checked</label>
+          </div>
+          <div class="mk-radio-frame">
+            <input id="r-valid" type="radio" class="mk-radio" name="group-valid" valid checked />
+            <label for="r-valid">Valid</label>
+          </div>
+        </div>
+        <div class="mk-demo-preview">
+          <div class="mk-radio-frame">
+            <input id="r-aria-invalid-true" type="radio" class="mk-radio" name="group-aria-invalid" aria-invalid="true"
+              checked />
+            <label for="r-aria-invalid-true">ARIA invalid=true</label>
+          </div>
+          <div class="mk-radio-frame">
+            <input id="r-aria-invalid-false" type="radio" class="mk-radio" name="group-aria-invalid"
+              aria-invalid="false" />
+            <label for="r-aria-invalid-false">ARIA invalid=false</label>
+          </div>
+        </div>
+        <div class="mk-demo-preview">
+          <div class="mk-radio-frame">
+            <input id="r-invalid-disabled" type="radio" class="mk-radio" name="group-invalid-disabled" invalid
+              disabled />
+            <label for="r-invalid-disabled">Invalid + disabled (unchecked)</label>
+          </div>
+          <div class="mk-radio-frame">
+            <input id="r-invalid-disabled-checked" type="radio" class="mk-radio" name="group-invalid-disabled" invalid
+              disabled checked />
+            <label for="r-invalid-disabled-checked">Invalid + disabled (checked)</label>
+          </div>
+        </div>
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="mk-radio-frame"&gt;
+  &lt;input id="..." type="radio" class="mk-radio" name="group-invalid" invalid /&gt;
+  &lt;label for="..."&gt;Invalid&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="mk-radio-frame"&gt;
+  &lt;input id="..." type="radio" class="mk-radio" name="group-invalid" invalid checked /&gt;
+  &lt;label for="..."&gt;Invalid checked&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="mk-radio-frame"&gt;
+  &lt;input id="..." type="radio" class="mk-radio" name="group-valid" valid checked /&gt;
+  &lt;label for="..."&gt;Valid&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="mk-radio-frame"&gt;
+  &lt;input id="..." type="radio" class="mk-radio" name="group-aria-invalid" aria-invalid="true" checked /&gt;
+  &lt;label for="..."&gt;ARIA invalid=true&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="mk-radio-frame"&gt;
+  &lt;input id="..." type="radio" class="mk-radio" name="group-aria-invalid" aria-invalid="false" /&gt;
+  &lt;label for="..."&gt;ARIA invalid=false&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="mk-radio-frame"&gt;
+  &lt;input id="..." type="radio" class="mk-radio" name="group-invalid-disabled" invalid disabled /&gt;
+  &lt;label for="..."&gt;Invalid + disabled (unchecked)&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="mk-radio-frame"&gt;
+  &lt;input id="..." type="radio" class="mk-radio" name="group-invalid-disabled" invalid disabled checked /&gt;
+  &lt;label for="..."&gt;Invalid + disabled (checked)&lt;/label&gt;
+&lt;/div&gt;
+
+</code></pre>
+        <ul >
+          <li>Use <code>invalid</code>/<code>valid</code> for state-driven validation styling; these states apply
+            semantic border/text colors via <code>--mk-invalid-border-color</code>, <code>--mk-invalid-color</code>,
+            <code>--mk-valid-border-color</code>, and <code>--mk-valid-color</code>.
+          </li>
+          <li>ARIA mapping is fully supported: <code>aria-invalid="true"</code> uses invalid styling, and
+            <code>aria-invalid="false"</code> uses valid styling, matching the visual behavior of
+            <code>invalid</code>/<code>valid</code>.
+          </li>
+          <li>When validation and disabled states are combined, disabled behavior remains dominant for interaction
+            (cursor, pointer-events, opacity), while validation colors are still applied where relevant in the visual
+            state.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mk-demo-section">
+      <h5>Quick customization</h5>
+      <div class="mk-demo-panel">
+        <div class="mk-demo-preview">
+          <div class="mk-radio-frame" style="--mk-radio-size: 1.25rem;">
+            <input id="r-small" type="radio" class="mk-radio" name="group-customization" />
+            <label for="r-small">Smaller circle</label>
+          </div>
+          <div class="mk-radio-frame" style="--mk-radio-size: 2rem; --mk-radio-dot-space: 0.4rem;">
+            <input id="r-large" type="radio" class="mk-radio" name="group-customization" checked />
+            <label for="r-large">Larger circle</label>
+          </div>
+          <div class="mk-radio-frame" style="--mk-radio-checked-color: var(--mk-success);">
+            <input id="r-success-color" type="radio" class="mk-radio" name="group-customization" />
+            <label for="r-success-color">Success checked color</label>
+          </div>
+          <div class="mk-radio-frame" style="--mk-radio-checked-color: var(--mk-warning);">
+            <input id="r-warning-color" type="radio" class="mk-radio" name="group-customization" />
+            <label for="r-warning-color">Warning checked color</label>
+          </div>
+          <div class="mk-radio-frame" style="--mk-radio-checked-color: var(--mk-danger);">
+            <input id="r-danger-color" type="radio" class="mk-radio" name="group-customization" />
+            <label for="r-danger-color">Danger checked color</label>
+          </div>
+        </div>
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="mk-radio-frame" style="--mk-radio-size: 1.25rem;"&gt;
+  &lt;input id="..." type="radio" class="mk-radio" name="group-customization" /&gt;
+  &lt;label for="..."&gt;Smaller circle&lt;/label&gt;
+&lt;/div&gt;
+&lt;div class="mk-radio-frame" style="--mk-radio-size: 2rem; --mk-radio-dot-space: 0.4rem;"&gt;
+  &lt;input id="..." type="radio" class="mk-radio" name="group-customization" checked /&gt;
+  &lt;label for="..."&gt;Larger circle&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="mk-radio-frame" style="--mk-radio-checked-color: var(--mk-success);"&gt;
+  &lt;input id="..." type="radio" class="mk-radio" name="group-customization" /&gt;
+  &lt;label for="..."&gt;Success checked color&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="mk-radio-frame" style="--mk-radio-checked-color: var(--mk-warning);"&gt;
+  &lt;input id="..." type="radio" class="mk-radio" name="group-customization" /&gt;
+  &lt;label for="..."&gt;Warning checked color&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="mk-radio-frame" style="--mk-radio-checked-color: var(--mk-danger);"&gt;
+  &lt;input id="..." type="radio" class="mk-radio" name="group-customization" /&gt;
+  &lt;label for="..."&gt;Danger checked color&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+        <ul >
+          <li><code>--mk-radio-size</code> sets the size of the circle.</li>
+          <li><code>--mk-radio-dot-space</code> sets the gap between ring and inner dot.</li>
+          <li><code>--mk-radio-checked-color</code> sets the color of the checked ring and inner dot.</li>
+          <li><code>--mk-control-background-color</code> sets the background color of the unselected circle.</li>
+          <li><code>--mk-border-width</code> sets the width of the border.</li>
+          <li><code>--mk-border-color</code> sets the color of the border.</li>
+          <li><code>--mk-focus-ring-*</code> sets the focus outline width, color, and offset.</li>
+          <li><code>--mk-control-padding-x</code> sets the gap between circle and label.</li>
+          <li><code>--mk-text-color</code> sets the color of the label.</li>
+          <li><code>--mk-text-muted-color</code> sets the color of the label when it is disabled.</li>
+          <li><code>--mk-disabled-control-opacity</code> sets the opacity of the radio when it is disabled.</li>
+          <li><code>--mk-transition</code> sets the animation.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mk-demo-section">
+      <h5>What the CSS package covers</h5>
+      <div class="mk-demo-panel">
+        <ul >
+          <li><strong>Base.</strong> <code>.mk-radio-frame</code> provides the wrapper layout for the native input and
+            its label.</li>
+          <li><strong>Native input.</strong> <code>input[type="radio"].mk-radio</code> is visually hidden (clip and opacity)
+            and sized via <code>--mk-radio-size</code> while remaining focusable and announced by assistive technologies.</li>
+          <li><strong>Custom ring and dot.</strong> <code>label[for]::before</code> is the ring (size
+            <code>--mk-radio-size</code>, border, background, <code>border-radius: 50%</code>). <code>::after</code> is the
+            inner dot (size from <code>--mk-radio-size</code> and <code>--mk-radio-dot-space</code>, color
+            <code>--mk-radio-checked-color</code>), revealed when checked via opacity and scale transition.</li>
+          <li><strong>Checked state.</strong> <code>:checked + label::before</code> updates the ring border color;
+            <code>:checked + label::after</code> reveals the dot with opacity and scale.</li>
+          <li><strong>Focus.</strong> <code>:focus-visible:not(:disabled) + label::before</code> applies the global focus
+            ring (outline and offset from focus-ring tokens).</li>
+          <li><strong>Disabled state.</strong> <code>[disabled] + label</code> receives muted color, reduced opacity,
+            cursor <code>not-allowed</code>, and <code>pointer-events: none</code>; the ring and dot use muted colors and
+            opacity.</li>
+          <li><strong>Readonly state.</strong> <code>[readonly]</code> and <code>[readonly] + label</code> receive
+            <code>pointer-events: none</code> so the control is non-interactive while the visual state is unchanged.</li>
+          <li><strong>Validation.</strong> <code>[invalid]</code> and <code>[aria-invalid="true"]</code> apply invalid
+            label color, ring border color, and checked-dot color via <code>--mk-invalid-*</code>. <code>[valid]</code> and
+            <code>[aria-invalid="false"]</code> apply valid colors via <code>--mk-valid-*</code>.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mk-demo-section">
+      <h5>Accessibility notes</h5>
+      <div class="mk-demo-panel">
+        <ul >
+          <li>Associate a <code>label</code> with each radio via <code>for</code> and matching <code>id</code> so the
+            control is announced and the label click area selects the option.</li>
+          <li>Use the same <code>name</code> for all options in a group so the selection is mutually exclusive and
+            keyboard navigation (arrow keys) works correctly.</li>
+          <li>The native input is visually hidden but remains in the tab order and is announced by screen readers; the
+            custom circle is decorative only.</li>
+          <li>Expose validation state to assistive technologies and drive styling by using the <code>invalid</code> and
+            <code>valid</code> attributes, or <code>aria-invalid="true"</code> and <code>aria-invalid="false"</code>.</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <script src="../../../dist/js/microuikit.js"></script>
+  <script src="../../assets/js/docs.js"></script>
+</body>
+
+</html>

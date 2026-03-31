@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MicroUIKit - Spacing</title>
+  <link rel="stylesheet" href="../../../dist/css/microuikit.css" />
+  <link rel="stylesheet" href="../../../dist/css/themes/microuikit-theme-default.css" />
+  <link rel="stylesheet" href="../../assets/css/docs.css" />
+</head>
+
+<body class="mk-d-flex mk-flex-dir-col mk-h-vh-100 mk-m-0">
+  <include src="../_header.html"></include>
+
+  <main class="mk-overflow-y-auto mk-px-5 mk-py-3">
+    <h3 >Spacing</h3>
+    <p class="mk-text-muted">
+      Margin and padding use a shared scale: <code>0</code>, <code>1</code> (0.25rem), <code>2</code> (0.5rem),
+      <code>3</code> (1rem), <code>4</code> (1.5rem), <code>5</code> (3rem). Sides: <code>t</code>, <code>b</code>,
+      <code>l</code>, <code>r</code>, <code>x</code> (left+right), <code>y</code> (top+bottom), or logical
+      <code>s</code>/<code>e</code> (start/end) for RTL-friendly spacing. Gap utilities use the same scale for
+      flex/grid.
+    </p>
+
+    <div class="mk-demo-section">
+      <h5>Margin and padding scale</h5>
+      <div class="mk-demo-panel">
+        <div class="mk-p-3">
+          <div class="mk-demo-null-box mk-border mk-mb-1">mk-mb-1</div>
+          <div class="mk-demo-null-box mk-border mk-mb-3">mk-mb-3</div>
+          <div class="mk-demo-null-box mk-border mk-mb-5">mk-mb-5</div>
+
+          <div class="mk-demo-null-box mk-border mk-p-1">mk-p-1</div>
+          <div class="mk-demo-null-box mk-border mk-p-3">mk-p-3</div>
+          <div class="mk-demo-null-box mk-border mk-p-5">mk-p-5</div>
+        </div>
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div&gt;
+  &lt;div class="mk-border mk-mb-1"&gt;mk-mb-1&lt;/div&gt;
+  &lt;div class="mk-border mk-mb-3"&gt;mk-mb-3&lt;/div&gt;
+  &lt;div class="mk-border mk-mb-5"&gt;mk-mb-5&lt;/div&gt;
+  &lt;div class="mk-border mk-p-1"&gt;mk-p-1&lt;/div&gt;
+  &lt;div class="mk-border mk-p-3"&gt;mk-p-3&lt;/div&gt;
+  &lt;div class="mk-border mk-p-5"&gt;mk-p-5&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </div>
+
+    <div class="mk-demo-section">
+      <h5>Logical spacing</h5>
+      <div class="mk-demo-panel">
+        <div class="mk-p-3 mk-border">
+          <div class="mk-demo-null-box mk-border-w-1 mk-border-s-dashed mk-ms-3 mk-me-1">Logical spacing (start/end)</div>
+        </div>
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="mk-border mk-ms-3 mk-me-1"&gt;
+  &lt;div class="mk-border"&gt;Logical spacing (start/end)&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </div>
+
+    <div class="mk-demo-section">
+      <h5>Gap (flex and grid)</h5>
+      <div class="mk-demo-panel">
+        <div class="mk-d-flex mk-flex-wrap-wrap mk-gap-3">
+          <div class="mk-demo-null-box mk-border">gap-3</div>
+          <div class="mk-demo-null-box mk-border">gap-3</div>
+        </div>
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="mk-d-flex mk-flex-wrap-wrap mk-gap-3"&gt;
+  &lt;div class="mk-border"&gt;gap-3&lt;/div&gt;
+  &lt;div class="mk-border"&gt;gap-3&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </div>
+  </main>
+  <script src="../../../dist/js/microuikit.js"></script>
+  <script src="../../assets/js/docs.js"></script>
+</body>
+
+</html>

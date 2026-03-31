@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MicroUIKit - Textarea Component</title>
+  <link rel="stylesheet" href="../../../dist/css/microuikit.css" />
+  <link rel="stylesheet" href="../../../dist/css/themes/microuikit-theme-default.css" />
+  <link rel="stylesheet" href="../../assets/css/docs.css" />
+
+</head>
+
+<body class="mk-d-flex mk-flex-dir-col mk-h-vh-100 mk-m-0">
+  <include src="../_header.html"></include>
+
+  <main class="mk-overflow-y-auto mk-px-5 mk-py-3">
+    <h3 >Textarea Component</h3>
+    <p class="mk-text-muted">
+      The Textarea component styles multi-line text fields with support for placeholder, focus, validation
+      (invalid/valid), disabled state,
+      and floating labels.
+    </p>
+
+    <div class="mk-demo-section">
+      <h5>Base usage</h5>
+      <div class="mk-demo-panel">
+        <div class="mk-demo-preview">
+          <textarea class="mk-textarea" rows="3" placeholder="Enter text..."></textarea>
+        </div>
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;textarea class="mk-textarea" rows="3" placeholder="Enter text..."&gt;&lt;/textarea&gt;</code></pre>
+      </div>
+    </div>
+
+    <div class="mk-demo-section">
+      <h5>Placeholder and focus</h5>
+      <div class="mk-demo-panel">
+        <div class="mk-demo-preview">
+          <textarea class="mk-textarea" rows="3" placeholder="Default focus border"></textarea>
+          <textarea class="mk-textarea" rows="3" placeholder="Custom focus border"
+            style="--mk-border-color: var(--mk-danger);"></textarea>
+        </div>
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;textarea class="mk-textarea" rows="3" placeholder="Default focus border"&gt;&lt;/textarea&gt;
+
+&lt;textarea class="mk-textarea" rows="3" placeholder="Custom focus border"
+  style="--mk-border-color: var(--mk-danger);"&gt;
+&lt;/textarea&gt;</code></pre>
+        <ul >
+          <li><code>--mk-placeholder-color</code> sets the color of the placeholder text.</li>
+          <li><code>--mk-border-color</code> sets the color of the border when the textarea is focused.</li>
+          <li><code>--mk-focus-ring-color</code> sets the color of the focus ring when the textarea is focused.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mk-demo-section">
+      <h5>Validation states (invalid / valid)</h5>
+      <div class="mk-demo-panel">
+        <div class="mk-demo-preview">
+          <textarea class="mk-textarea" rows="2" invalid placeholder="Invalid">Error text</textarea>
+          <textarea class="mk-textarea" rows="2" valid placeholder="Valid">Valid text</textarea>
+        </div>
+        <div class="mk-demo-preview">
+          <textarea class="mk-textarea" rows="2" aria-invalid="true"
+            placeholder="ARIA invalid=true">Error text (aria)</textarea>
+          <textarea class="mk-textarea" rows="2" aria-invalid="false"
+            placeholder="ARIA invalid=false">Valid text (aria)</textarea>
+        </div>
+        <div class="mk-demo-preview">
+          <textarea class="mk-textarea" rows="2" invalid disabled
+            placeholder="Invalid + disabled">Error text (disabled)</textarea>
+          <textarea class="mk-textarea" rows="2" valid disabled
+            placeholder="Valid + disabled">Valid text (disabled)</textarea>
+        </div>
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;textarea class="mk-textarea" rows="2" invalid placeholder="Invalid"&gt;&lt;/textarea&gt;
+&lt;textarea class="mk-textarea" rows="2" valid placeholder="Valid"&gt;&lt;/textarea&gt;
+
+&lt;textarea class="mk-textarea" rows="2" aria-invalid="true" placeholder="ARIA invalid=true"&gt;&lt;/textarea&gt;
+&lt;textarea class="mk-textarea" rows="2" aria-invalid="false" placeholder="ARIA invalid=false"&gt;&lt;/textarea&gt;
+
+&lt;textarea class="mk-textarea" rows="2" invalid disabled placeholder="Invalid + disabled"&gt;&lt;/textarea&gt;
+&lt;textarea class="mk-textarea" rows="2" valid disabled placeholder="Valid + disabled"&gt;&lt;/textarea&gt;
+</code></pre>
+        <ul >
+          <li>Use <code>invalid</code>/<code>valid</code> for state-driven validation styling; these states apply
+            semantic border/text colors via <code>--mk-invalid-border-color</code>, <code>--mk-invalid-color</code>,
+            <code>--mk-valid-border-color</code>, and <code>--mk-valid-color</code>.
+          </li>
+          <li>ARIA mapping is fully supported: <code>aria-invalid="true"</code> uses invalid styling, and
+            <code>aria-invalid="false"</code> uses valid styling, matching the visual behavior of
+            <code>invalid</code>/<code>valid</code>.
+          </li>
+          <li>When validation and disabled states are combined, disabled behavior remains dominant for interaction
+            (opacity and non-interactivity), while validation colors are still applied where relevant in the visual
+            state.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mk-demo-section">
+      <h5>Disabled state</h5>
+      <div class="mk-demo-panel">
+        <div class="mk-demo-preview">
+          <textarea class="mk-textarea" rows="2" disabled placeholder="Disabled">Disabled text</textarea>
+        </div>
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;textarea class="mk-textarea" rows="2" disabled placeholder="Disabled"&gt;&lt;/textarea&gt;</code></pre>
+        <ul >
+          <li><code>--mk-disabled-control-opacity</code> sets the opacity of the textarea when it is disabled.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mk-demo-section">
+      <h5>Floating label</h5>
+      <div class="mk-demo-panel">
+        <div class="mk-demo-preview">
+          <div class="mk-textarea-frame" style="min-width: 16rem;">
+            <textarea id="ta-float-1" class="mk-textarea" rows="3" placeholder=""></textarea>
+            <label for="ta-float-1">Label</label>
+          </div>
+          <div class="mk-textarea-frame" style="min-width: 16rem;">
+            <textarea id="ta-float-2" class="mk-textarea" rows="3" invalid placeholder="Invalid">Invalid text</textarea>
+            <label for="ta-float-2">Invalid with label</label>
+          </div>
+        </div>
+        <div class="mk-demo-row mk-demo-preview">
+          <div class="mk-textarea-frame" style="min-width: 16rem;">
+            <textarea id="ta-float-3" class="mk-textarea" rows="3" valid placeholder="Valid">Valid text</textarea>
+            <label for="ta-float-3">Valid with label</label>
+          </div>
+          <div class="mk-textarea-frame" style="min-width: 16rem;">
+            <textarea id="ta-float-4" class="mk-textarea" rows="3" disabled
+              placeholder="Disabled">Disabled text</textarea>
+            <label for="ta-float-4">Disabled with label</label>
+          </div>
+          <div class="mk-textarea-frame" style="min-width: 16rem;">
+            <textarea id="ta-float-5" class="mk-textarea" rows="3" valid disabled
+              placeholder="Valid + Disabled">Valid text (disabled)</textarea>
+            <label for="ta-float-5">Valid + Disabled with label</label>
+          </div>
+        </div>
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="mk-textarea-frame"&gt;
+  &lt;textarea id="..." class="mk-textarea" rows="3" placeholder="Placeholder"&gt;&lt;/textarea&gt;
+  &lt;label for="..."&gt;Label&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="mk-textarea-frame"&gt;
+  &lt;textarea id="..." class="mk-textarea" rows="3" invalid placeholder="Invalid"&gt;&lt;/textarea&gt;
+  &lt;label for="..."&gt;Invalid with label&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="mk-textarea-frame"&gt;
+  &lt;textarea id="..." class="mk-textarea" rows="3" valid placeholder="Valid"&gt;&lt;/textarea&gt;
+  &lt;label for="..."&gt;Valid with label&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="mk-textarea-frame"&gt;
+  &lt;textarea id="..." class="mk-textarea" rows="3" disabled placeholder="Disabled"&gt;&lt;/textarea&gt;
+  &lt;label for="..."&gt;Disabled with label&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="mk-textarea-frame"&gt;
+  &lt;textarea id="..." class="mk-textarea" rows="3" valid disabled placeholder="Valid + Disabled"&gt;&lt;/textarea&gt;
+  &lt;label for="..."&gt;Valid + Disabled with label&lt;/label&gt;
+&lt;/div&gt;
+</code></pre>
+        <ul >
+          <li>Use a <code>placeholder</code> so the label can float when the textarea has value or is focused.</li>
+          <li>The label moves up when focused or when textarea is not placeholder-shown.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mk-demo-section">
+      <h5>Quick customization</h5>
+      <div class="mk-demo-panel">
+        <div class="mk-demo-preview">
+          <textarea class="mk-textarea" rows="2" placeholder="Extra padding"
+            style="--mk-control-padding-x: 2rem; width: 100%; max-width: 20rem;"></textarea>
+          <textarea class="mk-textarea" rows="3" placeholder="Rounded + subtle background color"
+            style="--mk-control-border-radius: 1rem; --mk-control-background-color: var(--mk-background-muted-color); width: 100%; max-width: 20rem;"></textarea>
+          <textarea class="mk-textarea" rows="3" placeholder="Custom colors"
+            style="--mk-focus-ring-color: var(--mk-warning); --mk-text-color: var(--mk-warning); --mk-placeholder-color: var(--mk-text-muted-color); width: 100%; max-width: 20rem;"></textarea>
+        </div>
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;textarea class="mk-textarea"
+  rows="2" placeholder="Extra padding"
+  style="--mk-control-padding-x: 2rem;"&gt;&lt;/textarea&gt;
+
+&lt;textarea class="mk-textarea"
+  rows="3" placeholder="Rounded + subtle background color"
+  style="--mk-control-border-radius: 1rem;
+         --mk-control-background-color: var(--mk-background-muted-color);"&gt;
+&lt;/textarea&gt;
+
+&lt;textarea class="mk-textarea"
+  rows="3" placeholder="Custom colors"
+  style="--mk-focus-ring-color: var(--mk-warning);
+         --mk-text-color: var(--mk-warning);
+         --mk-placeholder-color: var(--mk-text-muted-color);"&gt;&lt;/textarea&gt;
+&lt;/textarea&gt;</code></pre>
+        <ul >
+          <li><code>--mk-control-padding-x</code> sets the horizontal padding.</li>
+          <li><code>--mk-control-padding-y</code> sets the vertical padding.</li>
+          <li><code>--mk-control-border-radius</code> sets the corner roundness.</li>
+          <li><code>--mk-border-width</code> sets the border thickness.</li>
+          <li><code>--mk-border-color</code> sets the border color.</li>
+          <li><code>--mk-control-background-color</code> sets the background color.</li>
+          <li><code>--mk-text-color</code> sets the text color.</li>
+          <li><code>--mk-placeholder-color</code> sets the placeholder color.</li>
+          <li><code>--mk-focus-ring-color</code> sets the focus/value accent color.</li>
+          <li><code>--mk-invalid-border-color</code>, <code>--mk-invalid-color</code>,
+            <code>--mk-valid-border-color</code>, and <code>--mk-valid-color</code> sets the validation colors.
+          </li>
+          <li><code>--mk-disabled-control-opacity</code> sets the opacity of the textarea when it is disabled.</li>
+          <li><code>--mk-transition</code> sets motion timing for state changes.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mk-demo-section">
+      <h5>What the CSS package covers</h5>
+      <div class="mk-demo-panel">
+        <ul >
+          <li><strong>Base.</strong> <code>.mk-textarea</code> applies padding, font, line-height, color, background,
+            border, border-radius, and transition via <code>--mk-control-padding-x</code>/<code>--mk-control-padding-y</code>,
+            <code>--mk-font-*</code>, <code>--mk-text-color</code>, <code>--mk-control-background-color</code>,
+            <code>--mk-border-width</code>, <code>--mk-border-color</code>, <code>--mk-control-border-radius</code>, and
+            <code>--mk-transition</code>.</li>
+          <li><strong>Placeholder and focus.</strong> <code>::placeholder</code> uses <code>--mk-placeholder-color</code>.
+            Inside <code>.mk-textarea-frame</code>, placeholder is transparent so the floating label is visible. Focus
+            updates the border color; the framed textarea has <code>outline: none</code> so the frame reflects focus.</li>
+          <li><strong>Validation and disabled state.</strong> <code>[invalid]</code> and <code>[aria-invalid="true"]</code>
+            apply invalid border and text colors via <code>--mk-invalid-*</code> tokens; <code>[valid]</code> and
+            <code>[aria-invalid="false"]</code> apply valid colors via <code>--mk-valid-*</code>. <code>[disabled]</code>
+            applies <code>--mk-text-muted-color</code> and <code>--mk-disabled-control-opacity</code>.</li>
+          <li><strong>Floating-label frame.</strong> <code>.mk-textarea-frame</code> provides a bordered container; the
+            inner <code>.mk-textarea</code> is full-width with transparent background and no border. The label is
+            absolutely positioned and animates on <code>:focus</code> and <code>:not(:placeholder-shown)</code> (reduced
+            font size and background patch). Frame border color is driven by <code>:has()</code> selectors for focus,
+            value, invalid, valid, and disabled using the same semantic tokens.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mk-demo-section">
+      <h5>Accessibility notes</h5>
+      <div class="mk-demo-panel">
+        <ul >
+          <li>Associate a visible or off-screen <code>label</code> with the textarea via <code>for</code> and matching
+            <code>id</code> so the control is announced and the label click area activates the field.</li>
+          <li>Set a suitable <code>rows</code> value and retain resize behavior unless layout requirements require it to
+            be disabled.</li>
+          <li>Expose validation state by using the <code>invalid</code> and <code>valid</code> attributes, or
+            <code>aria-invalid="true"</code> and <code>aria-invalid="false"</code>, and ensure error or success text is
+            announced to screen readers (e.g. via live regions or <code>aria-describedby</code>).</li>
+          <li>Use <code>aria-describedby</code> to reference helper or hint text when users need format, length, or
+            content guidance.</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <script src="../../../dist/js/microuikit.js"></script>
+  <script src="../../assets/js/docs.js"></script>
+</body>
+
+</html>

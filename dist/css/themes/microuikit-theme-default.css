@@ -1,0 +1,210 @@
+@charset "UTF-8";
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+/*!
+ * MicroUIKit v1.1.0
+ * © 2025–2026 DokuDesk — https://dokudesk.com/microuikit
+ * Released under the MIT License
+ */
+:root {
+  --mk-spinner-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='10' stroke-dasharray='32' stroke-dashoffset='12'/%3E%3C/svg%3E");
+  --mk-eye-open-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill-rule='evenodd' clip-rule='evenodd'%3E%3Cpath d='M12.01 20c-5.065 0-9.586-4.211-12.01-8.424 2.418-4.103 6.943-7.576 12.01-7.576 5.135 0 9.635 3.453 11.999 7.564-2.241 4.43-6.726 8.436-11.999 8.436zm-10.842-8.416c.843 1.331 5.018 7.416 10.842 7.416 6.305 0 10.112-6.103 10.851-7.405-.772-1.198-4.606-6.595-10.851-6.595-6.116 0-10.025 5.355-10.842 6.584zm10.832-4.584c2.76 0 5 2.24 5 5s-2.24 5-5 5-5-2.24-5-5 2.24-5 5-5zm0 1c2.208 0 4 1.792 4 4s-1.792 4-4 4-4-1.792-4-4 1.792-4 4-4z'/%3E%3C/svg%3E");
+  --mk-eye-off-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill-rule='evenodd' clip-rule='evenodd'%3E%3Cpath d='M8.137%2015.147c-.71-.857-1.146-1.947-1.146-3.147%200-2.76%202.241-5%205-5%201.201%200%202.291.435%203.148%201.145l1.897-1.897c-1.441-.738-3.122-1.248-5.035-1.248-6.115%200-10.025%205.355-10.842%206.584.529.834%202.379%203.527%205.113%205.428l1.865-1.865zm6.294-6.294c-.673-.53-1.515-.853-2.44-.853-2.207%200-4%201.792-4%204%200%20.923.324%201.765.854%202.439l5.586-5.586zm7.56-6.146l-19.292%2019.293-.708-.707%203.548-3.548c-2.298-1.612-4.234-3.885-5.548-6.169%202.418-4.103%206.943-7.576%2012.01-7.576%202.065%200%204.021.566%205.782%201.501l3.501-3.501.707.707zm-2.465%203.879l-.734.734c2.236%201.619%203.628%203.604%204.061%204.274-.739%201.303-4.546%207.406-10.852%207.406-1.425%200-2.749-.368-3.951-.938l-.748.748c1.475.742%203.057%201.19%204.699%201.19%205.274%200%209.758-4.006%2011.999-8.436-1.087-1.891-2.63-3.637-4.474-4.978zm-3.535%205.414c0-.554-.113-1.082-.317-1.562l.734-.734c.361.69.583%201.464.583%202.296%200%202.759-2.24%205-5%205-.832%200-1.604-.223-2.295-.583l.734-.735c.48.204%201.007.318%201.561.318%202.208%200%204-1.792%204-4z'/%3E%3C/svg%3E");
+  --mk-arrow-down-svg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  --mk-checkbox-tick-svg: url("data:image/svg+xml,%3Csvg viewBox='0 0 12 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 5 L4.5 8.5 L11 1.5' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  --mk-font-family-ltr: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  --mk-font-family-rtl: sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  --mk-font-family-monospace: ui-monospace, SFMono-Regular, SF Mono, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+  --mk-font-size-base-ltr: 1rem;
+  --mk-font-size-base-rtl: 1rem;
+  --mk-font-weight-base-ltr: 400;
+  --mk-font-weight-base-rtl: 400;
+  --mk-line-height-base: 1.5;
+  --mk-font-family-base: var(--mk-font-family-ltr);
+  --mk-font-size-base: var(--mk-font-size-base-ltr);
+  --mk-font-weight-base: var(--mk-font-weight-base-ltr);
+  --mk-blue: #0060aa;
+  --mk-indigo: #4b3399;
+  --mk-purple: #6a2e99;
+  --mk-pink: #d52e66;
+  --mk-red: #c01e26;
+  --mk-orange: #ff8400;
+  --mk-yellow: #ffc300;
+  --mk-green: #006466;
+  --mk-teal: #009696;
+  --mk-cyan: #44bec7;
+  --mk-black: #000;
+  --mk-white: #fff;
+  --mk-gray-lightest: #f8f9fa;
+  --mk-gray-light: #dee2e6;
+  --mk-gray: #adb5bd;
+  --mk-gray-dark: #495057;
+  --mk-gray-darkest: #212529;
+  --mk-transparent: transparent;
+  --mk-primary: #0060aa;
+  --mk-secondary: #6c757d;
+  --mk-success: #006466;
+  --mk-info: #44bec7;
+  --mk-warning: #ffc300;
+  --mk-danger: #c01e26;
+  --mk-light: #f8f9fa;
+  --mk-dark: #212529;
+  --mk-text-color: #030613;
+  --mk-text-muted-color: #6c757d;
+  --mk-placeholder-color: #6c757d;
+  --mk-heading-color: #030613;
+  --mk-background-color: #f8f9fa;
+  --mk-background-color-alpha: 35%;
+  --mk-background-muted-color: #ced4da;
+  --mk-control-icon-color: #6c757d;
+  --mk-control-background-color: #f8f9fa;
+  --mk-border-color: #ced4da;
+  --mk-border-color-alpha: 15%;
+  --mk-box-shadow-color: rgba(0, 0, 0, 0.15);
+  --mk-link-color: #0060aa;
+  --mk-link-hover-color: #004880;
+  --mk-highlight-background-color: #ffd240;
+  --mk-valid-color: #006466;
+  --mk-invalid-color: #c01e26;
+  --mk-valid-border-color: #006466;
+  --mk-invalid-border-color: #c01e26;
+  --mk-focus-ring-color: #0060aa;
+  --mk-scrollbar-color: #6c757d;
+  --mk-scrollbar-hover-color: #adb5bd;
+  --mk-password-toggle-background-hover-color: #dee2e6;
+  --mk-checkbox-checked-background-color: #0060aa;
+  --mk-checkbox-tick-color: #fff;
+  --mk-radio-checked-color: #0060aa;
+  --mk-select-arrow-color: #ced4da;
+  --mk-select-selected-option-text-color: #030613;
+  --mk-select-selected-option-background-color: #0060aa;
+  --mk-skeleton-background-color: #ced4da;
+  --mk-text-primary: rgb(0, 72, 127.5);
+  --mk-text-secondary: rgb(81, 87.75, 93.75);
+  --mk-text-success: rgb(0, 75, 76.5);
+  --mk-text-info: rgb(51, 142.5, 149.25);
+  --mk-text-warning: rgb(165.75, 126.75, 0);
+  --mk-text-danger: rgb(144, 22.5, 28.5);
+  --mk-text-light: rgb(161.2, 161.85, 162.5);
+  --mk-text-dark: rgb(24.75, 27.75, 30.75);
+  --mk-background-primary: rgb(102, 159.6, 204);
+  --mk-background-secondary: rgb(166.8, 172.2, 177);
+  --mk-background-success: rgb(102, 162, 163.2);
+  --mk-background-info: rgb(142.8, 216, 221.4);
+  --mk-background-warning: rgb(255, 213, 76.5);
+  --mk-background-danger: rgb(217.2, 120, 124.8);
+  --mk-background-light: rgb(250.1, 250.8, 251.5);
+  --mk-background-dark: rgb(121.8, 124.2, 126.6);
+  --mk-hover-background-primary: rgb(63.75, 135.75, 191.25);
+  --mk-hover-background-secondary: rgb(144.75, 151.5, 157.5);
+  --mk-hover-background-success: rgb(63.75, 138.75, 140.25);
+  --mk-hover-background-info: rgb(114.75, 206.25, 213);
+  --mk-hover-background-warning: rgb(255, 204, 38.25);
+  --mk-hover-background-danger: rgb(207.75, 86.25, 92.25);
+  --mk-hover-background-light: rgb(249.05, 249.9, 250.75);
+  --mk-hover-background-dark: rgb(88.5, 91.5, 94.5);
+  --mk-border-primary: rgb(38.25, 119.85, 182.75);
+  --mk-border-secondary: rgb(130.05, 137.7, 144.5);
+  --mk-border-success: rgb(38.25, 123.25, 124.95);
+  --mk-border-info: rgb(96.05, 199.75, 207.4);
+  --mk-border-warning: rgb(255, 201, 25.5);
+  --mk-border-danger: rgb(201.45, 63.75, 70.55);
+  --mk-border-light: rgb(248.7, 249.6, 250.5);
+  --mk-border-dark: rgb(66.3, 69.7, 73.1);
+  --mk-border-width: 1px;
+  --mk-gutter-width: 1rem;
+  --mk-transition: 0.2s;
+  --mk-focus-ring-outline-width: 2px;
+  --mk-focus-ring-outline-offset: 2px;
+  --mk-control-border-radius: 0.625rem;
+  --mk-control-padding-x: 0.625rem;
+  --mk-control-padding-y: 0.5rem;
+  --mk-control-height: 2.625rem;
+  --mk-card-padding-x: 1rem;
+  --mk-card-padding-y: 1rem;
+  --mk-checkbox-border-radius: 0.3125rem;
+  --mk-checkbox-size: 1.25rem;
+  --mk-radio-size: 1.25rem;
+  --mk-radio-dot-space: 5px;
+  --mk-select-option-height: 1.75rem;
+  --mk-disabled-control-opacity: 0.6;
+  --mk-scrollbar-width: auto;
+  --mk-edge-scrollbar-width: 0.75rem;
+  --mk-edge-scrollbar-height: 0.75rem;
+  --mk-direction: ltr;
+  --mk-text-start: left;
+  --mk-text-end: right;
+}
+
+html[theme=dark], html[data-theme=dark] {
+  --mk-text-color: #e9ecef;
+  --mk-text-muted-color: #ced4da;
+  --mk-placeholder-color: #6c757d;
+  --mk-heading-color: #e9ecef;
+  --mk-background-color: #212529;
+  --mk-background-color-alpha: 35%;
+  --mk-background-muted-color: #6c757d;
+  --mk-control-background-color: #212529;
+  --mk-control-icon-color: #6c757d;
+  --mk-border-color: #6c757d;
+  --mk-border-color-alpha: 15%;
+  --mk-box-shadow-color: rgba(255, 255, 255, 0.15);
+  --mk-link-color: #4088bf;
+  --mk-link-hover-color: #30668f;
+  --mk-highlight-background-color: #bf9200;
+  --mk-valid-color: #006466;
+  --mk-invalid-color: #c01e26;
+  --mk-valid-border-color: #006466;
+  --mk-invalid-border-color: #c01e26;
+  --mk-focus-ring-color: #adb5bd;
+  --mk-scrollbar-color: #ced4da;
+  --mk-scrollbar-hover-color: #6c757d;
+  --mk-password-toggle-background-hover-color: #dee2e6;
+  --mk-checkbox-checked-background-color: #0060aa;
+  --mk-checkbox-tick-color: #fff;
+  --mk-radio-checked-color: #0060aa;
+  --mk-select-arrow-color: #6c757d;
+  --mk-select-selected-option-text-color: #e9ecef;
+  --mk-select-selected-option-background-color: #0060aa;
+  --mk-skeleton-background-color: #6c757d;
+}
+
+@media (prefers-color-scheme: dark) {
+  html[theme=auto], html[data-theme=auto] {
+    --mk-text-color: #e9ecef;
+    --mk-text-muted-color: #ced4da;
+    --mk-placeholder-color: #6c757d;
+    --mk-heading-color: #e9ecef;
+    --mk-background-color: #212529;
+    --mk-background-color-alpha: 35%;
+    --mk-background-muted-color: #6c757d;
+    --mk-control-background-color: #212529;
+    --mk-control-icon-color: #6c757d;
+    --mk-border-color: #6c757d;
+    --mk-border-color-alpha: 15%;
+    --mk-box-shadow-color: rgba(255, 255, 255, 0.15);
+    --mk-link-color: #4088bf;
+    --mk-link-hover-color: #30668f;
+    --mk-highlight-background-color: #bf9200;
+    --mk-valid-color: #006466;
+    --mk-invalid-color: #c01e26;
+    --mk-valid-border-color: #006466;
+    --mk-invalid-border-color: #c01e26;
+    --mk-focus-ring-color: #adb5bd;
+    --mk-scrollbar-color: #ced4da;
+    --mk-scrollbar-hover-color: #6c757d;
+    --mk-password-toggle-background-hover-color: #dee2e6;
+    --mk-checkbox-checked-background-color: #0060aa;
+    --mk-checkbox-tick-color: #fff;
+    --mk-radio-checked-color: #0060aa;
+    --mk-select-arrow-color: #6c757d;
+    --mk-select-selected-option-text-color: #e9ecef;
+    --mk-select-selected-option-background-color: #0060aa;
+    --mk-skeleton-background-color: #6c757d;
+  }
+}
+
+/*# sourceMappingURL=microuikit-theme-default.css.map */

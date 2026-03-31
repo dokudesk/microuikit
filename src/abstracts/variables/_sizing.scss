@@ -1,0 +1,73 @@
+@use 'global' as global;
+@use 'sass:map';
+
+// ===============================
+// Common size values
+// ===============================
+$common-size-values: (
+  0: 0,
+  25: 25%,
+  50: 50%,
+  75: 75%,
+  100: 100%,
+  fit: fit-content,
+) !default;
+
+// ===============================
+// Width values
+// ===============================
+$width-values: map.merge($common-size-values,
+    (vw-100: 100vw,
+     dvw-100: 100dvw)) !default;
+$max-width-values: map.merge($width-values,
+    (c-width: max-content)) !default;
+$min-width-values: map.merge($width-values,
+    (c-width: min-content)) !default;
+
+// ===============================
+// Height values
+// ===============================
+$height-values: map.merge($common-size-values,
+    (vh-100: 100vh,
+     dvh-100: 100dvh)) !default;
+$max-height-values: map.merge($height-values,
+    (c-height: max-content)) !default;
+$min-height-values: map.merge($height-values,
+    (c-height: min-content)) !default;
+
+// ===============================
+// Scrollbar Size
+// ===============================
+$scrollbar-size: (
+  width: auto,
+) !default;
+
+// ===============================
+// Edge Scrollbar Size
+// ===============================
+$edge-scrollbar-size: (
+  width:  0.75rem,
+  height:  0.75rem,
+) !default;
+
+// ===============================
+// Checkbox Size
+// ===============================
+$checkbox-size: (
+  size:  1.25rem,
+) !default;
+
+// ===============================
+// Radio Size
+// ===============================
+$radio-size: (
+  size:  1.25rem,
+  dot-space: 5px,
+) !default;
+
+// ===============================
+// Select Size
+// ===============================
+$select-option-size: (
+  height: 1.75rem,
+) !default;

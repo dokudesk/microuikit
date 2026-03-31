@@ -1,0 +1,16 @@
+// ===============================
+// Mixin: banner
+// ===============================
+/// Generates a CSS comment banner with library metadata
+/// @param {String} $library-name - Name of the library
+/// @param {String} $library-version - Version number
+/// @param {String} $library-license - License information
+/// @param {String} $library-author - Author name
+/// @param {String} $library-author-url - Author website URL
+@mixin banner($library-name, $library-version, $library-license, $library-author, $library-author-url) {
+  /*!
+   * #{$library-name} v#{$library-version}
+   * © 2025–2026 #{$library-author} — #{$library-author-url}
+   * Released under the #{$library-license} License
+   */
+}

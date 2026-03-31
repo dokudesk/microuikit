@@ -1,0 +1,44 @@
+@use "sass:math";
+@use "sass:meta";
+@use '../functions' as fn;
+
+// ===============================
+// Mixin: font-size-rfs
+// ===============================
+/// Generates fluid font scaling using RFS (Responsive Font Size) algorithm
+/// Creates a font size that scales smoothly from a minimum size to a maximum size
+/// @param {Number|String} $max-size - Maximum font size (will be converted to rem)
+/// @param {Number} $breakpoint - Breakpoint where max size is reached (default: 1200px)
+/// @param {Number} $base-size - Base size for scaling calculation (default: 1.25rem)
+/// @param {Number} $factor - Scaling factor for min size calculation (default: 10)
+@mixin font-size-rfs(
+  $max-size,
+  $breakpoint: 1200px,
+  $base-size: 1.25rem,
+  $factor: 10
+) {
+  @if meta.type-of($max-size) != "number" {
+    font-size: $max-size;
+  } @else {
+    $max: fn.to-rem($max-size);
+    $bp: fn.to-rem($breakpoint);
+    $base: fn.to-rem($base-size);
+
+    // Derive a min size that scales gently from the base size
+    $min: $max;
+
+    @if $max > $base {
+      $min: $base + math.div(($max - $base), $factor);
+    }
+
+    $raw-slope: math.div(($max - $min), $bp) * 100;
+    $slope: math.div(math.round($raw-slope * 10), 10);
+
+    // Fluid size from min at 0px to max at $breakpoint
+    font-size: calc(#{$min} + #{$slope}vw);
+
+    @media (min-width: $breakpoint) {
+      font-size: $max;
+    }
+  }
+}

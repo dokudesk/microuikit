@@ -1,0 +1,28 @@
+@use '../abstracts/variables/index' as vars;
+@use '../abstracts/mixins/index' as mixins;
+
+// ===============================
+// Library Banner
+// ===============================
+@include mixins.banner(vars.$library-name, vars.$library-version, vars.$library-license, vars.$library-author, vars.$library-author-url);
+
+// ===============================
+// CSS Variables (Root)
+// ===============================
+:root {
+  @include mixins.generate-variables(vars.$prefix, vars.$root-system-variables);
+}
+
+// ===============================
+// Theme Selector: Dark
+// ===============================
+@include mixins.theme-selector("dark") {
+  @include mixins.generate-variables(vars.$prefix, vars.$dark-theme-variables);
+}
+
+// ===============================
+// Prefers Color Scheme: Dark
+// ===============================
+@include mixins.prefers-color-scheme("dark") {
+  @include mixins.generate-variables(vars.$prefix, vars.$dark-theme-variables);
+}

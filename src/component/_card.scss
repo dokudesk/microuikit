@@ -1,0 +1,24 @@
+// Card component: .mk-card. States: default, hover, active, disabled.
+@mixin card($prefix) {
+  .#{$prefix}card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--#{$prefix}control-background-color);
+    background-clip: padding-box;
+    border: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
+    border-radius: var(--#{$prefix}control-border-radius);
+    transition: background-color var(--#{$prefix}transition) ease;
+    box-shadow: var(--#{$prefix}box-shadow);
+    overflow: hidden;
+  }
+  .#{$prefix}card-header {
+    padding: var(--#{$prefix}card-padding-y) var(--#{$prefix}card-padding-x) 0  var(--#{$prefix}card-padding-x);
+  }
+  .#{$prefix}card-body {
+    padding: var(--#{$prefix}card-padding-y) var(--#{$prefix}card-padding-x);
+  }
+  .#{$prefix}card-footer {
+    padding: 0 var(--#{$prefix}card-padding-x) var(--#{$prefix}card-padding-y) var(--#{$prefix}card-padding-x);
+  }
+}

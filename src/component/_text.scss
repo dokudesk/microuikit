@@ -1,0 +1,35 @@
+// Text utility maps: muted, feedback, valid/invalid feedback, title, subtitle. Used by theme/utilities.
+@use "../abstracts/variables/global" as global;
+
+$text-muted: (
+    null : ("color": var(--#{global.$prefix}text-muted-color),
+    )) !default;
+$text-feedback: (
+    null : ("display": block,
+        "font-size": calc(var(--#{global.$prefix}font-size-base) * 0.875),
+    )) !default;
+$valid-feedback: (
+    null : ("display": block,
+        "font-size": calc(var(--#{global.$prefix}font-size-base) * 0.875),
+        "color": var(--#{global.$prefix}valid-color),
+        "border-color": var(--#{global.$prefix}valid-border-color),
+    )) !default;
+$invalid-feedback: (
+    null : ("display": block,
+        "font-size": calc(var(--#{global.$prefix}font-size-base) * 0.875),
+        "color": var(--#{global.$prefix}invalid-color),
+        "border-color": var(--#{global.$prefix}invalid-border-color),
+    )) !default;
+$text-title: (
+    null : ("display": block,
+        "font-size": calc(var(--#{global.$prefix}font-size-base) * 1.75),
+        "font-weight": 500,
+        "color": var(--#{global.$prefix}heading-color),
+    )) !default;
+$text-subtitle: (
+    null : ("display": block,
+        "margin-top": calc(var(--#{global.$prefix}gutter-width) * -0.125),
+        "font-size": calc(var(--#{global.$prefix}font-size-base) * 1.125),
+        "font-weight": 300,
+        "color": var(--#{global.$prefix}text-muted-color),
+    )) !default;

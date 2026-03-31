@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MicroUIKit - Flex</title>
+  <link rel="stylesheet" href="../../../dist/css/microuikit.css" />
+  <link rel="stylesheet" href="../../../dist/css/themes/microuikit-theme-default.css" />
+  <link rel="stylesheet" href="../../assets/css/docs.css" />
+</head>
+
+<body class="mk-d-flex mk-flex-dir-col mk-h-vh-100 mk-m-0">
+  <include src="../_header.html"></include>
+
+  <main class="mk-overflow-y-auto mk-px-5 mk-py-3">
+    <h3 >Flex</h3>
+    <p class="mk-text-muted">
+      Use <code>mk-d-flex</code> or <code>mk-d-inline-flex</code> (see Layout basics) to create a flex container, then
+      control direction, wrap, justify-content, align-items, align-content, and flex grow/shrink on children. Shortcuts
+      <code>mk-center</code> (grid + place-items center), <code>mk-center-x</code> / <code>mk-center-y</code> (flex +
+      justify/align center), and <code>mk-flex-row</code> (flex row nowrap) are available.
+    </p>
+
+    <div class="mk-demo-section">
+      <h5>Direction and wrap</h5>
+      <div class="mk-demo-panel">
+        <div class="mk-d-flex mk-flex-dir-row mk-flex-wrap-wrap">
+          <div class="mk-demo-null-box mk-border" style="width: 300px;">A</div>
+          <div class="mk-demo-null-box mk-border" style="width: 300px;">B</div>
+          <div class="mk-demo-null-box mk-border" style="width: 300px;">C</div>
+        </div>
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="mk-d-flex mk-flex-dir-row mk-flex-wrap-wrap"&gt;
+  &lt;div class="mk-border" style="width: 300px;"&gt;A&lt;/div&gt;
+  &lt;div class="mk-border" style="width: 300px;"&gt;B&lt;/div&gt;
+  &lt;div class="mk-border" style="width: 300px;"&gt;C&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </div>
+
+    <div class="mk-demo-section">
+      <h5>Justify and align</h5>
+      <div class="mk-demo-panel">
+        <div class="mk-d-flex mk-justify-between mk-items-center mk-p-2">
+          <div class="mk-demo-null-box mk-border">A</div>
+          <div class="mk-demo-null-box mk-border">B</div>
+          <div class="mk-demo-null-box mk-border">C</div>
+        </div>
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="mk-d-flex mk-justify-between mk-items-center"&gt;
+  &lt;div class="mk-border"&gt;A&lt;/div&gt;
+  &lt;div class="mk-border"&gt;B&lt;/div&gt;
+  &lt;div class="mk-border"&gt;C&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </div>
+
+    <div class="mk-demo-section">
+      <h5>Grow, shrink, and fill</h5>
+      <div class="mk-demo-panel">
+        <div class="mk-d-flex mk-flex-wrap-wrap mk-gap-2">
+          <div class="mk-demo-null-box mk-flex-grow-1 mk-border">mk-flex-grow-1</div>
+          <div class="mk-demo-null-box mk-flex-grow-1 mk-border">mk-flex-grow-1</div>
+          <div class="mk-demo-null-box mk-flex-grow-0 mk-border">mk-flex-grow-0</div>
+        </div>
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="mk-d-flex mk-flex-wrap-wrap mk-gap-2"&gt;
+  &lt;div class="mk-flex-grow-1 mk-border"&gt;mk-flex-grow-1&lt;/div&gt;
+  &lt;div class="mk-flex-grow-1 mk-border"&gt;mk-flex-grow-1&lt;/div&gt;
+  &lt;div class="mk-flex-grow-0"&gt;mk-flex-grow-0&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </div>
+  </main>
+  <script src="../../../dist/js/microuikit.js"></script>
+  <script src="../../assets/js/docs.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,219 @@
+@use "sass:math";
+@use "sass:meta";
+@use "sass:color";
+@use "sass:map";
+@use "sass:string";
+
+// ===============================
+// Function: to-rem
+// ===============================
+/// Converts pixel values to rem units
+/// @param {Number} $v - Value to convert (must be in px)
+/// @return {Number} Value in rem units, or original value if not a px number
+@function to-rem($v) {
+  @if meta.type-of($v) == "number" and math.unit($v) == "px" {
+    @return math.div($v, 16px) * 1rem;
+  }
+
+  @return $v;
+}
+
+// ===============================
+// Function: to-px
+// ===============================
+/// Converts rem values to pixel units
+/// @param {Number} $v - Value to convert (must be in rem)
+/// @return {Number} Value in px units, or original value if not a rem number
+@function to-px($v) {
+  @if meta.type-of($v) == "number" and math.unit($v) == "rem" {
+    @return math.div($v, 1rem) * 16px;
+  }
+
+  @return $v;
+}
+
+// ===============================
+// Function: to-hex
+// ===============================
+/// Converts a number (0-255) to a 2-digit hex string
+/// @param {Number} $num - Number to convert (0-255)
+/// @return {String} 2-digit hex string (e.g., "0a", "ff")
+@function to-hex($num) {
+  $hex-chars: "0123456789abcdef";
+  $first: math.floor(math.div($num, 16));
+  $second: $num % 16;
+  $first-char: string.slice($hex-chars, $first + 1, $first + 1);
+  $second-char: string.slice($hex-chars, $second + 1, $second + 1);
+
+  @return string.to-lower-case($first-char + $second-char);
+}
+
+// ===============================
+// Function: round-color
+// ===============================
+/// Rounds RGB color values to integers and returns as hex string
+/// Note: This function returns a string, so it should be used after color.mix()
+/// @param {Color} $color - Color to round
+/// @return {String} Hex color string (e.g., "#094db1")
+@function round-color($color) {
+  @if meta.type-of($color) == "color" {
+    $r: math.round(color.channel($color, "red", $space: rgb));
+    $g: math.round(color.channel($color, "green", $space: rgb));
+    $b: math.round(color.channel($color, "blue", $space: rgb));
+
+    // Convert RGB values to hex string manually
+    $hex-r: to-hex($r);
+    $hex-g: to-hex($g);
+    $hex-b: to-hex($b);
+
+    @return string.unquote("##{$hex-r}#{$hex-g}#{$hex-b}");
+  }
+
+  @return $color;
+}
+
+// ===============================
+// Function: luminance
+// ===============================
+/// Calculates the relative luminance of a color
+/// @param {Color} $color - Color to calculate luminance for
+/// @return {Number} Relative luminance (0-1)
+/// @source https://www.w3.org/TR/WCAG20/#relativeluminancedef
+
+@function luminance($color) {
+  @if meta.type-of($color) != "color" {
+    @return null;
+  }
+
+  // Extract RGB channels in sRGB space (0–255 → normalize to 0–1)
+  $r: math.div(color.channel($color, "red", $space: rgb), 255);
+  $g: math.div(color.channel($color, "green", $space: rgb), 255);
+  $b: math.div(color.channel($color, "blue", $space: rgb), 255);
+
+  // Gamma correction (WCAG)
+  @if $r <= 0.0393 {
+    $r: math.div($r, 12.92);
+  } @else {
+    $r: math.pow(math.div($r + 0.055, 1.055), 2.4);
+  }
+
+  @if $g <= 0.0393 {
+    $g: math.div($g, 12.92);
+  } @else {
+    $g: math.pow(math.div($g + 0.055, 1.055), 2.4);
+  }
+
+  @if $b <= 0.0393 {
+    $b: math.div($b, 12.92);
+  } @else {
+    $b: math.pow(math.div($b + 0.055, 1.055), 2.4);
+  }
+
+  // Final luminance value
+  @return 0.2126 * $r + 0.7152 * $g + 0.0722 * $b;
+}
+
+// ===============================
+// Helper function for standard contrast
+// ===============================
+/// Mixes a color with a target color based on the luminance of the input color
+/// @param {Color} $color - Color to mix
+/// @param {Color} $target - Target color to mix with
+/// @param {String} $type - Type of mix (text, background, hover, border)
+/// @return {Color} Mixed color
+
+@function mix-contrast($color, $target: null, $type: text) {
+  $lum: luminance($color);
+
+  // Fallback: auto target based on luminance
+  @if not $target {
+    @if $lum > 0.5 {
+      $target: #000;
+    } @else {
+      $target: #fff;
+    }
+  }
+
+  // ---------------------------------
+  // Define mix strength based on type
+  // ---------------------------------
+  $amount: 0%;
+
+  @if $type == text {
+    // Strong contrast for readability
+    @if $lum < 0.5 {
+      $amount: 25%;
+    } @else {
+      $amount: 35%;
+    }
+  } @else if $type == background {
+    // Soft surfaces
+    @if $lum < 0.5 {
+      $amount: 40%;
+    } @else {
+      $amount: 30%;
+    }
+  } @else if $type == hover {
+    // Slightly stronger than background
+    @if $lum < 0.5 {
+      $amount: 25%;
+    } @else {
+      $amount: 15%;
+    }
+  } @else if $type == border {
+    // Subtle separation
+    @if $lum < 0.5 {
+      $amount: 15%;
+    } @else {
+      $amount: 10%;
+    }
+  } @else {
+    // Fallback behavior
+    @return $color;
+  }
+
+  // ---------------------------------
+  // Apply mix
+  // ---------------------------------
+  @return color.mix($target, $color, $amount);
+}
+
+// ===============================
+// Function: rgb-color
+// ===============================
+/// Converts a color to an RGB color object
+/// @param {Color} $color - Color to convert
+/// @return {Map} RGB color object
+@function rgb-color($color) {
+  @if meta.type-of($color) == "color" {
+    @return
+      math.round(color.channel($color, "red", $space: rgb)),
+      math.round(color.channel($color, "green", $space: rgb)),
+      math.round(color.channel($color, "blue", $space: rgb));
+  }
+
+  @return $color;
+}
+
+// ===============================
+// Function: build-class
+// ===============================
+/// Builds a class name from a list of items
+/// @param {String} $prefix - CSS class prefix (e.g., "mk-")
+/// @param {List} $items - List of items to build the class name from
+/// @return {String} Class name (e.g., ".mk-namespace-class-key")
+@function build-class($prefix, $items...) {
+  $result: "";
+
+  @each $item in $items {
+    @if $item != null and $item != "" {
+      @if $result == "" {
+        $result: "." + $prefix + $item;
+      } @else {
+        $result: $result + "-" + $item;
+      }
+    }
+  }
+
+  @return $result;
+}

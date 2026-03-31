@@ -1,0 +1,34 @@
+@mixin collapse($prefix) {
+  /* Hidden state (vertical) */
+  .#{$prefix}collapse:not(.show):not(.collapse-horizontal) {
+    display: none;
+  }
+
+  /* Base collapse-horizontal (hidden) */
+  .#{$prefix}collapse.#{$prefix}collapse-horizontal {
+    width: 0;
+    height: auto;
+    overflow: hidden;
+  }
+
+  /* Collapsing animation (vertical) */
+  .#{$prefix}collapsing:not(.collapse-horizontal) {
+    height: 0;
+    overflow: hidden;
+    transition: height var(--#{$prefix}transition) ease;
+  }
+
+  /* Collapsing animation (horizontal) */
+  .#{$prefix}collapsing.#{$prefix}collapse-horizontal {
+    width: 0;
+    height: auto;
+    overflow: hidden;
+    transition: width var(--#{$prefix}transition) ease;
+  }
+
+  /* Show horizontal */
+  .#{$prefix}collapse.#{$prefix}collapse-horizontal.show {
+    width: auto; // JS sets the exact value during animation
+  }
+
+}

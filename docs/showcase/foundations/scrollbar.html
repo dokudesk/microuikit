@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MicroUIKit - Scrollbar</title>
+  <link rel="stylesheet" href="../../../dist/css/microuikit.css" />
+  <link rel="stylesheet" href="../../../dist/css/themes/microuikit-theme-default.css" />
+  <link rel="stylesheet" href="../../assets/css/docs.css" />
+</head>
+
+<body class="mk-d-flex mk-flex-dir-col mk-h-vh-100 mk-m-0">
+  <include src="../_header.html"></include>
+
+  <main class="mk-overflow-y-auto mk-px-5 mk-py-3">
+    <h3 >Scrollbar</h3>
+    <p class="mk-text-muted">Scrollbar styling is applied to any scrollable area (e.g. <code>mk-overflow-auto</code> with a max height) using the global scrollbar styles. Scroll to see the thumb and track.</p>
+    <div class="mk-demo-section">
+      <h5>Global scrollbar styles</h5>
+      <div class="mk-demo-panel">
+
+        <div class="mk-border mk-p-2 mk-overflow-auto" style="max-height: 10rem;">
+          <p class="mk-mb-2">Line 1 – Scroll to inspect thumb and track styling.</p>
+          <p class="mk-mb-2">Line 2 – Theme-aware scrollbar colors.</p>
+          <p class="mk-mb-2">Line 3 – Token-based width and hover behavior.</p>
+          <p class="mk-mb-2">Line 4 – Works with global utility classes.</p>
+          <p class="mk-mb-2">Line 5 – Contrast suitable for light and dark mode.</p>
+          <p class="mk-mb-2">Line 6 – Subtle customization.</p>
+          <p class="mk-mb-2">Line 7 – Respects platform familiarity.</p>
+          <p class="mk-mb-2">Line 8 – Override tokens on a wrapper to style one container differently.</p>
+        </div>
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="mk-overflow-auto" style="max-height: 10rem;"&gt;
+  &lt;!-- content --&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </div>
+
+    <div class="mk-demo-section">
+      <h5>Custom scrollbar styling</h5>
+      <div class="mk-demo-panel">
+        <div
+          style="--mk-scrollbar-color: var(--mk-primary); --mk-scrollbar-hover-color: var(--mk-primary-dark); --mk-edge-scrollbar-width: 10px; --mk-edge-scrollbar-height: 10px;">
+          <div class="mk-border mk-p-2 mk-overflow-auto" style="max-height: 10rem;">
+            <p class="mk-mb-2">Line 1 – Scroll to inspect thumb and track styling.</p>
+            <p class="mk-mb-2">Line 2 – Theme-aware scrollbar colors.</p>
+            <p class="mk-mb-2">Line 3 – Token-based width and hover behavior.</p>
+            <p class="mk-mb-2">Line 4 – Works with global utility classes.</p>
+            <p class="mk-mb-2">Line 5 – Contrast suitable for light and dark mode.</p>
+            <p class="mk-mb-2">Line 6 – Subtle customization.</p>
+            <p class="mk-mb-2">Line 7 – Respects platform familiarity.</p>
+            <p class="mk-mb-2">Line 8 – Override tokens on a wrapper to style one container differently.</p>
+          </div>
+        </div>
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div style="--mk-scrollbar-color: var(--mk-primary); 
+  --mk-scrollbar-hover-color: var(--mk-primary-dark); 
+  --mk-edge-scrollbar-width: 10px; 
+  --mk-edge-scrollbar-height: 10px;"&gt;
+  &lt;div class="mk-overflow-auto" style="max-height: 10rem;"&gt;
+  &lt;!-- content --&gt;
+&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </div>
+
+    <div class="mk-demo-section">
+      <h5>How it works</h5>
+      <div class="mk-demo-panel">
+        <ul>
+          <li>
+            <strong>Standard browsers (e.g., Firefox)</strong><br>
+            The following settings apply to all elements (<code>*</code>):
+            <ul>
+              <li>
+                <code>scrollbar-width</code> is set using the variable 
+                <code>--mk-scrollbar-width</code>.
+              </li>
+              <li>
+                <code>scrollbar-color</code> defines the scrollbar colors using 
+                <code>--mk-scrollbar-color</code> for the thumb and 
+                <code>--mk-background-color</code> for the track.
+              </li>
+            </ul>
+          </li>
+        
+          <li>
+            <strong>WebKit browsers (Chrome, Edge, Safari)</strong><br>
+            Scrollbars are customized using WebKit pseudo-elements:
+            <ul>
+              <li>
+                <code>*::-webkit-scrollbar</code> sets the scrollbar size using 
+                <code>--mk-edge-scrollbar-width</code> and 
+                <code>--mk-edge-scrollbar-height</code>.
+              </li>
+              <li>
+                <code>*::-webkit-scrollbar-track</code> defines the track background and 
+                border radius using <code>--mk-background-color</code> and 
+                <code>--mk-border-radius</code>.
+              </li>
+              <li>
+                <code>*::-webkit-scrollbar-thumb</code> sets the thumb color and 
+                border radius using <code>--mk-scrollbar-color</code> and 
+                <code>--mk-border-radius</code>.
+              </li>
+              <li>
+                When hovering over the thumb, its color changes to 
+                <code>--mk-scrollbar-hover-color</code>.
+              </li>
+              <li>
+                <code>*::-webkit-scrollbar-corner</code> uses 
+                <code>--mk-background-color</code> for the corner area.
+              </li>
+            </ul>
+          </li>
+        
+          <li>
+            <strong>Dark mode support</strong><br>
+            Theme files override <code>--mk-scrollbar-color</code> and 
+            <code>--mk-scrollbar-hover-color</code> in dark mode so the scrollbar 
+            remains visible and readable on dark backgrounds.
+          </li>
+        </ul>      </div>
+    </div>
+
+  </main>
+  <script src="../../../dist/js/microuikit.js"></script>
+  <script src="../../assets/js/docs.js"></script>
+</body>
+
+</html>

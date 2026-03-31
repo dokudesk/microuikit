@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MicroUIKit - Checkbox Component</title>
+  <link rel="stylesheet" href="../../../dist/css/microuikit.css" />
+  <link rel="stylesheet" href="../../../dist/css/themes/microuikit-theme-default.css" />
+  <link rel="stylesheet" href="../../assets/css/docs.css" />
+
+</head>
+
+<body class="mk-d-flex mk-flex-dir-col mk-h-vh-100 mk-m-0">
+  <include src="../_header.html"></include>
+
+  <main class="mk-overflow-y-auto mk-px-5 mk-py-3">
+    <h3 >Checkbox Component</h3>
+    <p class="mk-text-muted">
+      The Checkbox component styles a native checkbox input with a custom visual box and tick icon.
+    </p>
+
+    <div class="mk-demo-section">
+      <h5>Base usage</h5>
+      <div class="mk-demo-panel">
+        <div class="mk-demo-preview">
+          <div class="mk-checkbox-frame">
+            <input id="cb-base" type="checkbox" class="mk-checkbox" />
+            <label for="cb-base">Option</label>
+          </div>
+        </div>
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="mk-checkbox-frame"&gt;
+  &lt;input id="cb-base" type="checkbox" class="mk-checkbox" /&gt;
+  &lt;label for="cb-base"&gt;Option&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </div>
+
+    <div class="mk-demo-section">
+      <h5>Checked and unchecked</h5>
+      <div class="mk-demo-panel">
+        <div class="mk-demo-preview">
+          <div class="mk-checkbox-frame">
+            <input id="cb-unchecked" type="checkbox" class="mk-checkbox" />
+            <label for="cb-unchecked">Unchecked</label>
+          </div>
+          <div class="mk-checkbox-frame">
+            <input id="cb-checked" type="checkbox" class="mk-checkbox" checked />
+            <label for="cb-checked">Checked</label>
+          </div>
+        </div>
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="mk-checkbox-frame"&gt;
+  &lt;input id="..." type="checkbox" class="mk-checkbox" /&gt;
+  &lt;label for="..."&gt;Unchecked&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="mk-checkbox-frame"&gt;
+  &lt;input id="..." type="checkbox" class="mk-checkbox" checked /&gt;
+  &lt;label for="..."&gt;Checked&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+        <ul >
+          <li><code>--mk-checkbox-checked-background-color</code> sets the background color when the checkbox is
+            checked.</li>
+          <li><code>--mk-checkbox-tick-color</code> sets the color of the tick icon.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mk-demo-section">
+      <h5>Focus-visible</h5>
+      <div class="mk-demo-panel">
+        <div class="mk-demo-preview">
+          <div class="mk-checkbox-frame">
+            <input id="cb-focus" type="checkbox" class="mk-checkbox" />
+            <label for="cb-focus">Focus me</label>
+          </div>
+          <div class="mk-checkbox-frame"
+            style="--mk-focus-ring-outline-width: 2px; --mk-focus-ring-color: var(--mk-danger); --mk-focus-ring-outline-offset: 4px;">
+            <input id="cb-focus-custom" type="checkbox" class="mk-checkbox" />
+            <label for="cb-focus-custom">Focus me (custom focus ring)</label>
+          </div>
+        </div>
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="mk-checkbox-frame"&gt;
+  &lt;input id="..." type="checkbox" class="mk-checkbox" /&gt;
+  &lt;label for="..."&gt;Focus me&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="mk-checkbox-frame" style="--mk-focus-ring-outline-width: 2px; 
+  --mk-focus-ring-color: var(--mk-danger); 
+  --mk-focus-ring-outline-offset: 4px;"&gt;
+  &lt;input id="..." type="checkbox" class="mk-checkbox" /&gt;
+  &lt;label for="..."&gt;Focus me (keyboard or click) with custom focus ring&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+        <ul >
+          <li><code>--mk-focus-ring-outline-width</code> sets the width of the focus ring.</li>
+          <li><code>--mk-focus-ring-color</code> sets the color of the focus ring.</li>
+          <li><code>--mk-focus-ring-outline-offset</code> sets the offset of the focus ring.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mk-demo-section">
+      <h5>Disabled state</h5>
+      <div class="mk-demo-panel">
+        <div class="mk-demo-preview">
+          <div class="mk-checkbox-frame">
+            <input id="cb-disabled" type="checkbox" class="mk-checkbox" disabled />
+            <label for="cb-disabled">Disabled unchecked</label>
+          </div>
+          <div class="mk-checkbox-frame">
+            <input id="cb-disabled-checked" type="checkbox" class="mk-checkbox" disabled checked />
+            <label for="cb-disabled-checked">Disabled checked</label>
+          </div>
+        </div>
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="mk-checkbox-frame"&gt;
+  &lt;input id="..." type="checkbox" class="mk-checkbox" disabled /&gt;
+  &lt;label for="..."&gt;Disabled unchecked&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="mk-checkbox-frame"&gt;
+  &lt;input id="..." type="checkbox" class="mk-checkbox" disabled checked /&gt;
+  &lt;label for="..."&gt;Disabled checked&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+        <ul >
+          <li><code>--mk-disabled-control-opacity</code> sets the opacity of the checkbox when it is disabled.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mk-demo-section">
+      <h5>Readonly state</h5>
+      <div class="mk-demo-panel">
+        <div class="mk-demo-preview">
+          <div class="mk-checkbox-frame">
+            <input id="cb-readonly" type="checkbox" class="mk-checkbox" readonly checked />
+            <label for="cb-readonly">Readonly (no pointer events)</label>
+          </div>
+        </div>
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="mk-checkbox-frame"&gt;
+  &lt;input id="..." type="checkbox" class="mk-checkbox" readonly checked /&gt;
+  &lt;label for="..."&gt;Readonly (no pointer events)&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+        <ul >
+          <li><code>readonly</code> disables pointer events so the value cannot be toggled by click; use when the value
+            is display-only or controlled elsewhere.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mk-demo-section">
+      <h5>Validation states (invalid / valid)</h5>
+      <div class="mk-demo-panel">
+        <div class="mk-demo-preview">
+          <div class="mk-checkbox-frame">
+            <input id="cb-invalid" type="checkbox" class="mk-checkbox" invalid />
+            <label for="cb-invalid">Invalid unchecked</label>
+          </div>
+          <div class="mk-checkbox-frame">
+            <input id="cb-valid" type="checkbox" class="mk-checkbox" valid checked />
+            <label for="cb-valid">Valid checked</label>
+          </div>
+        </div>
+        <div class="mk-demo-preview">
+          <div class="mk-checkbox-frame">
+            <input id="cb-aria-invalid-true" type="checkbox" class="mk-checkbox" aria-invalid="true" />
+            <label for="cb-aria-invalid-true">ARIA invalid=true</label>
+          </div>
+          <div class="mk-checkbox-frame">
+            <input id="cb-aria-invalid-false" type="checkbox" class="mk-checkbox" aria-invalid="false" checked />
+            <label for="cb-aria-invalid-false">ARIA invalid=false</label>
+          </div>
+        </div>
+        <div class="mk-demo-row mk-demo-preview">
+          <div class="mk-checkbox-frame">
+            <input id="cb-invalid-disabled" type="checkbox" class="mk-checkbox" invalid disabled />
+            <label for="cb-invalid-disabled">Invalid + disabled (unchecked)</label>
+          </div>
+          <div class="mk-checkbox-frame">
+            <input id="cb-invalid-disabled-checked" type="checkbox" class="mk-checkbox" invalid disabled checked />
+            <label for="cb-invalid-disabled-checked">Invalid + disabled (checked)</label>
+          </div>
+        </div>
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="mk-checkbox-frame"&gt;
+  &lt;input id="..." type="checkbox" class="mk-checkbox" invalid /&gt;
+  &lt;label for="..."&gt;Invalid unchecked&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="mk-checkbox-frame"&gt;
+  &lt;input id="..." type="checkbox" class="mk-checkbox" valid checked /&gt;
+  &lt;label for="..."&gt;Valid checked&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="mk-checkbox-frame"&gt;
+  &lt;input id="..." type="checkbox" class="mk-checkbox" aria-invalid="true" /&gt;
+  &lt;label for="..."&gt;ARIA invalid=true&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="mk-checkbox-frame"&gt;
+  &lt;input id="..." type="checkbox" class="mk-checkbox" aria-invalid="false" checked /&gt;
+  &lt;label for="..."&gt;ARIA invalid=false&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="mk-checkbox-frame"&gt;
+  &lt;input id="..." type="checkbox" class="mk-checkbox" invalid disabled /&gt;
+  &lt;label for="..."&gt;Invalid + disabled (unchecked)&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="mk-checkbox-frame"&gt;
+  &lt;input id="..." type="checkbox" class="mk-checkbox" invalid disabled checked /&gt;
+  &lt;label for="..."&gt;Invalid + disabled (checked)&lt;/label&gt;
+&lt;/div&gt;
+</code></pre>
+        <ul >
+          <li>Use <code>invalid</code>/<code>valid</code> for state-driven validation styling; these states apply
+            semantic border/text colors via <code>--mk-invalid-border-color</code>, <code>--mk-invalid-color</code>,
+            <code>--mk-valid-border-color</code>, and <code>--mk-valid-color</code>.</li>
+          <li>ARIA mapping is fully supported: <code>aria-invalid="true"</code> uses invalid styling, and
+            <code>aria-invalid="false"</code> uses valid styling, matching the visual behavior of
+            <code>invalid</code>/<code>valid</code>.</li>
+          <li>When validation and disabled states are combined, disabled behavior remains dominant for interaction
+            (cursor, pointer-events, opacity), while validation colors are still applied where relevant in the visual
+            state.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mk-demo-section">
+      <h5>Quick customization</h5>
+      <div class="mk-demo-panel">
+        <div class="mk-demo-preview">
+          <div class="mk-checkbox-frame" style="--mk-checkbox-size: 1.25rem;">
+            <input id="cb-small" type="checkbox" class="mk-checkbox" />
+            <label for="cb-small">Smaller box</label>
+          </div>
+          <div class="mk-checkbox-frame" style="--mk-checkbox-size: 2rem; --mk-checkbox-border-radius: 6px;">
+            <input id="cb-large" type="checkbox" class="mk-checkbox" checked />
+            <label for="cb-large">Larger, rounded box</label>
+          </div>
+          <div class="mk-checkbox-frame"
+            style="--mk-checkbox-checked-background-color: var(--mk-success); --mk-checkbox-tick-color: var(--mk-white);">
+            <input id="cb-success-colors" type="checkbox" class="mk-checkbox" checked />
+            <label for="cb-success-colors">Success palette</label>
+          </div>
+          <div class="mk-checkbox-frame"
+            style="--mk-checkbox-checked-background-color: var(--mk-warning); --mk-checkbox-tick-color: var(--mk-dark);">
+            <input id="cb-warning-colors" type="checkbox" class="mk-checkbox" checked />
+            <label for="cb-warning-colors">Warning palette</label>
+          </div>
+          <div class="mk-checkbox-frame"
+            style="--mk-checkbox-checked-background-color: var(--mk-danger); --mk-checkbox-tick-color: var(--mk-light);">
+            <input id="cb-danger-colors" type="checkbox" class="mk-checkbox" checked />
+            <label for="cb-danger-colors">Danger palette</label>
+          </div>
+        </div>
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="mk-checkbox-frame" style="--mk-checkbox-size: 1.25rem;"&gt;
+  &lt;input id="..." type="checkbox" class="mk-checkbox" /&gt;
+  &lt;label for="..."&gt;Smaller box&lt;/label&gt;
+&lt;/div&gt;
+&lt;div class="mk-checkbox-frame" style="--mk-checkbox-size: 2rem; --mk-checkbox-border-radius: 6px;"&gt;
+  &lt;input id="..." type="checkbox" class="mk-checkbox" checked /&gt;
+  &lt;label for="..."&gt;Larger, rounded box&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="mk-checkbox-frame"
+     style="--mk-checkbox-checked-background-color: var(--mk-success);
+            --mk-checkbox-tick-color: var(--mk-white);"&gt;
+  &lt;input id="..." type="checkbox" class="mk-checkbox" checked /&gt;
+  &lt;label for="..."&gt;Success palette&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="mk-checkbox-frame"
+     style="--mk-checkbox-checked-background-color: var(--mk-warning);
+            --mk-checkbox-tick-color: var(--mk-dark);"&gt;
+  &lt;input id="..." type="checkbox" class="mk-checkbox" checked /&gt;
+  &lt;label for="..."&gt;Warning palette&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class="mk-checkbox-frame"
+     style="--mk-checkbox-checked-background-color: var(--mk-danger);
+            --mk-checkbox-tick-color: var(--mk-light);"&gt;
+  &lt;input id="..." type="checkbox" class="mk-checkbox" checked /&gt;
+  &lt;label for="..."&gt;Danger palette&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+        </code></pre>
+        <ul >
+          <li><code>--mk-checkbox-size</code> box size</li>
+          <li><code>--mk-checkbox-border-radius</code> corner radius</li>
+          <li><code>--mk-checkbox-checked-background-color</code> filled box when checked</li>
+          <li><code>--mk-checkbox-tick-color</code> tick icon color</li>
+          <li><code>--mk-checkbox-tick-svg</code> tick mask image</li>
+          <li><code>--mk-border-width</code>, <code>--mk-border-color</code>, <code>--mk-control-background-color</code>
+          </li>
+          <li><code>--mk-focus-ring-*</code> focus outline</li>
+          <li><code>--mk-control-padding-x</code> gap between box and label</li>
+          <li><code>--mk-text-color</code>, <code>--mk-text-muted-color</code>,
+            <code>--mk-disabled-control-opacity</code></li>
+          <li><code>--mk-transition</code> animation</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mk-demo-section">
+      <h5>What the CSS package covers</h5>
+      <div class="mk-demo-panel">
+        <ul >
+          <li><strong>Base.</strong> <code>.mk-checkbox-frame</code> provides the wrapper layout (<code>margin: 0</code>)
+            for the native input and its label.</li>
+          <li><strong>Native input.</strong> <code>input[type="checkbox"].mk-checkbox</code> is visually hidden (clip and
+            opacity) and positioned for accessibility while remaining focusable and announced by assistive technologies.</li>
+          <li><strong>Custom box and tick.</strong> <code>label[for]::before</code> is the custom box (size
+            <code>--mk-checkbox-size</code>, border, background <code>--mk-control-background-color</code>, radius
+            <code>--mk-checkbox-border-radius</code>). <code>::after</code> is the tick (mask <code>--mk-checkbox-tick-svg</code>,
+            color <code>--mk-checkbox-tick-color</code>), shown when checked via opacity and transition.</li>
+          <li><strong>Checked state.</strong> <code>:checked + label::before</code> updates background and border; the tick
+            is revealed via <code>::after</code> opacity.</li>
+          <li><strong>Focus.</strong> <code>:focus-visible:not(:disabled) + label::before</code> applies the global focus
+            ring (outline and offset from focus-ring tokens).</li>
+          <li><strong>Disabled state.</strong> <code>[disabled] + label</code> receives muted color, reduced opacity,
+            cursor <code>not-allowed</code>, and <code>pointer-events: none</code>; the box and tick pseudo-elements use
+            muted colors and opacity so the control clearly appears disabled.</li>
+          <li><strong>Readonly state.</strong> <code>[readonly]</code> and <code>[readonly] + label</code> receive
+            <code>pointer-events: none</code> so the control is non-interactive while the visual state is unchanged.</li>
+          <li><strong>Validation.</strong> <code>[invalid]</code> and <code>[aria-invalid="true"]</code> apply invalid
+            label color, box border, and (when checked) box/tick colors via <code>--mk-invalid-*</code>. <code>[valid]</code>
+            and <code>[aria-invalid="false"]</code> apply valid colors via <code>--mk-valid-*</code>.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mk-demo-section">
+      <h5>Accessibility notes</h5>
+      <div class="mk-demo-panel">
+        <ul >
+          <li>Associate a <code>label</code> with the checkbox via <code>for</code> and matching <code>id</code> so the
+            control is announced and the label click area toggles the checkbox.</li>
+          <li>The native input is visually hidden but remains in the tab order and is announced by screen readers; the
+            custom box is decorative only.</li>
+          <li>Expose validation state to assistive technologies and drive styling by using the <code>invalid</code> and
+            <code>valid</code> attributes, or <code>aria-invalid="true"</code> and <code>aria-invalid="false"</code>.</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <script src="../../../dist/js/microuikit.js"></script>
+  <script src="../../assets/js/docs.js"></script>
+</body>
+
+</html>

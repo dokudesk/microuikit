@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MicroUIKit - Typography</title>
+  <link rel="stylesheet" href="../../../dist/css/microuikit.css" />
+  <link rel="stylesheet" href="../../../dist/css/themes/microuikit-theme-default.css" />
+  <link rel="stylesheet" href="../../assets/css/docs.css" />
+</head>
+
+<body class="mk-d-flex mk-flex-dir-col mk-h-vh-100 mk-m-0">
+  <include src="../_header.html"></include>
+
+  <main class="mk-overflow-y-auto mk-px-5 mk-py-3">
+    <h3 >Typography</h3>
+    <p class="mk-text-muted">
+      Typography provides utility classes for font size, weight, style, alignment, transform, decoration, white-space,
+      word-break, text-overflow, and indentation. All sizes are relative to <code>--mk-font-size-base</code> so they
+      scale with your theme and direction (e.g. RTL font size).
+    </p>
+    <div class="mk-demo-section">
+      <h5>Font size, weight, and style</h5>
+      <div class="mk-demo-panel">
+        <div class="mk-p-3">
+          <p class="mk-fs-xs">Extra small text</p>
+          <p class="mk-fs-sm">Small text</p>
+          <p class="mk-fs-normal">Normal text</p>
+          <p class="mk-fs-lg mk-fw-semibold">Large semi-bold text</p>
+          <p class="mk-fs-xl mk-fst-italic">Extra large italic text</p>
+        </div>
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;p class="mk-fs-xs"&gt;Extra small text&lt;/p&gt;
+&lt;p class="mk-fs-sm"&gt;Small text&lt;/p&gt;
+&lt;p class="mk-fs-normal"&gt;Normal text&lt;/p&gt;
+&lt;p class="mk-fs-lg mk-fw-semibold"&gt;Large semi-bold text&lt;/p&gt;
+&lt;p class="mk-fs-xl mk-fst-italic"&gt;Extra large italic text&lt;/p&gt;</code></pre>
+      </div>
+    </div>
+
+    <div class="mk-demo-section">
+      <h5>Alignment, transform, and decoration</h5>
+      <div class="mk-demo-panel">
+        <div class="mk-p-3">
+          <p class="mk-case-uppercase">Uppercase text</p>
+          <p class="mk-case-lowercase">LOWERCASE TEXT</p>
+          <p class="mk-text-center mk-decor-underline">Centered text underlined</p>
+        </div>
+        <pre
+          ><code>&lt;p class="mk-case-uppercase"&gt;Uppercase text&lt;/p&gt;
+&lt;p class="mk-case-lowercase"&gt;LOWERCASE TEXT&lt;/p&gt;
+&lt;p class="mk-text-center mk-decor-underline"&gt;Centered text underlined&lt;/p&gt;</code></pre>
+      </div>
+    </div>
+
+    <div class="mk-demo-section">
+      <h5>White-space, overflow, indent, and word-break</h5>
+      <div class="mk-demo-panel">
+        <div class="mk-p-3">
+          <p class="mk-overflow-text-ellipsis mk-whitespace-nowrap mk-overflow-hidden" style="max-width: 16rem;">This
+            sentence demonstrates text-overflow ellipsis in a narrow container.</p>
+          <p class="mk-indent-3">This paragraph has utility-based indentation.</p>
+          <p class="mk-word-b-break-all" style="max-width: 12rem;">SuperLongTokenWithoutSpacesToDemonstrateBreakAll</p>
+        </div>
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;p class="mk-overflow-text-ellipsis mk-whitespace-nowrap mk-overflow-hidden" style="max-width: 16rem;"&gt;...&lt;/p&gt;
+&lt;p class="mk-indent-3"&gt;Indented paragraph.&lt;/p&gt;
+&lt;p class="mk-word-b-break-all"&gt;Long unbroken token&lt;/p&gt;</code></pre>
+      </div>
+    </div>
+  </main>
+  <script src="../../../dist/js/microuikit.js"></script>
+  <script src="../../assets/js/docs.js"></script>
+</body>
+
+</html>

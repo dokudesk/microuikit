@@ -1,0 +1,61 @@
+// Skeleton utility: apply .mk-skeleton to preserve layout while showing a shimmer placeholder.
+@use "../abstracts/mixins/theme" as mixins;
+
+@keyframes skeleton-shimmer {
+  from {
+    background-position: 200% 0;
+  }
+
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@mixin skeleton($prefix) {
+  .#{$prefix}skeleton,
+  .#{$prefix}Skeleton {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    color: transparent !important;
+    background-color: var(--#{$prefix}skeleton-background-color) !important;
+    background-image: linear-gradient(
+      90deg,
+      rgb(255 255 255 / 0%) 0%,
+      rgb(255 255 255 / 14%) 32%,
+      rgb(255 255 255 / 40%) 50%,
+      rgb(255 255 255 / 14%) 68%,
+      rgb(255 255 255 / 0%) 100%
+    );
+    background-repeat: no-repeat;
+    background-size: 200% 100%;
+    border-color: transparent !important;
+    box-shadow: none !important;
+    outline: none !important;
+    caret-color: transparent !important;
+    user-select: none;
+    pointer-events: none;
+    cursor: not-allowed;
+    animation: skeleton-shimmer 1.5s ease-in-out infinite;
+
+    &::placeholder {
+      color: transparent;
+    }
+
+    &::selection {
+      background-color: transparent;
+      color: transparent;
+    }
+
+    > * {
+      visibility: hidden !important;
+    }
+  }
+
+  @include mixins.direction-rtl-selector {
+    .#{$prefix}skeleton,
+    .#{$prefix}Skeleton {
+      animation-direction: reverse;
+    }
+  }
+}

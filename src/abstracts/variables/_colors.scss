@@ -1,0 +1,247 @@
+@use "sass:map";
+@use "sass:color";
+@use "../functions" as fn;
+
+// ===============================
+// Base Colors
+// ===============================
+$white: #fff !default;
+$black: #000 !default;
+$grays: (
+  100: #f8f9fa,
+  200: #e9ecef,
+  300: #dee2e6,
+  400: #ced4da,
+  500: #adb5bd,
+  600: #6c757d,
+  700: #495057,
+  800: #343a40,
+  900: #212529,
+  ) !default;
+$palette: (
+  blue: #0060aa,
+  indigo: #4b3399,
+  purple: #6a2e99,
+  pink: #d52e66,
+  red: #c01e26,
+  orange: #ff8400,
+  yellow: #ffc300,
+  green: #006466,
+  teal: #009696,
+  cyan: #44bec7,
+  ) !default;
+
+// ===============================
+// Semantic Colors
+// ===============================
+$primary: map.get($palette, blue) !default;
+$secondary: map.get($grays, 600) !default;
+$success: map.get($palette, green) !default;
+$info: map.get($palette, cyan) !default;
+$warning: map.get($palette, yellow) !default;
+$danger: map.get($palette, red) !default;
+$light: map.get($grays, 100) !default;
+$dark: map.get($grays, 900) !default;
+
+// ===============================
+// Text & UI Colors
+// ===============================
+$text-color: #030613 !default;
+$text-color-dark: map.get($grays, 200) !default;
+$heading-color: $text-color !default;
+$heading-color-dark: $text-color-dark !default;
+$text-muted-color: map.get($grays, 600) !default;
+$text-muted-color-dark: map.get($grays, 400) !default;
+$placeholder-color: map.get($grays, 600) !default;
+$placeholder-color-dark: map.get($grays, 600) !default;
+$border-color: map.get($grays, 400) !default;
+$border-color-dark: map.get($grays, 600) !default;
+$background-color: map.get($grays, 100) !default;
+$background-color-dark: map.get($grays, 900) !default;
+$background-muted-color: map.get($grays, 400) !default;
+$background-muted-color-dark: map.get($grays, 600) !default;
+$control-icon-color: map.get($grays, 600) !default;
+$control-icon-color-dark: map.get($grays, 600) !default;
+$control-background-color: map.get($grays, 100) !default;
+$control-background-color-dark: map.get($grays, 900) !default;
+$box-shadow-color: rgb(0 0 0 / 15%) !default;
+$box-shadow-color-dark: rgb(255 255 255 / 15%) !default;
+$scrollbar-color: map.get($grays, 600) !default;
+$scrollbar-color-dark: map.get($grays, 400) !default;
+$scrollbar-hover-color: map.get($grays, 500) !default;
+$scrollbar-hover-color-dark: map.get($grays, 600) !default;
+$password-toggle-background-hover-color: map.get($grays, 300) !default;
+$password-toggle-background-hover-color-dark: map.get($grays, 300) !default;
+$checkbox-checked-background-color: $primary !default;
+$checkbox-checked-background-color-dark: $primary !default;
+$checkbox-tick-color: $white !default;
+$checkbox-tick-color-dark: $white !default;
+$radio-checked-color: $primary !default;
+$radio-checked-color-dark: $primary !default;
+$select-arrow-color: map.get($grays, 400) !default;
+$select-arrow-color-dark: map.get($grays, 600) !default;
+$select-selected-option-text-color: $text-color !default;
+$select-selected-option-text-color-dark: $text-color-dark !default;
+$select-selected-option-background-color: $primary !default;
+$select-selected-option-background-color-dark: $primary !default;
+$skeleton-background-color: map.get($grays, 400) !default;
+$skeleton-background-color-dark: map.get($grays, 600) !default;
+
+// ===============================
+// Validation Colors
+// ===============================
+$valid-color: $success !default;
+$valid-color-dark: $success !default;
+$valid-border-color: $success !default;
+$valid-border-color-dark: $success !default;
+$invalid-color: $danger !default;
+$invalid-color-dark: $danger !default;
+$invalid-border-color: $danger !default;
+$invalid-border-color-dark: $danger !default;
+
+// ===============================
+// Highlight & Links
+// ===============================
+$highlight-color: $warning !default;
+$highlight-background-color: fn.round-color(color.mix($white, $highlight-color, 25%)) !default;
+$highlight-background-color-dark: fn.round-color(color.mix($black, $highlight-color, 25%)) !default;
+$link-color: $primary !default;
+$link-hover-color: fn.round-color(color.mix($black, $link-color, 25%)) !default;
+$link-color-dark-temp: color.mix($white, $primary, 25%) !default;
+$link-color-dark: fn.round-color($link-color-dark-temp) !default;
+$link-hover-color-dark: fn.round-color(color.mix($black, $link-color-dark-temp, 25%)) !default;
+$focus-ring-color: $primary !default;
+$focus-ring-color-dark: map.get($grays, 500) !default;
+
+// ===============================
+// Public Color Maps
+// ===============================
+$colors: map.merge($palette,
+    (black: $black,
+      white: $white,
+      gray-lightest: map.get($grays, 100),
+      gray-light: map.get($grays, 300),
+      gray: map.get($grays, 500),
+      gray-dark: map.get($grays, 700),
+      gray-darkest: map.get($grays, 900),
+      transparent: transparent,
+    ),
+  ) !default;
+$theme-colors: (
+  primary: $primary,
+  secondary: $secondary,
+  success: $success,
+  info: $info,
+  warning: $warning,
+  danger: $danger,
+  light: $light,
+  dark: $dark,
+  ) !default;
+
+// ===============================
+// Theme Colors Text, Background, Border (Light & Dark)
+// ===============================
+$theme-text-colors: (
+  text-primary: fn.mix-contrast($primary, $black, text),
+  text-secondary: fn.mix-contrast($secondary, $black, text),
+  text-success: fn.mix-contrast($success, $black, text),
+  text-info: fn.mix-contrast($info, $black, text),
+  text-warning: fn.mix-contrast($warning, $black, text),
+  text-danger: fn.mix-contrast($danger, $black, text),
+  text-light: fn.mix-contrast($light, $black, text),
+  text-dark: fn.mix-contrast($dark, $black, text),
+  ) !default;
+$theme-background-colors: (
+  background-primary: fn.mix-contrast($primary, $white, background),
+  background-secondary: fn.mix-contrast($secondary, $white, background),
+  background-success: fn.mix-contrast($success, $white, background),
+  background-info: fn.mix-contrast($info, $white, background),
+  background-warning: fn.mix-contrast($warning, $white, background),
+  background-danger: fn.mix-contrast($danger, $white, background),
+  background-light: fn.mix-contrast($light, $white, background),
+  background-dark: fn.mix-contrast($dark, $white, background),
+  ) !default;
+$theme-hover-background-colors: (
+  hover-background-primary: fn.mix-contrast($primary, $white, hover),
+  hover-background-secondary: fn.mix-contrast($secondary, $white, hover),
+  hover-background-success: fn.mix-contrast($success, $white, hover),
+  hover-background-info: fn.mix-contrast($info, $white, hover),
+  hover-background-warning: fn.mix-contrast($warning, $white, hover),
+  hover-background-danger: fn.mix-contrast($danger, $white, hover),
+  hover-background-light: fn.mix-contrast($light, $white, hover),
+  hover-background-dark: fn.mix-contrast($dark, $white, hover),
+  ) !default;
+$theme-border-colors: (
+  border-primary: fn.mix-contrast($primary, $white, border),
+  border-secondary: fn.mix-contrast($secondary, $white, border),
+  border-success: fn.mix-contrast($success, $white, border),
+  border-info: fn.mix-contrast($info, $white, border),
+  border-warning: fn.mix-contrast($warning, $white, border),
+  border-danger: fn.mix-contrast($danger, $white, border),
+  border-light: fn.mix-contrast($light, $white, border),
+  border-dark: fn.mix-contrast($dark, $white, border),
+  ) !default;
+$theme-light-colors: (
+  text-color: $text-color,
+  text-muted-color: $text-muted-color,
+  placeholder-color: $placeholder-color,
+  heading-color: $heading-color,
+  background-color: $background-color,
+  background-color-alpha: 35%,
+  background-muted-color: $background-muted-color,
+  control-icon-color: $control-icon-color,
+  control-background-color: $control-background-color,
+  border-color: $border-color,
+  border-color-alpha: 15%,
+  box-shadow-color: $box-shadow-color,
+  link-color: $link-color,
+  link-hover-color: $link-hover-color,
+  highlight-background-color: $highlight-background-color,
+  valid-color: $valid-color,
+  invalid-color: $invalid-color,
+  valid-border-color: $valid-border-color,
+  invalid-border-color: $invalid-border-color,
+  focus-ring-color: $focus-ring-color,
+  scrollbar-color: $scrollbar-color,
+  scrollbar-hover-color: $scrollbar-hover-color,
+  password-toggle-background-hover-color: $password-toggle-background-hover-color,
+  checkbox-checked-background-color: $checkbox-checked-background-color,
+  checkbox-tick-color: $checkbox-tick-color,
+  radio-checked-color: $radio-checked-color,
+  select-arrow-color: $select-arrow-color,
+  select-selected-option-text-color: $select-selected-option-text-color,
+  select-selected-option-background-color: $select-selected-option-background-color,
+  skeleton-background-color: $skeleton-background-color,
+  ) !default;
+$theme-dark-colors: (
+  text-color: $text-color-dark,
+  text-muted-color: $text-muted-color-dark,
+  placeholder-color: $placeholder-color-dark,
+  heading-color: $heading-color-dark,
+  background-color: $background-color-dark,
+  background-color-alpha: 35%,
+  background-muted-color: $background-muted-color-dark,
+  control-background-color: $control-background-color-dark,
+  control-icon-color: $control-icon-color-dark,
+  border-color: $border-color-dark,
+  border-color-alpha: 15%,
+  box-shadow-color: $box-shadow-color-dark,
+  link-color: $link-color-dark,
+  link-hover-color: $link-hover-color-dark,
+  highlight-background-color: $highlight-background-color-dark,
+  valid-color: $valid-color-dark,
+  invalid-color: $invalid-color-dark,
+  valid-border-color: $valid-border-color-dark,
+  invalid-border-color: $invalid-border-color-dark,
+  focus-ring-color: $focus-ring-color-dark,
+  scrollbar-color: $scrollbar-color-dark,
+  scrollbar-hover-color: $scrollbar-hover-color-dark,
+  password-toggle-background-hover-color: $password-toggle-background-hover-color-dark,
+  checkbox-checked-background-color: $checkbox-checked-background-color-dark,
+  checkbox-tick-color: $checkbox-tick-color-dark,
+  radio-checked-color: $radio-checked-color-dark,
+  select-arrow-color: $select-arrow-color-dark,
+  select-selected-option-text-color: $select-selected-option-text-color-dark,
+  select-selected-option-background-color: $select-selected-option-background-color-dark,
+  skeleton-background-color: $skeleton-background-color-dark,
+  ) !default;

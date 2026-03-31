@@ -1,0 +1,33 @@
+# Git, CI/CD, IDE
+.git
+.github
+.gitlab
+.gitlab-ci.yml
+.vscode
+
+# Docs, tests, coverage, and source code
+docs/
+tests/
+src/
+coverage/
+
+# Node modules, logs,maps and temp files
+node_modules/
+*.log
+*.map
+*.tmp
+*.temp
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Environment files
+*.env
+.env.*
+*.local
+
+# Config files not needed in published package
+stylelint.config.mjs
+vitest.config.mjs
+postcss.config.cjs

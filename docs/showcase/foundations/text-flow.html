@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MicroUIKit - Text flow</title>
+  <link rel="stylesheet" href="../../../dist/css/microuikit.css" />
+  <link rel="stylesheet" href="../../../dist/css/themes/microuikit-theme-default.css" />
+  <link rel="stylesheet" href="../../assets/css/docs.css" />
+</head>
+
+<body class="mk-d-flex mk-flex-dir-col mk-h-vh-100 mk-m-0">
+  <include src="../_header.html"></include>
+
+  <main class="mk-overflow-y-auto mk-px-5 mk-py-3">
+    <h3 >Text flow</h3>
+    <p class="mk-text-muted">Fine-tune readability with utilities for indent, white-space, wrapping,
+      and word-breaking behavior.</p>
+
+    <div class="mk-demo-section">
+      <h5>White-space and text-overflow</h5>
+      <div class="mk-demo-panel">
+        <div class="mk-p-3">
+          <p class="mk-whitespace-nowrap mk-overflow-hidden mk-overflow-text-ellipsis" style="max-width: 16rem;">This
+            sentence stays on one line and truncates with ellipsis.</p>
+          <p class="mk-whitespace-pre-wrap">Line one.
+            Line two with pre-wrap.
+            Line three keeps line breaks.</p>
+        </div>
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;p class="mk-whitespace-nowrap mk-overflow-hidden mk-overflow-text-ellipsis" style="max-width: 16rem;"&gt;
+This sentence stays on one line and truncates with ellipsis. &lt;/p&gt;
+&lt;p class="mk-whitespace-pre-wrap"&gt;Line one.
+Line two with pre-wrap.
+Line three keeps line breaks.&lt;/p&gt;</code></pre>
+      </div>
+    </div>
+
+    <div class="mk-demo-section">
+      <h5>Word break, overflow-wrap, and indent</h5>
+      <div class="mk-demo-panel">
+        <div class="mk-p-3">
+          <p class="mk-indent-3">This paragraph starts with utility-based indentation.</p>
+          <p class="mk-word-b-break-all" style="max-width: 14rem;">SuperLongTokenWithoutSpacesToDemonstrateBreakAll</p>
+          <p class="mk-overflow-wrap-break-word" style="max-width: 14rem;">
+            AnotherVeryLongTechnicalIdentifierWrapsSafelyWithOverflowWrapBreakWord</p>
+        </div>
+        <pre
+          ><code>&lt;p class="mk-indent-3"&gt;This paragraph starts with utility-based indentation.&lt;/p&gt;
+&lt;p class="mk-word-b-break-all"&gt;SuperLongTokenWithoutSpacesToDemonstrateBreakAll&lt;/p&gt;
+&lt;p class="mk-overflow-wrap-break-word"&gt;AnotherVeryLongTechnicalIdentifierWrapsSafelyWithOverflowWrapBreakWord&lt;/p&gt;</code></pre>
+      </div>
+    </div>
+  </main>
+  <script src="../../../dist/js/microuikit.js"></script>
+  <script src="../../assets/js/docs.js"></script>
+</body>
+
+</html>

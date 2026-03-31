@@ -1,0 +1,314 @@
+# MicroUIKit - GitLab CI/CD Pipeline
+# Purpose: run lint, test, and build for branch/MR validation.
+# Runtime: Docker jobs on Node 22 Alpine.
+# Runner requirement: at least one online runner with tag "microuikit".
+
+variables:
+  NODE_VERSION: "22"
+  GIT_DEPTH: "0"
+
+default:
+  image: node:${NODE_VERSION}-alpine
+  tags:
+    - microuikit
+  before_script:
+    - npm ci
+
+stages:
+  - lint
+  - test
+  - build
+  - publish-github
+  - publish-npm
+
+cache:
+  key:
+    files:
+      - package-lock.json
+  paths:
+    - node_modules/
+
+# Stage 1: lint
+lint:
+  stage: lint
+  script:
+    - npm run lint
+
+# Stage 2: test
+test:
+  stage: test
+  script:
+    - npm run test:run
+
+# Stage 3: build
+build:
+  stage: build
+  script:
+    - npm run build
+
+# Stage 4: publish-github
+# Mirror GitLab master branch to GitHub master branch.
+# When a SemVer tag is pushed, mirror the tag to GitHub and create/update a GitHub Release.
+publish-github:
+  stage: publish-github
+  needs:
+    - build
+  rules:
+    - if: '$CI_COMMIT_TAG =~ /^v?[0-9]+\.[0-9]+\.[0-9]+(?:-[0-9A-Za-z.-]+)?$/'
+      when: on_success
+    - when: never
+  before_script: []
+  script:
+    - apk add --no-cache git curl jq
+    - |
+      # ==============================
+      # Strict mode
+      # ==============================
+      set -eu
+      (set -o pipefail) 2>/dev/null && set -o pipefail || true
+
+      # ==============================
+      # Helper functions
+      # ==============================
+      log() {
+        echo "[$(date -Iseconds)] $*"
+      }
+
+      fail() {
+        echo "ERROR: $*" >&2
+        exit 1
+      }
+
+      run() {
+        log "Running: $*"
+        "$@" || fail "Command failed: $*"
+      }
+
+      wait_for_remote_tag() {
+        remote_name="$1"
+        tag_name="$2"
+        max_attempts="${3:-12}"
+        sleep_seconds="${4:-2}"
+        attempt=1
+
+        while [ "$attempt" -le "$max_attempts" ]; do
+          if git ls-remote --exit-code --tags "$remote_name" "refs/tags/${tag_name}" >/dev/null 2>&1; then
+            log "Confirmed tag ${tag_name} is available on ${remote_name}"
+            return 0
+          fi
+
+          log "Tag ${tag_name} is not visible on ${remote_name} yet (attempt ${attempt}/${max_attempts})"
+          sleep "$sleep_seconds"
+          attempt=$((attempt + 1))
+        done
+
+        fail "Tag ${tag_name} was pushed, but is still not visible on ${remote_name}"
+      }
+
+      github_api() {
+        method="$1"
+        url="$2"
+        data="${3:-}"
+        response_file="$(mktemp)"
+
+        if [ -n "$data" ]; then
+          http_code=$(curl -sS -o "$response_file" -w "%{http_code}" \
+            -X "$method" \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${GITHUB_TOKEN}" \
+            "$url" \
+            -d "$data")
+        else
+          http_code=$(curl -sS -o "$response_file" -w "%{http_code}" \
+            -X "$method" \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${GITHUB_TOKEN}" \
+            "$url")
+        fi
+
+        if [ "$http_code" -ge 400 ]; then
+          echo "GitHub API error ($http_code):" >&2
+          sed -n '1,120p' "$response_file" >&2
+          rm -f "$response_file"
+          exit 1
+        fi
+
+        sed -n '1,100000p' "$response_file"
+        rm -f "$response_file"
+      }
+
+      # ==============================
+      # Validate environment
+      # ==============================
+      [ -n "${GITHUB_REPO:-}" ] || fail "GITHUB_REPO is not set (e.g. org/repo)"
+      [ -n "${GITHUB_TOKEN:-}" ] || fail "GITHUB_TOKEN is not set"
+
+      log "Repository: $GITHUB_REPO"
+      log "Commit: $CI_COMMIT_SHA"
+      log "Tag: ${CI_COMMIT_TAG:-none}"
+      log "Branch: ${CI_COMMIT_BRANCH:-none}"
+
+      # ==============================
+      # Ensure full git history if needed
+      # ==============================
+      if git rev-parse --is-shallow-repository | grep -q true; then
+        log "Repository is shallow, fetching full history..."
+        run git fetch --unshallow origin
+      fi
+
+      run git fetch --prune --tags origin "+refs/heads/*:refs/remotes/origin/*"
+
+      # ==============================
+      # Configure GitHub remote safely
+      # ==============================
+      GITHUB_URL="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPO}.git"
+
+      if git remote get-url github >/dev/null 2>&1; then
+        log "Updating existing github remote"
+        run git remote set-url github "$GITHUB_URL"
+      else
+        log "Adding github remote"
+        run git remote add github "$GITHUB_URL"
+      fi
+
+      # ==============================
+      # Validate commit exists
+      # ==============================
+      git cat-file -e "${CI_COMMIT_SHA}^{commit}" \
+        || fail "Invalid commit SHA: $CI_COMMIT_SHA"
+
+      # ==============================
+      # TAG FLOW (Release)
+      # ==============================
+      if [ -n "${CI_COMMIT_TAG:-}" ]; then
+        log "Running TAG flow"
+
+        run git checkout --detach "$CI_COMMIT_SHA"
+        run git branch -f master "$CI_COMMIT_SHA"
+        run git push github master:master
+        run git push github "refs/tags/${CI_COMMIT_TAG}:refs/tags/${CI_COMMIT_TAG}"
+        wait_for_remote_tag github "$CI_COMMIT_TAG"
+        
+        log "Master branch synced"
+
+        RELEASE_PAYLOAD=$(jq -n \
+          --arg tag_name "${CI_COMMIT_TAG}" \
+          --arg target_commitish "${CI_COMMIT_SHA}" \
+          '{
+            tag_name: $tag_name,
+            target_commitish: $target_commitish,
+            name: $tag_name,
+            generate_release_notes: true,
+            draft: false,
+            prerelease: ($tag_name | test("-"))
+          }')
+
+        log "Checking if release exists..."
+
+        RELEASE_LOOKUP_FILE="$(mktemp)"
+        RELEASE_LOOKUP_STATUS=$(curl -sS -o "$RELEASE_LOOKUP_FILE" -w "%{http_code}" \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${GITHUB_TOKEN}" \
+          "https://api.github.com/repos/${GITHUB_REPO}/releases/tags/${CI_COMMIT_TAG}")
+
+        if [ "$RELEASE_LOOKUP_STATUS" = "200" ]; then
+          RELEASE_ID=$(jq -r '.id' "$RELEASE_LOOKUP_FILE")
+          log "Updating existing release (ID: $RELEASE_ID)"
+
+          github_api PATCH \
+            "https://api.github.com/repos/${GITHUB_REPO}/releases/${RELEASE_ID}" \
+            "$RELEASE_PAYLOAD" >/dev/null
+
+          log "Release updated"
+        elif [ "$RELEASE_LOOKUP_STATUS" = "404" ]; then
+          log "Creating new release"
+
+          github_api POST \
+            "https://api.github.com/repos/${GITHUB_REPO}/releases" \
+            "$RELEASE_PAYLOAD" >/dev/null
+
+          log "Release created"
+        else
+          echo "GitHub API error (${RELEASE_LOOKUP_STATUS}) while looking up release:" >&2
+          sed -n '1,120p' "$RELEASE_LOOKUP_FILE" >&2
+          rm -f "$RELEASE_LOOKUP_FILE"
+          fail "Failed to check existing GitHub release"
+        fi
+
+        rm -f "$RELEASE_LOOKUP_FILE"
+
+      # ==============================
+      # BRANCH FLOW (master sync)
+      # ==============================
+      else
+        log "Running BRANCH flow (master)"
+
+        run git checkout -B master "$CI_COMMIT_SHA"
+        run git push github master:master
+
+        log "Master branch synced"
+      fi
+  variables:
+    GITHUB_TOKEN: $GITHUB_TOKEN    
+
+# Stage 5: publish-npm
+# Publish the package to npm only when a valid SemVer tag is pushed
+# (e.g. v1.2.3 or 1.2.3) and the GitHub release has been successfully updated.
+publish-npm:
+  stage: publish-npm
+  needs:
+    - build
+    - publish-github
+  rules:
+    - if: '$CI_COMMIT_TAG =~ /^v?[0-9]+\.[0-9]+\.[0-9]+(?:-[0-9A-Za-z.-]+)?$/'
+      when: on_success
+    - when: never
+  script:
+    - |
+      # ==============================
+      # Strict mode
+      # ==============================
+      set -eu
+      (set -o pipefail) 2>/dev/null && set -o pipefail || true
+
+      # ==============================
+      # Helper functions
+      # ==============================
+      log() {
+        echo "[$(date -Iseconds)] $*"
+      }
+
+      fail() {
+        echo "ERROR: $*" >&2
+        exit 1
+      }
+
+      run() {
+        log "Running: $*"
+        "$@" || fail "Command failed: $*"
+      }
+
+      # ==============================
+      # Validate environment
+      # ==============================
+      [ -n "${NPM_TOKEN:-}" ] || fail "NPM_TOKEN is not set"
+
+      PACKAGE_NAME=$(node -p "require('./package.json').name")
+      PACKAGE_VERSION=$(node -p "require('./package.json').version")
+
+      log "Package: ${PACKAGE_NAME}"
+      log "Version: ${PACKAGE_VERSION}"
+      log "Tag: ${CI_COMMIT_TAG:-none}"
+
+      if [ "$CI_COMMIT_TAG" != "v${PACKAGE_VERSION}" ] && [ "$CI_COMMIT_TAG" != "${PACKAGE_VERSION}" ]; then
+        fail "Tag ${CI_COMMIT_TAG} does not match package.json version ${PACKAGE_VERSION}; skipping publish."
+      fi
+
+      if npm view "${PACKAGE_NAME}@${PACKAGE_VERSION}" version >/dev/null 2>&1; then
+        fail "npm package ${PACKAGE_NAME}@${PACKAGE_VERSION} is already published; skipping."
+      fi
+
+      printf "//registry.npmjs.org/:_authToken=%s\n" "${NPM_TOKEN}" > ~/.npmrc
+      run npm publish
+  variables:
+    NODE_AUTH_TOKEN: $NPM_TOKEN

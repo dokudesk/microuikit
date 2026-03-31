@@ -1,0 +1,33 @@
+<header
+  class="mk-ltr mk-d-flex mk-justify-between mk-position-relative mk-flex-wrap-wrap mk-items-center mk-p-3 mk-gap-3 mk-border-bottom mk-shadow-sm">
+  <div>
+    <h5 aria-label="MicroUIKit">MicroUIKit</h5>
+    <p class="mk-fs-sm mk-text-muted" aria-label="Version">
+      <include src="_version.html"></include>
+    </p>
+  </div>
+  <div class="mk-d-flex mk-flex-wrap-wrap mk-gap-3 mk-justify-evenly">
+    <label class="mk-d-flex mk-flex-dir-col mk-gap-1 mk-text-muted">
+      Color mode
+      <div class="mk-select-frame">
+        <select class="mk-select mk-w-fit" id="mk-theme-select" aria-label="Color mode">
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+          <option value="auto">Auto (System)</option>
+        </select>
+        <span class="mk-select-arrow" aria-hidden="true"></span>
+      </div>
+    </label>
+    <label class="mk-d-flex mk-flex-dir-col mk-gap-1 mk-text-muted">
+      Text direction
+      <div class="mk-select-frame">
+        <select class="mk-select mk-w-fit" id="mk-dir-select" aria-label="Text direction">
+          <option value="rtl">Right to Left</option>
+          <option value="ltr">Left to Right</option>
+        </select>
+        <span class="mk-select-arrow" aria-hidden="true"></span>
+      </div>
+    </label>
+  </div>
+  <a href="../../index.html" aria-label="Back to home">Back</a>
+</header>

@@ -1,0 +1,25 @@
+@use 'global' as global;
+
+// ===============================
+// Validation
+// ===============================
+$valid-classes: ("valid", "is-valid") !default;
+$invalid-classes: ("invalid", "is-invalid") !default;
+
+// ===============================
+// Valid Properties
+// ===============================
+$valid-properties: (null:(
+  color: var(--#{global.$prefix}valid-color),
+  border-color: var(--#{global.$prefix}valid-border-color),
+  ),
+) !default;
+
+// ===============================
+// Invalid Properties
+// ===============================
+$invalid-properties: (null:(
+  color: var(--#{global.$prefix}invalid-color),
+  border-color: var(--#{global.$prefix}invalid-border-color),
+  ),
+) !default;

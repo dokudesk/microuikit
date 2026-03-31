@@ -1,0 +1,981 @@
+@use 'sass:map';
+@use 'layout' as layout;
+@use 'global' as global;
+@use 'colors' as colors;
+@use 'typography' as typography;
+@use 'flip' as flip;
+@use 'sizing' as sizing;
+@use 'flexbox' as flexbox;
+@use 'spacing' as spacing;
+@use 'borders' as borders;
+@use 'shadows' as shadows;
+@use 'opacity' as opacity;
+@use 'transitions' as transitions;
+@use 'validation' as validation;
+@use 'focus' as focus;
+@use 'svg' as svg;
+@use 'direction' as direction;
+@use '../mixins/utilities' as utilities;
+@use '../../component/text' as component-text;
+@use '../../component/button' as component-button;
+
+// ===============================
+// Root Common Variables
+// ===============================
+/// CSS variables that are generated in the :root selector
+/// These variables are available globally and can be used throughout the stylesheet
+/// Organized by priority: Typography → Colors → Layout → Effects
+$root-common-variables: (
+  // ===============================
+  // SVG (Depends on Colors)
+  // ===============================
+  "spinner-svg": (values: svg.$spinner-svg,
+  ),
+
+  "eye-svg": (values: svg.$eye-svg,
+  ),
+
+  "arrow-svg": (values: svg.$arrow-svg,
+  ),
+
+  "checkbox-svg": (values: svg.$checkbox-svg,
+  ),
+
+  // ===============================
+  // Typography (Base - Highest Priority)
+  // ===============================
+  "common-font-variables": (values: typography.$font-root-common-variables,
+  ),
+
+  "ltr-font-variables": (values: typography.$font-root-variables-ltr,
+  ),
+
+  // ===============================
+  // Colors (Depends on Typography)
+  // ===============================
+  "colors": (values: colors.$colors,
+  ),
+
+  "theme-colors": (values: colors.$theme-colors,
+  ),
+
+  "theme-light-colors": (values: colors.$theme-light-colors,
+  ),
+
+  "theme-text-colors": (values: colors.$theme-text-colors,
+  ),
+
+  "theme-background-colors": (values: colors.$theme-background-colors,
+  ),
+
+  "theme-hover-background-colors": (values: colors.$theme-hover-background-colors,
+  ),
+
+  "theme-border-colors": (values: colors.$theme-border-colors,
+  ),
+
+  // ===============================
+  // Layout & Borders (Depends on Colors)
+  // ===============================
+  "border-properties": (values: borders.$default-border-properties,
+  ),
+
+  "default-gutter": (values: spacing.$default-gutter,
+  ),
+
+  // ===============================
+  // Effects & Animations (Lowest Priority)
+  // ===============================
+  "transition": (namespace: "",
+    values: transitions.$transition,
+  ),
+  "focus-ring": (namespace: "focus-ring",
+    values: focus.$focus-ring,
+  ),
+  "control-border-radius": (namespace: "control",
+    values: borders.$control-border-radius,
+  ),
+  "control-padding": (namespace: "control",
+    values: spacing.$default-control-padding,
+  ),
+  "control-height": (namespace: "control",
+    values: spacing.$default-control-height,
+  ),
+  "card-padding": (namespace: "card",
+    values: spacing.$default-card-padding,
+  ),
+  "checkbox-border-radius": (namespace: "checkbox",
+    values: borders.$checkbox-border-radius,
+  ),
+  "checkbox-size": (namespace: "checkbox",
+    values: sizing.$checkbox-size,
+  ),
+  "radio-size": (namespace: "radio",
+    values: sizing.$radio-size,
+  ),
+  "select-option-size": (namespace: "select-option",
+    values: sizing.$select-option-size,
+  ),
+  "disabled-control-opacity": (namespace: "disabled-control",
+    values: opacity.$disabled-control-opacity,
+  ),
+  "scrollbar-size": (namespace: "scrollbar",
+    values: sizing.$scrollbar-size,
+  ),
+  "edge-scrollbar-size": (namespace: "edge-scrollbar",
+    values: sizing.$edge-scrollbar-size,
+  ),
+
+  ) !default;
+
+// Main utilities
+$root-system-variables: map.merge($root-common-variables,
+    ("align": (values: typography.$text-aligns-ltr,
+      )),
+);
+
+// ===============================
+// Dark Theme Variables
+// ===============================
+/// CSS variables specific to dark theme
+/// These variables override root variables when dark theme is active
+$dark-theme-variables: (
+  "theme-dark-colors": (values: colors.$theme-dark-colors,
+  ),
+);
+
+// ===============================
+// RTL Direction Variables
+// ===============================
+/// CSS variables specific to RTL (Right-to-Left) text direction
+/// These variables override root variables when RTL direction is active
+$rtl-direction-variables: (
+  "rtl-font-variables": (values: typography.$font-root-variables-rtl,
+  ),
+  "align": (values: typography.$text-aligns-rtl,
+  ),
+);
+
+// ===============================
+// System Classes Configuration
+// ===============================
+/// Main configuration map for generating utility classes
+/// Each entry defines a utility class with its properties, values, and options
+/// Structure: "utility-name": (property: CSS property, class: "class-name", important: boolean, values: map|list)
+$system-classes: (
+  // ===============================
+  // Direction
+  // ===============================
+  "direction": (property: "direction",
+    class: "",
+    important: true,
+    values: direction.$directions,
+  ),
+  // ===============================
+  // Layout & Display
+  // ===============================
+  "position": (property: position,
+    class: "position",
+    important: true,
+    values: flexbox.$flexbox-position,
+  ),
+
+  "display": (property: display,
+    class: "d",
+    important: true,
+    values: flexbox.$flexbox-display,
+  ),
+
+  "float": (property: float,
+    class: "float",
+    important: true,
+    values: flexbox.$flexbox-float,
+  ),
+
+  "vertical-align": (property: vertical-align,
+    class: "valign",
+    important: true,
+    values: flexbox.$flexbox-align-vertical,
+  ),
+
+  "user-select": (property: user-select,
+    class: "user-select",
+    important: true,
+    values: layout.$user-selects,
+  ),
+
+  // ===============================
+  // Sizing
+  // ===============================
+  "width": (property: width,
+    class: "w",
+    important: true,
+    values: sizing.$width-values,
+  ),
+
+  "max-width": (property: max-width,
+    class: "max-w",
+    important: true,
+    values: sizing.$max-width-values,
+  ),
+
+  "min-width": (property: min-width,
+    class: "min-w",
+    important: true,
+    values: sizing.$min-width-values,
+  ),
+
+  "height": (property: height,
+    class: "h",
+    important: true,
+    values: sizing.$height-values,
+  ),
+
+  "max-height": (property: max-height,
+    class: "max-h",
+    important: true,
+    values: sizing.$max-height-values,
+  ),
+
+  "min-height": (property: min-height,
+    class: "min-h",
+    important: true,
+    values: sizing.$min-height-values,
+  ),
+
+  "aspect-ratio": (property: aspect-ratio,
+    class: "aspect",
+    important: true,
+    values: layout.$aspect-ratios,
+  ),
+
+  // ===============================
+  // Overflow & Object
+  // ===============================
+  "overflow": (property: overflow,
+    class: "overflow",
+    important: true,
+    values: layout.$overflows,
+  ),
+
+  "overflow-x": (property: overflow-x,
+    class: "overflow-x",
+    important: true,
+    values: layout.$overflows,
+  ),
+
+  "overflow-y": (property: overflow-y,
+    class: "overflow-y",
+    important: true,
+    values: layout.$overflows,
+  ),
+
+  "object-fit": (property: object-fit,
+    class: "object",
+    important: true,
+    values: layout.$object-fits,
+  ),
+
+  "object-position": (property: object-position,
+    class: "object-pos",
+    important: true,
+    values: layout.$object-positions,
+  ),
+
+  // ===============================
+  // Spacing
+  // ===============================
+  "margin": (property: margin,
+    class: "m",
+    important: true,
+    values: map.merge(spacing.$spacers, (auto: auto)),
+  ),
+
+  "margin-x": (property: (margin-left, margin-right),
+    class: "mx",
+    important: true,
+    values: map.merge(spacing.$spacers, (auto: auto)),
+  ),
+
+  "margin-y": (property: (margin-top, margin-bottom),
+    class: "my",
+    important: true,
+    values: map.merge(spacing.$spacers, (auto: auto)),
+  ),
+
+  "margin-top": (property: margin-top,
+    class: "mt",
+    important: true,
+    values: map.merge(spacing.$spacers, (auto: auto)),
+  ),
+
+  "margin-bottom": (property: margin-bottom,
+    class: "mb",
+    important: true,
+    values: map.merge(spacing.$spacers, (auto: auto)),
+  ),
+
+  "margin-left": (property: margin-left,
+    class: "ml",
+    important: true,
+    values: map.merge(spacing.$spacers, (auto: auto)),
+  ),
+
+  "margin-right": (property: margin-right,
+    class: "mr",
+    important: true,
+    values: map.merge(spacing.$spacers, (auto: auto)),
+  ),
+
+  "margin-start": (property: margin-inline-start,
+    class: "ms",
+    important: true,
+    values: map.merge(spacing.$spacers, (auto: auto)),
+  ),
+
+  "margin-end": (property: margin-inline-end,
+    class: "me",
+    important: true,
+    values: map.merge(spacing.$spacers, (auto: auto)),
+  ),
+
+  "padding": (property: padding,
+    class: "p",
+    important: true,
+    values: spacing.$spacers,
+  ),
+
+  "padding-x": (property: (padding-left, padding-right),
+    class: "px",
+    important: true,
+    values: spacing.$spacers,
+  ),
+
+  "padding-y": (property: (padding-top, padding-bottom),
+    class: "py",
+    important: true,
+    values: spacing.$spacers,
+  ),
+
+  "padding-top": (property: padding-top,
+    class: "pt",
+    important: true,
+    values: spacing.$spacers,
+  ),
+
+  "padding-bottom": (property: padding-bottom,
+    class: "pb",
+    important: true,
+    values: spacing.$spacers,
+  ),
+
+  "padding-left": (property: padding-left,
+    class: "pl",
+    important: true,
+    values: spacing.$spacers,
+  ),
+
+  "padding-right": (property: padding-right,
+    class: "pr",
+    important: true,
+    values: spacing.$spacers,
+  ),
+
+  "padding-start": (property: padding-inline-start,
+    class: "ps",
+    important: true,
+    values: spacing.$spacers,
+  ),
+
+  "padding-end": (property: padding-inline-end,
+    class: "pe",
+    important: true,
+    values: spacing.$spacers,
+  ),
+
+  "gap": (property: gap,
+    class: "gap",
+    important: true,
+    values: spacing.$spacers,
+  ),
+
+  "row-gap": (property: row-gap,
+    class: "row-gap",
+    important: true,
+    values: spacing.$spacers,
+  ),
+
+  "column-gap": (property: column-gap,
+    class: "column-gap",
+    important: true,
+    values: spacing.$spacers,
+  ),
+
+  // ===============================
+  // Flexbox & Grid
+  // ===============================
+  "flex-direction": (property: flex-direction,
+    class: "flex-dir",
+    important: true,
+    values: flexbox.$flexbox-direction,
+  ),
+
+  "flex": (property: flex,
+    class: "flex",
+    important: true,
+    values: flexbox.$flexbox-flex,
+  ),
+
+  "flex-wrap": (property: flex-wrap,
+    class: "flex-wrap",
+    important: true,
+    values: flexbox.$flexbox-wrap,
+  ),
+
+  "flex-shrink": (property: flex-shrink,
+    class: "flex-shrink",
+    important: true,
+    values: flexbox.$flexbox-shrink,
+  ),
+
+  "flex-grow": (property: flex-grow,
+    class: "flex-grow",
+    important: true,
+    values: flexbox.$flexbox-grow,
+  ),
+
+  "justify-content": (property: justify-content,
+    class: "justify",
+    important: true,
+    values: flexbox.$flexbox-justify-content,
+  ),
+
+  "align-items": (property: align-items,
+    class: "items",
+    important: true,
+    values: flexbox.$flexbox-align-items,
+  ),
+
+  "align-content": (property: align-content,
+    class: "content",
+    important: true,
+    values: flexbox.$flexbox-align-content,
+  ),
+
+  "align-self": (property: align-self,
+    class: "self",
+    important: true,
+    values: flexbox.$flexbox-align-self,
+  ),
+
+  "center": (property: display,
+    class: "center",
+    important: true,
+    values: flexbox.$flexbox-center,
+  ),
+
+  "center-x": (property: display,
+    class: "center-x",
+    important: true,
+    values: flexbox.$flexbox-center-x,
+  ),
+
+  "center-y": (property: display,
+    class: "center-y",
+    important: true,
+    values: flexbox.$flexbox-center-y,
+  ),
+
+  "flex-row": (property: display,
+    class: "flex-row",
+    important: true,
+    values: flexbox.$flexbox-row,
+  ),
+
+  // ===============================
+  // Typography
+  // ===============================
+  "font-size": (property: font-size,
+    class: "fs",
+    important: true,
+    values: typography.$font-sizes,
+  ),
+
+  "font-style": (property: font-style,
+    class: "fst",
+    important: true,
+    values: typography.$font-styles,
+  ),
+
+  "font-weight": (property: font-weight,
+    class: "fw",
+    important: true,
+    values: typography.$font-weights,
+  ),
+
+  "text-align": (property: text-align,
+    class: "text",
+    important: true,
+    values: typography.$text-aligns,
+  ),
+
+  "text-transform": (property: text-transform,
+    class: "case",
+    important: true,
+    values: typography.$text-transforms,
+  ),
+
+  "text-decoration": (property: text-decoration,
+    class: "decor",
+    important: true,
+    values: typography.$text-decorations,
+  ),
+
+  "text-overflow": (property: text-overflow,
+    class: "overflow-text",
+    important: true,
+    values: typography.$text-overflows,
+  ),
+
+  "text-indent": (property: text-indent,
+    class: "indent",
+    important: true,
+    values: typography.$text-indents,
+  ),
+
+  "white-space": (property: white-space,
+    class: "whitespace",
+    important: true,
+    values: typography.$text-white-spaces,
+  ),
+
+  "word-break": (property: word-break,
+    class: "word-b",
+    important: true,
+    values: typography.$word-breaks,
+  ),
+
+  "word-wrap": (property: word-wrap,
+    class: "wrap-w",
+    important: true,
+    values: typography.$word-wraps,
+  ),
+
+  "overflow-wrap": (property: overflow-wrap,
+    class: "overflow-wrap",
+    important: true,
+    values: typography.$word-wraps,
+  ),
+
+  // ===============================
+  // Borders
+  // ===============================
+  "border": (property: border,
+    class: "border",
+    important: true,
+    values: borders.$border-visibility,
+  ),
+
+  "border-top": (property: border-top,
+    class: "border-top",
+    important: true,
+    values: borders.$border-visibility,
+  ),
+
+  "border-bottom": (property: border-bottom,
+    class: "border-bottom",
+    important: true,
+    values: borders.$border-visibility,
+  ),
+
+  "border-right": (property: border-right,
+    class: "border-right",
+    important: true,
+    values: borders.$border-visibility,
+  ),
+
+  "border-left": (property: border-left,
+    class: "border-left",
+    important: true,
+    values: borders.$border-visibility,
+  ),
+
+  "border-width": (property: border-width,
+    class: "border-w",
+    important: true,
+    values: borders.$border-widths,
+  ),
+
+  "border-style": (property: border-style,
+    class: "border-s",
+    important: true,
+    values: borders.$border-style,
+  ),
+
+  // ===============================
+  // Effects
+  // ===============================
+  "box-shadow": (property: box-shadow,
+    class: "shadow",
+    important: true,
+    values: shadows.$box-shadows,
+  ),
+
+  "opacity": (property: opacity,
+    class: "opacity",
+    important: true,
+    values: opacity.$opacitys,
+  ),
+
+  // ===============================
+  // Transform
+  // ===============================
+  "flip": (property: transform,
+    class: "flip",
+    important: true,
+    values: flip.$flips,
+  ),
+
+  // ===============================
+  // Colors
+  // ===============================
+  "color": (property: color,
+    class: "",
+    important: true,
+    values: utilities.map-to-vars(colors.$theme-text-colors, global.$prefix),
+  ),
+
+  "background-color": (property: background-color,
+    class: "",
+    important: true,
+    values: utilities.map-to-vars(colors.$theme-background-colors, global.$prefix),
+  ),
+
+  "border-color": (property: border-color,
+    class: "",
+    important: true,
+    values: utilities.map-to-vars(colors.$theme-border-colors, global.$prefix),
+  ),
+
+  // ===============================
+  // Container
+  // ===============================
+  "container": (property: max-width,
+    class: layout.$container-classes,
+    class-root-key: false,
+    important: true,
+    values: (null: (width: 100%, margin-right: auto, margin-left: auto)),
+  ),
+
+  "container-max-width-sm": (property: max-width,
+    class: ("container", "container-sm"),
+    class-root-key: false,
+    important: true,
+    values:(max-width: 540px),
+    min-media-sizes: 576px),
+
+  "container-max-width-md": (property: max-width,
+    class: ("container", "container-sm", "container-md"),
+    class-root-key: false,
+    important: true,
+    values:(max-width: 720px),
+    min-media-sizes: 768px),
+
+  "container-max-width-lg": (property: max-width,
+    class: ("container", "container-sm", "container-md", "container-lg"),
+    class-root-key: false,
+    important: true,
+    values:(max-width: 960px),
+    min-media-sizes: 992px),
+
+  "container-max-width-xl": (property: max-width,
+    class: ("container", "container-sm", "container-md", "container-lg", "container-xl"),
+    class-root-key: false,
+    important: true,
+    values:(max-width: 1140px),
+    min-media-sizes: 1200px),
+
+  "container-max-width-xxl": (property: max-width,
+    class: ("container", "container-sm", "container-md", "container-lg", "container-xl", "container-xxl"),
+    class-root-key: false,
+    important: true,
+    values:(max-width: 1320px),
+    min-media-sizes: 1400px),
+
+  "row": (property: "display",
+    class: "row",
+    class-root-key: false,
+    important: false,
+    values: (null: (display: flex,
+        flex-wrap: wrap,
+        margin-top: calc(-1 * var(--#{global.$prefix}gutter-y)),
+        margin-left: calc(-0.5 * var(--#{global.$prefix}gutter-x)),
+        margin-right: calc(-0.5 * var(--#{global.$prefix}gutter-x)),
+      ),
+    ),
+  ),
+
+  "row-items": (property: "flex-shrink",
+    class: "row > *",
+    class-root-key: false,
+    important: false,
+    values: (null: (flex-shrink: 0,
+        width: 100%,
+        max-width: 100%,
+        margin-top: calc(1 * var(--#{global.$prefix}gutter-y)),
+        margin-left: calc(0.5 * var(--#{global.$prefix}gutter-x)),
+        margin-right: calc(0.5 * var(--#{global.$prefix}gutter-x)),
+      )),
+  ),
+
+  "col": (property: "width",
+    class: "col",
+    important: false,
+    values: layout.$columns,
+    extended-values: (flex: 0 0 auto),
+  ),
+
+  "offset": (property: "margin-inline-start",
+    class: "offset",
+    important: false,
+    values: layout.$offsets,
+  ),
+
+  "col-sm": (property: "width",
+    class: "col-sm",
+    class-root-key: true,
+    important: false,
+    values: layout.$columns,
+    extended-values: (flex: 0 0 auto),
+    min-media-sizes: 576px,
+  ),
+
+  "offset-sm": (property: "margin-inline-start",
+    class: "offset-sm",
+    important: false,
+    values: layout.$offsets,
+    min-media-sizes: 576px,
+  ),
+
+  "col-md": (property: "width",
+    class: "col-md",
+    class-root-key: true,
+    important: false,
+    values: layout.$columns,
+    extended-values: (flex: 0 0 auto),
+    min-media-sizes: 768px,
+  ),
+
+  "offset-md": (property: "margin-inline-start",
+    class: "offset-md",
+    important: false,
+    values: layout.$offsets,
+    min-media-sizes: 768px,
+  ),
+
+  "col-lg": (property: "width",
+    class: "col-lg",
+    class-root-key: true,
+    important: false,
+    values: layout.$columns,
+    extended-values: (flex: 0 0 auto),
+    min-media-sizes: 992px,
+  ),
+
+  "offset-lg": (property: "margin-inline-start",
+    class: "offset-lg",
+    important: false,
+    values: layout.$offsets,
+    min-media-sizes: 992px,
+  ),
+
+  "col-xl": (property: "width",
+    class: "col-xl",
+    class-root-key: true,
+    important: false,
+    values: layout.$columns,
+    extended-values: (flex: 0 0 auto),
+    min-media-sizes: 1200px,
+  ),
+
+  "offset-xl": (property: "margin-inline-start",
+    class: "offset-xl",
+    important: false,
+    values: layout.$offsets,
+    min-media-sizes: 1200px,
+  ),
+
+  "col-xxl": (property: "width",
+    class: "col-xxl",
+    class-root-key: true,
+    important: false,
+    values: layout.$columns,
+    extended-values: (flex: 0 0 auto),
+    min-media-sizes: 1400px,
+  ),
+
+  "offset-xxl": (property: "margin-inline-start",
+    class: "offset-xxl",
+    important: false,
+    values: layout.$offsets,
+    min-media-sizes: 1400px,
+  ),
+
+  "gutter-x": (property: "--#{global.$prefix}gutter-x",
+    class: "gx",
+    important: true,
+    values: spacing.$gutters,
+  ),
+
+  "gutter-y": (property: "--#{global.$prefix}gutter-y",
+    class: "gy",
+    important: true,
+    values: spacing.$gutters,
+  ),
+
+  "rounded": (property: border-radius,
+    class: "rounded",
+    important: true,
+    values: borders.$border-radiuses,
+  ),
+
+  "rounded-top": (property: (border-top-left-radius, border-top-right-radius),
+    class: "rounded-top",
+    important: true,
+    values: borders.$border-radiuses,
+  ),
+
+  "rounded-bottom": (property: (border-bottom-left-radius, border-bottom-right-radius),
+    class: "rounded-bottom",
+    important: true,
+    values: borders.$border-radiuses,
+  ),
+
+  "rounded-left": (property: (border-top-left-radius, border-bottom-left-radius),
+    class: "rounded-left",
+    important: true,
+    values: borders.$border-radiuses,
+  ),
+
+  "rounded-right": (property: (border-top-right-radius, border-bottom-right-radius),
+    class: "rounded-right",
+    important: true,
+    values: borders.$border-radiuses,
+  ),
+
+  "rounded-top-left": (property: border-top-left-radius,
+    class: "rounded-top-left",
+    important: true,
+    values: borders.$border-radiuses,
+  ),
+
+  "rounded-top-right": (property: border-top-right-radius,
+    class: "rounded-top-right",
+    important: true,
+    values: borders.$border-radiuses,
+  ),
+
+  "rounded-bottom-left": (property: border-bottom-left-radius,
+    class: "rounded-bottom-left",
+    important: true,
+    values: borders.$border-radiuses,
+  ),
+
+  "rounded-bottom-right": (property: border-bottom-right-radius,
+    class: "rounded-bottom-right",
+    important: true,
+    values: borders.$border-radiuses,
+  ),
+
+  "rounded-start": (property: (border-start-start-radius, border-end-start-radius),
+    class: "rounded-start",
+    important: true,
+    values: borders.$border-radiuses,
+  ),
+
+  "rounded-end": (property: (border-start-end-radius, border-end-end-radius),
+    class: "rounded-end",
+    important: true,
+    values: borders.$border-radiuses,
+  ),
+
+  "rounded-start-top": (property: border-start-start-radius,
+    class: "rounded-start-top",
+    important: true,
+    values: borders.$border-radiuses,
+  ),
+
+  "rounded-start-bottom": (property: border-end-start-radius,
+    class: "rounded-start-bottom",
+    important: true,
+    values: borders.$border-radiuses,
+  ),
+
+  "rounded-end-top": (property: border-start-end-radius,
+    class: "rounded-end-top",
+    important: true,
+    values: borders.$border-radiuses,
+  ),
+
+  "rounded-end-bottom": (property: border-end-end-radius,
+    class: "rounded-end-bottom",
+    important: true,
+    values: borders.$border-radiuses,
+  ),
+
+  // ===============================
+  // Validation
+  // ===============================
+  "valid": (property: color,
+    class: validation.$valid-classes,
+    class-root-key: false,
+    important: false,
+    values: validation.$valid-properties,
+  ),
+
+  "invalid": (property: color,
+    class: validation.$invalid-classes,
+    class-root-key: false,
+    important: false,
+    values: validation.$invalid-properties,
+  ),
+  // ===============================
+  // Text
+  // ===============================
+  "text-muted": (property: color,
+    class: "text-muted",
+    class-root-key: false,
+    important: false,
+    values: component-text.$text-muted,
+  ),
+  "text-feedback": (property: font-size,
+    class: "feedback",
+    class-root-key: false,
+    important: false,
+    values: component-text.$text-feedback,
+  ),
+  "valid-feedback": (property: display,
+    class: "valid-feedback",
+    class-root-key: false,
+    important: false,
+    values: component-text.$valid-feedback,
+  ),
+  "invalid-feedback": (property: display,
+    class: "invalid-feedback",
+    class-root-key: false,
+    important: false,
+    values: component-text.$invalid-feedback,
+  ),
+  "text-title": (property: font-size,
+    class: "text-title",
+    class-root-key: false,
+    important: false,
+    values: component-text.$text-title,
+  ),
+  "text-subtitle": (property: margin-top,
+    class: "text-subtitle",
+    class-root-key: false,
+    important: false,
+    values: component-text.$text-subtitle,
+  ),
+);

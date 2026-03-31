@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MicroUIKit - Skeleton Component</title>
+  <link rel="stylesheet" href="../../../dist/css/microuikit.css" />
+  <link rel="stylesheet" href="../../../dist/css/themes/microuikit-theme-default.css" />
+  <link rel="stylesheet" href="../../assets/css/docs.css" />
+</head>
+
+<body class="mk-d-flex mk-flex-dir-col mk-h-vh-100 mk-m-0">
+  <include src="../_header.html"></include>
+
+  <main class="mk-overflow-y-auto mk-px-5 mk-py-3">
+    <h3>Skeleton Component</h3>
+    <p class="mk-text-muted">
+      The Skeleton helper applies a shimmer loading state to an existing element while keeping the element's size and
+      layout intact. Content remains in the DOM but is visually hidden until loading is complete.
+    </p>
+
+    <div class="mk-demo-section">
+      <h5>Base usage</h5>
+      <div class="mk-demo-panel">
+        <div class="mk-demo-preview">
+          <div class="mk-skeleton mk-rounded-pill">
+            Loading title</div>
+          <div class="mk-skeleton mk-rounded-circle" style="width: 3rem; height: 3rem;">Avatar</div>
+        </div>
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="mk-skeleton mk-rounded-pill"&gt;Loading title&lt;/div&gt;
+&lt;div class="mk-skeleton mk-rounded-circle" style="width: 3rem; height: 3rem;"&gt;Avatar&lt;/div&gt;</code></pre>
+        <ul>
+          <li>Apply <code>.mk-skeleton</code> to the same element that already has the final width and height.</li>
+          <li>Text or child content stays in place, so layout does not jump when loading finishes.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mk-demo-section">
+      <h5>Card placeholder</h5>
+      <div class="mk-demo-panel">
+        <div class="mk-demo-preview">
+          <div class="mk-card">
+            <div class="mk-card-header">
+              <strong>Account summary</strong>
+            </div>
+            <div class="mk-card-body">
+              <div class="mk-d-flex mk-flex-dir-col mk-gap-2">
+                <span class="mk-skeleton mk-rounded-pill">Current
+                  balance</span>
+                <span class="mk-skeleton mk-rounded-pill">Line one</span>
+                <span class="mk-skeleton mk-rounded-pill">Line two</span>
+                <span class="mk-skeleton mk-rounded-pill">Line three</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="mk-card"&gt;
+  &lt;div class="mk-card-header"&gt;&lt;strong&gt;Account summary&lt;/strong&gt;&lt;/div&gt;
+  &lt;div class="mk-card-body"&gt;
+    &lt;div class="mk-d-flex mk-flex-dir-col mk-gap-2"&gt;
+      &lt;span class="mk-skeleton mk-rounded-pill"&gt;Current balance&lt;/span&gt;
+      &lt;span class="mk-skeleton mk-rounded-pill"&gt;Line one&lt;/span&gt;
+      &lt;span class="mk-skeleton mk-rounded-pill"&gt;Line two&lt;/span&gt;
+      &lt;span class="mk-skeleton mk-rounded-pill"&gt;Line three&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        <ul>
+          <li>Adding <code>.mk-skeleton</code> on the outer card hides the entire card content in one step.</li>
+          <li>Any spacing, padding, borders, and height that the card already has are preserved.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mk-demo-section">
+      <h5>Form controls and actions</h5>
+      <div class="mk-demo-panel">
+        <div class="mk-demo-preview">
+          <input type="text" class="mk-input mk-skeleton" placeholder="Email address" />
+          <button type="button" class="mk-btn mk-btn-primary mk-skeleton">Continue</button>
+          <div class="mk-input-frame">
+            <input id="skeleton-input" type="text" class="mk-input mk-skeleton" value="Project name" />
+            <label for="skeleton-input">Project name</label>
+          </div>
+          <div class="mk-textarea-frame mk-skeleton">
+            <textarea class="mk-textarea" rows="3" placeholder="Project description">Project description</textarea>
+            <label for="skeleton-textarea">Project description</label>
+          </div>
+          <select class="mk-select mk-skeleton" style="width: 12rem;">
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+          </select>
+        </div>
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;input type="text" class="mk-input mk-skeleton"/&gt;        
+&lt;button type="button" class="mk-btn mk-btn-primary mk-skeleton" &gt;Continue&lt;/button&gt;
+&lt;div class="mk-input-frame"&gt;
+  &lt;input id="skeleton-input" type="text" class="mk-input mk-skeleton" value="Project name"/&gt;
+  &lt;label for="skeleton-input"&gt;Project name&lt;/label&gt;
+&lt;/div&gt;
+&lt;div class="mk-textarea-frame mk-skeleton"&gt;
+  &lt;textarea class="mk-textarea" rows="3" placeholder="Project description"&gt;Project description&lt;/textarea&gt;
+  &lt;label for="skeleton-textarea"&gt;Project description&lt;/label&gt;
+&lt;/div&gt;
+&lt;select class="mk-select mk-skeleton"&gt;
+  &lt;option value="1"&gt;Option 1&lt;/option&gt;
+  &lt;option value="2"&gt;Option 2&lt;/option&gt;
+  &lt;option value="3"&gt;Option 3&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+        <ul>
+          <li>Use it on controls when the final size is already known and you only want to hide the current content.
+          </li>
+          <li><code>.mk-skeleton</code> disables pointer interaction during the loading state.</li>
+          <li>Inside <code>.mk-input-frame</code>, the related floating label is hidden automatically when the input
+            uses
+            skeleton state.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mk-demo-section">
+      <h5>Quick customization</h5>
+      <div class="mk-demo-panel">
+        <div class="mk-demo-preview">
+          <div class="mk-skeleton mk-rounded-pill" style="--mk-skeleton-background-color: var(--mk-background-info);">
+            Info tone
+          </div>
+          <div class="mk-skeleton mk-rounded-sm" style="--mk-skeleton-background-color: var(--mk-background-warning);">
+            Sharper corners
+          </div>
+        </div>
+        <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;div class="mk-skeleton mk-rounded-pill"
+  style="--mk-skeleton-background-color: var(--mk-background-info);"&gt;
+  Info tone
+&lt;/div&gt;
+&lt;div class="mk-skeleton mk-rounded-sm"
+  style="--mk-skeleton-background-color: var(--mk-background-warning);"&gt;
+  Sharper corners
+&lt;/div&gt;</code></pre>
+        <ul>
+          <li>Change <code>--mk-skeleton-background-color</code> to alter the skeleton base tone.</li>
+          <li>Set width, height, and border radius on the target element to match the final UI shape.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mk-demo-section">
+      <h5>What the CSS package covers</h5>
+      <div class="mk-demo-panel">
+        <ul>
+          <li><strong>Shimmer surface.</strong> <code>.mk-skeleton</code> applies
+            <code>--mk-skeleton-background-color</code> plus an animated gradient shimmer.
+          </li>
+          <li><strong>Preserved layout.</strong> Child content is hidden with <code>visibility: hidden</code>, so the
+            element keeps its original footprint.</li>
+          <li><strong>Safe loading state.</strong> Text selection and pointer interaction are disabled while skeleton is
+            active.</li>
+          <li><strong>Flexible target.</strong> The class can be attached to containers, buttons, inputs, cards, or
+            simple
+            block elements.</li>
+        </ul>
+      </div>
+      <div class="mk-demo-section mk-demo-callout ">
+        <ul>
+          <li>Keep the real semantic structure in the DOM so screen readers can still understand the page when needed.
+          </li>
+          <li>When content is genuinely unavailable, pair the skeleton state with loading semantics such as
+            <code>aria-busy="true"</code> on the parent region.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <script src="../../../dist/js/microuikit.js"></script>
+  <script src="../../assets/js/docs.js"></script>
+</body>
+
+</html>
