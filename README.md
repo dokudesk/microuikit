@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://dokudesk.com/microuikit">
+  <a href="https://dokudesk.com/microuikit" target="_blank">
     <img src="https://raw.githubusercontent.com/dokudesk/microuikit/HEAD/.github/microuikit.png" alt="MicroUIKit Logo" width="120" height="120">
   </a>
 </p>
@@ -11,7 +11,7 @@
 <p align="center">
   <a href="https://github.com/dokudesk/microuikit/releases"><img src="https://img.shields.io/npm/v/microuikit" alt="Latest Release"></a>
   <a href="https://www.npmjs.com/package/microuikit"><img src="https://img.shields.io/npm/dt/microuikit" alt="Total Downloads"></a>
-  <a href="https://github.com/dokudesk/microuikit/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/microuikit" alt="License"></a>
+  <a href="https://github.com/dokudesk/microuikit/blob/master/LICENSE"><img src="https://img.shields.io/npm/l/microuikit" alt="License"></a>
 </p>
 
 ## Features
