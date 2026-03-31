@@ -13,7 +13,7 @@
   }
 }
 /*!
- * MicroUIKit v1.1.0
+ * MicroUIKit v1.1.1
  * © 2025–2026 DokuDesk — https://dokudesk.com/microuikit
  * Released under the MIT License
  */
@@ -4134,7 +4134,7 @@ html[dir=rtl] .mk-btn[aria-busy=true]::before, html[direction=rtl] .mk-btn[aria-
   outline: none !important;
 }
 .mk-select-frame:has(.mk-select-arrow) .mk-select {
-  padding-inline-end: var(--mk-control-height);
+  padding-inline-end: calc(var(--mk-control-height) * 0.28 + var(--mk-control-padding-x) * 2);
   appearance: none;
   transition: background-color var(--mk-transition) ease, border-color var(--mk-transition) ease;
 }
@@ -4172,8 +4172,8 @@ html[dir=rtl] .mk-btn[aria-busy=true]::before, html[direction=rtl] .mk-btn[aria-
   position: absolute;
   inset-block-start: 0;
   inset-inline-end: 0;
-  width: var(--mk-control-height);
-  min-width: var(--mk-control-height);
+  width: calc(var(--mk-control-height) * 0.28 + var(--mk-control-padding-x) * 2);
+  min-width: calc(var(--mk-control-height) * 0.28 + var(--mk-control-padding-x) * 2);
   height: 100%;
   pointer-events: none;
   box-sizing: border-box;

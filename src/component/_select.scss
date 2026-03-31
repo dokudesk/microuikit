@@ -94,7 +94,7 @@
 
     // Only when frame contains .mk-select-arrow: reserve space for the arrow
     &:has(.#{$prefix}select-arrow) .#{$prefix}select {
-      padding-inline-end: var(--#{$prefix}control-height);
+      padding-inline-end: calc(calc(var(--#{$prefix}control-height) * 0.28) + calc(var(--#{$prefix}control-padding-x) * 2));
       appearance: none;
       transition: background-color var(--#{$prefix}transition) ease, border-color var(--#{$prefix}transition) ease;
     }
@@ -143,8 +143,8 @@
       position: absolute;
       inset-block-start: 0;
       inset-inline-end: 0;
-      width: var(--#{$prefix}control-height);
-      min-width: var(--#{$prefix}control-height);
+      width: calc(calc(var(--#{$prefix}control-height) * 0.28) + calc(var(--#{$prefix}control-padding-x) * 2));
+      min-width: calc(calc(var(--#{$prefix}control-height) * 0.28) + calc(var(--#{$prefix}control-padding-x) * 2));
       height: 100%;
       pointer-events: none;
       box-sizing: border-box;
