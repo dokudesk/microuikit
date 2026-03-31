@@ -1,18 +1,18 @@
-<div style="text-align: center;">
-  <a href="https://dokudesk.com/microuikit" target="_blank" rel="noopener noreferrer">
-      <img src="./.github/microuikit.png" alt="MicroUIKit Logo" width="96" height="96" style="max-width: 100%; height: auto;">
+<p align="center">
+  <a href="https://dokudesk.com/microuikit">
+    <img src="https://raw.githubusercontent.com/dokudesk/microuikit/HEAD/.github/microuikit.png" alt="MicroUIKit Logo" width="120" height="120">
   </a>
+</p>
 
-  <h2>MicroUIKit</h2>
+<h2 align="center">MicroUIKit</h2>
 
-  <p>Compact and powerful front-end framework for building micro UIs.</p>
+<p align="center">Compact and powerful front-end framework for building micro UIs.</p>
 
-  <div>
-    <img src="https://img.shields.io/npm/v/microuikit" alt="Latest Release">
-    <img src="https://img.shields.io/npm/dt/microuikit" alt="Total Downloads">
-    <img src="https://img.shields.io/npm/l/microuikit" alt="License">
-  </div>
-</div>
+<p align="center">
+  <a href="https://github.com/dokudesk/microuikit/releases"><img src="https://img.shields.io/npm/v/microuikit" alt="Latest Release"></a>
+  <a href="https://www.npmjs.com/package/microuikit"><img src="https://img.shields.io/npm/dt/microuikit" alt="Total Downloads"></a>
+  <a href="https://github.com/dokudesk/microuikit/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/microuikit" alt="License"></a>
+</p>
 
 ## Features
 
