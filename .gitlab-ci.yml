@@ -84,6 +84,27 @@ publish-github:
         "$@" || fail "Command failed: $*"
       }
 
+      wait_for_remote_tag() {
+        remote_name="$1"
+        tag_name="$2"
+        max_attempts="${3:-12}"
+        sleep_seconds="${4:-2}"
+        attempt=1
+
+        while [ "$attempt" -le "$max_attempts" ]; do
+          if git ls-remote --exit-code --tags "$remote_name" "refs/tags/${tag_name}" >/dev/null 2>&1; then
+            log "Confirmed tag ${tag_name} is available on ${remote_name}"
+            return 0
+          fi
+
+          log "Tag ${tag_name} is not visible on ${remote_name} yet (attempt ${attempt}/${max_attempts})"
+          sleep "$sleep_seconds"
+          attempt=$((attempt + 1))
+        done
+
+        fail "Tag ${tag_name} was pushed, but is still not visible on ${remote_name}"
+      }
+
       github_api() {
         method="$1"
         url="$2"
@@ -163,7 +184,12 @@ publish-github:
         log "Running TAG flow"
 
         run git checkout --detach "$CI_COMMIT_SHA"
-        run git push github "refs/tags/${CI_COMMIT_TAG}:refs/tags/${CI_COMMIT_TAG}" --force
+        run git branch -f master "$CI_COMMIT_SHA"
+        run git push github master:master
+        run git push github "refs/tags/${CI_COMMIT_TAG}:refs/tags/${CI_COMMIT_TAG}"
+        wait_for_remote_tag github "$CI_COMMIT_TAG"
+        
+        log "Master branch synced"
 
         RELEASE_PAYLOAD=$(jq -n \
           --arg tag_name "${CI_COMMIT_TAG}" \
@@ -218,7 +244,7 @@ publish-github:
         log "Running BRANCH flow (master)"
 
         run git checkout -B master "$CI_COMMIT_SHA"
-        run git push github master:master --force
+        run git push github master:master
 
         log "Master branch synced"
       fi
@@ -275,13 +301,11 @@ publish-npm:
       log "Tag: ${CI_COMMIT_TAG:-none}"
 
       if [ "$CI_COMMIT_TAG" != "v${PACKAGE_VERSION}" ] && [ "$CI_COMMIT_TAG" != "${PACKAGE_VERSION}" ]; then
-        log "Tag ${CI_COMMIT_TAG} does not match package.json version ${PACKAGE_VERSION}; skipping publish."
-        exit 0
+        fail "Tag ${CI_COMMIT_TAG} does not match package.json version ${PACKAGE_VERSION}; skipping publish."
       fi
 
       if npm view "${PACKAGE_NAME}@${PACKAGE_VERSION}" version >/dev/null 2>&1; then
-        log "npm package ${PACKAGE_NAME}@${PACKAGE_VERSION} is already published; skipping."
-        exit 0
+        fail "npm package ${PACKAGE_NAME}@${PACKAGE_VERSION} is already published; skipping."
       fi
 
       printf "//registry.npmjs.org/:_authToken=%s\n" "${NPM_TOKEN}" > ~/.npmrc
