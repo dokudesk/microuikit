@@ -128,9 +128,9 @@
   --mk-focus-ring-outline-width: 2px;
   --mk-focus-ring-outline-offset: 2px;
   --mk-control-border-radius: 0.625rem;
-  --mk-control-padding-x: 0.625rem;
+  --mk-control-padding-x: 0.75rem;
   --mk-control-padding-y: 0.5rem;
-  --mk-control-height: 2.625rem;
+  --mk-control-height: 3rem;
   --mk-card-padding-x: 1rem;
   --mk-card-padding-y: 1rem;
   --mk-checkbox-border-radius: 0.3125rem;
@@ -3558,7 +3558,7 @@ html[dir=rtl] .mk-btn[aria-busy=true]::before, html[direction=rtl] .mk-btn[aria-
 }
 .mk-input-frame label[for] {
   position: absolute;
-  padding: 0 2px;
+  padding: 0 4px;
   margin: 0 var(--mk-control-padding-x);
   max-width: calc(100% - var(--mk-control-padding-x) * 2);
   inset-inline-start: 0;
@@ -3969,7 +3969,7 @@ html[dir=rtl] .mk-btn[aria-busy=true]::before, html[direction=rtl] .mk-btn[aria-
 }
 .mk-textarea-frame label[for] {
   position: absolute;
-  padding: 0 2px;
+  padding: 0 4px;
   max-width: calc(100% - var(--mk-control-padding-x) * 2);
   inset-inline-start: var(--mk-control-padding-x);
   top: var(--mk-control-padding-y);
@@ -4198,7 +4198,6 @@ html[dir=rtl] .mk-btn[aria-busy=true]::before, html[direction=rtl] .mk-btn[aria-
   border: var(--mk-border-width) solid var(--mk-border-color);
   border-radius: var(--mk-control-border-radius);
   transition: background-color var(--mk-transition) ease;
-  box-shadow: var(--mk-box-shadow);
   overflow: hidden;
 }
 

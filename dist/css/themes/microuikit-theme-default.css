@@ -120,9 +120,9 @@
   --mk-focus-ring-outline-width: 2px;
   --mk-focus-ring-outline-offset: 2px;
   --mk-control-border-radius: 0.625rem;
-  --mk-control-padding-x: 0.625rem;
+  --mk-control-padding-x: 0.75rem;
   --mk-control-padding-y: 0.5rem;
-  --mk-control-height: 2.625rem;
+  --mk-control-height: 3rem;
   --mk-card-padding-x: 1rem;
   --mk-card-padding-y: 1rem;
   --mk-checkbox-border-radius: 0.3125rem;
