@@ -3408,6 +3408,9 @@ h6, .mk-h6 {
   cursor: wait;
   pointer-events: none;
 }
+.mk-btn[aria-busy=true] > * {
+  display: none;
+}
 .mk-btn[aria-busy=true]::before {
   content: "";
   width: calc(var(--mk-control-height) * 0.4);
