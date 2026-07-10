@@ -9,7 +9,6 @@
     border: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
     border-radius: var(--#{$prefix}control-border-radius);
     transition: background-color var(--#{$prefix}transition) ease;
-    box-shadow: var(--#{$prefix}box-shadow);
     overflow: hidden;
   }
   .#{$prefix}card-header {

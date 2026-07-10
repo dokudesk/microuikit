@@ -57,7 +57,7 @@
 
     label[for] {
       position: absolute;
-      padding: 0 2px;
+      padding: 0 4px;
       max-width: calc(100% - var(--mk-control-padding-x) * 2);
       inset-inline-start: var(--#{$prefix}control-padding-x);
       top: var(--#{$prefix}control-padding-y);

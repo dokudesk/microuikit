@@ -5,7 +5,7 @@
   }
 }
 /*!
- * MicroUIKit v1.1.1
+ * MicroUIKit v1.1.2
  * © 2025–2026 DokuDesk — https://dokudesk.com/microuikit
  * Released under the MIT License
  */
@@ -120,9 +120,9 @@
   --mk-focus-ring-outline-width: 2px;
   --mk-focus-ring-outline-offset: 2px;
   --mk-control-border-radius: 0.625rem;
-  --mk-control-padding-x: 0.625rem;
+  --mk-control-padding-x: 0.75rem;
   --mk-control-padding-y: 0.5rem;
-  --mk-control-height: 2.625rem;
+  --mk-control-height: 3rem;
   --mk-card-padding-x: 1rem;
   --mk-card-padding-y: 1rem;
   --mk-checkbox-border-radius: 0.3125rem;

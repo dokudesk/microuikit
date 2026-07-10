@@ -41,6 +41,10 @@
       cursor: wait;
       pointer-events: none;
 
+      > * {
+        display: none;
+      }
+
       &::before {
         content: "";
         width: calc(var(--#{$prefix}control-height) * 0.4);
