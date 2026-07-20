@@ -33,6 +33,13 @@ describe('MicroUIKit API', () => {
 describe('Theme', () => {
   beforeEach(() => {
     document.documentElement.removeAttribute('data-theme');
+    document.documentElement.removeAttribute('theme');
+    MicroUIKit.Theme._preference = null;
+    if (MicroUIKit.Theme._mediaQuery && MicroUIKit.Theme._handler) {
+      MicroUIKit.Theme._mediaQuery.removeEventListener('change', MicroUIKit.Theme._handler);
+      MicroUIKit.Theme._mediaQuery = null;
+      MicroUIKit.Theme._handler = null;
+    }
   });
 
   afterEach(() => {
@@ -62,15 +69,37 @@ describe('Theme', () => {
     document.documentElement.removeEventListener('microuikit:theme-change', spy);
   });
 
-  it('set("auto") syncs data-theme with prefers-color-scheme', () => {
+  it('set("system") resolves to OS preference and get() returns "system"', () => {
     window.matchMedia = vi.fn((query) => ({
       matches: query === '(prefers-color-scheme: dark)',
+      media: query,
       addEventListener: vi.fn(),
       removeEventListener: vi.fn()
     }));
-    MicroUIKit.Theme.set('auto');
+
+    MicroUIKit.Theme.set('system');
     expect(document.documentElement.getAttribute('data-theme')).toBe('dark');
-    expect(MicroUIKit.Theme.get()).toBe('dark');
+    expect(document.documentElement.getAttribute('theme')).toBe('dark');
+    expect(MicroUIKit.Theme.get()).toBe('system');
+  });
+
+  it('set("system") reacts to OS preference changes', () => {
+    let changeHandler = null;
+    let matches = false;
+    window.matchMedia = vi.fn((query) => ({
+      get matches() { return matches && query === '(prefers-color-scheme: dark)'; },
+      media: query,
+      addEventListener: (event, cb) => { if (event === 'change') changeHandler = cb; },
+      removeEventListener: () => { changeHandler = null; }
+    }));
+
+    MicroUIKit.Theme.set('system');
+    expect(document.documentElement.getAttribute('data-theme')).toBe('light');
+
+    matches = true;
+    changeHandler({ matches: true });
+    expect(document.documentElement.getAttribute('data-theme')).toBe('dark');
+    expect(MicroUIKit.Theme.get()).toBe('system');
   });
 });
 

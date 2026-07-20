@@ -70,7 +70,7 @@ After `npm run build`, use the built files:
 
 ### Theme and direction
 
-- **Theme:** Set `data-theme` on `<html>` (e.g. `data-theme="dark"`, `data-theme="light"`, `data-theme="auto"`). With the JS bundle, use `MicroUIKit.Theme.set('dark')`.
+- **Theme:** Set `data-theme` on `<html>` (e.g. `data-theme="dark"`, `data-theme="light"`, `data-theme="system"`). With the JS bundle, use `MicroUIKit.Theme.set('dark')`.
 - **RTL:** Use `dir="rtl"` or `data-dir="rtl"` on `<html>`. With the JS bundle, use `MicroUIKit.Direction.set('rtl')`.
 
 ## Usage Guides
@@ -127,7 +127,7 @@ The bundle is UMD (Universal Module Definition); in the browser it attaches to `
 ### Theme
 
 ```javascript
-MicroUIKit.Theme.set('dark');   // or 'light', 'auto'
+MicroUIKit.Theme.set('dark');   // or 'light', 'system'
 MicroUIKit.Theme.get();         // current theme
 ```
 
