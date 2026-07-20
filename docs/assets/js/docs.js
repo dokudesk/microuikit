@@ -101,10 +101,11 @@
     if (!themeSelect && !dirSelect) return;
 
     function applyTheme(value) {
+      if (value === "auto") value = "system";
       if (window.MicroUIKit && MicroUIKit.Theme) {
         MicroUIKit.Theme.set(value);
       } else {
-        root.setAttribute("data-theme", value === "auto" ? "light" : value);
+        root.setAttribute("data-theme", value);
       }
       storage.set(STORAGE_KEYS.THEME, value);
     }
@@ -125,7 +126,7 @@
     applyDir(storedDir);
 
     if (themeSelect) {
-      themeSelect.value = storedTheme;
+      themeSelect.value = storedTheme === "auto" ? "system" : storedTheme;
       themeSelect.addEventListener("change", (event) => {
         applyTheme(event.target.value);
       });
@@ -137,13 +138,6 @@
         applyDir(event.target.value);
       });
     }
-
-    const themeMedia = window.matchMedia("(prefers-color-scheme: dark)");
-    themeMedia.addEventListener("change", () => {
-      if (storage.get(STORAGE_KEYS.THEME) === "auto") {
-        applyTheme("auto");
-      }
-    });
   }
 
   function initButtonBusyDemo() {

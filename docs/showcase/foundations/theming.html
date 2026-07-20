@@ -18,7 +18,7 @@
     <p class="mk-text-muted">
       Theme lets you switch between light and dark appearance without changing component markup.
       Themes are applied by setting an attribute on the document root; token overrides in theme files handle colors
-      and other semantic values so components and utilities stay consistent. Three modes are supported: light, dark, and auto (system preference).
+      and other semantic values so components and utilities stay consistent. Three modes are supported: light, dark, and system (OS preference).
     </p>
 
     <div class="mk-demo-section">
@@ -33,14 +33,14 @@
         <li><strong>dark.</strong> <code>data-theme="dark"</code> applies dark token overrides so the same components
           render with dark backgrounds and light text. The theme file defines these under
           <code>html[data-theme=dark]</code> (and <code>html[theme=dark]</code> for compatibility).</li>
-        <li><strong>auto.</strong> <code>data-theme="auto"</code> follows the user’s system preference. When
+        <li><strong>system.</strong> <code>data-theme="system"</code> follows the user’s system preference. When
           <code>prefers-color-scheme: dark</code> matches, the theme file applies the same dark overrides as
           <code>dark</code>; otherwise the light defaults are used.</li>
       </ul>
       <div class="mk-demo-panel">
         <pre><button type="button" class="mk-demo-code-copy" aria-label="Copy to clipboard"></button><code>&lt;html data-theme="light"&gt;...&lt;/html&gt;
 &lt;html data-theme="dark"&gt;...&lt;/html&gt;
-&lt;html data-theme="auto"&gt;...&lt;/html&gt;</code></pre>
+&lt;html data-theme="system"&gt;...&lt;/html&gt;</code></pre>
       </div>
     </div>
 
@@ -53,8 +53,8 @@
       <ul >
         <li>Directly for <code>html[data-theme=dark]</code> (and <code>html[theme=dark]</code>), so an explicit
           <code>data-theme="dark"</code> always gets dark styling.</li>
-        <li>Inside <code>@media (prefers-color-scheme: dark)</code> for <code>html[data-theme=auto]</code> (and
-          <code>html[theme=auto]</code>), so when the system prefers dark, <code>auto</code> receives the same
+        <li>Inside <code>@media (prefers-color-scheme: dark)</code> for <code>html[data-theme=system]</code> (and
+          <code>html[theme=system]</code>), so when the system prefers dark, <code>system</code> receives the same
           dark token values.</li>
       </ul>
       <p >
@@ -79,7 +79,7 @@
       <p >
         To let users change the theme (e.g. via a control in the UI), set <code>data-theme</code> (or
         <code>theme</code>) on <code>document.documentElement</code> to <code>light</code>, <code>dark</code>, or
-        <code>auto</code>. When you include <code>microuikit.js</code>, the global <code>MicroUIKit.Theme</code> helper exposes
+        <code>system</code>. When you include <code>microuikit.js</code>, the global <code>MicroUIKit.Theme</code> helper exposes
         a small API so you don’t need to manage attributes manually.
       </p>
       <div class="mk-demo-panel">
@@ -90,10 +90,10 @@
         <pre class="mk-left-to-right"><code>// Switch theme
 MicroUIKit.Theme.set('light');
 MicroUIKit.Theme.set('dark');
-MicroUIKit.Theme.set('auto'); // follow system preference
+MicroUIKit.Theme.set('system'); // follow system preference
 
 // Read current theme
-const current = MicroUIKit.Theme.get(); // 'light', 'dark', or 'auto'
+const current = MicroUIKit.Theme.get(); // 'light', 'dark', or 'system'
 
 // React to theme changes (e.g. update toggle UI)
 document.documentElement.addEventListener('microuikit:theme-change', (event) =&gt; {

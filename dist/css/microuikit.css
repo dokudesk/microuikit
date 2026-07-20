@@ -181,7 +181,7 @@ html[theme=dark], html[data-theme=dark] {
 }
 
 @media (prefers-color-scheme: dark) {
-  html[theme=auto], html[data-theme=auto] {
+  html[theme=system], html[data-theme=system] {
     --mk-text-color: #e9ecef;
     --mk-text-muted-color: #ced4da;
     --mk-placeholder-color: #6c757d;

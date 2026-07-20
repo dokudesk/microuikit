@@ -20,13 +20,13 @@
 // ===============================
 /// Wraps content for prefers-color-scheme media query with theme selector
 /// @param {String} $mode - Color scheme mode (e.g., "dark", "light")
-/// @param {String} $selector - Custom selector (optional, defaults to auto theme attribute selectors)
+/// @param {String} $selector - Custom selector (optional, defaults to system theme attribute selectors)
 @mixin prefers-color-scheme($mode, $selector: null) {
   @media (prefers-color-scheme: #{$mode}) {
     $sel: $selector;
 
     @if not $selector {
-      $sel: "html[theme='auto'], html[data-theme='auto']";
+      $sel: "html[theme='system'], html[data-theme='system']";
     }
     #{$sel} {
       @content;

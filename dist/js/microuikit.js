@@ -26,42 +26,71 @@
 
   /**
    * Theme Manager
+   * Modes: 'light' | 'dark' | 'system'
    */
   const Theme = {
     _mediaQuery: null,
     _handler: null,
-
-    _updateFromSystem: function (mediaQuery) {
-      document.documentElement.setAttribute('data-theme', mediaQuery.matches ? 'dark' : 'light');
+    _preference: null,
+  
+    _applyResolved: function (mediaQuery) {
+      var resolved = mediaQuery.matches ? 'dark' : 'light';
+      var html = document.documentElement;
+      html.setAttribute('theme', resolved);
+      html.setAttribute('data-theme', resolved);
     },
-
+  
+    _onSystemChange: function (mediaQuery) {
+      this._applyResolved(mediaQuery);
+      document.documentElement.dispatchEvent(new CustomEvent('microuikit:theme-change', {
+        detail: { theme: 'system' }
+      }));
+    },
+  
+    _detach: function () {
+      if (this._mediaQuery && this._handler) {
+        this._mediaQuery.removeEventListener('change', this._handler);
+        this._mediaQuery = null;
+        this._handler = null;
+      }
+    },
+  
     set: function (theme) {
       var html = document.documentElement;
-
-      if (theme === 'auto') {
-        html.removeAttribute('data-theme');
-        this._mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-        this._handler = this._updateFromSystem.bind(this);
-        this._updateFromSystem(this._mediaQuery);
-        this._mediaQuery.addEventListener('change', this._handler);
-      } else {
-        if (this._mediaQuery && this._handler) {
-          this._mediaQuery.removeEventListener('change', this._handler);
-          this._mediaQuery = null;
-          this._handler = null;
+      this._detach();
+      this._preference = theme;
+  
+      if (theme === 'system') {
+        if (typeof window !== 'undefined' && typeof window.matchMedia === 'function') {
+          this._mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+          this._handler = this._onSystemChange.bind(this);
+          this._applyResolved(this._mediaQuery);
+          this._mediaQuery.addEventListener('change', this._handler);
+        } else {
+          html.setAttribute('theme', 'light');
+          html.setAttribute('data-theme', 'light');
         }
+      } else {
+        html.setAttribute('theme', theme);
         html.setAttribute('data-theme', theme);
       }
-
+  
       html.dispatchEvent(new CustomEvent('microuikit:theme-change', { detail: { theme: theme } }));
     },
-
+  
     get: function () {
-      return document.documentElement.getAttribute('data-theme') || 'light';
+      if (this._preference) return this._preference;
+      var html = document.documentElement;
+      return html.getAttribute('data-theme') || html.getAttribute('theme') || 'light';
     },
-
+  
     init: function () {
-      this.set(this.get() || 'auto');
+      var html = document.documentElement;
+      var current = html.getAttribute('data-theme') || html.getAttribute('theme');
+      if (current !== 'light' && current !== 'dark' && current !== 'system') {
+        current = 'system';
+      }
+      this.set(current);
     }
   };
 

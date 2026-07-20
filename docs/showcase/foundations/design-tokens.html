@@ -18,7 +18,7 @@
     <p class="mk-text-muted">
       MicroUIKit’s look and behavior are driven by design tokens: CSS custom properties (variables) that you can override
       globally, per theme, or per component. Tokens live on <code>:root</code> and in theme files; light, dark, and
-      auto modes (and RTL/LTR) are supported via scoped overrides.
+      system modes (and RTL/LTR) are supported via scoped overrides.
     </p>
 
     <div class="mk-demo-section">
@@ -28,7 +28,7 @@
           (SVG assets, typography, palette, and fallbacks for semantic and control tokens).</li>
         <li><strong>Themes.</strong> Theme files such as <code>microuikit-theme-default.css</code> define the default
           light values (colors, spacing, radius, focus ring, etc.) and override them for <code>data-theme="dark"</code>
-          and, inside <code>@media (prefers-color-scheme: dark)</code>, for <code>data-theme="auto"</code>.</li>
+          and, inside <code>@media (prefers-color-scheme: dark)</code>, for <code>data-theme="system"</code>.</li>
         <li><strong>Custom themes.</strong> You can add your own <code>microuikit-theme-*.css</code> files that redefine
           the same token names so one codebase supports multiple brands or locales without changing the core CSS.</li>
       </ul>
